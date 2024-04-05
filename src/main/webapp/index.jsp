@@ -80,6 +80,7 @@
     <h1>Welcome MOVIE 아무나 보이는 페이지</h1>
     <button type="button" onclick="location.href='log/loginForm.jsp'">로그인</button>
     <button type="button" onclick="location.href='log/logoutAction.jsp'">로그아웃</button>
+    <button type="button" onclick="location.href='movie/movieShowRate.jsp'">무비차트</button>
 </div>
 </body>
 </html>

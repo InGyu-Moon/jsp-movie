@@ -1,6 +1,7 @@
 ### 공통 파일
 db.properties
 src/main/java/db/mysql/DbProperties.java
+src/main/webapp/img/movie_img
 
 ### IntelliJ IDEA ###
 .idea/
