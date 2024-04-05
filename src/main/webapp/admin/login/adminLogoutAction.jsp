@@ -1,4 +1,3 @@
-<%@ page import="data.admin.AdminDao" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <!DOCTYPE html>
@@ -12,21 +11,9 @@
     <title>Insert title here</title>
 </head>
 <body>
-
 <%
-    String adminId = request.getParameter("adminId");
-    String adminPw = request.getParameter("adminPw");
-
-    AdminDao dao = new AdminDao();
-    boolean adminLoginResult = dao.checkAdminLogin(adminId, adminPw);
-    if (adminLoginResult) {
-        System.out.println("로그인 성공");
-    } else {
-        System.out.println("로그인 실패");
-    }
+    session.removeAttribute("adminLogin");
     response.sendRedirect("adminLoginPage.jsp");
 %>
-
-
 </body>
 </html>

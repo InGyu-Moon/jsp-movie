@@ -5,13 +5,21 @@
 <head>
     <meta charset="UTF-8">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Dongle&family=Gaegu&family=Nanum+Pen+Script&family=Noto+Sans+KR:wght@100..900&family=Noto+Serif+KR&display=swap"
-          rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+
+    <%-- IBM Plex Sans KR--%>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&display=swap" rel="stylesheet">
+
     <title>관리자 로그인</title>
 </head>
 
-<body>
+<body style=" font-family: 'IBM Plex Sans KR';">
+<%
+    Boolean adminLogin = (Boolean)session.getAttribute("adminLogin");
+    System.out.println("adminLogin = " + adminLogin);
+%>
 <div class="container">
     <div class="row justify-content-center align-items-center" style="height: 90vh;">
         <div style="width: 400px;">
