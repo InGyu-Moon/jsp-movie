@@ -7,10 +7,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import db.mysql.DbConnect;
+import db.mysql.DbConnectLocal;
 
 public class MemberDao {
-	DbConnect db = new DbConnect();
+	DbConnectLocal db = new DbConnectLocal();
 	
 	// insert 
 	public void insertMember(MemberDto member) {
@@ -24,7 +24,7 @@ public class MemberDao {
 			pstmt.setString(1, member.getUserName());
 			pstmt.setString(2, member.getPassword());
 			pstmt.setString(3, member.getName());
-			pstmt.setString(4, member.getGender()); // 보통 String 쓴다는데 좀 더 조사 해볼 것
+			pstmt.setString(4, member.getGender().toString()); // 보통 String 쓴다는데 좀 더 조사 해볼 것
 			pstmt.setString(5, member.getEmail());
 			pstmt.setDate(6, member.getBirthdate());
 			pstmt.setString(7, member.getAddress());

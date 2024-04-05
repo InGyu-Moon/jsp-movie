@@ -27,4 +27,4 @@ local.properties
 .classpath
 .project
 build/
-
+git rm --cached src/main/java/db/mysql/DbProperties.java

@@ -3,10 +3,10 @@ package data.user.nonmember;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 
-import db.mysql.DbConnect;
+import db.mysql.DbConnectLocal;
 
 public class NonMemberDao {
-	DbConnect db = new DbConnect();
+	DbConnectLocal db = new DbConnectLocal();
 	
 	// 비회원 insert 
 	public boolean insertNonMember(NonMemberDto nonMember) {
