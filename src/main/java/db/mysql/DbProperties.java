@@ -5,7 +5,7 @@ import java.util.Properties;
 
 public class DbProperties {
     // db.properties 위치 넣어주기
-    private static final String FILE_PATH = "C:\\sistproject\\work\\team-project\\Semi-Project\\db.properties";
+    private static final String FILE_PATH = "C:\\Users\\kje07\\git\\Semi-Project\\db.properties";
 
     private Properties properties;
 

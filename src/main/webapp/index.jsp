@@ -81,6 +81,5 @@
     <button type="button" onclick="location.href='log/loginForm.jsp'">로그인</button>
     <button type="button" onclick="location.href='log/logoutAction.jsp'">로그아웃</button>
 </div>
-    
 </body>
 </html>
