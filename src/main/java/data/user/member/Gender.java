@@ -1,4 +1,4 @@
-package user.member;
+package data.user.member;
 
 public enum Gender {
 	Male, Female, Other;
