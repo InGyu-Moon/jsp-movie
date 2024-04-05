@@ -23,7 +23,7 @@
 //        response.sendRedirect("login/adminLoginPage.jsp");
 //    }
 
-    String currentPage = "layout/memberManagement.jsp";
+    String currentPage = "member/memberMain.jsp";
     if (request.getParameter("curr") != null) {
         currentPage = request.getParameter("curr");
     }
@@ -33,7 +33,7 @@
     <div style="width: 200px;">
         <jsp:include page="layout/navbar.jsp"/>
     </div>
-    <div style="flex: 1;">
+    <div style="flex: 1; margin-left: 60px; margin-top: 50px">
         <jsp:include page="<%=currentPage%>"/>
     </div>
 </div>

@@ -41,53 +41,43 @@
                   로그아웃
                </a>
             </span>
-
             <a target='_blank' href="../../index.jsp" style="color: white; text-decoration-line: none; margin-bottom: 50px;margin-top: 50px;">
                사이트 바로가기 &nbsp;&nbsp;&nbsp;
                <span data-feather="plus"></span>
             </a>
-            <li class="nav-item">
-               <a class="nav-link active" aria-current="page" href="#">
-                  <span data-feather="home"></span>
-                  Home
-               </a>
-            </li>
-            <li class="nav-item">
-               <a class="nav-link" href="#">
-                  <span data-feather="file-text"></span>
-                  대시보드
-               </a>
-            </li>
-            <li class="nav-item">
-               <a class="nav-link" href="#">
-                  <span data-feather="users"></span>
-                  회원 관리
-               </a>
-            </li>
-            <li class="nav-item">
-               <a class="nav-link" href="#">
-                  <span data-feather="shopping-cart"></span>
-                  예매/결제 관리
-               </a>
-            </li>
-            <li class="nav-item">
-               <a class="nav-link" href="#">
-                  <span data-feather="message-square"></span>
-                  FAQ
-               </a>
-            </li>
-            <li class="nav-item">
-               <a class="nav-link" href="#">
-                  <span data-feather="bell"></span>
-                  공지사항
-               </a>
-            </li>
-            <li class="nav-item">
-               <a class="nav-link" href="#">
-                  <span data-feather="smile"></span>
-                  1:1 문의
-               </a>
-            </li>
+            <div>
+               <li class="nav-item">
+                  <a class="nav-link" href="../admin/adminMainPage.jsp?curr=member/memberMain.jsp" onclick="changeActive()">
+                     <span data-feather="users"></span>
+                     회원 관리
+                  </a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link" href="../admin/adminMainPage.jsp?curr=reservation/reservationMain.jsp">
+                     <span data-feather="shopping-cart"></span>
+                     예매/결제 관리
+                  </a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link" href="../admin/adminMainPage.jsp?curr=faq/faqMain.jsp">
+                     <span data-feather="message-square"></span>
+                     FAQ
+                  </a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link" href="../admin/adminMainPage.jsp?curr=notice/noticeMain.jsp">
+                     <span data-feather="bell"></span>
+                     공지사항
+                  </a>
+               </li>
+               <li class="nav-item" style="margin-bottom: 100px">
+                  <a class="nav-link" href="../admin/adminMainPage.jsp?curr=inquiry/inquiryMain.jsp">
+                     <span data-feather="smile"></span>
+                     1:1 문의
+                  </a>
+               </li>
+            </div>
+
 
          </ul>
       </div>
@@ -97,7 +87,7 @@
 <%--아이콘 이미지--%>
 <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
 <script>
-   feather.replace()
+   feather.replace();
 </script>
 <%--아이콘 이미지--%>
 
