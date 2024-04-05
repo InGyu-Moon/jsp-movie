@@ -1,3 +1,7 @@
+<%@ page import="user.member.MemberDto" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="user.member.MemberDao" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <!DOCTYPE html>
@@ -9,7 +13,23 @@
           rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
     <title>Insert title here</title>
+    <style>
+        a{
+
+        }
+    </style>
 </head>
+
+<%
+    MemberDao memberDao = new MemberDao();
+    // 전체회원목록
+    List<MemberDto> totalMemberList = memberDao.getAllMembers();
+
+%>
+
+
+
+
 <body>
 <h2 style="margin-bottom: 50px">회원 관리</h2>
 <form class="d-flex" method="post" action="#">
@@ -25,16 +45,45 @@
 
 <hr>
 
+<%-- 전체 회원 명단 출력 --%>
 <table class="table table-bordered" style="width: 800px">
     <caption align="top"><b>전체 회원 명단</b></caption>
-    <tr class="table-success">
+    <tr class="table-success" align="center">
         <th width="80">번호</th>
         <th width="180">아이디</th>
         <th width="180">이름</th>
-        <th width="200">가입일</th>
+        <th width="200">생년월일</th>
         <th width="150">기타</th>
     </tr>
-    </table>
+    <%
+        for(MemberDto dto :totalMemberList){
+    %>
+    <tr align="center">
+        <td>
+            <input type="checkbox" value="<%=dto.getId()%>">
+        </td>
+        <td>
+            <a href="<%=dto.getId()%>">
+                <%=dto.getUserName()%>
+            </a>
+        </td>
+        <td>
+            <a href="<%=dto.getId()%>">
+                <%=dto.getName()%>
+            </a>
+        </td>
+        <td>
+            <a href="<%=dto.getId()%>">
+                <%=dto.getBirthdate()%>
+            </a>
+        </td>
+
+    <tr>
+            <%
+        }
+    %>
+
+</table>
 
 
 

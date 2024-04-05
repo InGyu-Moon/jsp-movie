@@ -32,7 +32,7 @@
                &nbsp;MOVIE.COM
             </span>
             <h3 style="color: white;">
-               <span style="width: 29px; height: 29px" data-feather="user-check"></span>
+               <span style="width: 29px; height: 29px" data-feather="data.admin.user-check"></span>
                &nbsp;관리자
             </h3>
             <span style="color: white;">
