@@ -3,11 +3,11 @@ package data.movie.reservation;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 
-import db.mysql.DbConnectLocal;
+import db.mysql.DbConnect;
 import data.user.member.MemberDto;
 
 public class ReservationDao {
-	DbConnectLocal db = new DbConnectLocal();
+	DbConnect db = new DbConnect();
 	
 	// insert 
 	public void insertMember(MemberDto member) {

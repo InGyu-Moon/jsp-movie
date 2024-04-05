@@ -3,11 +3,11 @@ package data.movie.movieinfo;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 
-import db.mysql.DbConnectLocal;
+import db.mysql.DbConnect;
 
 public class MovieDao {
 	public static final String rootUrl = "http://www.cgv.co.kr"; // 영화메인
-	DbConnectLocal db = new DbConnectLocal();
+	DbConnect db = new DbConnect();
 	
 	// 영화 이름과 상세 링크만 저장 
 	public void insertTitleAndLink(String title, String detailLink) {

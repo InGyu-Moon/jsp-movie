@@ -7,10 +7,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import db.mysql.DbConnectLocal;
+import db.mysql.DbConnect;
 
 public class MemberDao {
-	DbConnectLocal db = new DbConnectLocal();
+	DbConnect db = new DbConnect();
 	
 	// insert 
 	public void insertMember(MemberDto member) {
@@ -118,7 +118,7 @@ public class MemberDao {
 				dto.setUserName(rs.getString("username"));
 				dto.setPassword(rs.getString("password"));
 				dto.setName(rs.getString("name"));
-				dto.setGender(rs.getString("gender"));
+				dto.setString(rs.getString("gender").toString());
 				dto.setEmail(rs.getString("email"));
 				dto.setBirthdate(rs.getDate("birthdate"));
 				dto.setAddress(rs.getString("address"));
