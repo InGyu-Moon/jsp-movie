@@ -1,3 +1,4 @@
+<%@ page import="data.user.member.MemberDao" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <!DOCTYPE html>
@@ -11,8 +12,14 @@
     <title>Insert title here</title>
 </head>
 <body>
-<h2 style="margin-bottom: 50px">공지사항</h2>
-<hr style="margin-bottom: 30px">
+<%
+//    String memberId = request.getParameter("memberId");
+//    MemberDao dao = new MemberDao();
+//    dao.deleteMember(memberId);
 
+    System.out.println("삭제완료");
+    response.sendRedirect("../adminMainPage.jsp?curr=member/memberMain.jsp");
+
+%>
 </body>
 </html>
