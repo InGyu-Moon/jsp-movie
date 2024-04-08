@@ -60,7 +60,7 @@
 	height: 50px;
 	border-radius: 50px;
 	cursor: pointer;
-	background-image: url("../img/top_btn.png");
+	background-image: url("../../img/common/top_btn.png");
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: 24px;
@@ -836,7 +836,7 @@ footer#footer .main .select .btn  a {
 	margin-top: -6px;
 }
 
-.ticket .theater .hr {
+.ticket .theater_text .hr {
 	margin-top: 60px;
 	position: relative;
 	height: 80px;
@@ -844,23 +844,307 @@ footer#footer .main .select .btn  a {
 	align-items: center;
 }
 
-.ticket .theater .hr>div {
+.ticket .theater_text .hr>div {
 	width: 100%;
 }
 
-.ticket .theater .hr hr {
+.ticket .theater_text .hr hr {
 	margin-top: 10px;
 }
 
-.ticket .theater .title {
+.ticket .theater_text .title {
 	position: absolute;
 	left: 50%;
 	top: 50%;
 	transform: translate(-50%, -50%);
 	font-size: 50px;
 	font-weight: 900;
-	width: auto!important;
+	width: auto !important;
 	background: #fff;
 	z-index: 1;
 }
 /* ticket.jsp */
+
+/* log */
+.log {
+	padding: 80px 0;
+}
+
+.log .log_nav_box {
+	display: flex;
+}
+
+.log .log_nav {
+	cursor: pointer;
+	width: 120px;
+	height: 38px;
+	font-size: 14px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-weight: 700;
+	border-radius: 10px 10px 0 0;
+	margin-right: 2px;
+}
+
+/* loginForm */
+.log.loginForm .login_box {
+	display: flex;
+	justify-content: center;
+	padding: 40px 0 0 0;
+}
+
+.log.loginForm .login_box>div {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.log.loginForm .login_box .title {
+	font-size: 14px;
+	color: #666666;
+	font-weight: 500;
+}
+
+.log.loginForm .login_box .input.id {
+	margin-top: 20px;
+}
+
+.log.loginForm .login_box .input {
+	margin-top: 6px;
+}
+
+.log.loginForm .login_box .input input {
+	width: 260px;
+	border: 2px solid #b5b5b5;
+	height: 40px;
+	padding-left: 10px;
+}
+
+.log.loginForm .login_box  .input.btn input {
+	background: #fb4357;
+	color: #fff;
+	border: none;
+	cursor: pointer;
+}
+/* //loginForm */
+
+/* nonReservationForm */
+log .nonReservationForm table, th, td {
+	padding: 10px;
+}
+
+log.nonReservationForm th {
+	background-color: #e3e3e3;
+}
+
+hr {
+	width: 1000px;
+	margin-left: 0;
+}
+
+log.nonReservationForm .div {
+	background-color: #e0cdaf;
+	border: 1px solid;
+	width: 1000px;
+	height: 210px;
+	padding: 10px;
+}
+
+log.nonReservationForm .div:after {
+	clear: both;
+	display: block;
+	content: ''
+}
+
+log.nonReservationForm .div .div_inner {
+	float: left;
+	text-align: left;
+}
+
+log.nonReservationForm #var {
+	margin-left: 10px;
+	border-left: thin solid black;
+	height: 180px;
+	display: inline-block;
+}
+
+log.nonReservationForm .p {
+	display: inline-block;
+}
+
+log.nonReservationForm #inner_p {
+	padding-left: 20px;
+}
+
+.nonReservation_box {
+	padding: 40px 0 0 0;
+}
+
+.nonReservation_box .block {
+	margin-top: 40px;
+}
+
+.nonReservation_box .block.agreement {
+	border-bottom: 2px solid #41413e;
+	padding-bottom: 40px;
+}
+
+.nonReservation_box .block:first-child {
+	margin-top: 0;
+}
+
+.nonReservation_box .block h4.title_h4 span {
+	color: #fb4357;
+	margin-right: 10px;
+}
+
+.nonReservation_box .block p.explanation {
+	font-size: 14px;
+	color: #666;
+	margin-top: 10px;
+}
+
+.nonReservation_box .block.agreement table {
+	margin-top: 20px;
+	color: #666;
+	font-size: 12px;
+	width: 540px;
+	border-bottom: 2px solid #b8b6aa;
+}
+
+.nonReservation_box .block.agreement table th {
+	background-color: #e2e2e0;
+	font-size: 14px;
+	border-bottom: 1px dotted #b8b6aa;
+	border-top: 1px solid #b8b6aa;
+}
+
+.nonReservation_box .block.agreement table td {
+	height: 90px;
+	vertical-align: middle;
+	line-height: 20px;
+	border-right: 1px solid #b8b6aa;
+}
+
+.nonReservation_box .block.agreement table td:last-child {
+	border: none;
+}
+
+.nonReservation_box .block.agreement table td.bk {
+	color: #222;
+	text-align: center;
+}
+
+.nonReservation_box .block.agreement table p.check {
+	display: flex;
+	align-items: center;
+}
+
+.nonReservation_box .block.agreement table p.check  input {
+	margin-right: 4px;
+}
+
+.nonReservation_box .block.input h5.gray_bg {
+	background-color: #e2e2e0;
+	height: 46px;
+	padding-left: 40px;
+	display: flex;
+	align-items: center;
+}
+
+.nonReservation_box .block.input .list {
+	padding: 30px;
+	background: #fff;
+	border: 1px solid #e2e2e0;
+	border-top: none;
+}
+
+.nonReservation_box .block.input .list p.small {
+	border-bottom: 2px solid #b8b6aa;
+	padding-bottom: 6px;
+}
+
+.nonReservation_box .block.input .list p.small  small {
+	font-size: 14px;
+}
+
+.nonReservation_box .block.input .list .input {
+	padding: 20px 0;
+	border-bottom: 1px solid #dfded7;
+	display: flex;
+	align-items: center;
+}
+
+.nonReservation_box .block.input .list .input label {
+	font-size: 12px;
+	display: block;
+	width: 120px;
+}
+
+.nonReservation_box .block.input .list .input  span#birthdate_check {
+	font-size: 12px;
+	padding-left: 10px;
+}
+
+.nonReservation_box .block.input .list .input input {
+	width: 120px;
+	height: 30px;
+	border: 1px solid #b5b5b5;
+	padding-left: 10px;
+}
+
+.nonReservation_box .block.input .list .input select {
+	width: 60px;
+	height: 30px;
+	border: 1px solid #b5b5b5;
+}
+
+.nonReservation_box .block.input .list .input button {
+	border: 2px solid #fb4357;
+	color: #fb4357;
+	background: none;
+	width: 110px;
+	height: 30px;
+	font-weight: 700;
+	margin-left: 10px;
+	cursor: pointer;
+}
+
+.nonReservation_box .block.input .list .input input#btn {
+	border: 2px solid #fb4357;
+	color: #fb4357;
+	background: none;
+	width: 130px;
+	padding: 0;
+	height: 30px;
+	font-weight: 700;
+	cursor: pointer;
+	margin-left: 10px;
+	height: 30px;
+}
+
+.nonReservation_box .block.reference .div {
+	border: 1px solid red;
+	padding: 30px;
+	border: 2px solid #d5d4cd;
+	background: #f9f7ec;
+}
+
+.nonReservation_box .block.reference .div .div_inner p#first_p {
+	font-size: 14px;
+	font-weight: 700;
+}
+
+.nonReservation_box .block.reference .div .div_inner.main {
+	margin-top: 20px;
+}
+
+.nonReservation_box .block.reference .div .div_inner.main p.p small {
+	font-size: 12px;
+	color: #666;
+	line-height: 24px;
+}
+/* //nonReservationForm */
+
+/* //log */
