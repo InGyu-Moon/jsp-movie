@@ -24,7 +24,6 @@
 						<div class="swiper_stop" data-action="stop"></div>
 					</div>
 				</div>
-
 			</div>
 			<div class="pop_up">
 				<div class="dimd"></div>
@@ -32,7 +31,6 @@
 					<video src=""></video>
 					<div class="btn"></div>
 				</div>
-
 			</div>
 			<div class="chart">
 				<div class="center">

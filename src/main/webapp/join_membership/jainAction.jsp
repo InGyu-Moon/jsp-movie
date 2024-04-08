@@ -1,8 +1,7 @@
-<%@page import="user.member.Gender"%>
+<%@page import="data.user.member.Gender"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.sql.Date"%>
-<%@page import="user.member.MemberDto"%>
-<%@page import="user.member.MemberDao"%>
+<%@page import="data.user.member.MemberDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
