@@ -211,5 +211,24 @@ public class MemberDao {
 		return dto;
 	}
 
+	public void deleteMember(String memberId){
+		Connection conn=db.getConnection();
+		PreparedStatement pstmt=null;
+
+		String sql="delete from member_info where member_id=?";
+
+		try {
+			pstmt=conn.prepareStatement(sql);
+
+			pstmt.setString(1, memberId);
+			pstmt.execute();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			db.dbClose(pstmt, conn);
+		}
+
+	}
+
 	
 }

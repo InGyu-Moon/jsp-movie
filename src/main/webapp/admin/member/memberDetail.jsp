@@ -52,9 +52,9 @@
     주소: <%= dto.getAddress() %><br>
     전화번호: <%= dto.getPhoneNumber() %><br>
 </div>
-<button>수정</button>
-<button>삭제</button>
-<button onclick="history.back()">목록</button>
+<a type="button" class="btn btn-outline-primary" href="/admin/adminMainPage.jsp?curr=member/memberUpdateForm.jsp?memberId=<%=dto.getId()%>">수정</a>
+<a type="button" class="btn btn-outline-danger" href="member/memberDelete.jsp?memberId=<%=dto.getId()%>">삭제</a>
+<button class="btn btn-outline-success" onclick="history.back()">목록</button>
 
 
 
