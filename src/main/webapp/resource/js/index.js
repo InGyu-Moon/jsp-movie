@@ -31,6 +31,11 @@ $(".ticket .region .line .main .category ul li").on('click', function() {
 	$(this).parents(".main").find(".list").eq(idx).addClass("view");
 });
 
+//극장 날짜 탭
+$(".ticket .schedule .swiper-slide").on('click', function() {
+	$(this).addClass('border').siblings().removeClass('border');
+});
+
 
 //상단 고정 배너
 $(".top_banner .btn").click(function() {
