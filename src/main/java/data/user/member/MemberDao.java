@@ -118,7 +118,7 @@ public class MemberDao {
 				dto.setUserName(rs.getString("username"));
 				dto.setPassword(rs.getString("password"));
 				dto.setName(rs.getString("name"));
-				dto.setString(rs.getString("gender").toString());
+				dto.setGender(Gender.valueOf(rs.getString("gender"))); // 문자열을 Gender 열거형으로 변환
 				dto.setEmail(rs.getString("email"));
 				dto.setBirthdate(rs.getDate("birthdate"));
 				dto.setAddress(rs.getString("address"));
