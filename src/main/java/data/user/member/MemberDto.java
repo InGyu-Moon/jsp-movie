@@ -7,7 +7,7 @@ public class MemberDto {
 	private String userName;
 	private String password;
 	private String name;
-	private String gender;
+	private Gender gender;
 	private String email;
 	private Date birthdate;
 	private String address;
@@ -38,10 +38,10 @@ public class MemberDto {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getGender() {
+	public Gender getGender() {
 		return gender;
 	}
-	public void setGender(String gender) {
+	public void setGender(Gender gender) {
 		this.gender = gender;
 	}
 	public String getEmail() {

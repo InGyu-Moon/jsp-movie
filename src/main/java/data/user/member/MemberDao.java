@@ -24,7 +24,7 @@ public class MemberDao {
 			pstmt.setString(1, member.getUserName());
 			pstmt.setString(2, member.getPassword());
 			pstmt.setString(3, member.getName());
-			pstmt.setString(4, member.getGender()); // 보통 String 쓴다는데 좀 더 조사 해볼 것
+			pstmt.setString(4, member.getGender().toString()); // 보통 String 쓴다는데 좀 더 조사 해볼 것
 			pstmt.setString(5, member.getEmail());
 			pstmt.setDate(6, member.getBirthdate());
 			pstmt.setString(7, member.getAddress());
@@ -118,7 +118,7 @@ public class MemberDao {
 				dto.setUserName(rs.getString("username"));
 				dto.setPassword(rs.getString("password"));
 				dto.setName(rs.getString("name"));
-				dto.setGender(rs.getString("gender"));
+				dto.setGender(Gender.valueOf(rs.getString("gender")));
 				dto.setEmail(rs.getString("email"));
 				dto.setBirthdate(rs.getDate("birthdate"));
 				dto.setAddress(rs.getString("address"));
@@ -159,7 +159,7 @@ public class MemberDao {
 				dto.setUserName(rs.getString("username"));
 				dto.setPassword(rs.getString("password"));
 				dto.setName(rs.getString("name"));
-				dto.setGender(rs.getString("gender"));
+				dto.setGender(Gender.valueOf(rs.getString("gender")));
 				dto.setEmail(rs.getString("email"));
 				dto.setBirthdate(rs.getDate("birthdate"));
 				dto.setAddress(rs.getString("address"));
@@ -196,7 +196,7 @@ public class MemberDao {
 				dto.setUserName(rs.getString("username"));
 				dto.setPassword(rs.getString("password"));
 				dto.setName(rs.getString("name"));
-				dto.setGender(rs.getString("gender"));
+				dto.setGender(Gender.valueOf(rs.getString("gender")));
 				dto.setEmail(rs.getString("email"));
 				dto.setBirthdate(rs.getDate("birthdate"));
 				dto.setAddress(rs.getString("address"));
