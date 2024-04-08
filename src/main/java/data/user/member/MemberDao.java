@@ -134,5 +134,82 @@ public class MemberDao {
 		return list;
 	}
 
+	//페이지
+	public List<MemberDto> getList(int start,int perPage)
+	{
+		List<MemberDto> list=new ArrayList<>();
+		Connection conn=db.getConnection();
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+
+		String sql="select * from MEMBER_INFO order by member_id desc limit ?,?";
+
+		try {
+			pstmt=conn.prepareStatement(sql);
+
+			pstmt.setInt(1, start);
+			pstmt.setInt(2, perPage);
+
+			rs=pstmt.executeQuery();
+
+			while(rs.next())
+			{
+				MemberDto dto = new MemberDto();
+				dto.setId(rs.getInt("member_id"));
+				dto.setUserName(rs.getString("username"));
+				dto.setPassword(rs.getString("password"));
+				dto.setName(rs.getString("name"));
+				dto.setGender(rs.getString("gender"));
+				dto.setEmail(rs.getString("email"));
+				dto.setBirthdate(rs.getDate("birthdate"));
+				dto.setAddress(rs.getString("address"));
+				dto.setPhoneNumber(rs.getString("phone_number"));
+				dto.setUserPhoto(rs.getString("user_photo"));
+				list.add(dto);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			db.dbClose(rs, pstmt, conn);
+		}
+
+		return list;
+	}
+
+	public MemberDto getMemberById(String memberId) {
+		MemberDto dto = new MemberDto();
+
+		Connection conn = db.getConnection();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		String sql = "select * from MEMBER_INFO where MEMBER_ID=?";
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, memberId);
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				dto.setId(rs.getInt("member_id"));
+				dto.setUserName(rs.getString("username"));
+				dto.setPassword(rs.getString("password"));
+				dto.setName(rs.getString("name"));
+				dto.setGender(rs.getString("gender"));
+				dto.setEmail(rs.getString("email"));
+				dto.setBirthdate(rs.getDate("birthdate"));
+				dto.setAddress(rs.getString("address"));
+				dto.setPhoneNumber(rs.getString("phone_number"));
+				dto.setUserPhoto(rs.getString("user_photo"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			db.dbClose(rs, pstmt, conn);
+		}
+		return dto;
+	}
+
 	
 }

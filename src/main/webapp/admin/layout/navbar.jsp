@@ -70,7 +70,7 @@
                      공지사항
                   </a>
                </li>
-               <li class="nav-item" style="margin-bottom: 100px">
+               <li class="nav-item" style="margin-bottom: 300px">
                   <a class="nav-link" href="../admin/adminMainPage.jsp?curr=inquiry/inquiryMain.jsp">
                      <span data-feather="smile"></span>
                      1:1 문의
