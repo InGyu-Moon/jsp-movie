@@ -11,7 +11,8 @@
     <title>Insert title here</title>
 </head>
 <body>
-<h2>공지사항</h2>
+<h2 style="margin-bottom: 50px">공지사항</h2>
+<hr style="margin-bottom: 30px">
 
 </body>
 </html>
