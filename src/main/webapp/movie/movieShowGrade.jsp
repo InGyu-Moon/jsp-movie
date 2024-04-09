@@ -30,8 +30,8 @@ body{
     position: relative;
     width: 100%;
     z-index: 7;
-    /* display: grid;
-    place-items: center; */
+    display: grid;
+    place-items: center;
 }
 
 #movieshowrate {
@@ -131,7 +131,7 @@ ol, ul{
     cursor: pointer;
 }
 
-.order-type li.p:before {
+.order-type li.on:before {
     content: "";
     position: absolute;
     left: 0;
@@ -184,7 +184,6 @@ ol.olElse>li{
     margin-left:40px;
     width: 197px;
     padding-bottom: 30px;
-    
 }
 
 ol.olThreeChk{
@@ -262,6 +261,10 @@ ol.olElseChk>li{
     line-height: 28px;
 }
 
+a{
+    text-decoration: none;
+}
+
 div.box-img img.icon{
 	position: absolute;
 	width: 20px;
@@ -279,11 +282,6 @@ div.box-img img.icon{
     display: block;
     position: relative;
 }
-
-a{
-    text-decoration: none;
-}
-
 
 a.link-reservation {
     background: #fb4357; /* 배경색 설정 */
@@ -390,27 +388,22 @@ $(function () {
 	        $(".olThreeChk").hide();
 	    }
     });
-    
-    $("div.sub-menu li.schedule").hover(function() {
-    	$(this).find("a").text("▶ 상영예정작").css("color", "#fb4357").css("font-weight","bold").css("cursor","pointer");
-	},function(){
-		$(this).find("a").text("상영예정작").css("color", "#444444").css("font-weight","bold").css("font-weight","bold").css("cursor","pointer");
-	});
 	
 });
 
 </script>
 </head>
 <%
-MovieInfoDao dao = new MovieInfoDao();
-    List<MovieInfoDto> list = dao.getThreeMovieData();
-    List<MovieInfoDto> elist = dao.getElseMovieData();
-    List<MovieInfoDto> listchk = dao.getThreeMovieDataChk();
-    List<MovieInfoDto> elistchk = dao.getElseMovieDataChk();
+//프로젝트 경로
+    //String root = request.getContextPath();
+    MovieInfoDao dao = new MovieInfoDao();
+    List<MovieInfoDto> list = dao.getThreeMovieData2();
+    List<MovieInfoDto> elist = dao.getElseMovieData2();
+    List<MovieInfoDto> listchk = dao.getThreeMovieDataChk2();
+    List<MovieInfoDto> elistchk = dao.getElseMovieDataChk2();
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
 %>
 <body>
-
 <div id="wrap">
 	<div class="center">
     <div id="movieshowrate">
@@ -420,10 +413,10 @@ MovieInfoDao dao = new MovieInfoDao();
                 <h3>무비차트</h3>
                 <div class="sub-menu">
                     <ul>
-                        <li class="moviechart">
+                        <li class="on">
                             <a href="movieShowRate.jsp" style="color: #fb4357; font-weight: bold;">▶&nbsp;무비차트</a>
                         </li>
-                        <li class="schedule">
+                        <li>
                             <a href="movieShowSchedule.jsp" style="color: #444444; font-weight: bold;">상영예정작</a>
                         </li>
                     </ul>
@@ -436,11 +429,11 @@ MovieInfoDao dao = new MovieInfoDao();
                 </div>
                 <label for="order_type" class="hidden">정렬</label>
                 <ul id="order_type" class="order-type">
-                    <li class="p">
-                    	<a href="movieShowGrade.jsp" style="color: gray;">평점순</a>
+                    <li class="on">
+                    	<a href="movieShowGrade.jsp" style="color: black;">평점순</a>
                     </li>
-                    <li class="y">
-                        <a href="movieShowRate.jsp" style="color: black;">예매순</a>
+                    <li class>
+                        <a href="movieShowRate.jsp" style="color: gray;">예매순</a>
                     </li>
                 </ul>
             </div>
@@ -470,9 +463,8 @@ MovieInfoDao dao = new MovieInfoDao();
                %>
                     <li>
                         <div class="box-img">
-                        <input type="hidden" id="movie_id" value="<%=dto.getMovieId()%>">
                             <strong class="rank1">No.<%=no++%></strong>
-                            <a href="index.jsp?main=movie/movieDetail.jsp?movie_id=<%=dto.getMovieId()%>">
+                            <a href="movieDetail.jsp?movie_id=<%=dto.getMovieId()%>">
                                 <span class="img-rank1">
                                     <img src="<%=dto.getImageLink()%>">
                                     <img class="icon" src="../../img/movie_img/vrating/<%=dto.getViewingRating()%>.png">
@@ -481,7 +473,7 @@ MovieInfoDao dao = new MovieInfoDao();
                             <span class="screentype"></span>
                         </div>
                         <div class="box-content">
-                            <a href="index.jsp?main=movie/movie_chart/movieDetail.jsp?movie_id=<%=dto.getMovieId()%>">
+                            <a href="movieDetail.jsp?movie_id=<%=dto.getMovieId()%>">
                             <strong class="title"><%=dto.getMovieTitle()%></strong>
                             </a>
                             <div class="score">
@@ -532,7 +524,7 @@ MovieInfoDao dao = new MovieInfoDao();
                     <li>
                         <div class="box-img">
                             <strong class="rank2">No.<%=no2++%></strong>
-                            <a href="index.jsp?main=movie/movie_chart/movieDetail.jsp?movie_id=<%=dto.getMovieId()%>">
+                            <a href="movieDetail.jsp?movie_id=<%=dto.getMovieId()%>">
                                 <span class="img-rank2">
                                     <img src="<%=dto.getImageLink()%>">
                                     <img class="icon" src="../../img/movie_img/vrating/<%=dto.getViewingRating()%>.png">
@@ -541,7 +533,7 @@ MovieInfoDao dao = new MovieInfoDao();
                             <span class="screentype"></span>
                         </div>
                         <div class="box-content">
-                            <a href="index.jsp?main=movie/movie_chart/movieDetail.jsp?movie_id=<%=dto.getMovieId()%>">
+                            <a href="movieDetail.jsp?movie_id=<%=dto.getMovieId()%>">
                             <strong class="title"><%=dto.getMovieTitle()%></strong>
                             </a>
                             <div class="score">
@@ -604,7 +596,7 @@ MovieInfoDao dao = new MovieInfoDao();
                     <li>
                         <div class="box-img">
                             <strong class="rank1">No.<%=nochk++%></strong>
-                            <a href="index.jsp?main=movie/movie_chart/movieDetail.jsp?movie_id=<%=dto.getMovieId()%>">
+                            <a href="movieDetail.jsp?movie_id=<%=dto.getMovieId()%>">
                                 <span class="img-rank1">
                                     <img src="<%=dto.getImageLink()%>">
                                     <img class="icon" src="../../img/movie_img/vrating/<%=dto.getViewingRating()%>.png">
@@ -613,7 +605,7 @@ MovieInfoDao dao = new MovieInfoDao();
                             <span class="screentype"></span>
                         </div>
                         <div class="box-content">
-                            <a href="index.jsp?main=movie/movie_chart/movieDetail.jsp?movie_id=<%=dto.getMovieId()%>">
+                            <a href="movieDetail.jsp?movie_id=<%=dto.getMovieId()%>">
                             <strong class="title"><%=dto.getMovieTitle()%></strong>
                             </a>
                             <div class="score">
@@ -664,16 +656,16 @@ MovieInfoDao dao = new MovieInfoDao();
                     <li>
                         <div class="box-img">
                             <strong class="rank2">No.<%=no2chk++ %></strong>
-                            <a href="index.jsp?main=movie/movie_chart/movieDetail.jsp?movie_id=<%=dto.getMovieId()%>">
+                            <a href="movieDetail.jsp?movie_id=<%=dto.getMovieId()%>">
                                 <span class="img-rank2">
                                     <img src="<%=dto.getImageLink()%>">
-                                    <img class="icon" src="../../img/movie_img/vrating/<%=dto.getViewingRating() %>.png">
+                                    <img class="icon" src="../../img/movie_img/vrating/<%=dto.getViewingRating()%>.png">
                                 </span>
                             </a>
                             <span class="screentype"></span>
                         </div>
                         <div class="box-content">
-                            <a href="index.jsp?main=movie/movie_chart/movieDetail.jsp?movie_id=<%=dto.getMovieId()%>">
+                            <a href="movieDetail.jsp?movie_id=<%=dto.getMovieId()%>">
                             <strong class="title"><%=dto.getMovieTitle() %></strong>
                             </a>
                             <div class="score">
@@ -681,7 +673,7 @@ MovieInfoDao dao = new MovieInfoDao();
                                     <span class="rate-percent"><%=dto.getBookingRate()%>%&nbsp;&nbsp;&nbsp;|</span>
                                 </strong>
                                 <strong class="movie-grade">평점
-                                    <span class="grade-percent"><%=dto.getRating() %></span>
+                                    <span class="grade-percent"><%=dto.getRating()%></span>
                                 </strong>
                             </div>
                             <span class="txt-info">
@@ -711,7 +703,7 @@ MovieInfoDao dao = new MovieInfoDao();
                 </ol>    
             </div>
         </div>
-      </div>
+    </div>
     </div>
 </div>
 </body>
