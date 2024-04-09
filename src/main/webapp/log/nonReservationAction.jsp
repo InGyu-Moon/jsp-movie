@@ -1,3 +1,4 @@
+<%@page import="data.user.nonmember.NonMemberDto"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.sql.Date"%>
 <%@page import="data.user.nonmember.NonMemberDao"%>
