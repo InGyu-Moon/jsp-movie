@@ -115,7 +115,7 @@ $(document).ready(function(){
 		    console.log(n);
 		  
 		    //삭제파일로 전송
-		    location.href="?curr=faq/faqDelete.jsp?faqId="+n;
+		    location.href="faq/faqDelete.jsp?faqId="+n;
 	  }
   })
     

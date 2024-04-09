@@ -36,7 +36,7 @@
 
 			<div class="container">
 				<h2>게시판 글쓰기</h2>
-				<form action="?curr=faq/faqUpdate.jsp" method="post">
+				<form action="faq/faqUpdate.jsp" method="post">
 					<input type="hidden" name="faqId" value="<%=faq.getFaqId() %>" >
 					<div class="row mb-3">
 						<label for="title" class="col-sm-1 col-form-label"><strong>구분</strong></label>
