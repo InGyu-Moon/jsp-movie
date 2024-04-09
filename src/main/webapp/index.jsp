@@ -342,7 +342,6 @@
 											<div class="no">10</div>
 											<div class="hover">
 												<div>
-
 													<div class="btn">
 														<a href="javascript:;">상세보기</a>
 													</div>
