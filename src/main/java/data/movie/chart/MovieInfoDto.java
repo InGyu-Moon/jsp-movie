@@ -5,52 +5,52 @@ import java.util.List;
 
 public class MovieInfoDto {
 
-	private String movie_id;
-	private String movie_title;
-	private int running_time;
-	private String viewing_rating;
+	private String movieId;
+	private String movieTitle;
+	private int runningTime;
+	private String viewingRating;
 	private String director;
 	private String cast;
-	private double booking_rate;
-	private Date release_date;
+	private double bookingRate;
+	private Date releaseDate;
 	private String genre;
-	private String movie_description;
+	private String movieDescription;
 	private double rating;
-	private Date end_date;
+	private Date endDate;
 	private String country;
 	private List<MovieImgDto> imgs;
-	private String image_link;
+	private String imageLink;
 
-	public String getMovie_id() {
-		return movie_id;
+	public String getMovieId() {
+		return movieId;
 	}
 
-	public void setMovie_id(String movie_id) {
-		this.movie_id = movie_id;
+	public void setMovieId(String movieId) {
+		this.movieId = movieId;
 	}
 
-	public String getMovie_title() {
-		return movie_title;
+	public String getMovieTitle() {
+		return movieTitle;
 	}
 
-	public void setMovie_title(String movie_title) {
-		this.movie_title = movie_title;
+	public void setMovieTitle(String movieTitle) {
+		this.movieTitle = movieTitle;
 	}
 
-	public int getRunning_time() {
-		return running_time;
+	public int getRunningTime() {
+		return runningTime;
 	}
 
-	public void setRunning_time(int running_time) {
-		this.running_time = running_time;
+	public void setRunningTime(int runningTime) {
+		this.runningTime = runningTime;
 	}
 
-	public String getViewing_rating() {
-		return viewing_rating;
+	public String getViewingRating() {
+		return viewingRating;
 	}
 
-	public void setViewing_rating(String viewing_rating) {
-		this.viewing_rating = viewing_rating;
+	public void setViewingRating(String viewingRating) {
+		this.viewingRating = viewingRating;
 	}
 
 	public String getDirector() {
@@ -69,20 +69,20 @@ public class MovieInfoDto {
 		this.cast = cast;
 	}
 
-	public double getBooking_rate() {
-		return booking_rate;
+	public double getBookingRate() {
+		return bookingRate;
 	}
 
-	public void setBooking_rate(double booking_rate) {
-		this.booking_rate = booking_rate;
+	public void setBookingRate(double bookingRate) {
+		this.bookingRate = bookingRate;
 	}
 
-	public Date getRelease_date() {
-		return release_date;
+	public Date getReleaseDate() {
+		return releaseDate;
 	}
 
-	public void setRelease_date(Date release_date) {
-		this.release_date = release_date;
+	public void setReleaseDate(Date releaseDate) {
+		this.releaseDate = releaseDate;
 	}
 
 	public String getGenre() {
@@ -93,12 +93,12 @@ public class MovieInfoDto {
 		this.genre = genre;
 	}
 
-	public String getMovie_description() {
-		return movie_description;
+	public String getMovieDescription() {
+		return movieDescription;
 	}
 
-	public void setMovie_description(String movie_description) {
-		this.movie_description = movie_description;
+	public void setMovieDescription(String movieDescription) {
+		this.movieDescription = movieDescription;
 	}
 
 	public double getRating() {
@@ -109,12 +109,12 @@ public class MovieInfoDto {
 		this.rating = rating;
 	}
 
-	public Date getEnd_date() {
-		return end_date;
+	public Date getEndDate() {
+		return endDate;
 	}
 
-	public void setEnd_date(Date end_date) {
-		this.end_date = end_date;
+	public void setEndDate(Date endDate) {
+		this.endDate = endDate;
 	}
 
 	public String getCountry() {
@@ -133,14 +133,12 @@ public class MovieInfoDto {
 		this.imgs = imgs;
 	}
 
-	public String getImage_link() {
-		return image_link;
+	public String getImageLink() {
+		return imageLink;
 	}
 
-	public void setImage_link(String image_link) {
-		this.image_link = image_link;
+	public void setImageLink(String imageLink) {
+		this.imageLink = imageLink;
 	}
-	
-	
 
 }

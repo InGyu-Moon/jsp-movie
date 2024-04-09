@@ -37,20 +37,20 @@ public class MovieInfoDao {
 			while (rs.next()) {
 				MovieInfoDto dto = new MovieInfoDto();
 
-				dto.setMovie_id(rs.getString("movie_id"));
-				dto.setMovie_title(rs.getString("movie_title"));
-				dto.setRunning_time(rs.getInt("running_time"));
-				dto.setViewing_rating(rs.getString("viewing_rating"));
+				dto.setMovieId(rs.getString("movie_id"));
+				dto.setMovieTitle(rs.getString("movie_title"));
+				dto.setRunningTime(rs.getInt("running_time"));
+				dto.setViewingRating(rs.getString("viewing_rating"));
 				dto.setDirector(rs.getString("director"));
 				dto.setCast(rs.getString("cast"));
-				dto.setBooking_rate(rs.getDouble("booking_rate"));
-				dto.setRelease_date(rs.getDate("release_date"));
+				dto.setBookingRate(rs.getDouble("booking_rate"));
+				dto.setReleaseDate(rs.getDate("release_date"));
 				dto.setGenre(rs.getString("genre"));
-				dto.setMovie_description(rs.getString("movie_description"));
+				dto.setMovieDescription(rs.getString("movie_description"));
 				dto.setRating(rs.getDouble("rating"));
-				dto.setEnd_date(rs.getDate("end_date"));
+				dto.setEndDate(rs.getDate("end_date"));
 				dto.setCountry(rs.getString("country"));
-				dto.setImage_link(rs.getString("image_link"));
+				dto.setImageLink(rs.getString("image_link"));
 
 				list.add(dto);
 			}
@@ -84,20 +84,20 @@ public class MovieInfoDao {
 			while (rs.next()) {
 				MovieInfoDto dto = new MovieInfoDto();
 
-				dto.setMovie_id(rs.getString("movie_id"));
-				dto.setMovie_title(rs.getString("movie_title"));
-				dto.setRunning_time(rs.getInt("running_time"));
-				dto.setViewing_rating(rs.getString("viewing_rating"));
+				dto.setMovieId(rs.getString("movie_id"));
+				dto.setMovieTitle(rs.getString("movie_title"));
+				dto.setRunningTime(rs.getInt("running_time"));
+				dto.setViewingRating(rs.getString("viewing_rating"));
 				dto.setDirector(rs.getString("director"));
 				dto.setCast(rs.getString("cast"));
-				dto.setBooking_rate(rs.getDouble("booking_rate"));
-				dto.setRelease_date(rs.getDate("release_date"));
+				dto.setBookingRate(rs.getDouble("booking_rate"));
+				dto.setReleaseDate(rs.getDate("release_date"));
 				dto.setGenre(rs.getString("genre"));
-				dto.setMovie_description(rs.getString("movie_description"));
+				dto.setMovieDescription(rs.getString("movie_description"));
 				dto.setRating(rs.getDouble("rating"));
-				dto.setEnd_date(rs.getDate("end_date"));
+				dto.setEndDate(rs.getDate("end_date"));
 				dto.setCountry(rs.getString("country"));
-				dto.setImage_link(rs.getString("image_link"));
+				dto.setImageLink(rs.getString("image_link"));
 
 				elist.add(dto);
 			}
@@ -131,20 +131,20 @@ public class MovieInfoDao {
 			while (rs.next()) {
 				MovieInfoDto dto = new MovieInfoDto();
 
-				dto.setMovie_id(rs.getString("movie_id"));
-				dto.setMovie_title(rs.getString("movie_title"));
-				dto.setRunning_time(rs.getInt("running_time"));
-				dto.setViewing_rating(rs.getString("viewing_rating"));
+				dto.setMovieId(rs.getString("movie_id"));
+				dto.setMovieTitle(rs.getString("movie_title"));
+				dto.setRunningTime(rs.getInt("running_time"));
+				dto.setViewingRating(rs.getString("viewing_rating"));
 				dto.setDirector(rs.getString("director"));
 				dto.setCast(rs.getString("cast"));
-				dto.setBooking_rate(rs.getDouble("booking_rate"));
-				dto.setRelease_date(rs.getDate("release_date"));
+				dto.setBookingRate(rs.getDouble("booking_rate"));
+				dto.setReleaseDate(rs.getDate("release_date"));
 				dto.setGenre(rs.getString("genre"));
-				dto.setMovie_description(rs.getString("movie_description"));
+				dto.setMovieDescription(rs.getString("movie_description"));
 				dto.setRating(rs.getDouble("rating"));
-				dto.setEnd_date(rs.getDate("end_date"));
+				dto.setEndDate(rs.getDate("end_date"));
 				dto.setCountry(rs.getString("country"));
-				dto.setImage_link(rs.getString("image_link"));
+				dto.setImageLink(rs.getString("image_link"));
 
 				listtwo.add(dto);
 			}
@@ -178,20 +178,20 @@ public class MovieInfoDao {
 			while (rs.next()) {
 				MovieInfoDto dto = new MovieInfoDto();
 
-				dto.setMovie_id(rs.getString("movie_id"));
-				dto.setMovie_title(rs.getString("movie_title"));
-				dto.setRunning_time(rs.getInt("running_time"));
-				dto.setViewing_rating(rs.getString("viewing_rating"));
+				dto.setMovieId(rs.getString("movie_id"));
+				dto.setMovieTitle(rs.getString("movie_title"));
+				dto.setRunningTime(rs.getInt("running_time"));
+				dto.setViewingRating(rs.getString("viewing_rating"));
 				dto.setDirector(rs.getString("director"));
 				dto.setCast(rs.getString("cast"));
-				dto.setBooking_rate(rs.getDouble("booking_rate"));
-				dto.setRelease_date(rs.getDate("release_date"));
+				dto.setBookingRate(rs.getDouble("booking_rate"));
+				dto.setReleaseDate(rs.getDate("release_date"));
 				dto.setGenre(rs.getString("genre"));
-				dto.setMovie_description(rs.getString("movie_description"));
+				dto.setMovieDescription(rs.getString("movie_description"));
 				dto.setRating(rs.getDouble("rating"));
-				dto.setEnd_date(rs.getDate("end_date"));
+				dto.setEndDate(rs.getDate("end_date"));
 				dto.setCountry(rs.getString("country"));
-				dto.setImage_link(rs.getString("image_link"));
+				dto.setImageLink(rs.getString("image_link"));
 
 				elisttwo.add(dto);
 			}
@@ -226,20 +226,20 @@ public class MovieInfoDao {
 			while (rs.next()) {
 				MovieInfoDto dto = new MovieInfoDto();
 
-				dto.setMovie_id(rs.getString("movie_id"));
-				dto.setMovie_title(rs.getString("movie_title"));
-				dto.setRunning_time(rs.getInt("running_time"));
-				dto.setViewing_rating(rs.getString("viewing_rating"));
+				dto.setMovieId(rs.getString("movie_id"));
+				dto.setMovieTitle(rs.getString("movie_title"));
+				dto.setRunningTime(rs.getInt("running_time"));
+				dto.setViewingRating(rs.getString("viewing_rating"));
 				dto.setDirector(rs.getString("director"));
 				dto.setCast(rs.getString("cast"));
-				dto.setBooking_rate(rs.getDouble("booking_rate"));
-				dto.setRelease_date(rs.getDate("release_date"));
+				dto.setBookingRate(rs.getDouble("booking_rate"));
+				dto.setReleaseDate(rs.getDate("release_date"));
 				dto.setGenre(rs.getString("genre"));
-				dto.setMovie_description(rs.getString("movie_description"));
+				dto.setMovieDescription(rs.getString("movie_description"));
 				dto.setRating(rs.getDouble("rating"));
-				dto.setEnd_date(rs.getDate("end_date"));
+				dto.setEndDate(rs.getDate("end_date"));
 				dto.setCountry(rs.getString("country"));
-				dto.setImage_link(rs.getString("image_link"));
+				dto.setImageLink(rs.getString("image_link"));
 
 				listchk.add(dto);
 			}
@@ -274,20 +274,20 @@ public class MovieInfoDao {
 			while (rs.next()) {
 				MovieInfoDto dto = new MovieInfoDto();
 
-				dto.setMovie_id(rs.getString("movie_id"));
-				dto.setMovie_title(rs.getString("movie_title"));
-				dto.setRunning_time(rs.getInt("running_time"));
-				dto.setViewing_rating(rs.getString("viewing_rating"));
+				dto.setMovieId(rs.getString("movie_id"));
+				dto.setMovieTitle(rs.getString("movie_title"));
+				dto.setRunningTime(rs.getInt("running_time"));
+				dto.setViewingRating(rs.getString("viewing_rating"));
 				dto.setDirector(rs.getString("director"));
 				dto.setCast(rs.getString("cast"));
-				dto.setBooking_rate(rs.getDouble("booking_rate"));
-				dto.setRelease_date(rs.getDate("release_date"));
+				dto.setBookingRate(rs.getDouble("booking_rate"));
+				dto.setReleaseDate(rs.getDate("release_date"));
 				dto.setGenre(rs.getString("genre"));
-				dto.setMovie_description(rs.getString("movie_description"));
+				dto.setMovieDescription(rs.getString("movie_description"));
 				dto.setRating(rs.getDouble("rating"));
-				dto.setEnd_date(rs.getDate("end_date"));
+				dto.setEndDate(rs.getDate("end_date"));
 				dto.setCountry(rs.getString("country"));
-				dto.setImage_link(rs.getString("image_link"));
+				dto.setImageLink(rs.getString("image_link"));
 
 				elistchk.add(dto);
 			}
@@ -322,20 +322,20 @@ public class MovieInfoDao {
 			while (rs.next()) {
 				MovieInfoDto dto = new MovieInfoDto();
 
-				dto.setMovie_id(rs.getString("movie_id"));
-				dto.setMovie_title(rs.getString("movie_title"));
-				dto.setRunning_time(rs.getInt("running_time"));
-				dto.setViewing_rating(rs.getString("viewing_rating"));
+				dto.setMovieId(rs.getString("movie_id"));
+				dto.setMovieTitle(rs.getString("movie_title"));
+				dto.setRunningTime(rs.getInt("running_time"));
+				dto.setViewingRating(rs.getString("viewing_rating"));
 				dto.setDirector(rs.getString("director"));
 				dto.setCast(rs.getString("cast"));
-				dto.setBooking_rate(rs.getDouble("booking_rate"));
-				dto.setRelease_date(rs.getDate("release_date"));
+				dto.setBookingRate(rs.getDouble("booking_rate"));
+				dto.setReleaseDate(rs.getDate("release_date"));
 				dto.setGenre(rs.getString("genre"));
-				dto.setMovie_description(rs.getString("movie_description"));
+				dto.setMovieDescription(rs.getString("movie_description"));
 				dto.setRating(rs.getDouble("rating"));
-				dto.setEnd_date(rs.getDate("end_date"));
+				dto.setEndDate(rs.getDate("end_date"));
 				dto.setCountry(rs.getString("country"));
-				dto.setImage_link(rs.getString("image_link"));
+				dto.setImageLink(rs.getString("image_link"));
 
 				listtwochk.add(dto);
 			}
@@ -370,20 +370,20 @@ public class MovieInfoDao {
 			while (rs.next()) {
 				MovieInfoDto dto = new MovieInfoDto();
 
-				dto.setMovie_id(rs.getString("movie_id"));
-				dto.setMovie_title(rs.getString("movie_title"));
-				dto.setRunning_time(rs.getInt("running_time"));
-				dto.setViewing_rating(rs.getString("viewing_rating"));
+				dto.setMovieId(rs.getString("movie_id"));
+				dto.setMovieTitle(rs.getString("movie_title"));
+				dto.setRunningTime(rs.getInt("running_time"));
+				dto.setViewingRating(rs.getString("viewing_rating"));
 				dto.setDirector(rs.getString("director"));
 				dto.setCast(rs.getString("cast"));
-				dto.setBooking_rate(rs.getDouble("booking_rate"));
-				dto.setRelease_date(rs.getDate("release_date"));
+				dto.setBookingRate(rs.getDouble("booking_rate"));
+				dto.setReleaseDate(rs.getDate("release_date"));
 				dto.setGenre(rs.getString("genre"));
-				dto.setMovie_description(rs.getString("movie_description"));
+				dto.setMovieDescription(rs.getString("movie_description"));
 				dto.setRating(rs.getDouble("rating"));
-				dto.setEnd_date(rs.getDate("end_date"));
+				dto.setEndDate(rs.getDate("end_date"));
 				dto.setCountry(rs.getString("country"));
-				dto.setImage_link(rs.getString("image_link"));
+				dto.setImageLink(rs.getString("image_link"));
 
 				elisttwochk.add(dto);
 			}
@@ -418,20 +418,20 @@ public class MovieInfoDao {
 			while (rs.next()) {
 				MovieInfoDto dto = new MovieInfoDto();
 
-				dto.setMovie_id(rs.getString("movie_id"));
-				dto.setMovie_title(rs.getString("movie_title"));
-				dto.setRunning_time(rs.getInt("running_time"));
-				dto.setViewing_rating(rs.getString("viewing_rating"));
+				dto.setMovieId(rs.getString("movie_id"));
+				dto.setMovieTitle(rs.getString("movie_title"));
+				dto.setRunningTime(rs.getInt("running_time"));
+				dto.setViewingRating(rs.getString("viewing_rating"));
 				dto.setDirector(rs.getString("director"));
 				dto.setCast(rs.getString("cast"));
-				dto.setBooking_rate(rs.getDouble("booking_rate"));
-				dto.setRelease_date(rs.getDate("release_date"));
+				dto.setBookingRate(rs.getDouble("booking_rate"));
+				dto.setReleaseDate(rs.getDate("release_date"));
 				dto.setGenre(rs.getString("genre"));
-				dto.setMovie_description(rs.getString("movie_description"));
+				dto.setMovieDescription(rs.getString("movie_description"));
 				dto.setRating(rs.getDouble("rating"));
-				dto.setEnd_date(rs.getDate("end_date"));
+				dto.setEndDate(rs.getDate("end_date"));
 				dto.setCountry(rs.getString("country"));
-				dto.setImage_link(rs.getString("image_link"));
+				dto.setImageLink(rs.getString("image_link"));
 
 				listschedule.add(dto);
 			}
@@ -464,20 +464,20 @@ public class MovieInfoDao {
 			while (rs.next()) {
 				MovieInfoDto dto = new MovieInfoDto();
 
-				dto.setMovie_id(rs.getString("movie_id"));
-				dto.setMovie_title(rs.getString("movie_title"));
-				dto.setRunning_time(rs.getInt("running_time"));
-				dto.setViewing_rating(rs.getString("viewing_rating"));
+				dto.setMovieId(rs.getString("movie_id"));
+				dto.setMovieTitle(rs.getString("movie_title"));
+				dto.setRunningTime(rs.getInt("running_time"));
+				dto.setViewingRating(rs.getString("viewing_rating"));
 				dto.setDirector(rs.getString("director"));
 				dto.setCast(rs.getString("cast"));
-				dto.setBooking_rate(rs.getDouble("booking_rate"));
-				dto.setRelease_date(rs.getDate("release_date"));
+				dto.setBookingRate(rs.getDouble("booking_rate"));
+				dto.setReleaseDate(rs.getDate("release_date"));
 				dto.setGenre(rs.getString("genre"));
-				dto.setMovie_description(rs.getString("movie_description"));
+				dto.setMovieDescription(rs.getString("movie_description"));
 				dto.setRating(rs.getDouble("rating"));
-				dto.setEnd_date(rs.getDate("end_date"));
+				dto.setEndDate(rs.getDate("end_date"));
 				dto.setCountry(rs.getString("country"));
-				dto.setImage_link(rs.getString("image_link"));
+				dto.setImageLink(rs.getString("image_link"));
 
 				elistschedule.add(dto);
 			}
@@ -511,20 +511,20 @@ public class MovieInfoDao {
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) {
-				dto.setMovie_id(rs.getString("movie_id"));
-				dto.setMovie_title(rs.getString("movie_title"));
-				dto.setRunning_time(rs.getInt("running_time"));
-				dto.setViewing_rating(rs.getString("viewing_rating"));
+				dto.setMovieId(rs.getString("movie_id"));
+				dto.setMovieTitle(rs.getString("movie_title"));
+				dto.setRunningTime(rs.getInt("running_time"));
+				dto.setViewingRating(rs.getString("viewing_rating"));
 				dto.setDirector(rs.getString("director"));
 				dto.setCast(rs.getString("cast"));
-				dto.setBooking_rate(rs.getDouble("booking_rate"));
-				dto.setRelease_date(rs.getDate("release_date"));
+				dto.setBookingRate(rs.getDouble("booking_rate"));
+				dto.setReleaseDate(rs.getDate("release_date"));
 				dto.setGenre(rs.getString("genre"));
-				dto.setMovie_description(rs.getString("movie_description"));
+				dto.setMovieDescription(rs.getString("movie_description"));
 				dto.setRating(rs.getDouble("rating"));
-				dto.setEnd_date(rs.getDate("end_date"));
+				dto.setEndDate(rs.getDate("end_date"));
 				dto.setCountry(rs.getString("country"));
-				dto.setImage_link(rs.getString("image_link"));
+				dto.setImageLink(rs.getString("image_link"));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
