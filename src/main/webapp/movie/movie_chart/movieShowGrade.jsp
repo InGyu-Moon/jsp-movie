@@ -467,7 +467,7 @@ $(function () {
                             <a href="../movieDetail.jsp?movie_id=<%=dto.getMovieId()%>">
                                 <span class="img-rank1">
                                     <img src="<%=dto.getImageLink()%>">
-                                    <img class="icon" src="../images/vrating/<%=dto.getViewingRating()%>.png">
+                                    <img class="icon" src="../../img/movie_img/vrating/<%=dto.getViewingRating()%>.png">
                                 </span>
                             </a>
                             <span class="screentype"></span>
@@ -527,7 +527,7 @@ $(function () {
                             <a href="../movieDetail.jsp?movie_id=<%=dto.getMovieId()%>">
                                 <span class="img-rank2">
                                     <img src="<%=dto.getImageLink()%>">
-                                    <img class="icon" src="../images/vrating/<%=dto.getViewingRating()%>.png">
+                                    <img class="icon" src="../../img/movie_img/vrating/<%=dto.getViewingRating()%>.png">
                                 </span>
                             </a>
                             <span class="screentype"></span>
@@ -599,7 +599,7 @@ $(function () {
                             <a href="../movieDetail.jsp?movie_id=<%=dto.getMovieId()%>">
                                 <span class="img-rank1">
                                     <img src="<%=dto.getImageLink()%>">
-                                    <img class="icon" src="../images/vrating/<%=dto.getViewingRating()%>.png">
+                                    <img class="icon" src="../../img/movie_img/vrating/<%=dto.getViewingRating()%>.png">
                                 </span>
                             </a>
                             <span class="screentype"></span>
@@ -659,7 +659,7 @@ $(function () {
                             <a href="../movieDetail.jsp?movie_id=<%=dto.getMovieId()%>">
                                 <span class="img-rank2">
                                     <img src="<%=dto.getImageLink()%>">
-                                    <img class="icon" src="../images/vrating/<%=dto.getViewingRating()%>.png">
+                                    <img class="icon" src="../../img/movie_img/vrating/<%=dto.getViewingRating()%>.png">
                                 </span>
                             </a>
                             <span class="screentype"></span>
