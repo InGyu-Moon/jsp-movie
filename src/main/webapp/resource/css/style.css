@@ -19,11 +19,11 @@
 .top_banner {
 	height: 80px;
 	width: 100%;
-	border: 1px solid red;
 	position: absolute;
 	top: 0;
 	display: flex;
 	justify-content: center;
+	background-color: rgb(250, 162, 204);
 }
 
 .top_banner.active {
@@ -32,11 +32,15 @@
 
 .top_banner>div {
 	width: 980px;
-	border: 1px solid #000;
+}
+
+.top_banner>div img {
+	height: 100%;
+	object-fit: cover;
+	width: 100%;
 }
 
 .top_banner .btn {
-	border: 1px solid red;
 	width: 30px;
 	height: 30px;
 	position: absolute;
@@ -202,13 +206,11 @@ header#header  .content>div .memberinfo ul li span {
 header#header  .content>div .memberinfo ul li img {
 	width: 36px;
 	height: 36px;
-	border: 1px solid #000;
 }
 
 header#header .nav {
 	display: flex;
 	justify-content: center;
-	border-bottom: 2px solid #fb4357;
 }
 
 header#header .nav>div {
@@ -374,12 +376,17 @@ footer#footer .main .select .btn  a {
 
 /* index.jsp */
 .index .main_slide {
-	height: 600px;
-	border: 1px solid red;
+	height: 420px;
 }
 
 .index .main_slide .swiper {
 	height: 100%;
+}
+
+.index .main_slide .swiper .swiper-slide img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
 }
 
 .index .main_slide .swiper .swiper-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet,
@@ -387,7 +394,7 @@ footer#footer .main .select .btn  a {
 	{
 	width: 6px;
 	height: 6px;
-	background-color: #000;
+	background-color: #fff;
 }
 
 .index .main_slide .swiper .swiper-horizontal>.swiper-pagination-bullets,
@@ -399,32 +406,48 @@ footer#footer .main .select .btn  a {
 .index .main_slide .swiper .btn {
 	position: absolute;
 	left: 54%;
-	bottom: 61px;
+	bottom: 65px;
 	display: flex;
 	z-index: 99;
 }
 
 .index .main_slide .swiper .btn>div {
+	width: 10px;
+	height: 10px;
+	cursor: pointer;
+}
+
+.index .main_slide .swiper .btn .swiper_stop {
+	background: #fff;
 	width: 8px;
 	height: 8px;
-	border: 1px solid red;
-	cursor: pointer;
+	position: relative;
+	top: 4px;
 }
 
 .index .main_slide .swiper .btn .swiper_start {
 	margin-right: 4px;
 }
 
+.index .main_slide .swiper .btn>div img {
+	width: 100%;
+	height: 100%;
+}
+
 .index .main_slide .swiper .pop_btn {
-	width: 50px;
-	height: 50px;
-	border: 1px solid red;
+	width: 60px;
+	height: 60px;
 	transform: translate(-50%, -50%);
 	position: absolute;
 	top: 50%;
 	left: 50%;
 	z-index: 99;
 	cursor: pointer;
+}
+
+.index .main_slide .swiper .pop_btn img {
+	width: 100%;
+	height: 100%;
 }
 
 /* pop_up */
@@ -461,19 +484,24 @@ footer#footer .main .select .btn  a {
 }
 
 .index .pop_up .video  .btn {
-	width: 20px;
-	height: 20px;
-	border: 1px solid red;
+	width: 30px;
+	height: 30px;
 	position: absolute;
-	top: 16px;
-	right: 16px;
+	top: 60px;
+	right: 30px;
 	cursor: pointer;
+}
+
+.index .pop_up .video  .btn img {
+	width: 100%;
+	height: 100%;
 }
 
 .index .pop_up .video  video {
 	width: 920px;
 	height: 480px;
 	border: 1px solid red;
+	margin-top: 20px;
 }
 /* //pop_up */
 .index .chart {
@@ -499,6 +527,15 @@ footer#footer .main .select .btn  a {
 	border-radius: 16px;
 	background-color: #fff;
 	padding-left: 16px;
+	position: relative;
+}
+
+.index .chart .top .link a img {
+	width: 20px;
+	height: 20px;
+	position: absolute;
+	right: 10px;
+	transform: rotate(90deg);
 }
 
 .index .chart .top ul {
@@ -647,18 +684,33 @@ footer#footer .main .select .btn  a {
 	font-weight: 700;
 }
 
-.index .chart .swiper-button-next, .swiper-button-prev {
+.index .chart .swiper-button-next, .index .chart .swiper-button-prev {
 	width: 40px;
 	height: 40px;
 	background-color: #fff;
-	top: 110px;
+	top: 110px;;
 	border-radius: 30px;
 	box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, 0.2);
 	opacity: 0.8;
+	border-radius: 30px
+}
+
+.index .chart .swiper-button-next img, .index .chart .swiper-button-prev img
+	{
+	width: 30px;
+	height: 30px;
 }
 
 .index .chart .swiper-button-next {
 	right: -20px;
+}
+
+.index .chart .swiper-button-next  img {
+	transform: rotate(90deg);
+}
+
+.index .chart .swiper-button-prev  img {
+	transform: rotate(270deg);
 }
 
 .index .chart .swiper-button-prev {
@@ -673,6 +725,33 @@ footer#footer .main .select .btn  a {
 	content: none;
 }
 
+.index .banner {
+	padding: 120px 0;
+	cursor: pointer;
+}
+
+.index .banner .img {
+	height: 180px;
+}
+
+.index .banner img {
+	width: 100%;
+	height: 100%;
+}
+
+.index .event {
+	padding: 0 0 120px 0;
+	cursor: pointer;
+}
+
+.index .event .img {
+	height: 220px;
+}
+
+.index .event img {
+	width: 100%;
+	height: 100%;
+}
 /* //index.jsp */
 
 /* //ticket.jsp */
@@ -862,6 +941,275 @@ footer#footer .main .select .btn  a {
 	width: auto !important;
 	background: #fff;
 	z-index: 1;
+}
+
+.ticket .theater .theater-tit {
+	font-size: 30px;
+	color: #333;
+}
+
+.ticket .theater .theater_img {
+	height: 420px;
+	border: 1px solid red;
+	margin-top: 20px;
+	position: relative;
+}
+
+.ticket .theater .theater_img .text {
+	height: 166px;
+	background-color: #000;
+	position: absolute;
+	color: #fff;
+	width: 100%;
+	bottom: 0;
+	padding: 20px;
+	opacity: 0.6;
+}
+
+.ticket .theater .theater_img .text .phone {
+	margin-top: 20px;
+}
+
+.ticket .theater .theater_img .text .seat {
+	margin-top: 4px;
+}
+
+.ticket  .tab {
+	display: flex;
+	justify-content: center;
+	margin-top: 40px;
+}
+
+.ticket  .tab ul {
+	display: flex;
+}
+
+.ticket  .tab ul  li {
+	width: 150px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: #fb4357;
+	height: 40px;
+	position: relative;
+}
+
+.ticket  .tab ul  li  a {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #fff;
+	font-weight: 700;
+	width: 100%;
+	height: 100%;
+}
+
+.ticket  .tab ul  li::after {
+	content: "|";
+	color: #fff;
+	position: absolute;
+	right: 100%;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+.ticket .swiper {
+	width: 800px;
+}
+
+.ticket .schedule {
+	margin-top: 40px;
+	border-top: 3px solid #241d1e;
+	padding: 20px 0 0 0;
+}
+
+.ticket .schedule  .slide {
+	position: relative;
+	padding-bottom: 20px;
+}
+
+.ticket .schedule .swiper-slide.border {
+	border: 2px solid #000;
+}
+
+.ticket .schedule .swiper-slide {
+	height: 50px;
+	border-radius: 4px;
+	width: 80px;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.ticket .schedule .swiper-slide .day {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	font-size: 12px;
+}
+
+.ticket .schedule .swiper-slide .no {
+	font-size: 32px;
+	font-weight: 700;
+}
+
+.ticket .schedule .swiper-button-next, .ticket .schedule .swiper-button-prev
+	{
+	width: 40px;
+	height: 40px;
+	background-color: #fff;
+	border-radius: 30px;
+	box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, 0.2);
+	opacity: 0.8;
+	top: 28px;
+}
+
+.ticket .schedule .swiper-button-next img, .ticket .schedule .swiper-button-prev img
+	{
+	width: 100%;
+	height: 100%;
+	width: 30px;
+	height: 30px;
+}
+
+.ticket .schedule .swiper-button-next img {
+	transform: rotate(90deg);
+}
+
+.ticket .schedule .swiper-button-prev img {
+	transform: rotate(270deg);
+}
+
+.ticket .schedule .sect-guide {
+	position: relative;
+	height: 37px;
+	padding: 0 0 0 13px;
+	border-top: 2px solid #474746;
+	border-bottom: 1px solid #474746;
+	display: flex;
+	align-items: center;
+}
+
+.ticket .schedule .sect-guide ul {
+	display: flex;
+}
+
+.ticket .schedule .sect-guide ul  li {
+	font-size: 14px;
+	display: flex;
+	align-items: center;
+	margin-right: 10px;
+}
+
+.ticket .schedule .sect-guide ul  li img {
+	width: 20px;
+	height: 20px;
+	margin-right: 4px;
+}
+
+.ticket .schedule .sect-guide .text {
+	margin-left: 20px;
+	color: #794624;
+	font-size: 14px;
+}
+
+.ticket .schedule  .list .block {
+	padding: 40px 20px;
+	border-bottom: 1px solid #474746;
+}
+
+.ticket .schedule  .list .block .head {
+	display: flex;
+	align-items: center;
+}
+
+.ticket .schedule  .list .block .head .grade {
+	width: 20px;
+	height: 20px;
+	border: 1px solid red;
+	margin-right: 10px;
+}
+
+.ticket .schedule  .list .block .head .grade img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.ticket .schedule  .list .block .head .movie_title {
+	margin-right: 10px;
+}
+
+.ticket .schedule  .list .block .head  .situation {
+	width: 46px;
+	height: 20px;
+	border: 2px solid #3e82a4;
+	color: #3e82a4;
+	font-size: 12px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-right: 10px;
+}
+
+.ticket .schedule  .list .block .head .information {
+	font-size: 12px;
+	color: #666;
+}
+
+.ticket .schedule  .list .block .main {
+	margin-top: 40px;
+}
+
+.ticket .schedule  .list .block .main  .category {
+	color: #333;
+	font-size: 12px;
+}
+
+.ticket .schedule  .list .block .main .timetable {
+	margin-top: 10px;
+}
+
+.ticket .schedule  .list .block .main .timetable ul {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.ticket .schedule  .list .block .main .timetable ul li {
+	width: 72px;
+	height: 44px;
+	border: 1px solid #cbcabe;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.ticket .schedule  .list .block .main .timetable ul li  a {
+	display: flex;
+	width: 100%;
+	height: 100%;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.ticket .schedule  .list .block .main .timetable ul li  a span.time {
+	font-size: 12px;
+	color: #333;
+}
+
+.ticket .schedule  .list .block .main .timetable ul li  a span.seat {
+	font-size: 12px;
+	color: #2275a4;
+}
+
+.ticket .schedule  .info-noti {
+	font-size: 14px;
+	color: #666;
+	padding-top: 20px;
+	border-top: 2px solid #474746;
+	padding-bottom: 120px;
 }
 /* ticket.jsp */
 

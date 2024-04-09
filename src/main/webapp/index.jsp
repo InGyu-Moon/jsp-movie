@@ -6,30 +6,110 @@
 		<div class="index">
 			<div class="main_slide">
 				<div class="swiper mySwiper">
-					<div class="pop_btn"></div>
 					<div class="swiper-wrapper">
-						<div class="swiper-slide">Slide 1 text</div>
-						<div class="swiper-slide">Slide 2</div>
-						<div class="swiper-slide">Slide 3</div>
-						<div class="swiper-slide">Slide 4</div>
-						<div class="swiper-slide">Slide 5</div>
-						<div class="swiper-slide">Slide 6</div>
-						<div class="swiper-slide">Slide 7</div>
-						<div class="swiper-slide">Slide 8</div>
-						<div class="swiper-slide">Slide 9</div>
+						<div class="swiper-slide">
+							<img alt="" src="img/main/main_slide_01.png">
+							<div class="pop_btn n_01">
+								<img alt="" src="img/main/play.png">
+							</div>
+						</div>
+						<div class="swiper-slide">
+							<img alt="" src="img/main/main_slide_02.png">
+							<div class="pop_btn n_02">
+								<img alt="" src="img/main/play.png">
+							</div>
+						</div>
+						<div class="swiper-slide">
+							<img alt="" src="img/main/main_slide_03.png">
+							<div class="pop_btn n_03">
+								<img alt="" src="img/main/play.png">
+							</div>
+						</div>
+						<div class="swiper-slide">
+							<img alt="" src="img/main/main_slide_04.png">
+							<div class="pop_btn n_04">
+								<img alt="" src="img/main/play.png">
+							</div>
+						</div>
+						<div class="swiper-slide">
+							<img alt="" src="img/main/main_slide_05.png">
+							<div class="pop_btn n_05">
+								<img alt="" src="img/main/play.png">
+							</div>
+						</div>
 					</div>
 					<div class="swiper-pagination"></div>
 					<div class="btn">
-						<div class="swiper_start" data-action="start"></div>
+						<div class="swiper_start" data-action="start">
+							<img alt="" src="img/main/play.png">
+						</div>
 						<div class="swiper_stop" data-action="stop"></div>
 					</div>
 				</div>
 			</div>
-			<div class="pop_up">
+			<div class="pop_up n_01">
 				<div class="dimd"></div>
 				<div class=video>
-					<video src=""></video>
-					<div class="btn"></div>
+					<iframe width="970" height="580"
+						src="https://www.youtube.com/embed/0T01ksZAwiU?autoplay=1&si=4xNgwAzryTKb9xXN"
+						title="YouTube video player" frameborder="0"
+						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+						referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+					<div class="btn">
+						<img alt="" src="img/common/x_btn.png">
+					</div>
+				</div>
+			</div>
+			<div class="pop_up n_02">
+				<div class="dimd"></div>
+				<div class=video>
+					<iframe width="970" height="580"
+						src="https://www.youtube.com/embed/BiEMLmp96WA?autoplay=1&si=TSsqXr_8IUmubdJD"
+						title="YouTube video player" frameborder="0"
+						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+						referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+					<div class="btn">
+						<img alt="" src="img/common/x_btn.png">
+					</div>
+				</div>
+			</div>
+			<div class="pop_up n_03">
+				<div class="dimd"></div>
+				<div class=video>
+					<iframe width="970" height="580"
+						src="https://www.youtube.com/embed/8NXtOCF5V5A?autoplay=1&si=fvSZfbQbeb3okI0D"
+						title="YouTube video player" frameborder="0"
+						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+						referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+					<div class="btn">
+						<img alt="" src="img/common/x_btn.png">
+					</div>
+				</div>
+			</div>
+			<div class="pop_up n_04">
+				<div class="dimd"></div>
+				<div class=video>
+					<iframe width="970" height="580"
+						src="https://www.youtube.com/embed/sYqbLFQmUCs?autoplay=1&si=J0C-JK134BF7CghQ"
+						title="YouTube video player" frameborder="0"
+						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+						referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+					<div class="btn">
+						<img alt="" src="img/common/x_btn.png">
+					</div>
+				</div>
+			</div>
+			<div class="pop_up n_05">
+				<div class="dimd"></div>
+				<div class=video>
+					<iframe width="970" height="580"
+						src="https://www.youtube.com/embed/Xxf4gJ0UbRA?autoplay=1&si=3sfQpWIFS9zb-ITz"
+						title="YouTube video player" frameborder="0"
+						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+						referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+					<div class="btn">
+						<img alt="" src="img/common/x_btn.png">
+					</div>
 				</div>
 			</div>
 			<div class="chart">
@@ -40,14 +120,20 @@
 							<li>상영예정작</li>
 						</ul>
 						<div class="link">
-							<a href="javascript:;">전체보기</a>
+							<a href="javascript:;"> <img alt=""
+								src="img/common/arrow.png"> 전체보기
+							</a>
 						</div>
 					</div>
 					<div class="container">
 						<div class="view box">
 							<div class="navigation chartnav">
-								<div class="swiper-button-next"></div>
-								<div class="swiper-button-prev"></div>
+								<div class="swiper-button-next">
+									<img alt="" src="img/common/arrow.png">
+								</div>
+								<div class="swiper-button-prev">
+									<img alt="" src="img/common/arrow.png">
+								</div>
 							</div>
 							<div class="swiper chart">
 
@@ -256,7 +342,6 @@
 											<div class="no">10</div>
 											<div class="hover">
 												<div>
-
 													<div class="btn">
 														<a href="javascript:;">상세보기</a>
 													</div>
@@ -487,10 +572,21 @@
 					</div>
 				</div>
 			</div>
+			<div class="banner">
+				<div class="center">
+					<div class="img">
+						<img alt="" src="img/main/banner.png">
+					</div>
+
+				</div>
+			</div>
+			<div class="event">
+				<div class="img">
+					<img alt="" src="img/main/event.png">
+				</div>
+			</div>
 		</div>
 	</div>
-	</div>
-
 	<jsp:include page="include/index_footer.html"></jsp:include>
 
 	<script>
@@ -503,6 +599,7 @@
 				pagination : {
 					el : ".swiper-pagination",
 				},
+				loop : true,
 				autoplay : {
 					delay : 2500,
 					disableOnInteraction : false,

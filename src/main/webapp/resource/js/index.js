@@ -1,7 +1,23 @@
 
 //메인 비디오
-$(".index .pop_btn").click(function() {
-	$(".index .pop_up").show();
+$(".index .pop_btn.n_01").click(function() {
+	$(".index .pop_up.n_01").show();
+
+});
+$(".index .pop_btn.n_02").click(function() {
+	$(".index .pop_up.n_02").show();
+
+});
+$(".index .pop_btn.n_03").click(function() {
+	$(".index .pop_up.n_03").show();
+
+});
+$(".index .pop_btn.n_04").click(function() {
+	$(".index .pop_up.n_04").show();
+
+});
+$(".index .pop_btn.n_05").click(function() {
+	$(".index .pop_up.n_05").show();
 
 });
 
@@ -29,6 +45,11 @@ $(".ticket .region .line .main .category ul li").on('click', function() {
 	var idx = $(this).index();
 	$(this).parents(".main").find(".list").removeClass("view");
 	$(this).parents(".main").find(".list").eq(idx).addClass("view");
+});
+
+//극장 날짜 탭
+$(".ticket .schedule .swiper-slide").on('click', function() {
+	$(this).addClass('border').siblings().removeClass('border');
 });
 
 
