@@ -1,3 +1,4 @@
+<%@page import="data.user.member.MemberDao"%>
 <%@page import="data.user.member.Gender"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.sql.Date"%>
