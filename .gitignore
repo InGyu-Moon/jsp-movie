@@ -1,8 +1,10 @@
 ### 공통 파일
 db.properties
 src/main/java/db/mysql/DbProperties.java
+<<<<<<< HEAD
+=======
 
-
+>>>>>>> 53ac779063a5b70d7dfce4bcad30b008c2884cb6
 ### IntelliJ IDEA ###
 .idea/
 target/

@@ -12,12 +12,12 @@ import java.util.List;
 
 import db.mysql.DbConnect;
 
-public class MovieImgDao {
+public class Movie_ImgDao {
 
 	DbConnect db = new DbConnect();
 
-	public List<MovieImgDto> getImagesForMovie(String movie_id) {
-		List<MovieImgDto> ilist = new ArrayList<MovieImgDto>();
+	public List<Movie_ImgDto> getImagesForMovie(String movie_id) {
+		List<Movie_ImgDto> ilist = new ArrayList<Movie_ImgDto>();
 		
 		Connection conn = db.getConnection();
 		PreparedStatement pstmt = null;
@@ -31,10 +31,10 @@ public class MovieImgDao {
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
-				MovieImgDto dto = new MovieImgDto();
-				dto.setImageId(rs.getString("IMAGE_ID"));
-				dto.setMovieId(rs.getString("MOVIE_ID"));
-				dto.setImageLink(rs.getString("IMAGE_LINK"));
+				Movie_ImgDto dto = new Movie_ImgDto();
+				dto.setImage_id(rs.getString("IMAGE_ID"));
+				dto.setMovie_id(rs.getString("MOVIE_ID"));
+				dto.setImage_link(rs.getString("IMAGE_LINK"));
 				ilist.add(dto);
 			}
 		} catch (SQLException e) {
