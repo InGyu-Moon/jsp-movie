@@ -98,8 +98,12 @@
 					</div>
 					<div class="schedule">
 						<div class="slide">
-							<div class="swiper-button-next"></div>
-							<div class="swiper-button-prev"></div>
+							<div class="swiper-button-next">
+								<img alt="" src="../img/common/arrow.png">
+							</div>
+							<div class="swiper-button-prev">
+								<img alt="" src="../img/common/arrow.png">
+							</div>
 							<div class="swiper">
 								<div class="swiper-wrapper">
 									<div class="swiper-slide border">
