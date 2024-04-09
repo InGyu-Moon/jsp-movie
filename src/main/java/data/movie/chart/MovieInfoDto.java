@@ -3,7 +3,7 @@ package data.movie.chart;
 import java.sql.Date;
 import java.util.List;
 
-public class Movie_InfoDto {
+public class MovieInfoDto {
 
 	private String movie_id;
 	private String movie_title;
@@ -18,7 +18,7 @@ public class Movie_InfoDto {
 	private double rating;
 	private Date end_date;
 	private String country;
-	private List<Movie_ImgDto> imgs;
+	private List<MovieImgDto> imgs;
 	private String image_link;
 
 	public String getMovie_id() {
@@ -125,11 +125,11 @@ public class Movie_InfoDto {
 		this.country = country;
 	}
 
-	public List<Movie_ImgDto> getImgs() {
+	public List<MovieImgDto> getImgs() {
 		return imgs;
 	}
 
-	public void setImgs(List<Movie_ImgDto> imgs) {
+	public void setImgs(List<MovieImgDto> imgs) {
 		this.imgs = imgs;
 	}
 

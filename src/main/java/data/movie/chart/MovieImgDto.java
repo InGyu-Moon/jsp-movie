@@ -1,6 +1,6 @@
 package data.movie.chart;
 
-public class Movie_ImgDto {
+public class MovieImgDto {
 
 	private String image_id;
 	private String movie_id;

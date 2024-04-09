@@ -12,13 +12,13 @@ import java.util.List;
 
 import db.mysql.DbConnect;
 
-public class Movie_InfoDao {
+public class MovieInfoDao {
 
 	DbConnect db = new DbConnect();
 
 	// 예매순 1위 ~ 3위
-	public List<Movie_InfoDto> getThreeMovieData() {
-		List<Movie_InfoDto> list = new ArrayList<Movie_InfoDto>();
+	public List<MovieInfoDto> getThreeMovieData() {
+		List<MovieInfoDto> list = new ArrayList<MovieInfoDto>();
 
 		Connection conn = db.getConnection();
 		PreparedStatement pstmt = null;
@@ -35,7 +35,7 @@ public class Movie_InfoDao {
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
-				Movie_InfoDto dto = new Movie_InfoDto();
+				MovieInfoDto dto = new MovieInfoDto();
 
 				dto.setMovie_id(rs.getString("movie_id"));
 				dto.setMovie_title(rs.getString("movie_title"));
@@ -64,8 +64,8 @@ public class Movie_InfoDao {
 	}
 
 	// 예매순 4위 ~ 19위
-	public List<Movie_InfoDto> getElseMovieData() {
-		List<Movie_InfoDto> elist = new ArrayList<Movie_InfoDto>();
+	public List<MovieInfoDto> getElseMovieData() {
+		List<MovieInfoDto> elist = new ArrayList<MovieInfoDto>();
 
 		Connection conn = db.getConnection();
 		PreparedStatement pstmt = null;
@@ -82,7 +82,7 @@ public class Movie_InfoDao {
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
-				Movie_InfoDto dto = new Movie_InfoDto();
+				MovieInfoDto dto = new MovieInfoDto();
 
 				dto.setMovie_id(rs.getString("movie_id"));
 				dto.setMovie_title(rs.getString("movie_title"));
@@ -111,8 +111,8 @@ public class Movie_InfoDao {
 	}
 
 	// 평점순 1위 ~ 3위
-	public List<Movie_InfoDto> getThreeMovieData2() {
-		List<Movie_InfoDto> listtwo = new ArrayList<Movie_InfoDto>();
+	public List<MovieInfoDto> getThreeMovieData2() {
+		List<MovieInfoDto> listtwo = new ArrayList<MovieInfoDto>();
 
 		Connection conn = db.getConnection();
 		PreparedStatement pstmt = null;
@@ -129,7 +129,7 @@ public class Movie_InfoDao {
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
-				Movie_InfoDto dto = new Movie_InfoDto();
+				MovieInfoDto dto = new MovieInfoDto();
 
 				dto.setMovie_id(rs.getString("movie_id"));
 				dto.setMovie_title(rs.getString("movie_title"));
@@ -158,8 +158,8 @@ public class Movie_InfoDao {
 	}
 
 	// 평점순 4위 ~ 19위
-	public List<Movie_InfoDto> getElseMovieData2() {
-		List<Movie_InfoDto> elisttwo = new ArrayList<Movie_InfoDto>();
+	public List<MovieInfoDto> getElseMovieData2() {
+		List<MovieInfoDto> elisttwo = new ArrayList<MovieInfoDto>();
 
 		Connection conn = db.getConnection();
 		PreparedStatement pstmt = null;
@@ -176,7 +176,7 @@ public class Movie_InfoDao {
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
-				Movie_InfoDto dto = new Movie_InfoDto();
+				MovieInfoDto dto = new MovieInfoDto();
 
 				dto.setMovie_id(rs.getString("movie_id"));
 				dto.setMovie_title(rs.getString("movie_title"));
@@ -205,8 +205,8 @@ public class Movie_InfoDao {
 	}
 
 	// 현재상영작 chk 예매순 1위 ~ 3위
-	public List<Movie_InfoDto> getThreeMovieDataChk() {
-		List<Movie_InfoDto> listchk = new ArrayList<Movie_InfoDto>();
+	public List<MovieInfoDto> getThreeMovieDataChk() {
+		List<MovieInfoDto> listchk = new ArrayList<MovieInfoDto>();
 
 		Connection conn = db.getConnection();
 		PreparedStatement pstmt = null;
@@ -224,7 +224,7 @@ public class Movie_InfoDao {
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
-				Movie_InfoDto dto = new Movie_InfoDto();
+				MovieInfoDto dto = new MovieInfoDto();
 
 				dto.setMovie_id(rs.getString("movie_id"));
 				dto.setMovie_title(rs.getString("movie_title"));
@@ -253,8 +253,8 @@ public class Movie_InfoDao {
 	}
 
 	// 현재상영작 chk 예매순 4위 ~ 19위
-	public List<Movie_InfoDto> getElseMovieDataChk() {
-		List<Movie_InfoDto> elistchk = new ArrayList<Movie_InfoDto>();
+	public List<MovieInfoDto> getElseMovieDataChk() {
+		List<MovieInfoDto> elistchk = new ArrayList<MovieInfoDto>();
 
 		Connection conn = db.getConnection();
 		PreparedStatement pstmt = null;
@@ -272,7 +272,7 @@ public class Movie_InfoDao {
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
-				Movie_InfoDto dto = new Movie_InfoDto();
+				MovieInfoDto dto = new MovieInfoDto();
 
 				dto.setMovie_id(rs.getString("movie_id"));
 				dto.setMovie_title(rs.getString("movie_title"));
@@ -301,8 +301,8 @@ public class Movie_InfoDao {
 	}
 
 	// 현재상영작 chk 평점순 1위 ~ 3위
-	public List<Movie_InfoDto> getThreeMovieDataChk2() {
-		List<Movie_InfoDto> listtwochk = new ArrayList<Movie_InfoDto>();
+	public List<MovieInfoDto> getThreeMovieDataChk2() {
+		List<MovieInfoDto> listtwochk = new ArrayList<MovieInfoDto>();
 
 		Connection conn = db.getConnection();
 		PreparedStatement pstmt = null;
@@ -320,7 +320,7 @@ public class Movie_InfoDao {
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
-				Movie_InfoDto dto = new Movie_InfoDto();
+				MovieInfoDto dto = new MovieInfoDto();
 
 				dto.setMovie_id(rs.getString("movie_id"));
 				dto.setMovie_title(rs.getString("movie_title"));
@@ -349,8 +349,8 @@ public class Movie_InfoDao {
 	}
 
 	// 현재상영작 chk 평점순 4위 ~ 19위
-	public List<Movie_InfoDto> getElseMovieDataChk2() {
-		List<Movie_InfoDto> elisttwochk = new ArrayList<Movie_InfoDto>();
+	public List<MovieInfoDto> getElseMovieDataChk2() {
+		List<MovieInfoDto> elisttwochk = new ArrayList<MovieInfoDto>();
 
 		Connection conn = db.getConnection();
 		PreparedStatement pstmt = null;
@@ -368,7 +368,7 @@ public class Movie_InfoDao {
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
-				Movie_InfoDto dto = new Movie_InfoDto();
+				MovieInfoDto dto = new MovieInfoDto();
 
 				dto.setMovie_id(rs.getString("movie_id"));
 				dto.setMovie_title(rs.getString("movie_title"));
@@ -397,8 +397,8 @@ public class Movie_InfoDao {
 	}
 
 	// 상영예정작 예매순 1위 ~ 3위
-	public List<Movie_InfoDto> getThreeMovieSchedule() {
-		List<Movie_InfoDto> listschedule = new ArrayList<Movie_InfoDto>();
+	public List<MovieInfoDto> getThreeMovieSchedule() {
+		List<MovieInfoDto> listschedule = new ArrayList<MovieInfoDto>();
 
 		Connection conn = db.getConnection();
 		PreparedStatement pstmt = null;
@@ -416,7 +416,7 @@ public class Movie_InfoDao {
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
-				Movie_InfoDto dto = new Movie_InfoDto();
+				MovieInfoDto dto = new MovieInfoDto();
 
 				dto.setMovie_id(rs.getString("movie_id"));
 				dto.setMovie_title(rs.getString("movie_title"));
@@ -445,8 +445,8 @@ public class Movie_InfoDao {
 	}
 
 	// 상영예정작 예매순 날짜별
-	public List<Movie_InfoDto> getElseMovieSchedule() {
-		List<Movie_InfoDto> elistschedule = new ArrayList<Movie_InfoDto>();
+	public List<MovieInfoDto> getElseMovieSchedule() {
+		List<MovieInfoDto> elistschedule = new ArrayList<MovieInfoDto>();
 
 		Connection conn = db.getConnection();
 		PreparedStatement pstmt = null;
@@ -462,7 +462,7 @@ public class Movie_InfoDao {
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
-				Movie_InfoDto dto = new Movie_InfoDto();
+				MovieInfoDto dto = new MovieInfoDto();
 
 				dto.setMovie_id(rs.getString("movie_id"));
 				dto.setMovie_title(rs.getString("movie_title"));
@@ -491,8 +491,8 @@ public class Movie_InfoDao {
 	}
 
 	//movie_id에 대한 dto 반환
-	public Movie_InfoDto getData(String movie_id) {
-		Movie_InfoDto dto = new Movie_InfoDto();
+	public MovieInfoDto getData(String movie_id) {
+		MovieInfoDto dto = new MovieInfoDto();
 
 		Connection conn = db.getConnection();
 		PreparedStatement pstmt = null;
