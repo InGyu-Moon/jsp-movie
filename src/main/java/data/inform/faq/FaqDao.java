@@ -119,20 +119,25 @@ public class FaqDao {
 	}
 
 	// get FAQ 
-	public int getFaq(int faqId) {
+	public FaqDto getFaq(int faqId) {
 		Connection conn = db.getConnection();
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
 		String sql = "select * from FAQ where faq_id=?";
-		int count = 0;
+		FaqDto faq = new FaqDto();
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, faqId);
+			
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
-				count = rs.getInt(1);
+				faq.setFaqId(rs.getInt("faq_id"));
+				faq.setCategory(rs.getString("category"));
+				faq.setQuestion(rs.getString("question"));
+				faq.setAnswer(rs.getString("answer"));
 			}
 			
 		}catch(Exception ex) {
@@ -140,7 +145,35 @@ public class FaqDao {
 		}finally {
 			db.dbClose(rs, pstmt, conn);
 		}
-		return count;
+		return faq;
 	}
+
 	
+	// update 
+	public void updateFaq(FaqDto faq) {
+		Connection conn = db.getConnection();
+		PreparedStatement pstmt = null;
+		
+		String sql = "update FAQ set category=?,question=?,answer=? where faq_id=?";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, faq.getCategory());
+			pstmt.setString(2, faq.getQuestion());
+			pstmt.setString(3, faq.getAnswer());
+			pstmt.setInt(4, faq.getFaqId());
+			
+			int result = pstmt.executeUpdate();
+			
+			if(result>0) System.out.println("update FAQ success");
+			else System.out.println("update FAQ error");
+			
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}finally {
+			db.dbClose( pstmt, conn);
+		}
+
+	}
+
 }
