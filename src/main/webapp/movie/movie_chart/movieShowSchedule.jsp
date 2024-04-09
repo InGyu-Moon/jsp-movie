@@ -365,7 +365,7 @@ MovieInfoDao dao = new MovieInfoDao();
                             <a href="index.jsp?main=movie/movie_chart/movieDetail.jsp?movie_id=<%=dto.getMovieId()%>">
                                 <span class="img-rank1">
                                     <img src="<%=dto.getImageLink()%>">
-                                    <img class="icon" src="../images/vrating/<%=dto.getViewingRating()%>.png">
+                                    <img class="icon" src="../../img/movie_img/vrating/<%=dto.getViewingRating()%>.png">
                                 </span>
                             </a>
                             <span class="screentype"></span>
@@ -453,7 +453,7 @@ MovieInfoDao dao = new MovieInfoDao();
                             <a href="index.jsp?main=movie/movie_chart/movieDetail.jsp?movie_id=<%=dto.getMovieId()%>">
                                 <span class="img-rank2">
                                     <img src="<%=dto.getImageLink()%>">
-                                    <img class="icon" src="../images/vrating/<%=dto.getViewingRating() %>.png">
+                                    <img class="icon" src="../../img/movie_img/vrating/<%=dto.getViewingRating() %>.png">
                                 </span>
                             </a>
                             <span class="screentype"></span>
