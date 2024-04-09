@@ -1,4 +1,4 @@
-<%@page import="data.movie.chart.MovieInfoDto"%>\>
+<%@page import="data.movie.chart.MovieInfoDto"%>
 <%@page import="data.movie.chart.MovieInfoDao"%>
 <%@page import="java.util.Date"%>
 <%@page import="java.text.SimpleDateFormat"%>
