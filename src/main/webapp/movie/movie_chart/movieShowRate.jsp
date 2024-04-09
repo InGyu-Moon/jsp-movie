@@ -454,8 +454,8 @@ MovieInfoDao dao = new MovieInfoDao();
                                Date today = sdf.parse(todayStr); // 현재 날짜 설정
                                for(MovieInfoDto dto:list){
                                    String dDayText = ""; // D-day 텍스트 초기화
-                                   if (dto.getRelease_date() != null) {
-                                   	String releaseDateStr = sdf.format(dto.getRelease_date());
+                                   if (dto.getReleaseDate() != null) {
+                                   	String releaseDateStr = sdf.format(dto.getReleaseDate());
                                        Date releaseDate = sdf.parse(releaseDateStr);
                                        long diffInMillies = releaseDate.getTime() - today.getTime();
                                        long diffInDays = diffInMillies / (1000 * 60 * 60 * 24);
@@ -470,23 +470,23 @@ MovieInfoDao dao = new MovieInfoDao();
                %>
                     <li>
                         <div class="box-img">
-                        <input type="hidden" id="movie_id" value="<%=dto.getMovie_id()%>">
+                        <input type="hidden" id="movie_id" value="<%=dto.getMovieId()%>">
                             <strong class="rank1">No.<%=no++%></strong>
-                            <a href="index.jsp?main=movie/movieDetail.jsp?movie_id=<%=dto.getMovie_id()%>">
+                            <a href="index.jsp?main=movie/movieDetail.jsp?movie_id=<%=dto.getMovieId()%>">
                                 <span class="img-rank1">
-                                    <img src="<%=dto.getImage_link()%>">
-                                    <img class="icon" src="../images/vrating/<%=dto.getViewing_rating()%>.png">
+                                    <img src="<%=dto.getImageLink()%>">
+                                    <img class="icon" src="../images/vrating/<%=dto.getViewingRating()%>.png">
                                 </span>
                             </a>
                             <span class="screentype"></span>
                         </div>
                         <div class="box-content">
-                            <a href="index.jsp?main=movie/movie_chart/movieDetail.jsp?movie_id=<%=dto.getMovie_id()%>">
-                            <strong class="title"><%=dto.getMovie_title()%></strong>
+                            <a href="index.jsp?main=movie/movie_chart/movieDetail.jsp?movie_id=<%=dto.getMovieId()%>">
+                            <strong class="title"><%=dto.getMovieTitle()%></strong>
                             </a>
                             <div class="score">
                                 <strong class="rate">예매율
-                                    <span class="rate-percent"><%=dto.getBooking_rate()%>%&nbsp;&nbsp;&nbsp;|</span>
+                                    <span class="rate-percent"><%=dto.getBookingRate()%>%&nbsp;&nbsp;&nbsp;|</span>
                                 </strong>
                                 <strong class="movie-grade">평점
                                     <span class="grade-percent"><%=dto.getRating()%></span>
@@ -494,7 +494,7 @@ MovieInfoDao dao = new MovieInfoDao();
                             </div>
                             <span class="txt-info">
                                 <strong>
-                                <%=sdf.format(dto.getRelease_date())%>
+                                <%=sdf.format(dto.getReleaseDate())%>
                                 <span>개봉</span>
                                 <em class="dday"><%=dDayText%></em>
                                 </strong>
@@ -516,8 +516,8 @@ MovieInfoDao dao = new MovieInfoDao();
                 int no2=4;
                                 for(MovieInfoDto dto:elist){
                                     String dDayText = ""; // D-day 텍스트 초기화
-                                    if (dto.getRelease_date() != null) {
-                                        Date releaseDate = dto.getRelease_date();
+                                    if (dto.getReleaseDate() != null) {
+                                        Date releaseDate = dto.getReleaseDate();
                                         long diffInMillies = releaseDate.getTime() - today.getTime();
                                         long diffInDays = diffInMillies / (1000 * 60 * 60 * 24);
                                         if (diffInDays < 0) {
@@ -532,21 +532,21 @@ MovieInfoDao dao = new MovieInfoDao();
                     <li>
                         <div class="box-img">
                             <strong class="rank2">No.<%=no2++%></strong>
-                            <a href="index.jsp?main=movie/movie_chart/movieDetail.jsp?movie_id=<%=dto.getMovie_id()%>">
+                            <a href="index.jsp?main=movie/movie_chart/movieDetail.jsp?movie_id=<%=dto.getMovieId()%>">
                                 <span class="img-rank2">
-                                    <img src="<%=dto.getImage_link()%>">
-                                    <img class="icon" src="../images/vrating/<%=dto.getViewing_rating()%>.png">
+                                    <img src="<%=dto.getImageLink()%>">
+                                    <img class="icon" src="../images/vrating/<%=dto.getViewingRating()%>.png">
                                 </span>
                             </a>
                             <span class="screentype"></span>
                         </div>
                         <div class="box-content">
-                            <a href="index.jsp?main=movie/movie_chart/movieDetail.jsp?movie_id=<%=dto.getMovie_id()%>">
-                            <strong class="title"><%=dto.getMovie_title()%></strong>
+                            <a href="index.jsp?main=movie/movie_chart/movieDetail.jsp?movie_id=<%=dto.getMovieId()%>">
+                            <strong class="title"><%=dto.getMovieTitle()%></strong>
                             </a>
                             <div class="score">
                                 <strong class="rate">예매율
-                                    <span class="rate-percent"><%=dto.getBooking_rate()%>%&nbsp;&nbsp;&nbsp;|</span>
+                                    <span class="rate-percent"><%=dto.getBookingRate()%>%&nbsp;&nbsp;&nbsp;|</span>
                                 </strong>
                                 <strong class="movie-grade">평점
                                     <span class="grade-percent"><%=dto.getRating()%></span>
@@ -554,7 +554,7 @@ MovieInfoDao dao = new MovieInfoDao();
                             </div>
                             <span class="txt-info">
                                 <strong>
-                                <%=sdf.format(dto.getRelease_date())%>
+                                <%=sdf.format(dto.getReleaseDate())%>
                                 <span>개봉</span>
                                 <em class="dday"><%=dDayText%></em>
                                 </strong>
@@ -587,8 +587,8 @@ MovieInfoDao dao = new MovieInfoDao();
                                Date todayChk = sdf.parse(todayStrChk); // 현재 날짜 설정
                                for(MovieInfoDto dto:listchk){
                                    String dDayText = ""; // D-day 텍스트 초기화
-                                   if (dto.getRelease_date() != null) {
-                                   	String releaseDateStr = sdf.format(dto.getRelease_date());
+                                   if (dto.getReleaseDate() != null) {
+                                   	String releaseDateStr = sdf.format(dto.getReleaseDate());
                                        Date releaseDate = sdf.parse(releaseDateStr);
                                        long diffInMillies = releaseDate.getTime() - todayChk.getTime();
                                        long diffInDays = diffInMillies / (1000 * 60 * 60 * 24);
@@ -604,21 +604,21 @@ MovieInfoDao dao = new MovieInfoDao();
                     <li>
                         <div class="box-img">
                             <strong class="rank1">No.<%=nochk++%></strong>
-                            <a href="index.jsp?main=movie/movie_chart/movieDetail.jsp?movie_id=<%=dto.getMovie_id()%>">
+                            <a href="index.jsp?main=movie/movie_chart/movieDetail.jsp?movie_id=<%=dto.getMovieId()%>">
                                 <span class="img-rank1">
-                                    <img src="<%=dto.getImage_link()%>">
-                                    <img class="icon" src="../images/vrating/<%=dto.getViewing_rating()%>.png">
+                                    <img src="<%=dto.getImageLink()%>">
+                                    <img class="icon" src="../images/vrating/<%=dto.getViewingRating()%>.png">
                                 </span>
                             </a>
                             <span class="screentype"></span>
                         </div>
                         <div class="box-content">
-                            <a href="index.jsp?main=movie/movie_chart/movieDetail.jsp?movie_id=<%=dto.getMovie_id()%>">
-                            <strong class="title"><%=dto.getMovie_title()%></strong>
+                            <a href="index.jsp?main=movie/movie_chart/movieDetail.jsp?movie_id=<%=dto.getMovieId()%>">
+                            <strong class="title"><%=dto.getMovieTitle()%></strong>
                             </a>
                             <div class="score">
                                 <strong class="rate">예매율
-                                    <span class="rate-percent"><%=dto.getBooking_rate()%>%&nbsp;&nbsp;&nbsp;|</span>
+                                    <span class="rate-percent"><%=dto.getBookingRate()%>%&nbsp;&nbsp;&nbsp;|</span>
                                 </strong>
                                 <strong class="movie-grade">평점
                                     <span class="grade-percent"><%=dto.getRating()%></span>
@@ -626,7 +626,7 @@ MovieInfoDao dao = new MovieInfoDao();
                             </div>
                             <span class="txt-info">
                                 <strong>
-                                <%=sdf.format(dto.getRelease_date())%>
+                                <%=sdf.format(dto.getReleaseDate())%>
                                 <span>개봉</span>
                                 <em class="dday"><%=dDayText%></em>
                                 </strong>
@@ -648,8 +648,8 @@ MovieInfoDao dao = new MovieInfoDao();
                 int no2chk=4;
                                 for(MovieInfoDto dto:elistchk){
                                     String dDayText = ""; // D-day 텍스트 초기화
-                                    if (dto.getRelease_date() != null) {
-                                        Date releaseDate = dto.getRelease_date();
+                                    if (dto.getReleaseDate() != null) {
+                                        Date releaseDate = dto.getReleaseDate();
                                         long diffInMillies = releaseDate.getTime() - todayChk.getTime();
                                         long diffInDays = diffInMillies / (1000 * 60 * 60 * 24);
                                         if (diffInDays < 0) {
@@ -664,21 +664,21 @@ MovieInfoDao dao = new MovieInfoDao();
                     <li>
                         <div class="box-img">
                             <strong class="rank2">No.<%=no2chk++ %></strong>
-                            <a href="index.jsp?main=movie/movie_chart/movieDetail.jsp?movie_id=<%=dto.getMovie_id()%>">
+                            <a href="index.jsp?main=movie/movie_chart/movieDetail.jsp?movie_id=<%=dto.getMovieId()%>">
                                 <span class="img-rank2">
-                                    <img src="<%=dto.getImage_link()%>">
-                                    <img class="icon" src="../movie/vrating/<%=dto.getViewing_rating() %>.png">
+                                    <img src="<%=dto.getImageLink()%>">
+                                    <img class="icon" src="../movie/vrating/<%=dto.getViewingRating() %>.png">
                                 </span>
                             </a>
                             <span class="screentype"></span>
                         </div>
                         <div class="box-content">
-                            <a href="index.jsp?main=movie/movie_chart/movieDetail.jsp?movie_id=<%=dto.getMovie_id()%>">
-                            <strong class="title"><%=dto.getMovie_title() %></strong>
+                            <a href="index.jsp?main=movie/movie_chart/movieDetail.jsp?movie_id=<%=dto.getMovieId()%>">
+                            <strong class="title"><%=dto.getMovieTitle() %></strong>
                             </a>
                             <div class="score">
                                 <strong class="rate">예매율
-                                    <span class="rate-percent"><%=dto.getBooking_rate()%>%&nbsp;&nbsp;&nbsp;|</span>
+                                    <span class="rate-percent"><%=dto.getBookingRate()%>%&nbsp;&nbsp;&nbsp;|</span>
                                 </strong>
                                 <strong class="movie-grade">평점
                                     <span class="grade-percent"><%=dto.getRating() %></span>
@@ -686,7 +686,7 @@ MovieInfoDao dao = new MovieInfoDao();
                             </div>
                             <span class="txt-info">
                                 <strong>
-                                <%=sdf.format(dto.getRelease_date()) %>
+                                <%=sdf.format(dto.getReleaseDate()) %>
                                 <span>개봉</span>
                                 <em class="dday"><%=dDayText %></em>
                                 </strong>
