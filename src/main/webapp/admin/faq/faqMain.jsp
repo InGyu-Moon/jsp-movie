@@ -115,7 +115,7 @@ $(document).ready(function(){
 		    console.log(n);
 		  
 		    //삭제파일로 전송
-		    location.href="?curr=faq/faqDelete.jsp?faqId="+n;
+		    location.href="faq/faqDelete.jsp?faqId="+n;
 	  }
   })
     
@@ -193,6 +193,10 @@ $(document).ready(function(){
 		                   <strong>A.</strong>
 	                		<br>
 		                   	<%=faq.getAnswer() %>
+		                   	<br><br>
+		                   	<button type="button" class="btn btn-outline-warning"
+		                   			style="float: right;margin: 0px 15px 15px 0px;"
+		                   			onclick="location.href='?curr=faq/faqUpdateForm.jsp?faqId=<%=faq.getFaqId() %>'">수정</button>
 		                   </p>
 		                 </th>
 		             </tr>
