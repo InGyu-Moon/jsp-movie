@@ -35,7 +35,12 @@
 	    e.printStackTrace();
 	}
 	
-	String gender = request.getParameter("gender"); // enum 타입
+	String genderString = request.getParameter("gender");
+	Gender gender = null;
+
+	if (genderString != null && !genderString.isEmpty()) {
+	    gender = Gender.valueOf(genderString.toUpperCase());
+	}
 
 	String number1 = request.getParameter("phone_number1");
 	String number2 = request.getParameter("phone_number2");
