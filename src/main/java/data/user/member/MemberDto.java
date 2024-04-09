@@ -7,13 +7,13 @@ public class MemberDto {
 	private String userName;
 	private String password;
 	private String name;
-	private String gender;
+	private Gender gender;
 	private String email;
 	private Date birthdate;
 	private String address;
 	private String phoneNumber;
 	private String userPhoto;
-	
+
 	public int getId() {
 		return id;
 	}
@@ -38,10 +38,10 @@ public class MemberDto {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getGender() {
+	public Gender getGender() {
 		return gender;
 	}
-	public void setGender(String gender) {
+	public void setGender(Gender gender) {
 		this.gender = gender;
 	}
 	public String getEmail() {
@@ -74,14 +74,14 @@ public class MemberDto {
 	public void setUserPhoto(String userPhoto) {
 		this.userPhoto = userPhoto;
 	}
-	
-	
+
+
 	@Override
 	public String toString() {
 		return "MemberDto [id=" + id + ", userName=" + userName + ", password=" + password + ", name=" + name
 				+ ", gender=" + gender + ", email=" + email + ", birthdate=" + birthdate + ", address=" + address
 				+ ", phoneNumber=" + phoneNumber + ", userPhoto=" + userPhoto + "]";
 	}
-	
-	
+
+
 }
