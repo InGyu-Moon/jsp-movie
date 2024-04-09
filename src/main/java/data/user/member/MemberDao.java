@@ -159,7 +159,7 @@ public class MemberDao {
 				dto.setUserName(rs.getString("username"));
 				dto.setPassword(rs.getString("password"));
 				dto.setName(rs.getString("name"));
-				dto.setGender(rs.getString("gender"));
+				dto.setGender(Gender.valueOf(rs.getString("gender")));
 				dto.setEmail(rs.getString("email"));
 				dto.setBirthdate(rs.getDate("birthdate"));
 				dto.setAddress(rs.getString("address"));
@@ -196,7 +196,7 @@ public class MemberDao {
 				dto.setUserName(rs.getString("username"));
 				dto.setPassword(rs.getString("password"));
 				dto.setName(rs.getString("name"));
-				dto.setGender(rs.getString("gender"));
+				dto.setGender(Gender.valueOf(rs.getString("gender")));
 				dto.setEmail(rs.getString("email"));
 				dto.setBirthdate(rs.getDate("birthdate"));
 				dto.setAddress(rs.getString("address"));
