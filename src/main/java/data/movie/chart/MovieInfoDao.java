@@ -73,7 +73,7 @@ public class MovieInfoDao {
 				+ "MI.RELEASE_DATE, MI.GENRE, MI.MOVIE_DESCRIPTION, MI.RATING, MI.END_DATE, MI.COUNTRY, "
 				+ "M_IMAGES.IMAGE_LINK " + "FROM MOVIE_INFO MI "
 				+ "LEFT JOIN MOVIE_IMAGES M_IMAGES ON MI.MOVIE_ID = M_IMAGES.MOVIE_ID "
-				+ "WHERE M_IMAGES.IMAGE_ID = MI.MOVIE_ID " + "order by MI.booking_rate DESC LIMIT 15 OFFSET 3";
+				+ "WHERE M_IMAGES.IMAGE_ID = MI.MOVIE_ID " + "order by MI.booking_rate DESC LIMIT 16 OFFSET 3";
 
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -167,7 +167,7 @@ public class MovieInfoDao {
 				+ "MI.RELEASE_DATE, MI.GENRE, MI.MOVIE_DESCRIPTION, MI.RATING, MI.END_DATE, MI.COUNTRY, "
 				+ "M_IMAGES.IMAGE_LINK " + "FROM MOVIE_INFO MI "
 				+ "LEFT JOIN MOVIE_IMAGES M_IMAGES ON MI.MOVIE_ID = M_IMAGES.MOVIE_ID "
-				+ "WHERE M_IMAGES.IMAGE_ID = MI.MOVIE_ID " + "order by MI.rating desc LIMIT 15 OFFSET 3";
+				+ "WHERE M_IMAGES.IMAGE_ID = MI.MOVIE_ID " + "order by MI.rating desc LIMIT 16 OFFSET 3";
 
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -263,7 +263,7 @@ public class MovieInfoDao {
 				+ "M_IMAGES.IMAGE_LINK " + "FROM MOVIE_INFO MI "
 				+ "LEFT JOIN MOVIE_IMAGES M_IMAGES ON MI.MOVIE_ID = M_IMAGES.MOVIE_ID "
 				+ "WHERE M_IMAGES.IMAGE_ID = MI.MOVIE_ID and MI.RELEASE_DATE <= curdate() "
-				+ "ORDER BY MI.BOOKING_RATE DESC " + "LIMIT 15 OFFSET 3";
+				+ "ORDER BY MI.BOOKING_RATE DESC " + "LIMIT 16 OFFSET 3";
 
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -359,7 +359,7 @@ public class MovieInfoDao {
 				+ "M_IMAGES.IMAGE_LINK " + "FROM MOVIE_INFO MI "
 				+ "LEFT JOIN MOVIE_IMAGES M_IMAGES ON MI.MOVIE_ID = M_IMAGES.MOVIE_ID "
 				+ "WHERE M_IMAGES.IMAGE_ID = MI.MOVIE_ID and MI.RELEASE_DATE <= curdate() " + "ORDER BY MI.rating DESC "
-				+ "LIMIT 15 OFFSET 3";
+				+ "LIMIT 16 OFFSET 3";
 
 		try {
 			pstmt = conn.prepareStatement(sql);

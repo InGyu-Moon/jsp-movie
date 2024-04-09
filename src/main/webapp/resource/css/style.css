@@ -211,6 +211,7 @@ header#header  .content>div .memberinfo ul li img {
 header#header .nav {
 	display: flex;
 	justify-content: center;
+	border-bottom: 2px solid #fb4357;
 }
 
 header#header .nav>div {
@@ -1496,3 +1497,358 @@ log.nonReservationForm #inner_p {
 /* //nonReservationForm */
 
 /* //log */
+
+/* movieshowrate */
+#movieshowrate {
+	clear: both;
+	padding-bottom: 50px;
+	position: relative;
+	width: 980px;
+	margin: 0 auto;
+}
+
+#movieshowrate .title-head {
+	position: relative;
+	height: 100px;
+	padding-top: 30px;
+	border-bottom: 4px solid #241d1e;
+}
+
+#movieshowrate .title-head>h3 {
+	display: inline-block;
+	position: relative;
+	height: inherit;
+	margin: 0;
+	background-image: none;
+	color: #222;
+	font-weight: 500;
+	font-size: 36px;
+	text-align: left;
+	vertical-align: middle;
+	font-weight: bold;
+}
+
+#movieshowrate h3 {
+	/* display: block;
+    font-size: 1.17em; */
+	margin-block-start: 1em;
+	margin-block-end: 1em;
+	margin-inline-start: 0px;
+	margin-inline-end: 0px;
+	line-height: 41px;
+	/* font-weight: bold; */
+}
+
+#movieshowrate .title-head>.sub-menu>ul>li {
+	float: left;
+	margin-left: 20px;
+}
+
+#movieshowrate .title-head>.sub-menu>ul>li span {
+	opacity: 0;
+}
+
+#movieshowrate .title-head>.sub-menu>ul>li:hover span {
+	opacity: 1;
+}
+
+#movieshowrate .title-head>.sub-menu {
+	position: absolute;
+	top: 48px;
+	right: 0;
+}
+
+#movieshowrate .sub-menu a {
+	cursor: pointer;
+}
+
+#movieshowrate .set-movie {
+	position: relative;
+	margin-top: 20px;
+	display: flex; /* 요소들을 가로로 배치 */
+	justify-content: space-between; /* 요소들을 양쪽으로 정렬 */
+}
+
+#movieshowrate .set-movie .nowshow {
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+
+#movieshowrate .hidden {
+	font: 0/0 a;
+	height: 0;
+	overflow: hidden;
+	/* position: absolute; */
+	visibility: hidden;
+	width: 0;
+	zoom: 1;
+}
+
+#movieshowrate .set-movie .order-type {
+	/* position: absolute; */
+	right: 0;
+}
+
+#movieshowrate .order-type li {
+	position: relative;
+	float: right;
+	padding: 0 14px;
+}
+
+#movieshowrate .order-type li:last-child::before {
+	display: none;
+}
+
+#movieshowrate .order-type li::before {
+	content: "";
+	position: absolute;
+	left: 0;
+	top: 50%;
+	transform: translateY(-50%);
+	height: 20px;
+	border-left: 1px solid #CCC;
+}
+
+#movieshowrate .order-type li.on {
+	font-weight: 700;
+}
+
+#movieshowrate .order-type li.y {
+	font-weight: 700;
+}
+
+#movieshowrate .order-type li a {
+	cursor: pointer;
+}
+
+#movieshowrate .order-type li.p:before {
+	content: "";
+	position: absolute;
+	left: 0;
+	top: 50%;
+	transform: translateY(-50%);
+	height: 20px;
+	border-left: 1px solid #CCC;
+}
+
+#movieshowrate .set-movie-chart {
+	margin-top: 30px;
+	/* border: 1px solid #000000; */
+}
+
+#movieshowrate .set-movie-chart-two {
+	margin-top: 30px;
+	/* border: 1px solid #000000; */
+}
+
+#movieshowrate ol.olThree {
+	display: flex;
+	justify-content: space-around;
+	align-content: center;
+	/*  list-style-type: decimal; */
+	margin-block-start: 1em;
+	margin-block-end: 1em;
+	margin-inline-start: 0px;
+	margin-inline-end: 0px;
+	padding: 0px 40px;
+	/* padding-inline-start: 40px; */
+}
+
+#movieshowrate ol.olThree>li {
+	width: 197px;
+	padding-bottom: 30px;
+}
+
+#movieshowrate ol.olElse {
+	display: flex;
+	align-content: center;
+	/*  list-style-type: decimal; */
+	margin-block-start: 1em;
+	margin-block-end: 1em;
+	margin-inline-start: 0px;
+	margin-inline-end: 0px;
+	padding-left: 0px;
+	/* padding-inline-start: 40px; */
+}
+
+#movieshowrate ol.olElse>li {
+	margin-left: 40px;
+	width: 197px;
+	padding-bottom: 30px;
+}
+
+#movieshowrate ol.olThreeChk {
+	display: flex;
+	justify-content: space-around;
+	align-content: center;
+	/*  list-style-type: decimal; */
+	margin-block-start: 1em;
+	margin-block-end: 1em;
+	margin-inline-start: 0px;
+	margin-inline-end: 0px;
+	padding: 0px 40px;
+	/* padding-inline-start: 40px; */
+}
+
+#movieshowrate ol.olThreeChk>li {
+	width: 197px;
+	padding-bottom: 30px;
+}
+
+#movieshowrate ol.olElseChk {
+	display: flex;
+	align-content: center;
+	/*  list-style-type: decimal; */
+	margin-block-start: 1em;
+	margin-block-end: 1em;
+	margin-inline-start: 0px;
+	margin-inline-end: 0px;
+	padding-left: 0px;
+	/* padding-inline-start: 40px; */
+}
+
+#movieshowrate ol.olElseChk>li {
+	margin-left: 40px;
+	width: 197px;
+	padding-bottom: 30px;
+}
+
+#movieshowrate .rank1 {
+	display: block;
+	height: 28px;
+	margin-bottom: 4px;
+	/* border: 6px solid #000000; */
+	background: #fb4357;
+	color: #ffffff;
+	font-size: 19px;
+	text-align: center;
+	line-height: 28px;
+	font-weight: bold;
+}
+
+#movieshowrate .rank2 {
+	display: block;
+	height: 28px;
+	margin-bottom: 4px;
+	/* border: 6px solid #000000; */
+	background: #333333;
+	color: #ffffff;
+	font-size: 19px;
+	text-align: center;
+	line-height: 28px;
+	font-weight: bold;
+}
+
+#movieshowrate .rank {
+	display: block;
+	height: 28px;
+	margin-bottom: 4px;
+	/* border: 6px solid #000000; */
+	background: #333333;
+	color: #ffffff;
+	font-size: 19px;
+	text-align: center;
+	line-height: 28px;
+}
+
+#movieshowrate div.box-img img.icon {
+	position: absolute;
+	width: 20px;
+	left: 5px;
+	top: 5px;
+	border-radius: 3px;
+}
+
+#movieshowrate .img-rank1 {
+	display: block;
+	position: relative;
+}
+
+#movieshowrate .img-rank2 {
+	display: block;
+	position: relative;
+}
+
+#movieshowrate a.link-reservation {
+	background: #fb4357; /* 배경색 설정 */
+	border-radius: 5px;
+	color: white;
+	font-size: 9pt;
+	padding: 3px;
+	margin: 5px 3px 0px 0px;
+	width: 97px; /* 너비 설정 */
+	height: 25px; /* 높이 설정 */
+	display: inline-block; /* 링크를 블록 요소로 표시 */
+	text-align: center; /* 텍스트 가운데 정렬 */
+	line-height: 18px; /* 텍스트 세로 중앙 정렬 */
+	vertical-align: middle;
+}
+
+#movieshowrate .title {
+	font-size: 15px;
+	display: block;
+	color: #333333;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	font-weight: bold;
+}
+
+#movieshowrate strong {
+	font-weight: 500;
+}
+
+#movieshowrate .score {
+	margin-top: 7px;
+	font-size: 11px;
+}
+
+#movieshowrate .score .rate .movie-grade {
+	vertical-align: middle;
+}
+
+#movieshowrate .score .movie-grade {
+	margin-top: -10px;
+	padding-left: 6px;
+}
+
+#movieshowrate .movie-grade {
+	display: inline-block;
+	width: auto;
+	line-height: 1;
+}
+
+#movieshowrate .txt-info {
+	margin-top: 3px;
+	height: 13px;
+	color: #666666;
+	/* font-weight: 500; */
+	white-space: nowrap;
+}
+
+#movieshowrate .txt-info>strong {
+	font-size: 11px;
+}
+
+#movieshowrate em {
+	font-style: normal;
+}
+
+#movieshowrate .dday {
+	display: inline-block;
+	margin-left: 5px;
+	color: #fb4357;
+	font-size: 12px;
+	font-family: Verdana, Geneva, sans-serif;
+	font-weight: bold;
+}
+
+#movieshowrate .box-img img {
+	width: 100%;
+}
+
+#movieshowrate .box-content {
+	margin-top: 7px;
+}
+/* //movieshowrate */
