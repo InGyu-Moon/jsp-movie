@@ -13,7 +13,7 @@ public class MemberDto {
 	private String address;
 	private String phoneNumber;
 	private String userPhoto;
-	
+
 	public int getId() {
 		return id;
 	}
@@ -74,14 +74,14 @@ public class MemberDto {
 	public void setUserPhoto(String userPhoto) {
 		this.userPhoto = userPhoto;
 	}
-	
-	
+
+
 	@Override
 	public String toString() {
 		return "MemberDto [id=" + id + ", userName=" + userName + ", password=" + password + ", name=" + name
 				+ ", gender=" + gender + ", email=" + email + ", birthdate=" + birthdate + ", address=" + address
 				+ ", phoneNumber=" + phoneNumber + ", userPhoto=" + userPhoto + "]";
 	}
-	
-	
+
+
 }
