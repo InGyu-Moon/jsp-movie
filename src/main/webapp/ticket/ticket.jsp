@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <jsp:include page="../include/header.html"></jsp:include>
+<title>극장 | 영화 그 이상의 감동</title>
 <body>
 	<div id="wrap">
 		<div class="ticket">
@@ -265,7 +266,6 @@
 	</div>
 	<jsp:include page="../include/footer.html"></jsp:include>
 	<script type="text/javascript">
-		$("title").text("극장");
 		var swiper = new Swiper(".swiper", {
 			/* 	autoplay : {
 					delay : 2500,
