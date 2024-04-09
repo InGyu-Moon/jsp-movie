@@ -14,7 +14,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&display=swap" rel="stylesheet">
 
-    <title>Insert title here</title>
+    <title>관리자 페이지</title>
 </head>
 <body style=" font-family: 'IBM Plex Sans KR';">
 <%
