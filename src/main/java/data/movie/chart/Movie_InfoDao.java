@@ -2,8 +2,6 @@ package data.movie.chart;
 
 import java.sql.Connection;
 
-
-
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -490,7 +488,7 @@ public class Movie_InfoDao {
 		return elistschedule;
 	}
 
-	//movie_id에 대한 dto 반환
+	// movie_id에 대한 dto 반환
 	public Movie_InfoDto getData(String movie_id) {
 		Movie_InfoDto dto = new Movie_InfoDto();
 
@@ -500,8 +498,7 @@ public class Movie_InfoDao {
 
 		String sql = "SELECT MI.MOVIE_ID, MI.MOVIE_TITLE, MI.RUNNING_TIME, MI.VIEWING_RATING, MI.DIRECTOR, MI.CAST, MI.BOOKING_RATE, \r\n"
 				+ "MI.RELEASE_DATE, MI.GENRE, MI.MOVIE_DESCRIPTION, MI.RATING, MI.END_DATE, MI.COUNTRY,\r\n"
-				+ "M_IMAGES.IMAGE_LINK\r\n"
-				+ "FROM MOVIE_INFO MI\r\n"
+				+ "M_IMAGES.IMAGE_LINK\r\n" + "FROM MOVIE_INFO MI\r\n"
 				+ "LEFT JOIN MOVIE_IMAGES M_IMAGES ON MI.MOVIE_ID = M_IMAGES.MOVIE_ID\r\n"
 				+ "WHERE MI.MOVIE_ID = ? and M_IMAGES.IMAGE_ID = MI.Movie_id";
 

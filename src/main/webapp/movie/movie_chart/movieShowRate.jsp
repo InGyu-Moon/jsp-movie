@@ -475,7 +475,7 @@ $(function () {
                             <a href="index.jsp?main=movie/movieDetail.jsp?movie_id=<%=dto.getMovie_id()%>">
                                 <span class="img-rank1">
                                     <img src="<%=dto.getImage_link()%>">
-                                    <img class="icon" src="../images/vrating/<%=dto.getViewing_rating() %>.png">
+                                    <img class="icon" src="../../images/vrating/<%=dto.getViewing_rating() %>.png">
                                 </span>
                             </a>
                             <span class="screentype"></span>
