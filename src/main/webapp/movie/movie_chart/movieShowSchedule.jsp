@@ -1,5 +1,5 @@
-<%@page import="data.movie.chart.Movie_InfoDto"%>
-<%@page import="data.movie.chart.Movie_InfoDao"%>
+<%@page import="data.movie.chart.MovieInfoDto"%>
+<%@page import="data.movie.chart.MovieInfoDao"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.LinkedHashMap"%>
 <%@page import="java.util.Map"%>
@@ -315,9 +315,9 @@ $(function () {
 </script>
 </head>
 <%
-    Movie_InfoDao dao = new Movie_InfoDao();
-    List<Movie_InfoDto> list = dao.getThreeMovieSchedule();
-    List<Movie_InfoDto> elist = dao.getElseMovieSchedule();
+MovieInfoDao dao = new MovieInfoDao();
+    List<MovieInfoDto> list = dao.getThreeMovieSchedule();
+    List<MovieInfoDto> elist = dao.getElseMovieSchedule();
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
 %>
 <body>
@@ -344,49 +344,49 @@ $(function () {
                 <!-- 1,2,3위 만 정렬 -->
                 <ol class="olThree">
                <%
-                int no=1;
-                String todayStr = sdf.format(new Date());
-                Date today = sdf.parse(todayStr); // 현재 날짜 설정
-                for(Movie_InfoDto dto:list){
-                    String dDayText = ""; // D-day 텍스트 초기화
-                    if (dto.getRelease_date() != null) {
-                    	String releaseDateStr = sdf.format(dto.getRelease_date());
-                        Date releaseDate = sdf.parse(releaseDateStr);
-                        long diffInMillies = releaseDate.getTime() - today.getTime();
-                        long diffInDays = diffInMillies / (1000 * 60 * 60 * 24);
-                        if (diffInDays > 0) {
-                            dDayText = "D-" + diffInDays; // 남은 날짜인 경우
-                        }
-                    }
-                %>
+               int no=1;
+                               String todayStr = sdf.format(new Date());
+                               Date today = sdf.parse(todayStr); // 현재 날짜 설정
+                               for(MovieInfoDto dto:list){
+                                   String dDayText = ""; // D-day 텍스트 초기화
+                                   if (dto.getReleaseDate() != null) {
+                                   	String releaseDateStr = sdf.format(dto.getReleaseDate());
+                                       Date releaseDate = sdf.parse(releaseDateStr);
+                                       long diffInMillies = releaseDate.getTime() - today.getTime();
+                                       long diffInDays = diffInMillies / (1000 * 60 * 60 * 24);
+                                       if (diffInDays > 0) {
+                                           dDayText = "D-" + diffInDays; // 남은 날짜인 경우
+                                       }
+                                   }
+               %>
                     <li>
                         <div class="box-img">
-                            <strong class="rank1">No.<%=no++ %></strong>
-                            <a href="index.jsp?main=movie/movie_chart/movieDetail.jsp?movie_id=<%=dto.getMovie_id()%>">
+                            <strong class="rank1">No.<%=no++%></strong>
+                            <a href="index.jsp?main=movie/movie_chart/movieDetail.jsp?movie_id=<%=dto.getMovieId()%>">
                                 <span class="img-rank1">
-                                    <img src="<%=dto.getImage_link()%>">
-                                    <img class="icon" src="../images/vrating/<%=dto.getViewing_rating()%>.png">
+                                    <img src="<%=dto.getImageLink()%>">
+                                    <img class="icon" src="../images/vrating/<%=dto.getViewingRating()%>.png">
                                 </span>
                             </a>
                             <span class="screentype"></span>
                         </div>
                         <div class="box-content">
-                            <a href="movieDetail.jsp?movie_id=<%=dto.getMovie_id()%>">
-                            <strong class="title"><%=dto.getMovie_title() %></strong>
+                            <a href="movieDetail.jsp?movie_id=<%=dto.getMovieId()%>">
+                            <strong class="title"><%=dto.getMovieTitle()%></strong>
                             </a>
                             <div class="score">
                                 <strong class="rate">예매율
-                                    <span class="rate-percent"><%=dto.getBooking_rate()%>%&nbsp;&nbsp;&nbsp;|</span>
+                                    <span class="rate-percent"><%=dto.getBookingRate()%>%&nbsp;&nbsp;&nbsp;|</span>
                                 </strong>
                                 <strong class="movie-grade">평점
-                                    <span class="grade-percent"><%=dto.getRating() %></span>
+                                    <span class="grade-percent"><%=dto.getRating()%></span>
                                 </strong>
                             </div>
                             <span class="txt-info">
                                 <strong>
-                                <%=sdf.format(dto.getRelease_date()) %>
+                                <%=sdf.format(dto.getReleaseDate())%>
                                 <span>개봉</span>
-                                <em class="dday"><%=dDayText %></em>
+                                <em class="dday"><%=dDayText%></em>
                                 </strong>
                             </span>
                             <br>
@@ -401,73 +401,70 @@ $(function () {
                 %>
                 </ol>
                 <!-- 해당날짜에 맞는 영화들을 4개씩 정렬 -->
-                <%!
-             	// currentDate의 요일을 반환하는 함수
+                <%!// currentDate의 요일을 반환하는 함수
                 public String getDayOfWeek(Date currentDate) {
                     SimpleDateFormat sdf = new SimpleDateFormat("E"); // "E"는 요일을 나타내는 패턴입니다.
                     return sdf.format(currentDate);
-                }
-                %>
+                }%>
                 <%
-                
-				// 해당 날짜에 맞는 영화들을 조회
-				Map<Date, List<Movie_InfoDto>> moviesByDate = new LinkedHashMap<>(); // LinkedHashMap을 사용하여 날짜 순서를 유지합니다.
-				
-				// 영화들을 날짜별로 그룹화
-				for (Movie_InfoDto dto : elist) {
-				    Date releaseDate = dto.getRelease_date();
-				    List<Movie_InfoDto> moviesForDate = moviesByDate.get(releaseDate);
-				    if (moviesForDate == null) {
-				        moviesForDate = new ArrayList<>();
-				        moviesByDate.put(releaseDate, moviesForDate);
-				    }
-				    moviesForDate.add(dto);
-				}
-				
-				// 각 날짜별로 영화를 출력
-				for (Map.Entry<Date, List<Movie_InfoDto>> entry : moviesByDate.entrySet()) {
-				    Date currentDate = entry.getKey();
-				    List<Movie_InfoDto> movies = entry.getValue();
-				
-				    // 날짜가 바뀌면 새로운 행 생성
-				%>
+                // 해당 날짜에 맞는 영화들을 조회
+                		Map<Date, List<MovieInfoDto>> moviesByDate = new LinkedHashMap<>(); // LinkedHashMap을 사용하여 날짜 순서를 유지합니다.
+                		
+                		// 영화들을 날짜별로 그룹화
+                		for (MovieInfoDto dto : elist) {
+                		    Date releaseDate = dto.getReleaseDate();
+                		    List<MovieInfoDto> moviesForDate = moviesByDate.get(releaseDate);
+                		    if (moviesForDate == null) {
+                		        moviesForDate = new ArrayList<>();
+                		        moviesByDate.put(releaseDate, moviesForDate);
+                		    }
+                		    moviesForDate.add(dto);
+                		}
+                		
+                		// 각 날짜별로 영화를 출력
+                		for (Map.Entry<Date, List<MovieInfoDto>> entry : moviesByDate.entrySet()) {
+                		    Date currentDate = entry.getKey();
+                		    List<MovieInfoDto> movies = entry.getValue();
+                		
+                		    // 날짜가 바뀌면 새로운 행 생성
+                %>
                 <h4>
                 	<span class="hidden">상영예정작</span>
-                	<%= sdf.format(currentDate) %>(<%= getDayOfWeek(currentDate) %>)
+                	<%=sdf.format(currentDate)%>(<%=getDayOfWeek(currentDate)%>)
                 </h4>
                 <ol class="olElse">
                 <%
                 int no2=4;
-                for(Movie_InfoDto dto:elist){
-                    String dDayText = ""; // D-day 텍스트 초기화
-                    if (dto.getRelease_date() != null) {
-                        Date releaseDate = dto.getRelease_date();
-                        long diffInMillies = releaseDate.getTime() - today.getTime();
-                        long diffInDays = diffInMillies / (1000 * 60 * 60 * 24);
-                        if (diffInDays > 0) {
-                            dDayText = "D-" + diffInDays; // 남은 날짜인 경우
-                        }
-                    }
-                    
-                    if (dto.getRelease_date().equals(currentDate)) {
+                                for(MovieInfoDto dto:elist){
+                                    String dDayText = ""; // D-day 텍스트 초기화
+                                    if (dto.getReleaseDate() != null) {
+                                        Date releaseDate = dto.getReleaseDate();
+                                        long diffInMillies = releaseDate.getTime() - today.getTime();
+                                        long diffInDays = diffInMillies / (1000 * 60 * 60 * 24);
+                                        if (diffInDays > 0) {
+                                            dDayText = "D-" + diffInDays; // 남은 날짜인 경우
+                                        }
+                                    }
+                                    
+                                    if (dto.getReleaseDate().equals(currentDate)) {
                 %>
                     <li>
                         <div class="box-img">
-                            <a href="index.jsp?main=movie/movie_chart/movieDetail.jsp?movie_id=<%=dto.getMovie_id()%>">
+                            <a href="index.jsp?main=movie/movie_chart/movieDetail.jsp?movie_id=<%=dto.getMovieId()%>">
                                 <span class="img-rank2">
-                                    <img src="<%=dto.getImage_link()%>">
-                                    <img class="icon" src="../images/vrating/<%=dto.getViewing_rating() %>.png">
+                                    <img src="<%=dto.getImageLink()%>">
+                                    <img class="icon" src="../images/vrating/<%=dto.getViewingRating() %>.png">
                                 </span>
                             </a>
                             <span class="screentype"></span>
                         </div>
                         <div class="box-content">
-                            <a href="index.jsp?main=movie/movie_chart/movieDetail.jsp?movie_id=<%=dto.getMovie_id()%>">
-                            <strong class="title"><%=dto.getMovie_title() %></strong>
+                            <a href="index.jsp?main=movie/movie_chart/movieDetail.jsp?movie_id=<%=dto.getMovieId()%>">
+                            <strong class="title"><%=dto.getMovieTitle() %></strong>
                             </a>
                             <div class="score">
                                 <strong class="rate">예매율
-                                    <span class="rate-percent"><%=dto.getBooking_rate()%>%&nbsp;&nbsp;&nbsp;|</span>
+                                    <span class="rate-percent"><%=dto.getBookingRate()%>%&nbsp;&nbsp;&nbsp;|</span>
                                 </strong>
                                 <strong class="movie-grade">평점
                                     <span class="grade-percent"><%=dto.getRating() %></span>
@@ -475,7 +472,7 @@ $(function () {
                             </div>
                             <span class="txt-info">
                                 <strong>
-                                <%=sdf.format(dto.getRelease_date()) %>
+                                <%=sdf.format(dto.getReleaseDate()) %>
                                 <span>개봉</span>
                                 <em class="dday"><%=dDayText %></em>
                                 </strong>

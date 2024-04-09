@@ -1,5 +1,5 @@
-<%@page import="data.movie.chart.Movie_InfoDto"%>
-<%@page import="data.movie.chart.Movie_InfoDao"%>
+<%@page import="data.movie.chart.MovieInfoDto"%>
+<%@page import="data.movie.chart.MovieInfoDao"%>
 <%@page import="java.util.Date"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.List"%>
@@ -394,15 +394,14 @@ $(function () {
 </script>
 </head>
 <%
-    //프로젝트 경로
+//프로젝트 경로
     //String root = request.getContextPath();
-    Movie_InfoDao dao = new Movie_InfoDao();
-    List<Movie_InfoDto> list = dao.getThreeMovieData2();
-    List<Movie_InfoDto> elist = dao.getElseMovieData2();
-    List<Movie_InfoDto> listchk = dao.getThreeMovieDataChk2();
-    List<Movie_InfoDto> elistchk = dao.getElseMovieDataChk2();
+    MovieInfoDao dao = new MovieInfoDao();
+    List<MovieInfoDto> list = dao.getThreeMovieData2();
+    List<MovieInfoDto> elist = dao.getElseMovieData2();
+    List<MovieInfoDto> listchk = dao.getThreeMovieDataChk2();
+    List<MovieInfoDto> elistchk = dao.getElseMovieDataChk2();
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
-    
 %>
 <body>
 <div id="wrap">
@@ -443,43 +442,43 @@ $(function () {
                 <!-- 1,2,3위 만 정렬 -->
                 <ol class="olThree">
                <%
-                int no=1;
-                String todayStr = sdf.format(new Date());
-                Date today = sdf.parse(todayStr); // 현재 날짜 설정
-                for(Movie_InfoDto dto:list){
-                    String dDayText = ""; // D-day 텍스트 초기화
-                    if (dto.getRelease_date() != null) {
-                    	String releaseDateStr = sdf.format(dto.getRelease_date());
-                        Date releaseDate = sdf.parse(releaseDateStr);
-                        long diffInMillies = releaseDate.getTime() - today.getTime();
-                        long diffInDays = diffInMillies / (1000 * 60 * 60 * 24);
-                        if (diffInDays < 0) {
-                            dDayText = ""; // 이미 지난 날짜인 경우
-                        } else if (diffInDays == 0) {
-                            dDayText = "D-day"; // 오늘인 경우
-                        } else {
-                            dDayText = "D-" + diffInDays; // 남은 날짜인 경우
-                        }
-                    }
-                %>
+               int no=1;
+                               String todayStr = sdf.format(new Date());
+                               Date today = sdf.parse(todayStr); // 현재 날짜 설정
+                               for(MovieInfoDto dto:list){
+                                   String dDayText = ""; // D-day 텍스트 초기화
+                                   if (dto.getReleaseDate() != null) {
+                                   	String releaseDateStr = sdf.format(dto.getReleaseDate());
+                                       Date releaseDate = sdf.parse(releaseDateStr);
+                                       long diffInMillies = releaseDate.getTime() - today.getTime();
+                                       long diffInDays = diffInMillies / (1000 * 60 * 60 * 24);
+                                       if (diffInDays < 0) {
+                                           dDayText = ""; // 이미 지난 날짜인 경우
+                                       } else if (diffInDays == 0) {
+                                           dDayText = "D-day"; // 오늘인 경우
+                                       } else {
+                                           dDayText = "D-" + diffInDays; // 남은 날짜인 경우
+                                       }
+                                   }
+               %>
                     <li>
                         <div class="box-img">
-                            <strong class="rank1">No.<%=no++ %></strong>
-                            <a href="../movieDetail.jsp?movie_id=<%=dto.getMovie_id()%>">
+                            <strong class="rank1">No.<%=no++%></strong>
+                            <a href="../movieDetail.jsp?movie_id=<%=dto.getMovieId()%>">
                                 <span class="img-rank1">
-                                    <img src="<%=dto.getImage_link()%>">
-                                    <img class="icon" src="../images/vrating/<%=dto.getViewing_rating() %>.png">
+                                    <img src="<%=dto.getImageLink()%>">
+                                    <img class="icon" src="../images/vrating/<%=dto.getViewingRating()%>.png">
                                 </span>
                             </a>
                             <span class="screentype"></span>
                         </div>
                         <div class="box-content">
-                            <a href="../movieDetail.jsp?movie_id=<%=dto.getMovie_id()%>">
-                            <strong class="title"><%=dto.getMovie_title()%></strong>
+                            <a href="../movieDetail.jsp?movie_id=<%=dto.getMovieId()%>">
+                            <strong class="title"><%=dto.getMovieTitle()%></strong>
                             </a>
                             <div class="score">
                                 <strong class="rate">예매율
-                                    <span class="rate-percent"><%=dto.getBooking_rate()%>%&nbsp;&nbsp;&nbsp;|</span>
+                                    <span class="rate-percent"><%=dto.getBookingRate()%>%&nbsp;&nbsp;&nbsp;|</span>
                                 </strong>
                                 <strong class="movie-grade">평점
                                     <span class="grade-percent"><%=dto.getRating()%></span>
@@ -487,9 +486,9 @@ $(function () {
                             </div>
                             <span class="txt-info">
                                 <strong>
-                                <%=sdf.format(dto.getRelease_date()) %>
+                                <%=sdf.format(dto.getReleaseDate())%>
                                 <span>개봉</span>
-                                <em class="dday"><%=dDayText %></em>
+                                <em class="dday"><%=dDayText%></em>
                                 </strong>
                             </span>
                             <br>
@@ -507,49 +506,49 @@ $(function () {
                 <ol class="olElse">
                 <%
                 int no2=4;
-                for(Movie_InfoDto dto:elist){
-                    String dDayText = ""; // D-day 텍스트 초기화
-                    if (dto.getRelease_date() != null) {
-                        Date releaseDate = dto.getRelease_date();
-                        long diffInMillies = releaseDate.getTime() - today.getTime();
-                        long diffInDays = diffInMillies / (1000 * 60 * 60 * 24);
-                        if (diffInDays < 0) {
-                            dDayText = ""; // 이미 지난 날짜인 경우
-                        } else if (diffInDays == 0) {
-                            dDayText = "D-day"; // 오늘인 경우
-                        } else {
-                            dDayText = "D-" + diffInDays; // 남은 날짜인 경우
-                        }
-                    }
+                                for(MovieInfoDto dto:elist){
+                                    String dDayText = ""; // D-day 텍스트 초기화
+                                    if (dto.getReleaseDate() != null) {
+                                        Date releaseDate = dto.getReleaseDate();
+                                        long diffInMillies = releaseDate.getTime() - today.getTime();
+                                        long diffInDays = diffInMillies / (1000 * 60 * 60 * 24);
+                                        if (diffInDays < 0) {
+                                            dDayText = ""; // 이미 지난 날짜인 경우
+                                        } else if (diffInDays == 0) {
+                                            dDayText = "D-day"; // 오늘인 경우
+                                        } else {
+                                            dDayText = "D-" + diffInDays; // 남은 날짜인 경우
+                                        }
+                                    }
                 %>
                     <li>
                         <div class="box-img">
-                            <strong class="rank2">No.<%=no2++ %></strong>
-                            <a href="../movieDetail.jsp?movie_id=<%=dto.getMovie_id()%>">
+                            <strong class="rank2">No.<%=no2++%></strong>
+                            <a href="../movieDetail.jsp?movie_id=<%=dto.getMovieId()%>">
                                 <span class="img-rank2">
-                                    <img src="<%=dto.getImage_link()%>">
-                                    <img class="icon" src="../images/vrating/<%=dto.getViewing_rating() %>.png">
+                                    <img src="<%=dto.getImageLink()%>">
+                                    <img class="icon" src="../images/vrating/<%=dto.getViewingRating()%>.png">
                                 </span>
                             </a>
                             <span class="screentype"></span>
                         </div>
                         <div class="box-content">
-                            <a href="../movieDetail.jsp?movie_id=<%=dto.getMovie_id()%>">
-                            <strong class="title"><%=dto.getMovie_title() %></strong>
+                            <a href="../movieDetail.jsp?movie_id=<%=dto.getMovieId()%>">
+                            <strong class="title"><%=dto.getMovieTitle()%></strong>
                             </a>
                             <div class="score">
                                 <strong class="rate">예매율
-                                    <span class="rate-percent"><%=dto.getBooking_rate()%>%&nbsp;&nbsp;&nbsp;|</span>
+                                    <span class="rate-percent"><%=dto.getBookingRate()%>%&nbsp;&nbsp;&nbsp;|</span>
                                 </strong>
                                 <strong class="movie-grade">평점
-                                    <span class="grade-percent"><%=dto.getRating() %></span>
+                                    <span class="grade-percent"><%=dto.getRating()%></span>
                                 </strong>
                             </div>
                             <span class="txt-info">
                                 <strong>
-                                <%=sdf.format(dto.getRelease_date()) %>
+                                <%=sdf.format(dto.getReleaseDate())%>
                                 <span>개봉</span>
-                                <em class="dday"><%=dDayText %></em>
+                                <em class="dday"><%=dDayText%></em>
                                 </strong>
                             </span>
                             <br>
@@ -560,14 +559,14 @@ $(function () {
                         </div>
                     </li>
                     <%
-                     // 4개마다 새로운 ol 요소 시작
-                    if ((no2 - 4) % 4 == 0 && no2 != 4) {
+                    // 4개마다 새로운 ol 요소 시작
+                                        if ((no2 - 4) % 4 == 0 && no2 != 4) {
                     %>
                     </ol>
                     <ol class="olElse">
                     <%
-                        }
                     }
+                                        }
                     %>
                 </ol>    
             </div>
@@ -575,53 +574,53 @@ $(function () {
                 <!-- 1,2,3위 만 정렬 -->
                 <ol class="olThreeChk">
                <%
-                int nochk=1;
-                String todayStrChk = sdf.format(new Date());
-                Date todayChk = sdf.parse(todayStrChk); // 현재 날짜 설정
-                for(Movie_InfoDto dto:listchk){
-                    String dDayText = ""; // D-day 텍스트 초기화
-                    if (dto.getRelease_date() != null) {
-                    	String releaseDateStr = sdf.format(dto.getRelease_date());
-                        Date releaseDate = sdf.parse(releaseDateStr);
-                        long diffInMillies = releaseDate.getTime() - todayChk.getTime();
-                        long diffInDays = diffInMillies / (1000 * 60 * 60 * 24);
-                        if (diffInDays < 0) {
-                            dDayText = ""; // 이미 지난 날짜인 경우
-                        } else if (diffInDays == 0) {
-                            dDayText = "D-day"; // 오늘인 경우
-                        } else {
-                            dDayText = "D-" + diffInDays; // 남은 날짜인 경우
-                        }
-                    }
-                %>
+               int nochk=1;
+                               String todayStrChk = sdf.format(new Date());
+                               Date todayChk = sdf.parse(todayStrChk); // 현재 날짜 설정
+                               for(MovieInfoDto dto:listchk){
+                                   String dDayText = ""; // D-day 텍스트 초기화
+                                   if (dto.getReleaseDate() != null) {
+                                   	String releaseDateStr = sdf.format(dto.getReleaseDate());
+                                       Date releaseDate = sdf.parse(releaseDateStr);
+                                       long diffInMillies = releaseDate.getTime() - todayChk.getTime();
+                                       long diffInDays = diffInMillies / (1000 * 60 * 60 * 24);
+                                       if (diffInDays < 0) {
+                                           dDayText = ""; // 이미 지난 날짜인 경우
+                                       } else if (diffInDays == 0) {
+                                           dDayText = "D-day"; // 오늘인 경우
+                                       } else {
+                                           dDayText = "D-" + diffInDays; // 남은 날짜인 경우
+                                       }
+                                   }
+               %>
                     <li>
                         <div class="box-img">
-                            <strong class="rank1">No.<%=nochk++ %></strong>
-                            <a href="../movieDetail.jsp?movie_id=<%=dto.getMovie_id()%>">
+                            <strong class="rank1">No.<%=nochk++%></strong>
+                            <a href="../movieDetail.jsp?movie_id=<%=dto.getMovieId()%>">
                                 <span class="img-rank1">
-                                    <img src="<%=dto.getImage_link()%>">
-                                    <img class="icon" src="../images/vrating/<%=dto.getViewing_rating() %>.png">
+                                    <img src="<%=dto.getImageLink()%>">
+                                    <img class="icon" src="../images/vrating/<%=dto.getViewingRating()%>.png">
                                 </span>
                             </a>
                             <span class="screentype"></span>
                         </div>
                         <div class="box-content">
-                            <a href="../movieDetail.jsp?movie_id=<%=dto.getMovie_id()%>">
-                            <strong class="title"><%=dto.getMovie_title() %></strong>
+                            <a href="../movieDetail.jsp?movie_id=<%=dto.getMovieId()%>">
+                            <strong class="title"><%=dto.getMovieTitle()%></strong>
                             </a>
                             <div class="score">
                                 <strong class="rate">예매율
-                                    <span class="rate-percent"><%=dto.getBooking_rate()%>%&nbsp;&nbsp;&nbsp;|</span>
+                                    <span class="rate-percent"><%=dto.getBookingRate()%>%&nbsp;&nbsp;&nbsp;|</span>
                                 </strong>
                                 <strong class="movie-grade">평점
-                                    <span class="grade-percent"><%=dto.getRating() %></span>
+                                    <span class="grade-percent"><%=dto.getRating()%></span>
                                 </strong>
                             </div>
                             <span class="txt-info">
                                 <strong>
-                                <%=sdf.format(dto.getRelease_date()) %>
+                                <%=sdf.format(dto.getReleaseDate())%>
                                 <span>개봉</span>
-                                <em class="dday"><%=dDayText %></em>
+                                <em class="dday"><%=dDayText%></em>
                                 </strong>
                             </span>
                             <br>
@@ -639,39 +638,39 @@ $(function () {
                 <ol class="olElseChk">
                 <%
                 int no2chk=4;
-                for(Movie_InfoDto dto:elistchk){
-                    String dDayText = ""; // D-day 텍스트 초기화
-                    if (dto.getRelease_date() != null) {
-                        Date releaseDate = dto.getRelease_date();
-                        long diffInMillies = releaseDate.getTime() - todayChk.getTime();
-                        long diffInDays = diffInMillies / (1000 * 60 * 60 * 24);
-                        if (diffInDays < 0) {
-                            dDayText = ""; // 이미 지난 날짜인 경우
-                        } else if (diffInDays == 0) {
-                            dDayText = "D-day"; // 오늘인 경우
-                        } else {
-                            dDayText = "D-" + diffInDays; // 남은 날짜인 경우
-                        }
-                    }
+                                for(MovieInfoDto dto:elistchk){
+                                    String dDayText = ""; // D-day 텍스트 초기화
+                                    if (dto.getReleaseDate() != null) {
+                                        Date releaseDate = dto.getReleaseDate();
+                                        long diffInMillies = releaseDate.getTime() - todayChk.getTime();
+                                        long diffInDays = diffInMillies / (1000 * 60 * 60 * 24);
+                                        if (diffInDays < 0) {
+                                            dDayText = ""; // 이미 지난 날짜인 경우
+                                        } else if (diffInDays == 0) {
+                                            dDayText = "D-day"; // 오늘인 경우
+                                        } else {
+                                            dDayText = "D-" + diffInDays; // 남은 날짜인 경우
+                                        }
+                                    }
                 %>
                     <li>
                         <div class="box-img">
                             <strong class="rank2">No.<%=no2chk++ %></strong>
-                            <a href="../movieDetail.jsp?movie_id=<%=dto.getMovie_id()%>">
+                            <a href="../movieDetail.jsp?movie_id=<%=dto.getMovieId()%>">
                                 <span class="img-rank2">
-                                    <img src="<%=dto.getImage_link()%>">
-                                    <img class="icon" src="../images/vrating/<%=dto.getViewing_rating()%>.png">
+                                    <img src="<%=dto.getImageLink()%>">
+                                    <img class="icon" src="../images/vrating/<%=dto.getViewingRating()%>.png">
                                 </span>
                             </a>
                             <span class="screentype"></span>
                         </div>
                         <div class="box-content">
-                            <a href="../movieDetail.jsp?movie_id=<%=dto.getMovie_id()%>">
-                            <strong class="title"><%=dto.getMovie_title() %></strong>
+                            <a href="../movieDetail.jsp?movie_id=<%=dto.getMovieId()%>">
+                            <strong class="title"><%=dto.getMovieTitle() %></strong>
                             </a>
                             <div class="score">
                                 <strong class="rate">예매율
-                                    <span class="rate-percent"><%=dto.getBooking_rate()%>%&nbsp;&nbsp;&nbsp;|</span>
+                                    <span class="rate-percent"><%=dto.getBookingRate()%>%&nbsp;&nbsp;&nbsp;|</span>
                                 </strong>
                                 <strong class="movie-grade">평점
                                     <span class="grade-percent"><%=dto.getRating()%></span>
@@ -679,7 +678,7 @@ $(function () {
                             </div>
                             <span class="txt-info">
                                 <strong>
-                                <%=sdf.format(dto.getRelease_date()) %>
+                                <%=sdf.format(dto.getReleaseDate()) %>
                                 <span>개봉</span>
                                 <em class="dday"><%=dDayText %></em>
                                 </strong>
