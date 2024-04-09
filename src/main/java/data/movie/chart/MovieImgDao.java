@@ -16,7 +16,7 @@ public class MovieImgDao {
 
 	DbConnect db = new DbConnect();
 
-	public List<MovieImgDto> getImagesForMovie(String movie_id) {
+	public List<MovieImgDto> getImagesForMovie(String movieId) {
 		List<MovieImgDto> ilist = new ArrayList<MovieImgDto>();
 		
 		Connection conn = db.getConnection();
@@ -27,7 +27,7 @@ public class MovieImgDao {
 
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, movie_id);
+			pstmt.setString(1, movieId);
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {

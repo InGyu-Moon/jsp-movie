@@ -98,6 +98,7 @@ public class MovieInfoDao {
 				dto.setEndDate(rs.getDate("end_date"));
 				dto.setCountry(rs.getString("country"));
 				dto.setImageLink(rs.getString("image_link"));
+
 				elist.add(dto);
 			}
 		} catch (SQLException e) {
@@ -144,6 +145,7 @@ public class MovieInfoDao {
 				dto.setEndDate(rs.getDate("end_date"));
 				dto.setCountry(rs.getString("country"));
 				dto.setImageLink(rs.getString("image_link"));
+
 				listtwo.add(dto);
 			}
 		} catch (SQLException e) {

@@ -2,7 +2,6 @@
 db.properties
 src/main/java/db/mysql/DbProperties.java
 
-
 ### IntelliJ IDEA ###
 .idea/
 target/
