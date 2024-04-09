@@ -25,7 +25,7 @@
 
 			<div class="container">
 				<h2>게시판 글쓰기</h2>
-				<form action="?curr=faq/faqInsert.jsp" method="post">
+				<form action="faq/faqInsert.jsp" method="post">
 					<div class="row mb-3">
 						<label for="title" class="col-sm-1 col-form-label"><strong>구분</strong></label>
 						<div class="col-sm-2">
@@ -49,7 +49,7 @@
 						<textarea class="form-control" rows="5" id="answer"
 							name="answer" placeholder="내용 작성"></textarea>
 					</div>
-					<button type="submit" class="btn btn-outline-primary">등록</button>
+					<button type="submit" class="btn btn-outline-primary" >등록</button>
 				</form>
 			</div>
 

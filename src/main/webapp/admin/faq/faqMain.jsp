@@ -17,7 +17,7 @@
 		text-decoration: none; /* 링크의 밑줄 제거 */
 		color: inherit; /* 링크의 색상 제거 */
 	}
-	.table-custom th:nth-child(1) {W
+	.table-custom th:nth-child(1) {
 	    width: 10%; /* 1 / (1 + 3 + 6) * 100% */
 	}
 	
