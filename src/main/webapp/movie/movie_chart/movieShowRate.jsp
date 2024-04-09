@@ -472,7 +472,7 @@ MovieInfoDao dao = new MovieInfoDao();
                         <div class="box-img">
                         <input type="hidden" id="movie_id" value="<%=dto.getMovieId()%>">
                             <strong class="rank1">No.<%=no++%></strong>
-                            <a href="index.jsp?main=movie/movieDetail.jsp?movie_id=<%=dto.getMovieId()%>">
+                            <a href="movieDetail.jsp?movie_id=<%=dto.getMovieId()%>">
                                 <span class="img-rank1">
                                     <img src="<%=dto.getImageLink()%>">
                                     <img class="icon" src="../../img/movie_img/vrating/<%=dto.getViewingRating()%>.png">
@@ -481,7 +481,7 @@ MovieInfoDao dao = new MovieInfoDao();
                             <span class="screentype"></span>
                         </div>
                         <div class="box-content">
-                            <a href="index.jsp?main=movie/movie_chart/movieDetail.jsp?movie_id=<%=dto.getMovieId()%>">
+                            <a href="movieDetail.jsp?movie_id=<%=dto.getMovieId()%>">
                             <strong class="title"><%=dto.getMovieTitle()%></strong>
                             </a>
                             <div class="score">
@@ -532,7 +532,7 @@ MovieInfoDao dao = new MovieInfoDao();
                     <li>
                         <div class="box-img">
                             <strong class="rank2">No.<%=no2++%></strong>
-                            <a href="index.jsp?main=movie/movie_chart/movieDetail.jsp?movie_id=<%=dto.getMovieId()%>">
+                            <a href="movieDetail.jsp?movie_id=<%=dto.getMovieId()%>">
                                 <span class="img-rank2">
                                     <img src="<%=dto.getImageLink()%>">
                                     <img class="icon" src="../../img/movie_img/vrating/<%=dto.getViewingRating()%>.png">
@@ -541,7 +541,7 @@ MovieInfoDao dao = new MovieInfoDao();
                             <span class="screentype"></span>
                         </div>
                         <div class="box-content">
-                            <a href="index.jsp?main=movie/movie_chart/movieDetail.jsp?movie_id=<%=dto.getMovieId()%>">
+                            <a href="movieDetail.jsp?movie_id=<%=dto.getMovieId()%>">
                             <strong class="title"><%=dto.getMovieTitle()%></strong>
                             </a>
                             <div class="score">
@@ -604,7 +604,7 @@ MovieInfoDao dao = new MovieInfoDao();
                     <li>
                         <div class="box-img">
                             <strong class="rank1">No.<%=nochk++%></strong>
-                            <a href="index.jsp?main=movie/movie_chart/movieDetail.jsp?movie_id=<%=dto.getMovieId()%>">
+                            <a href="movieDetail.jsp?movie_id=<%=dto.getMovieId()%>">
                                 <span class="img-rank1">
                                     <img src="<%=dto.getImageLink()%>">
                                     <img class="icon" src="../../img/movie_img/vrating/<%=dto.getViewingRating()%>.png">
@@ -613,7 +613,7 @@ MovieInfoDao dao = new MovieInfoDao();
                             <span class="screentype"></span>
                         </div>
                         <div class="box-content">
-                            <a href="index.jsp?main=movie/movie_chart/movieDetail.jsp?movie_id=<%=dto.getMovieId()%>">
+                            <a href="movieDetail.jsp?movie_id=<%=dto.getMovieId()%>">
                             <strong class="title"><%=dto.getMovieTitle()%></strong>
                             </a>
                             <div class="score">
@@ -664,7 +664,7 @@ MovieInfoDao dao = new MovieInfoDao();
                     <li>
                         <div class="box-img">
                             <strong class="rank2">No.<%=no2chk++ %></strong>
-                            <a href="index.jsp?main=movie/movie_chart/movieDetail.jsp?movie_id=<%=dto.getMovieId()%>">
+                            <a href="movieDetail.jsp?movie_id=<%=dto.getMovieId()%>">
                                 <span class="img-rank2">
                                     <img src="<%=dto.getImageLink()%>">
                                     <img class="icon" src="../../img/movie_img/vrating/<%=dto.getViewingRating() %>.png">
@@ -673,7 +673,7 @@ MovieInfoDao dao = new MovieInfoDao();
                             <span class="screentype"></span>
                         </div>
                         <div class="box-content">
-                            <a href="index.jsp?main=movie/movie_chart/movieDetail.jsp?movie_id=<%=dto.getMovieId()%>">
+                            <a href="movieDetail.jsp?movie_id=<%=dto.getMovieId()%>">
                             <strong class="title"><%=dto.getMovieTitle() %></strong>
                             </a>
                             <div class="score">
