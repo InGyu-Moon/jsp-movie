@@ -3,17 +3,17 @@ package data.inform.notice;
 import java.sql.Timestamp;
 
 public class NoticeDto {
-    private int noticeId;
+    private String noticeId;
     private Category category;
     private String title;
     private String content;
     private Timestamp registeredDate;
 
-    public int getNoticeId() {
+    public String getNoticeId() {
         return noticeId;
     }
 
-    public void setNoticeId(int noticeId) {
+    public void setNoticeId(String noticeId) {
         this.noticeId = noticeId;
     }
 
@@ -58,4 +58,16 @@ public class NoticeDto {
     }
 
     private int viewCount;
+
+    @Override
+    public String toString() {
+        return "NoticeDto{" +
+                "noticeId='" + noticeId + '\'' +
+                ", category=" + category +
+                ", title='" + title + '\'' +
+                ", content='" + content + '\'' +
+                ", registeredDate=" + registeredDate +
+                ", viewCount=" + viewCount +
+                '}';
+    }
 }

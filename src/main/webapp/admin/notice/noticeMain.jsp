@@ -67,6 +67,46 @@
         }
 
     </style>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            // 전체체크 클릭 시 체크값 얻어서 모든 체크값에 전달
+            $(".th-check").click(function(){
+                // 전체 체크값 얻기
+                var chk=$(this).is(":checked"); // th-check 체크박스 체크 상태를 확인
+                console.log(chk);
+
+                //전체체크값을 글앞에 체크에 일괄 전달하기
+                $(".check").prop("checked",chk);
+            });
+
+            //선택삭제 버튼 클릭 시 삭제
+            $(".btndel").click(function(){
+
+                var len=$(".check:checked").length;
+                console.log(len);
+
+                if(len==0){
+                    alert("최소 1개이상의 글을 선택해 주세요");
+                }else{
+
+                    if(confirm("선택한 항목을 삭제하시겠습니까?")){
+                        //체크된 곳의 value값(num)얻기
+                        var n="";
+                        $(".check:checked").each(function(idx){
+                            n+=$(this).val()+",";
+                        });
+
+                        //마지막 컴마 제거
+                        n=n.substring(0,n.length-1);
+
+                        //삭제파일로 전송
+                        location.href="notice/noticeDelete.jsp?noticeId="+n;
+                    }
+                }
+            })
+
+        });
+    </script>
 </head>
 <body>
 <%
@@ -127,7 +167,7 @@
                 <td><input type="checkbox" class="check" value="<%=noticeDto.getNoticeId() %>"></td>
                 <td><%=noticeDto.getCategory() %></td>
                 <td>
-                    <a href="#!">&nbsp;&nbsp;<%=noticeDto.getTitle() %></a>
+                    <a href="adminMainPage.jsp?curr=notice/noticeDetail.jsp?noticeId=<%=noticeDto.getNoticeId()%>"><%=noticeDto.getTitle() %></a>
                 </td>
                 <td>
                     <%=sdf.format(noticeDto.getRegisteredDate())%>
