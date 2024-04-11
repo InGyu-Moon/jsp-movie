@@ -441,6 +441,53 @@ public class MovieInfoDao {
 		}
 		return listschedule;
 	}
+	// 메인페이지 상영예정작 예매순 4위 ~ 19위
+	public List<MovieInfoDto> mainMovieSchedule() {
+		List<MovieInfoDto> mainlistschedule = new ArrayList<MovieInfoDto>();
+		
+		Connection conn = db.getConnection();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		String sql = "SELECT MI.MOVIE_ID, MI.MOVIE_TITLE, MI.RUNNING_TIME, MI.VIEWING_RATING, MI.DIRECTOR, MI.CAST, MI.BOOKING_RATE, "
+				+ "MI.RELEASE_DATE, MI.GENRE, MI.MOVIE_DESCRIPTION, MI.RATING, MI.END_DATE, MI.COUNTRY, "
+				+ "M_IMAGES.IMAGE_LINK " + "FROM MOVIE_INFO MI "
+				+ "LEFT JOIN MOVIE_IMAGES M_IMAGES ON MI.MOVIE_ID = M_IMAGES.MOVIE_ID "
+				+ "WHERE M_IMAGES.IMAGE_ID = MI.MOVIE_ID " + "ORDER BY MI.BOOKING_RATE DESC " + "LIMIT 16 OFFSET 3";
+
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				MovieInfoDto dto = new MovieInfoDto();
+				
+				dto.setMovieId(rs.getString("movie_id"));
+				dto.setMovieTitle(rs.getString("movie_title"));
+				dto.setRunningTime(rs.getInt("running_time"));
+				dto.setViewingRating(rs.getString("viewing_rating"));
+				dto.setDirector(rs.getString("director"));
+				dto.setCast(rs.getString("cast"));
+				dto.setBookingRate(rs.getDouble("booking_rate"));
+				dto.setReleaseDate(rs.getDate("release_date"));
+				dto.setGenre(rs.getString("genre"));
+				dto.setMovieDescription(rs.getString("movie_description"));
+				dto.setRating(rs.getDouble("rating"));
+				dto.setEndDate(rs.getDate("end_date"));
+				dto.setCountry(rs.getString("country"));
+				dto.setImageLink(rs.getString("image_link"));
+				
+				mainlistschedule.add(dto);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			db.dbClose(rs, pstmt, conn);
+		}
+		return mainlistschedule;
+	}
 
 	// 상영예정작 예매순 날짜별
 	public List<MovieInfoDto> getElseMovieSchedule() {

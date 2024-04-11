@@ -36,8 +36,9 @@ $(".index .chart .top ul li").on('click', function() {
 	var idx = $(this).index();
 	$(this).parents(".chart").find(".box").removeClass("view");
 	$(this).parents(".chart").find(".box").eq(idx).addClass("view");
+	$(this).parents(".chart").find(".link").removeClass("view");
+	$(this).parents(".chart").find(".link").eq(idx).addClass("view");
 });
-
 
 //극장 지역 탭
 $(".ticket .region .line .main .category ul li").on('click', function() {
