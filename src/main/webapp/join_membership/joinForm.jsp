@@ -48,15 +48,17 @@ $(document).ready(function() {
         // 만약 선택된 값이 "직접입력"이라면
         if (selectedValue === "직접입력") {
             // email2 input 요소를 활성화하여 수정 가능하도록 변경
-            $("input[name='email2']").prop("disabled", false).prop("value", ""); // value 속성 변경
+            // disabled 속성이 적용된 input 요소는 폼 데이터로 전송되지 않음
+            $("input[name='email2']").prop("readonly", false).val(""); // value 속성 변경
         } else {
             // 선택된 값이 "직접입력"이 아니라면
             // email2 input 요소를 비활성화하고, 빈 값으로 설정
-            $("input[name='email2']").prop("disabled", true).prop("value", selectedValue); // value 속성 변경
-            
+            // disabled 속성이 적용된 input 요소는 폼 데이터로 전송되지 않음
+            $("input[name='email2']").prop("readonly", true).val(selectedValue); // value 속성 변경
         }
     });
 });
+
 $(document).ready(function() {
     // pwConfirm 요소를 숨김
     $("#pwConfirm").hide();
@@ -77,7 +79,7 @@ function pwCheck(){
 <body>
 	
 	<h2>회원가입</h2>
-	<form action="jainAction.jsp" method="post">
+	<form action="joinAction.jsp" method="post">
 		아이디 : <input type="text" name="username" id="username" required="required" placeholder="아이디 입력">
 				<button type="button" id="btnIdCheck" >중복체크</button>
 				<span class="idsuccess"></span><br>
@@ -86,8 +88,8 @@ function pwCheck(){
 				<span id="pwConfirm">비밀번호를 입력하세요</span><br>
 		회원 이름 : <input type="text" name="name"required="required" placeholder="이름"><br>
 		생년월일 / 성별 : <input type="date" name="birthdate"> &nbsp;
-				<input type="radio" name="gender" value="Male" >남성
-				  <input type="radio" name="gender" value="Female"/>여성
+				<input type="radio" name="gender" value="Male" checked>남성&nbsp;
+				  <input type="radio" name="gender" value="Female"/>여성&nbsp;
 				  <input type="radio" name="gender" value="Other"/>비공개
 				  <br>
 		휴대폰 번호 : <select name="phone_number1">
