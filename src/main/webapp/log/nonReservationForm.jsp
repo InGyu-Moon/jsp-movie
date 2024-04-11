@@ -10,9 +10,9 @@
 					<div class="log_nav_box">
 						<span onclick="location.href='loginForm.jsp'" class="log_nav"
 							style="background-color: #8c8c8c; color: white;">로그인</span> <span
-							onclick="location.href='nonLoginForm.jsp'" class="log_nav"
+							onclick="location.href='nonReservationForm.jsp'" class="log_nav"
 							style="background-color: #f04848; color: white;">비회원 예매</span> <span
-							onclick="location.href='#'" class="log_nav"
+							onclick="location.href='nonReservationCheckForm.jsp'" class="log_nav"
 							style="background-color: #8c8c8c; color: white;">비회원 예매확인</span>
 					</div>
 					<hr>
