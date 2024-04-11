@@ -177,6 +177,7 @@ public class MemberDao {
 		return list;
 	}
 
+	// get Member by id
 	public MemberDto getMemberById(String memberId) {
 		MemberDto dto = new MemberDto();
 
@@ -211,7 +212,9 @@ public class MemberDao {
 		return dto;
 	}
 
-	public void deleteMember(String memberId){
+	
+	// delete
+	public void deleteMember(int memberId){
 		Connection conn=db.getConnection();
 		PreparedStatement pstmt=null;
 
@@ -219,9 +222,12 @@ public class MemberDao {
 
 		try {
 			pstmt=conn.prepareStatement(sql);
+			pstmt.setInt(1, memberId);
 
-			pstmt.setString(1, memberId);
-			pstmt.execute();
+			int result = pstmt.executeUpdate();
+			if(result>0) System.out.println("member delete success");
+			else System.out.println("member delete error");
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally {
@@ -229,4 +235,66 @@ public class MemberDao {
 		}
 
 	}
+	
+
+	// count 
+	public int getCountMember() {
+		Connection conn = db.getConnection();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		String sql = "select count(*) from MEMBER_INFO";
+		int count = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				count = rs.getInt(1);
+			}
+			
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}finally {
+			db.dbClose(rs, pstmt, conn);
+		}
+		return count;
+	}
+	
+
+	// update 
+	public void updateMember(MemberDto member) {
+		Connection conn = db.getConnection();
+		PreparedStatement pstmt = null;
+
+		String sql = "update MEMBER_INFO "
+				+ "set username=?,password=?,name=?,gender=?,email=?,birthdate=?,address=?,phone_number=? "
+				+ "where member_id=?";
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, member.getUserName());
+			pstmt.setString(2, member.getPassword());
+			pstmt.setString(3, member.getName());
+			pstmt.setString(4, member.getGender().toString()); // 보통 String 쓴다는데 좀 더 조사 해볼 것
+			pstmt.setString(5, member.getEmail());
+			pstmt.setDate(6, member.getBirthdate());
+			pstmt.setString(7, member.getAddress());
+			pstmt.setString(8, member.getPhoneNumber());
+			pstmt.setInt(9, member.getId());
+
+			int result = pstmt.executeUpdate();
+			if(result > 0) System.out.println("member update success");
+			else System.out.println("member update error");
+
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}finally {
+			db.dbClose(pstmt, conn);
+		}
+
+	}
+
+	
 }

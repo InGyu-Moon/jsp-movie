@@ -18,6 +18,8 @@
 </head>
 <body style=" font-family: 'IBM Plex Sans KR';">
 <%
+    //TODO
+    // 관리자 로그인 주석 제거하기
 //    Boolean adminLogin = (Boolean)session.getAttribute("adminLogin");
 //    if(adminLogin==null || !adminLogin){
 //        response.sendRedirect("login/adminLoginPage.jsp");

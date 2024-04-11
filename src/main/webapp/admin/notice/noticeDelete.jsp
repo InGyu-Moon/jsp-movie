@@ -1,4 +1,4 @@
-<%@ page import="data.user.member.MemberDao" %>
+<%@ page import="data.inform.notice.NoticeDao" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <!DOCTYPE html>
@@ -13,25 +13,19 @@
 </head>
 <body>
 <%
-
-	request.setCharacterEncoding("utf-8");
-
-    String memberId = request.getParameter("memberId");
-    String selectMemberId = request.getParameter("selectMemberId");
+    String noticeIds = request.getParameter("noticeId");
 
     // ,로 분리해서 배열선언
-    String[] selectMemberIdStrings = selectMemberId.split(",");
+    String[] noticeIdStrings = noticeIds.split(",");
     // 배열의 갯수만큼 delete
-    MemberDao dao = new MemberDao();
-    for (String idString : selectMemberIdStrings) {
-        // 문자열을 int 형으로 변환
-        int id = Integer.parseInt(idString);
-        dao.deleteMember(id);
+    NoticeDao noticeDao = new NoticeDao();
+    for (String noticeId : noticeIdStrings) {
+        noticeDao.deleteNotice(noticeId);
     }
-    
-    System.out.println("삭제완료");
-    response.sendRedirect("../adminMainPage.jsp?curr=member/memberMain.jsp");
 
-%>
+
+    response.sendRedirect("../adminMainPage.jsp?curr=notice/noticeMain.jsp");
+
+%>>
 </body>
 </html>
