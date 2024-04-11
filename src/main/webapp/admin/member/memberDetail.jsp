@@ -1,3 +1,4 @@
+<%@page import="data.user.member.Gender"%>
 <%@ page import="data.user.member.MemberDao" %>
 <%@ page import="data.user.member.MemberDto" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -16,6 +17,20 @@
     String memberId = request.getParameter("memberId");
     MemberDao dao = new MemberDao();
     MemberDto dto = dao.getMemberById(memberId);
+    
+    String gender = dto.getGender().name();
+    
+    String str = dto.getEmail();
+	String[] parts = str.split("@");
+
+	// "@" 기준으로 분할된 첫 번째 부분
+	String firstEmail = parts[0];
+
+	// "@" 기준으로 분할된 두 번째 부분
+	String lastEmail = parts[1];
+	
+	System.out.println(firstEmail+"@"+lastEmail);
+    
     if(dto.getUserName()==null){
         System.out.println(dto.getUserName());
 %>
@@ -27,7 +42,7 @@
     }
 %>
 <body>
-<h2 style="margin-bottom: 50px">회원 관리</h2>
+<h2 style="margin-bottom: 50px">회원 정보</h2>
 <hr style="margin-bottom: 30px">
 <div>
     <%
@@ -44,20 +59,77 @@
 
     %>
     <br>
-    사용자명: <%= dto.getUserName() %><br>
-    이름: <%= dto.getName() %><br>
-    성별: <%= dto.getGender() %><br>
-    이메일: <%= dto.getEmail() %><br>
-    생년월일: <%= dto.getBirthdate() %><br>
-    주소: <%= dto.getAddress() %><br>
-    전화번호: <%= dto.getPhoneNumber() %><br>
-</div>
-<a type="button" class="btn btn-outline-primary" href="/admin/adminMainPage.jsp?curr=member/memberUpdateForm.jsp?memberId=<%=dto.getId()%>">수정</a>
-<a type="button" class="btn btn-outline-danger" href="member/memberDelete.jsp?memberId=<%=dto.getId()%>">삭제</a>
-<button class="btn btn-outline-success" onclick="history.back()">목록</button>
-
-
-
+	<form>
+		<table class="table" style="width: 80%;">
+			<tr style="background-color: #99aaff">
+				<th style="width: 30%; text-align: center; background-color: #99aaff;">구분</th>
+        		<th style="width: 70%; text-align: center; background-color: #99aaff;">정보</td>
+			</tr>
+			<tr>
+				<th style="width: 30%; text-align: center;">사용자명</th>
+        		<td style="width: 70%;">
+        			<%=dto.getUserName() %>
+        		</td>
+			</tr>
+			<tr>
+				<th style="width: 30%; text-align: center;">비밀번호</th>
+        		<td style="width: 70%;">
+        			<%=dto.getPassword() %>
+       			</td>
+			</tr>
+			<tr>
+				<th style="width: 30%; text-align: center;">이름</th>
+        		<td style="width: 70%;">
+        			<%=dto.getName() %>
+       			</td>
+			</tr>
+			<tr>
+				<th style="width: 30%; text-align: center;">생년월일</th>
+        		<td style="width: 70%;">
+        			<%=dto.getBirthdate() %>
+       			</td>
+			</tr>
+			<tr>
+				<th style="width: 30%; text-align: center;">성별</th>
+        		<td style="width: 70%;">
+        			<%
+        				String gen="";
+        				if(gender.equals("Male")) gen="남성";
+        				else if(gender.equals("Female")) gen="여성";
+        				else if(gender.equals("Other")) gen="비공개";
+        				else gen="NULL";
+        			%>
+        			<%=gen %>
+       			</td>
+			</tr>
+			<tr>
+				<th style="width: 30%; text-align: center;">이메일</th>
+        		<td style="width: 70%;">
+        			<%=dto.getEmail() %>
+        		</td>
+			</tr>
+			<tr>
+				<th style="width: 30%; text-align: center;">주소</th>
+        		<td style="width: 70%;">
+	        		<%=dto.getAddress() %>
+        		</td>
+			</tr>
+			<tr>
+				<th style="width: 30%; text-align: center;">핸드폰번호</th>
+        		<td style="width: 70%;">
+        			<%=dto.getPhoneNumber() %>
+       			</td>
+			</tr>
+			
+			
+		</table><br>
+		<div style="float: right; margin-right: 20%;">
+			<a type="button" class="btn btn-outline-warning" href="/admin/adminMainPage.jsp?curr=member/memberUpdateForm.jsp?memberId=<%=dto.getId()%>">수정</a>&nbsp;
+			<a type="button" class="btn btn-outline-danger" href="member/memberDelete.jsp?memberId=<%=dto.getId()%>">삭제</a>&nbsp;
+			<button class="btn btn-outline-success" onclick="history.back()">목록</button>
+	    </div>
+	</form>
+	
 </body>
 </html>
 </body>
