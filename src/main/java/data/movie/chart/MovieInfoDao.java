@@ -8,6 +8,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import data.user.member.Gender;
+import data.user.member.MemberDto;
 import db.mysql.DbConnect;
 
 public class MovieInfoDao {
@@ -527,5 +529,114 @@ public class MovieInfoDao {
 		}
 		return dto;
 	}
+
+	public List<MovieInfoDto> getAllMovies() {
+		List<MovieInfoDto> list = new ArrayList<>();
+
+		Connection conn=db.getConnection();
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+
+		String sql="select * from MOVIE_INFO order by movie_id";
+
+		try {
+			pstmt=conn.prepareStatement(sql);
+			rs=pstmt.executeQuery();
+
+			while(rs.next())
+			{
+				MovieInfoDto dto = new MovieInfoDto();
+				dto.setMovieId(rs.getString("movie_id"));
+				dto.setMovieTitle(rs.getString("movie_title"));
+				dto.setRunningTime(rs.getInt("running_time"));
+				dto.setViewingRating(rs.getString("viewing_rating"));
+				dto.setDirector(rs.getString("director"));
+				dto.setCast(rs.getString("cast"));
+				dto.setBookingRate(rs.getDouble("booking_rate"));
+				dto.setReleaseDate(rs.getDate("release_date"));
+				dto.setGenre(rs.getString("genre"));
+				dto.setMovieDescription(rs.getString("movie_description"));
+				dto.setRating(rs.getDouble("rating"));
+				dto.setEndDate(rs.getDate("end_date"));
+				dto.setCountry(rs.getString("country"));
+				dto.setMovieImg(rs.getString("movie_img"));
+				list.add(dto);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			db.dbClose(rs, pstmt, conn);
+		}
+		return list;
+	}
+
+	public int getMovieCount() {
+		Connection conn = db.getConnection();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		String sql = "select count(*) from MOVIE_INFO";
+		int count = 0;
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				count = rs.getInt(1);
+			}
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}finally {
+			db.dbClose(rs, pstmt, conn);
+		}
+		return count;
+	}
+
+	//페이지
+	public List<MovieInfoDto> getList(int start,int perPage)
+	{
+		List<MovieInfoDto> list=new ArrayList<>();
+		Connection conn=db.getConnection();
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+
+		String sql="select * from MOVIE_INFO order by movie_id desc limit ?,?";
+
+		try {
+			pstmt=conn.prepareStatement(sql);
+
+			pstmt.setInt(1, start);
+			pstmt.setInt(2, perPage);
+
+			rs=pstmt.executeQuery();
+
+			while(rs.next())
+			{
+				MovieInfoDto dto = new MovieInfoDto();
+				dto.setMovieId(rs.getString("movie_id"));
+				dto.setMovieTitle(rs.getString("movie_title"));
+				dto.setRunningTime(rs.getInt("running_time"));
+				dto.setViewingRating(rs.getString("viewing_rating"));
+				dto.setDirector(rs.getString("director"));
+				dto.setCast(rs.getString("cast"));
+				dto.setBookingRate(rs.getDouble("booking_rate"));
+				dto.setReleaseDate(rs.getDate("release_date"));
+				dto.setGenre(rs.getString("genre"));
+				dto.setMovieDescription(rs.getString("movie_description"));
+				dto.setRating(rs.getDouble("rating"));
+				dto.setEndDate(rs.getDate("end_date"));
+				dto.setCountry(rs.getString("country"));
+				dto.setMovieImg(rs.getString("movie_img"));
+				list.add(dto);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			db.dbClose(rs, pstmt, conn);
+		}
+
+		return list;
+	}
+
 
 }
