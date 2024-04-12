@@ -1,4 +1,4 @@
-<%@page import="data.user.member.Gender"%>
+r<%@page import="data.user.member.Gender"%>
 <%@ page import="data.user.member.MemberDao" %>
 <%@ page import="data.user.member.MemberDto" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -14,7 +14,7 @@
     <title>Insert title here</title>
 </head>
 <%
-    String memberId = request.getParameter("memberId");
+    int memberId = Integer.parseInt(request.getParameter("memberId"));
     MemberDao dao = new MemberDao();
     MemberDto dto = dao.getMemberById(memberId);
     
