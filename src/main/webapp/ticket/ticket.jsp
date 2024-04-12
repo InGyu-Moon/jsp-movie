@@ -1,7 +1,16 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
+<%@page import="data.ticket.TicketDao"%>
+<%@page import="data.ticket.TicketDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <jsp:include page="../include/header.html"></jsp:include>
 <title>극장 | 영화 그 이상의 감동</title>
+<%
+TicketDto tichekDto = new TicketDto();
+TicketDao tichekDao = new TicketDao();
+List<TicketDto> regionList = new ArrayList<TicketDto>();
+%>
 <body>
 	<div id="wrap">
 		<div class="ticket">
@@ -39,7 +48,7 @@
 							</div>
 							<div class="category">
 								<ul>
-									<li class="active"><a href="javascript:;">서울</a></li>
+									<li class="active"><a href="javascript:;"></a></li>
 									<li><a href="javascript:;">경기</a></li>
 									<li><a href="javascript:;">인천</a></li>
 									<li><a href="javascript:;">강원</a></li>
