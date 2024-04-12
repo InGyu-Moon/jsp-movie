@@ -699,6 +699,7 @@ footer#footer .main .select .btn  a {
 	width: 120px;
 	height: 34px;
 	font-size: 14px;
+	border-radius: 4px;
 }
 
 .index .chart .container .box .swiper .swiper-wrapper .swiper-slide .img .hover div .btn:first-child
@@ -712,6 +713,7 @@ footer#footer .main .select .btn  a {
 	justify-content: center;
 	align-items: center;
 	height: 100%;
+	border-radius: 4px;
 }
 
 .index .chart .container .box .swiper .swiper-wrapper .swiper-slide .img .hover div .btn:first-child a
@@ -967,6 +969,8 @@ footer#footer .main .select .btn  a {
 .ticket .region .line .main .category  ul {
 	display: flex;
 	padding: 0 20px;
+	width: 100%;
+	justify-content: space-between;
 }
 
 .ticket .region .line .main .category  ul li {

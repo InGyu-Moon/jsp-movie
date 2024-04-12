@@ -1,8 +1,8 @@
+<%@page import="data.movie.chart.MovieInfoDto"%>
+<%@page import="data.movie.chart.MovieInfoDao"%>
 <%@page import="java.util.Date"%>
 <%@page import="java.text.SimpleDateFormat"%>
-<%@page import="data.movie.chart.MovieInfoDto"%>
 <%@page import="java.util.List"%>
-<%@page import="data.movie.chart.MovieInfoDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <jsp:include page="include/index_header.html"></jsp:include>
@@ -194,7 +194,8 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
 												<div>
 
 													<div class="btn">
-														<a href="javascript:;">상세보기</a>
+														<a
+															href="movie/movieDetail.jsp?movie_id=<%=dto.getMovieId()%>">상세보기</a>
 													</div>
 													<div class="btn">
 														<a href="javascript:;">예매하기</a>
@@ -247,7 +248,8 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
 												<div>
 
 													<div class="btn">
-														<a href="javascript:;">상세보기</a>
+														<a
+															href="movie/movieDetail.jsp?movie_id=<%=dto.getMovieId()%>">상세보기</a>
 													</div>
 													<div class="btn">
 														<a href="javascript:;">예매하기</a>
@@ -317,7 +319,8 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
 												<div>
 
 													<div class="btn">
-														<a href="javascript:;">상세보기</a>
+														<a
+															href="movie/movieDetail.jsp?movie_id=<%=dto.getMovieId()%>">상세보기</a>
 													</div>
 													<div class="btn">
 														<a href="javascript:;">예매하기</a>
@@ -372,7 +375,8 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
 												<div>
 
 													<div class="btn">
-														<a href="javascript:;">상세보기</a>
+														<a
+															href="movie/movieDetail.jsp?movie_id=<%=dto.getMovieId()%>">상세보기</a>
 													</div>
 													<div class="btn">
 														<a href="javascript:;">예매하기</a>
@@ -455,6 +459,7 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
 		var swiperChart = new Swiper(".swiper.chart", {
 			observer : true,
 			observeParents : true,
+			watchOverflow : true,
 			navigation : {
 				nextEl : ".navigation.chartnav.chart .swiper-button-next",
 				prevEl : ".navigation.chartnav.chart .swiper-button-prev",
@@ -470,6 +475,7 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
 		var swiperexpected = new Swiper(".swiper.chart.expected", {
 			observer : true,
 			observeParents : true,
+			watchOverflow : true,
 			navigation : {
 				nextEl : ".navigation.chartnav.expected .swiper-button-next",
 				prevEl : ".navigation.chartnav.expected .swiper-button-prev",
