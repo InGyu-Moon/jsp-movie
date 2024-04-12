@@ -1675,7 +1675,7 @@ log.nonReservationForm #inner_p {
 
 #movieshowrate .set-movie {
 	position: relative;
-	margin-top: 20px;
+	margin-top: 30px;
 	display: flex; /* 요소들을 가로로 배치 */
 	justify-content: space-between; /* 요소들을 양쪽으로 정렬 */
 }
@@ -1684,6 +1684,11 @@ log.nonReservationForm #inner_p {
 	position: absolute;
 	left: 0;
 	top: 0;
+	display: flex;
+}
+
+#movieshowrate .set-movie .nowshow  input {
+	margin-right: 4px;
 }
 
 #movieshowrate .hidden {
@@ -1763,6 +1768,7 @@ log.nonReservationForm #inner_p {
 	margin-inline-start: 0px;
 	margin-inline-end: 0px;
 	padding: 0px 40px;
+	margin-top: 40px;
 	/* padding-inline-start: 40px; */
 }
 
@@ -1780,6 +1786,8 @@ log.nonReservationForm #inner_p {
 	margin-inline-start: 0px;
 	margin-inline-end: 0px;
 	padding-left: 0px;
+	justify-content: center;
+	margin-top: 40px;
 	/* padding-inline-start: 40px; */
 }
 
@@ -1787,6 +1795,10 @@ log.nonReservationForm #inner_p {
 	margin-left: 40px;
 	width: 197px;
 	padding-bottom: 30px;
+}
+
+#movieshowrate ol.olElse>li:first-child {
+	margin-left: 0;
 }
 
 #movieshowrate ol.olThreeChk {
@@ -1799,6 +1811,7 @@ log.nonReservationForm #inner_p {
 	margin-inline-start: 0px;
 	margin-inline-end: 0px;
 	padding: 0px 40px;
+	margin-top: 40px;
 	/* padding-inline-start: 40px; */
 }
 
@@ -1816,6 +1829,8 @@ log.nonReservationForm #inner_p {
 	margin-inline-start: 0px;
 	margin-inline-end: 0px;
 	padding-left: 0px;
+	margin-top: 40px;
+	justify-content: center;
 	/* padding-inline-start: 40px; */
 }
 
@@ -1823,6 +1838,10 @@ log.nonReservationForm #inner_p {
 	margin-left: 40px;
 	width: 197px;
 	padding-bottom: 30px;
+}
+
+#movieshowrate ol.olElseChk>li:first-child {
+	margin-left: 0;
 }
 
 #movieshowrate .rank1 {
@@ -1874,11 +1893,18 @@ log.nonReservationForm #inner_p {
 #movieshowrate .img-rank1 {
 	display: block;
 	position: relative;
+	height: 280px;
+}
+
+#movieshowrate img.mainimg {
+	height: 100%;
+	object-fit: cover;
 }
 
 #movieshowrate .img-rank2 {
 	display: block;
 	position: relative;
+	height: 280px;
 }
 
 #movieshowrate a.link-reservation {
@@ -1887,7 +1913,7 @@ log.nonReservationForm #inner_p {
 	color: white;
 	font-size: 9pt;
 	padding: 3px;
-	margin: 5px 3px 0px 0px;
+	margin: 10px 0 0 0;
 	width: 97px; /* 너비 설정 */
 	height: 25px; /* 높이 설정 */
 	display: inline-block; /* 링크를 블록 요소로 표시 */
@@ -1897,7 +1923,6 @@ log.nonReservationForm #inner_p {
 }
 
 #movieshowrate .title {
-	font-size: 15px;
 	display: block;
 	color: #333333;
 	white-space: nowrap;
@@ -1911,8 +1936,8 @@ log.nonReservationForm #inner_p {
 }
 
 #movieshowrate .score {
-	margin-top: 7px;
-	font-size: 11px;
+	margin-top: 10px;
+	font-size: 12px;
 }
 
 #movieshowrate .score .rate .movie-grade {
@@ -1931,15 +1956,15 @@ log.nonReservationForm #inner_p {
 }
 
 #movieshowrate .txt-info {
-	margin-top: 3px;
-	height: 13px;
+	margin-top: 4px;
 	color: #666666;
-	/* font-weight: 500; */
 	white-space: nowrap;
 }
 
 #movieshowrate .txt-info>strong {
-	font-size: 11px;
+	font-size: 12px;
+	margin-top: 6px;
+	display: block;
 }
 
 #movieshowrate em {
@@ -1960,6 +1985,6 @@ log.nonReservationForm #inner_p {
 }
 
 #movieshowrate .box-content {
-	margin-top: 7px;
+	margin-top: 10px;
 }
 /* //movieshowrate */
