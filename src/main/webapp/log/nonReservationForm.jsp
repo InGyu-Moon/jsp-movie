@@ -2,6 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <jsp:include page="../include/header.html"></jsp:include>
+<title>비회원예매 | 영화 그 이상의 감동</title>
 <body>
 	<div id="wrap">
 		<div class="log nonReservationForm">
@@ -260,7 +261,6 @@
 			}
 		}
 
-		$("title").text("비회원 예매");
 	</script>
 </body>
 </html>

@@ -14,10 +14,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&display=swap" rel="stylesheet">
 
-    <title>Insert title here</title>
+    <title>관리자 페이지</title>
 </head>
 <body style=" font-family: 'IBM Plex Sans KR';">
 <%
+    //TODO
+    // 관리자 로그인 주석 제거하기
 //    Boolean adminLogin = (Boolean)session.getAttribute("adminLogin");
 //    if(adminLogin==null || !adminLogin){
 //        response.sendRedirect("login/adminLoginPage.jsp");

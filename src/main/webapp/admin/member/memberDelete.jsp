@@ -13,10 +13,22 @@
 </head>
 <body>
 <%
-//    String memberId = request.getParameter("memberId");
-//    MemberDao dao = new MemberDao();
-//    dao.deleteMember(memberId);
 
+	request.setCharacterEncoding("utf-8");
+
+    String memberId = request.getParameter("memberId");
+    String selectMemberId = request.getParameter("selectMemberId");
+
+    // ,로 분리해서 배열선언
+    String[] selectMemberIdStrings = selectMemberId.split(",");
+    // 배열의 갯수만큼 delete
+    MemberDao dao = new MemberDao();
+    for (String idString : selectMemberIdStrings) {
+        // 문자열을 int 형으로 변환
+        int id = Integer.parseInt(idString);
+        dao.deleteMember(id);
+    }
+    
     System.out.println("삭제완료");
     response.sendRedirect("../adminMainPage.jsp?curr=member/memberMain.jsp");
 

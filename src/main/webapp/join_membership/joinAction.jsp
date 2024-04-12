@@ -39,7 +39,13 @@
 	Gender gender = null;
 
 	if (genderString != null && !genderString.isEmpty()) {
-	    gender = Gender.valueOf(genderString.toUpperCase());
+		 // 첫 글자를 대문자로 변환. 나머진 소문자
+	    genderString = genderString.substring(0, 1).toUpperCase() + genderString.substring(1).toLowerCase();
+	    try {
+	        gender = Gender.valueOf(genderString);
+	    } catch (IllegalArgumentException e) {
+	        // 예외 처리: 올바르지 않은 성별 값 처리
+	    }
 	}
 
 	String number1 = request.getParameter("phone_number1");
