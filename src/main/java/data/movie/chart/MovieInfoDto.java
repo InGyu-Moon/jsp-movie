@@ -18,8 +18,7 @@ public class MovieInfoDto {
 	private double rating;
 	private Date endDate;
 	private String country;
-	private List<MovieImgDto> imgs;
-	private String imageLink;
+	private String movieImg;
 
 	public String getMovieId() {
 		return movieId;
@@ -125,20 +124,12 @@ public class MovieInfoDto {
 		this.country = country;
 	}
 
-	public List<MovieImgDto> getImgs() {
-		return imgs;
+	public String getMovieImg() {
+		return movieImg;
 	}
 
-	public void setImgs(List<MovieImgDto> imgs) {
-		this.imgs = imgs;
-	}
-
-	public String getImageLink() {
-		return imageLink;
-	}
-
-	public void setImageLink(String imageLink) {
-		this.imageLink = imageLink;
+	public void setMovieImg(String movieImg) {
+		this.movieImg = movieImg;
 	}
 
 }
