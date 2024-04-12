@@ -77,8 +77,8 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
 								<div class="box-img">
 									<strong class="rank1">No.<%=no++%></strong> <a
 										href="movieDetail.jsp?movie_id=<%=dto.getMovieId()%>"> <span
-										class="img-rank1"> <img src="<%=dto.getImageLink()%>">
-											<img class="icon"
+										class="img-rank1"> <img src="<%=dto.getImageLink()%>"
+											class="mainimg"> <img class="icon"
 											src="../img/movie_img/vrating/<%=dto.getViewingRating()%>.png">
 									</span>
 									</a> <span class="screentype"></span>
@@ -96,8 +96,8 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
 									<span class="txt-info"> <strong> <%=sdf.format(dto.getReleaseDate())%>
 											<span>개봉</span> <em class="dday"><%=dDayText%></em>
 									</strong>
-									</span> <br> <span class="reservation"> <a
-										class="link-reservation" href="#"> 예매하기</a>
+									</span> <span class="reservation"> <a class="link-reservation"
+										href="#"> 예매하기</a>
 									</span>
 								</div>
 							</li>
@@ -128,8 +128,8 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
 								<div class="box-img">
 									<strong class="rank2">No.<%=no2++%></strong> <a
 										href="movieDetail.jsp?movie_id=<%=dto.getMovieId()%>"> <span
-										class="img-rank2"> <img src="<%=dto.getImageLink()%>">
-											<img class="icon"
+										class="img-rank2"> <img src="<%=dto.getImageLink()%>"
+											class="mainimg"> <img class="icon"
 											src="../img/movie_img/vrating/<%=dto.getViewingRating()%>.png">
 									</span>
 									</a> <span class="screentype"></span>
@@ -147,8 +147,8 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
 									<span class="txt-info"> <strong> <%=sdf.format(dto.getReleaseDate())%>
 											<span>개봉</span> <em class="dday"><%=dDayText%></em>
 									</strong>
-									</span> <br> <span class="reservation"> <a
-										class="link-reservation" href="#"> 예매하기</a>
+									</span> <span class="reservation"> <a class="link-reservation"
+										href="#"> 예매하기</a>
 									</span>
 								</div>
 							</li>
@@ -191,8 +191,8 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
 								<div class="box-img">
 									<strong class="rank1">No.<%=nochk++%></strong> <a
 										href="movieDetail.jsp?movie_id=<%=dto.getMovieId()%>"> <span
-										class="img-rank1"> <img src="<%=dto.getImageLink()%>">
-											<img class="icon"
+										class="img-rank1"> <img src="<%=dto.getImageLink()%>"
+											class="mainimg"> <img class="icon"
 											src="../img/movie_img/vrating/<%=dto.getViewingRating()%>.png">
 									</span>
 									</a> <span class="screentype"></span>
@@ -210,8 +210,8 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
 									<span class="txt-info"> <strong> <%=sdf.format(dto.getReleaseDate())%>
 											<span>개봉</span> <em class="dday"><%=dDayText%></em>
 									</strong>
-									</span> <br> <span class="reservation"> <a
-										class="link-reservation" href="#"> 예매하기</a>
+									</span><span class="reservation"> <a class="link-reservation"
+										href="#"> 예매하기</a>
 									</span>
 								</div>
 							</li>
@@ -242,8 +242,8 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
 								<div class="box-img">
 									<strong class="rank2">No.<%=no2chk++%></strong> <a
 										href="movieDetail.jsp?movie_id=<%=dto.getMovieId()%>"> <span
-										class="img-rank2"> <img src="<%=dto.getImageLink()%>">
-											<img class="icon"
+										class="img-rank2"> <img src="<%=dto.getImageLink()%>"
+											class="mainimg"> <img class="icon"
 											src="../img/movie_img/vrating/<%=dto.getViewingRating()%>.png">
 									</span>
 									</a> <span class="screentype"></span>
@@ -261,8 +261,8 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
 									<span class="txt-info"> <strong> <%=sdf.format(dto.getReleaseDate())%>
 											<span>개봉</span> <em class="dday"><%=dDayText%></em>
 									</strong>
-									</span> <br> <span class="reservation"> <a
-										class="link-reservation" href="#"> 예매하기</a>
+									</span> <span class="reservation"> <a class="link-reservation"
+										href="#"> 예매하기</a>
 									</span>
 								</div>
 							</li>
