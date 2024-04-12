@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import data.inform.inquiry.InquiryDto;
 import db.mysql.DbConnect;
 
 public class MemberDao {
@@ -41,6 +42,33 @@ public class MemberDao {
 			db.dbClose(pstmt, conn);
 		}
 
+	}
+	
+	// 회원이 1:1 문의 등록함 
+	public void questionInquiryByMember(InquiryDto inquiry, int memberId) {
+		Connection conn = db.getConnection();
+		PreparedStatement pstmt = null;
+		
+		String sql = "insert into INQUIRY value (null,?,?,?,?,?,null)";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, memberId);
+			pstmt.setString(2, inquiry.getOption().toString()); // 문의 옵션 enum 타입
+			pstmt.setString(3, inquiry.getTitle());
+			pstmt.setString(4, inquiry.getContent());
+			pstmt.setString(5, inquiry.getAttachment());
+			
+			int result = pstmt.executeUpdate();
+			if(result > 0) System.out.println("member 문의 insert success");
+			else System.out.println("member 문의 insert error");
+			
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}finally {
+			db.dbClose(pstmt, conn);
+		}
+		
 	}
 
 	// id 중복 체크
@@ -178,7 +206,7 @@ public class MemberDao {
 	}
 
 	// get Member by id
-	public MemberDto getMemberById(String memberId) {
+	public MemberDto getMemberById(int memberId) {
 		MemberDto dto = new MemberDto();
 
 		Connection conn = db.getConnection();
@@ -189,7 +217,7 @@ public class MemberDao {
 
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, memberId);
+			pstmt.setInt(1, memberId);
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) {
