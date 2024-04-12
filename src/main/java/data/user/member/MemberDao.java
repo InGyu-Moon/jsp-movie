@@ -49,7 +49,7 @@ public class MemberDao {
 		Connection conn = db.getConnection();
 		PreparedStatement pstmt = null;
 		
-		String sql = "insert into INQUIRY value (null,?,?,?,?,?)";
+		String sql = "insert into INQUIRY value (null,?,?,?,?,?,null)";
 		
 		try {
 			pstmt = conn.prepareStatement(sql);

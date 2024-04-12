@@ -135,6 +135,33 @@ public class InquiryDao {
 	
 	
 	
+	// 1:1 문의 수정 -> 멤버가 작성한 제목과 내용은 냅둔 나머지
+	public void updateAnswer(int inquiryId,String option, String answer) {
+		Connection conn = db.getConnection();
+		PreparedStatement pstmt = null;
+		
+		String sql = "update INQUIRY set answer=?,inquiry_option=? where inquiry_id=?";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, answer);
+			pstmt.setString(2, option);
+			pstmt.setInt(3, inquiryId);
+			
+			int result = pstmt.executeUpdate();
+			
+			if(result>0) System.out.println("1:1 문의 수정 success");
+			else System.out.println("1:1 문의 수정 error");
+			
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}finally {
+			db.dbClose( pstmt, conn);
+		}
+		
+	}
+	
+	
 	// delete
 	public void deleteAnswer(int inquiryId) {
 		Connection conn = db.getConnection();

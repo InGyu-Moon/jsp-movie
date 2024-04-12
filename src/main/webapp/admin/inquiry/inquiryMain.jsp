@@ -186,7 +186,11 @@ $(document).ready(function(){
 		        	<%=member.getUserName() %>
 		        </td>
 		        <td>
-		            <%=inquiry.getOption() %>
+		        	<%
+		        		String option = inquiry.getOption().name();
+		        		if(option.equals("예매_결제")) option = "예매/결제";
+		        	%>
+		            <%=option %>
 		<%--            <a href="<%=dto.getId()%>" class="list-group-item list-group-item-action list-group-item-light"><%=dto.getUserName()%></a>--%>
 		        </td>
 		        <td>
@@ -202,9 +206,9 @@ $(document).ready(function(){
 		        <td>
 					<%
 						String answer = "X";
-						if(inquiry.getContent() != null) answer="O";
+						if(inquiry.getAnswer() != null && !inquiry.getAnswer().equals("") && !inquiry.getAnswer().equals("null")) answer="O";
 					%>
-					<%=whether %>
+					<%=answer %>
 		        </td>
 		        <td>
 		            <a href="?curr=inquiry/inquiryDetail.jsp?inquiryId=<%=id%>" type="button" 
