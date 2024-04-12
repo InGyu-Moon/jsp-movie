@@ -77,7 +77,7 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
 								<div class="box-img">
 									<strong class="rank1">No.<%=no++%></strong> <a
 										href="movieDetail.jsp?movie_id=<%=dto.getMovieId()%>"> <span
-										class="img-rank1"> <img src="<%=dto.getImageLink()%>"
+										class="img-rank1"> <img src="<%=dto.getMovieImg() %>"
 											class="mainimg"> <img class="icon"
 											src="../img/movie_img/vrating/<%=dto.getViewingRating()%>.png">
 									</span>
@@ -128,7 +128,7 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
 								<div class="box-img">
 									<strong class="rank2">No.<%=no2++%></strong> <a
 										href="movieDetail.jsp?movie_id=<%=dto.getMovieId()%>"> <span
-										class="img-rank2"> <img src="<%=dto.getImageLink()%>"
+										class="img-rank2"> <img src="<%=dto.getMovieImg() %>"
 											class="mainimg"> <img class="icon"
 											src="../img/movie_img/vrating/<%=dto.getViewingRating()%>.png">
 									</span>
@@ -191,7 +191,7 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
 								<div class="box-img">
 									<strong class="rank1">No.<%=nochk++%></strong> <a
 										href="movieDetail.jsp?movie_id=<%=dto.getMovieId()%>"> <span
-										class="img-rank1"> <img src="<%=dto.getImageLink()%>"
+										class="img-rank1"> <img src="<%=dto.getMovieImg() %>"
 											class="mainimg"> <img class="icon"
 											src="../img/movie_img/vrating/<%=dto.getViewingRating()%>.png">
 									</span>
@@ -242,7 +242,7 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
 								<div class="box-img">
 									<strong class="rank2">No.<%=no2chk++%></strong> <a
 										href="movieDetail.jsp?movie_id=<%=dto.getMovieId()%>"> <span
-										class="img-rank2"> <img src="<%=dto.getImageLink()%>"
+										class="img-rank2"> <img src="<%=dto.getMovieImg() %>"
 											class="mainimg"> <img class="icon"
 											src="../img/movie_img/vrating/<%=dto.getViewingRating()%>.png">
 									</span>
