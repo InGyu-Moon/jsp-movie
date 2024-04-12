@@ -297,9 +297,9 @@ $(document).ready(function() {
          	<div class="set-movie">
          	<div class="top">
          		<div class="box-img">
-         			<a title="포스터 크게보기 새창" href="<%=dto.getImageLink() %>" target="_blank">
+         			<a title="포스터 크게보기 새창" href="<%=dto.getMovieImg() %>" target="_blank">
          				<span class="img-main">
-         					<img src="<%=dto.getImageLink()%>" class="post">
+         					<img src="<%=dto.getMovieImg() %>" class="post">
                             <img class="icon" src="images/vrating/<%=dto.getViewingRating() %>.png">
          				</span>
          			</a>
@@ -364,7 +364,7 @@ $(document).ready(function() {
 							  <div class="swiper mySwiper">
 							    <div class="swiper-wrapper">
 							      <div class="swiper-slide on">
-							      	<img alt="<%=dto.getMovieTitle() %>" src="<%=dto.getImageLink()%>" style="height: 450px;">
+							      	<img alt="<%=dto.getMovieTitle() %>" src="<%=dto.getMovieImg() %>" style="height: 450px;">
 							      </div>
 							      <div class="swiper-slide">Slide 2</div>
 							      <div class="swiper-slide">Slide 3</div>
