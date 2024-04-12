@@ -191,7 +191,7 @@ $(document).ready(function(){
 		            <%=sdf.format(dto.getEndDate())%>
 		        </td>
 		        <td>
-		            <a href="?curr=member/memberDetail.jsp?memberId=<%=dto.getMovieId()%>" type="button"
+		            <a href="?curr=movie/movieDetail.jsp?movieId=<%=dto.getMovieId()%>" type="button"
 		            	id="btnDetail" class="btn btn-sm btn-outline-success">상세</a>
 		        </td>
 		    <tr>
