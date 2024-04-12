@@ -41,6 +41,13 @@
 								<ul>
 									<li class="active"><a href="javascript:;">서울</a></li>
 									<li><a href="javascript:;">경기</a></li>
+									<li><a href="javascript:;">인천</a></li>
+									<li><a href="javascript:;">강원</a></li>
+									<li><a href="javascript:;">대전/충청</a></li>
+									<li><a href="javascript:;">대구</a></li>
+									<li><a href="javascript:;">부산/울산</a></li>
+									<li><a href="javascript:;">경상</a></li>
+									<li><a href="javascript:;">광주/전라/제주</a></li>
 								</ul>
 							</div>
 							<div class="body">
