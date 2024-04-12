@@ -537,7 +537,7 @@ public class MovieInfoDao {
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
 
-		String sql="select * from MOVIE_INFO order by member_id";
+		String sql="select * from MOVIE_INFO order by movie_id";
 
 		try {
 			pstmt=conn.prepareStatement(sql);
@@ -559,8 +559,7 @@ public class MovieInfoDao {
 				dto.setRating(rs.getDouble("rating"));
 				dto.setEndDate(rs.getDate("end_date"));
 				dto.setCountry(rs.getString("country"));
-				//TODO
-				// 대표 이미지 추가
+				dto.setMovieImg(rs.getString("movie_img"));
 				list.add(dto);
 			}
 		} catch (SQLException e) {
@@ -627,8 +626,7 @@ public class MovieInfoDao {
 				dto.setRating(rs.getDouble("rating"));
 				dto.setEndDate(rs.getDate("end_date"));
 				dto.setCountry(rs.getString("country"));
-				//TODO
-				// 대표 이미지 추가
+				dto.setMovieImg(rs.getString("movie_img"));
 				list.add(dto);
 			}
 		} catch (SQLException e) {
