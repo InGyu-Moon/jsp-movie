@@ -151,6 +151,7 @@ $(document).ready(function(){
 		<%-- 전체 회원 명단 출력 --%>
 		<table class="table table-bordered" style="width: 800px">
 			<!-- <caption align="top"><b>전체 회원 명단</b></caption> -->
+			<a href="adminMainPage.jsp?curr=movie/movieAddForm.jsp" class="btn btn-outline-primary btn-sm" style="margin-bottom: 5px; margin-right: 10px">추가</a>
 		    <button type="button" class="btn btn-outline-danger btndel btn-sm" style="margin-bottom: 5px;">선택삭제</button><br>
 		    <div class="header-container">
 		        <div class="title">

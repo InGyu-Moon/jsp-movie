@@ -664,7 +664,7 @@ public class MovieInfoDao {
 		String sql = "INSERT INTO movie_info " +
 				"(movie_title, running_time, viewing_rating, director, cast, booking_rate, " +
 				"release_date, genre, movie_description, rating, end_date, country, movie_img) " +
-				"VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+				"VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try {
             pstmt = conn.prepareStatement(sql);
 
