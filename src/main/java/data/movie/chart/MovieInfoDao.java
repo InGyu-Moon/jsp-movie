@@ -638,5 +638,22 @@ public class MovieInfoDao {
 		return list;
 	}
 
+	public void deleteMovie(String movieId){
+		Connection conn=db.getConnection();
+		PreparedStatement pstmt=null;
+
+		String sql="delete from movie_info where movie_id=?";
+
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, movieId);
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println("e = " + e);
+		}finally {
+			db.dbClose(pstmt, conn);
+		}
+	}
+
 
 }
