@@ -54,22 +54,21 @@ $(document).ready(function(){
 	    if(len==0){
 		    alert("최소 1개이상의 글을 선택해 주세요");
 	    }else{
-		  
-		    //체크된 곳의 value값(num)얻기
-		    var n="";
-		    $(".check:checked").each(function(idx){
-		    	n+=$(this).val()+",";
-		    });
-		    
-		    console.log(n);
-		  
-		    //마지막 컴마 제거
-		    n=n.substring(0,n.length-1);
-		    console.log(n);
 
-			//TODO
-		    //삭제파일로 전송
-		    location.href="#/#.jsp?#="+n;
+			if(confirm("선택한 항목을 삭제하시겠습니까?")){
+				//체크된 곳의 value값(num)얻기
+				var n="";
+				$(".check:checked").each(function(idx){
+					n+=$(this).val()+",";
+				});
+
+				//마지막 컴마 제거
+				n=n.substring(0,n.length-1);
+
+				//삭제파일로 전송
+				location.href="movie/movieDelete.jsp?movieId="+n;
+			}
+
 	  }
   })
     
@@ -152,6 +151,7 @@ $(document).ready(function(){
 		<%-- 전체 회원 명단 출력 --%>
 		<table class="table table-bordered" style="width: 800px">
 			<!-- <caption align="top"><b>전체 회원 명단</b></caption> -->
+			<a href="adminMainPage.jsp?curr=movie/movieAddForm.jsp" class="btn btn-outline-primary btn-sm" style="margin-bottom: 5px; margin-right: 10px">추가</a>
 		    <button type="button" class="btn btn-outline-danger btndel btn-sm" style="margin-bottom: 5px;">선택삭제</button><br>
 		    <div class="header-container">
 		        <div class="title">

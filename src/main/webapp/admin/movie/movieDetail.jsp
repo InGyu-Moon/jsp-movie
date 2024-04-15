@@ -107,9 +107,9 @@
    </tr>
 </table>
 <div style="display: flex;">
-   <a style="margin-left: 60%;margin-right: 10px" type="button" class="btn btn-outline-primary" href="/admin/adminMainPage.jsp?curr=#/#.jsp?movieId=<%=dto.getMovieId()%>">수정</a>
+   <a style="margin-left: 60%;margin-right: 10px" type="button" class="btn btn-outline-primary" href="/admin/adminMainPage.jsp?curr=movie/movieUpdateForm.jsp?movieId=<%=dto.getMovieId()%>">수정</a>
    <a style="margin-right: 10px" type="button" class="btn btn-outline-danger" href="#"
-      onclick="return confirm('정말로 삭제하시겠습니까?') ? window.location.href = '#/#.jsp?movieId=<%=dto.getMovieId()%>' : false;">삭제</a>
+      onclick="return confirm('정말로 삭제하시겠습니까?') ? window.location.href = 'movie/movieDelete.jsp?movieId=<%=dto.getMovieId()%>' : false;">삭제</a>
    <button class="btn btn-outline-success" onclick="history.back()">목록</button>
 </div>
 </body>

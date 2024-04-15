@@ -63,7 +63,7 @@ r<%@page import="data.user.member.Gender"%>
 		<table class="table" style="width: 80%;">
 			<tr style="background-color: #99aaff">
 				<th style="width: 30%; text-align: center; background-color: #99aaff;">구분</th>
-        		<th style="width: 70%; text-align: center; background-color: #99aaff;">정보</td>
+        		<th style="width: 70%; text-align: center; background-color: #99aaff;">정보</th>
 			</tr>
 			<tr>
 				<th style="width: 30%; text-align: center;">사용자명</th>
