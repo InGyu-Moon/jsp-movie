@@ -638,5 +638,99 @@ public class MovieInfoDao {
 		return list;
 	}
 
+	public void deleteMovie(String movieId){
+		Connection conn=db.getConnection();
+		PreparedStatement pstmt=null;
+
+		String sql="delete from movie_info where movie_id=?";
+
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, movieId);
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println("e = " + e);
+		}finally {
+			db.dbClose(pstmt, conn);
+		}
+	}
+
+
+	// 영화 추가
+	public void insertMovie(MovieInfoDto dto){
+		Connection conn=db.getConnection();
+		PreparedStatement pstmt=null;
+
+		String sql = "INSERT INTO movie_info " +
+				"(movie_title, running_time, viewing_rating, director, cast, booking_rate, " +
+				"release_date, genre, movie_description, rating, end_date, country, movie_img) " +
+				"VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        try {
+            pstmt = conn.prepareStatement(sql);
+
+			pstmt.setString(1, dto.getMovieTitle());
+			pstmt.setInt(2, dto.getRunningTime());
+			pstmt.setString(3, dto.getViewingRating());
+			pstmt.setString(4, dto.getDirector());
+			pstmt.setString(5, dto.getCast());
+			pstmt.setDouble(6, dto.getBookingRate());
+			pstmt.setDate(7, dto.getReleaseDate());
+			pstmt.setString(8, dto.getGenre());
+			pstmt.setString(9, dto.getMovieDescription());
+			pstmt.setDouble(10, dto.getRating());
+			pstmt.setDate(11, dto.getEndDate());
+			pstmt.setString(12, dto.getCountry());
+			pstmt.setString(13, dto.getMovieImg());
+
+			pstmt.executeUpdate();
+        } catch (SQLException e) {
+			System.out.println("e = " + e);
+        } finally {
+			db.dbClose(pstmt, conn);
+		}
+    }
+
+	// 영화 수정
+	public void updateMovie(MovieInfoDto dto){
+		Connection conn=db.getConnection();
+		PreparedStatement pstmt=null;
+
+		String sql = "UPDATE movie_info SET " +
+				"movie_title=?, running_time=?, viewing_rating=?, director=?, cast=?, booking_rate=?, " +
+				"release_date=?, genre=?, movie_description=?, rating=?, end_date=?, country=?" +
+//				", movie_img=? " +
+				"WHERE movie_id=?";
+
+        try {
+            pstmt = conn.prepareStatement(sql);
+
+			pstmt.setString(1, dto.getMovieTitle());
+			pstmt.setInt(2, dto.getRunningTime());
+			pstmt.setString(3, dto.getViewingRating());
+			pstmt.setString(4, dto.getDirector());
+			pstmt.setString(5, dto.getCast());
+			pstmt.setDouble(6, dto.getBookingRate());
+			pstmt.setDate(7, dto.getReleaseDate());
+			pstmt.setString(8, dto.getGenre());
+			pstmt.setString(9, dto.getMovieDescription());
+			pstmt.setDouble(10, dto.getRating());
+			pstmt.setDate(11, dto.getEndDate());
+			pstmt.setString(12, dto.getCountry());
+//			pstmt.setString(13, dto.getMovieImg());
+			pstmt.setString(13, dto.getMovieId());
+//			pstmt.setString(14, dto.getMovieId());
+
+			pstmt.executeUpdate();
+        } catch (SQLException e) {
+			System.out.println("e = " + e);
+        } finally {
+			db.dbClose(pstmt, conn);
+		}
+
+	}
+
+
+
+
 
 }
