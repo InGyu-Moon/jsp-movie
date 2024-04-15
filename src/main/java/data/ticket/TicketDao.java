@@ -12,18 +12,17 @@ import db.mysql.DbConnect;
 public class TicketDao {
 	DbConnect db = new DbConnect();
 
-	// 지역 리스트
-	public List<TicketDto> regionList(String region) {
-		List<TicketDto> list = new ArrayList<TicketDto>();
-
-		Connection conn = db.getConnection();
+	// 모든 지역의 극장 리스트
+	public List<TicketDto> regionList() {
+		List<TicketDto> list = new ArrayList<>();
+		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 
-		String sql = "SELECT * FROM THEATER_INFO WHERE REGION = ?";
 		try {
+			conn = db.getConnection();
+			String sql = "SELECT * FROM THEATER_INFO";
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, region);
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
@@ -41,12 +40,38 @@ public class TicketDao {
 				list.add(dto);
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			db.dbClose(rs, pstmt, conn);
 		}
 
 		return list;
+	}
+
+	// 해당 지역의 모든 지점명을 가져오는 메서드
+	public List<String> addressList(String region) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<String> theaterNames = new ArrayList<>();
+
+		try {
+			conn = db.getConnection();
+			String sql = "SELECT branch FROM THEATER_INFO WHERE region = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, region);
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				String theaterName = rs.getString("branch");
+				theaterNames.add(theaterName);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			db.dbClose(rs, pstmt, conn);
+		}
+
+		return theaterNames;
 	}
 }

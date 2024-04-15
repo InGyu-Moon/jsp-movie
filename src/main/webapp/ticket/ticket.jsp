@@ -9,7 +9,7 @@
 <%
 TicketDto tichekDto = new TicketDto();
 TicketDao tichekDao = new TicketDao();
-List<TicketDto> regionList = new ArrayList<TicketDto>();
+List<TicketDto> regionList = tichekDao.regionList();
 %>
 <body>
 	<div id="wrap">
@@ -48,28 +48,25 @@ List<TicketDto> regionList = new ArrayList<TicketDto>();
 							</div>
 							<div class="category">
 								<ul>
-									<li class="active"><a href="javascript:;"></a></li>
-									<li><a href="javascript:;">경기</a></li>
-									<li><a href="javascript:;">인천</a></li>
-									<li><a href="javascript:;">강원</a></li>
-									<li><a href="javascript:;">대전/충청</a></li>
-									<li><a href="javascript:;">대구</a></li>
-									<li><a href="javascript:;">부산/울산</a></li>
-									<li><a href="javascript:;">경상</a></li>
-									<li><a href="javascript:;">광주/전라/제주</a></li>
+									<%
+									// 중복되지 않는 지역 정보를 가져와서 표시
+									List<String> uniqueRegions = new ArrayList<>();
+									for (TicketDto theater : regionList) {
+										String region = theater.getRegion();
+										if (!uniqueRegions.contains(region)) {
+											uniqueRegions.add(region);
+									%>
+									<li><a href="javascript:;" class="active"><%=region%></a></li>
+									<%
+									}
+									}
+									%>
 								</ul>
 							</div>
 							<div class="body">
 								<div class="list view">
 									<ul>
-										<li><a href="javascript:;">강남</a></li>
-										<li><a href="javascript:;">강변</a></li>
-									</ul>
-								</div>
-								<div class="list">
-									<ul>
-										<li><a href="javascript:;">경기광주</a></li>
-										<li><a href="javascript:;">고양백석</a></li>
+										<li><a href="javascript:;" class="active">test</a></li>
 									</ul>
 								</div>
 							</div>
@@ -298,6 +295,25 @@ List<TicketDto> regionList = new ArrayList<TicketDto>();
 			watchOverflow : true,
 			slidesPerGroup : 8,
 		});
+
+		$(".ticket .region .line .main .category ul li").click(
+				function() {
+					var region = $(this).children("a").text();
+					$.ajax({
+						type : "get",
+						dataType : "html",
+						url : "ticket_address.jsp",
+						data : {
+							"region" : region
+						},
+						success : function(response) {
+							var addresses = $(response).find('#addresses')
+									.text();
+							$(".ticket .region .line .body .list ul li").text(
+									addresses);
+						}
+					});
+				});
 	</script>
 </body>
 </html>
