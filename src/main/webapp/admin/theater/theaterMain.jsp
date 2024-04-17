@@ -231,21 +231,17 @@
             $("#search").click(function() {
                 // searchContent의 값을 가져와서 변수에 저장합니다.
                 var searchText = $("input[name='searchContent']").val();
-                
-                // region의 값을 가져와서 변수에 저장합니다.
-                var selectedRegion = $("select[name='region']").val();
-                
-             // searchText가 빈 문자열이 아니고 selectedRegion이 null이 아닌 경우에만 작업을 수행합니다.
-                if (searchText !== "" && selectedRegion !== null) {
+                 
+             	// searchText가 빈 문자열이 아닌 경우에만 작업을 수행합니다.
+                if (searchText !== "") {
                     // 가져온 값을 콘솔에 출력하여 확인합니다.
                     console.log("검색어:", searchText); // 지점
-                    console.log("선택된 지역:", selectedRegion); // 지역
                     
                     $.ajax({
                       	type:"post",
                       	dataType:"json",
-                      	data:{"region":selectedRegion, "branch":searchText},
-                      	url:"theater/theaterRegionAndBranchList.jsp",
+                      	data:{"branch":searchText},
+                      	url:"theater/theaterBranchList.jsp",
                       	success:function(data){
                       		$('#regionResult').hide();
                       		//alert("넘어온 데이터"+data);
@@ -304,78 +300,9 @@
                      		}
                       
                       });
-                }else if(searchText !== "" && selectedRegion === "전체"){ // searchText가 빈 문자열이 아닌 경우에만 작업을 수행합니다.
-                	// 가져온 값을 콘솔에 출력하여 확인합니다.
-                    console.log("현재 else if 구문에 들어옴"); // 지점
-                    console.log("검색어:", searchText); // 지점
-                    console.log("선택된 지역:", selectedRegion); // 지역
-                    
-                    $.ajax({ // => 여기 부분 실행 안됨
-                      	type:"post",
-                      	dataType:"json",
-                      	data:{"branch":searchText},
-                      	url:"theater/theaterBranchList.jsp",
-                      	success:function(data){
-                      		$('#regionResult').hide();
-                      		alert("넘어온 데이터"+data);
-                      		
-                      		var screenImax = "";
-                      		var screen4d = "";
-                      		var s="<table class='table table-bordered table-hover table-custom'>";
-                      		s+="<thead><tr><thead class='table-light'>";
-                      		s+="<th><input type='checkbox' class='th-check'></th>"
-                      		s+="<th>지역</th>"+
-                                  "<th>지점</th>"+
-                                  "<th>상영관수</th>"+
-                                  "<th>총 좌석수</th>"+
-                                  "<th>상세주소</th>"+
-                                  "<th>전화번호</th>"+
-                                  "<th>스크린여부</th>"+
-                                  "<th>기타</th>"+
-                                  "</thead>"+
-                                  "</tr>"+
-                                  "</thead>"+
-                                  "<tbody>";
-                      		 if(data.length==0){
-                      			$("#countSpan").text("총 0");
-                     				  s+="<tr>";
-                     				  s+="<td colspan='8' align='center'>";
-                     				  s+="<b>선택된 지역에 대한 영화관이 없습니다.</b>";
-                     				  s+="</td></tr>";
-                     			  }else{
-                     				  //데이타가 1개이상 있는경우
-                     				  $.each(data,function(idex,item){
-                     					 $("#countSpan").text("총 "+data.length);
-                     					  s+="<tr>";
-                     					  s+="<td><input type='checkbox' class='check' value='"+item.theaterId+"'></td>";
-                     					  s+="<td><input type='text' readonly id='region' class='form-control-plaintext' value='"+item.region+"'></td>";
-                     					  s+="<td><input type='text' readonly id='branch' class='form-control-plaintext' value='"+item.branch+"'></td>";
-                     					  s+="<td><input type='text' readonly id='numberOfscreens' class='form-control-plaintext' value='"+item.numberOfScreens+"'></td>";
-                     					  s+="<td><input type='text' readonly id='totalOfscreens' class='form-control-plaintext' value='"+item.totalTheaterSeats+"'></td>";
-                     					  s+="<td><input type='text' readonly id='address' class='form-control-plaintext' value='"+item.address+"'></td>";
-                     					  s+="<td><input type='text' readonly id='theaterPhonNumber' class='form-control-plaintext' value='"+item.theaterPhoneNumber+"'></td>";
-                     					  if(item.isIMAX==1){screenImax="IMAX";}
-                     					  if(item.is4D==1){screen4d="4D";}
-                     					  s+="<td><input type='text' readonly id='screens' class='form-control-plaintext' value='"+screenImax+" "+screen4d+"'></td>";
-                     					  s+="<td><button type='button' class='btn btn-outline-warning btn-sm btnDetail' value='"+item.theaterId+"' style='width:70px;' >수정</td>";
-                     					  s+="</tr>";
-                     				  });
-                     			  }
-                      		 s+="</tbody>"+
-                      		 	"</table>"
-                      		 	
-                      		 $(".container2").show();
-                      		 $(".container2").html(s);
-                      		
-                      	},
-                      	error:function(request,status,error){        
-                      		alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);       
-                     		}
-                      
-                      });
                 }else {
-                    // searchText가 빈 문자열이거나 selectedRegion이 null인 경우, 사용자에게 알림을 표시할 수 있습니다.
-                    console.log("검색어 또는 선택된 지역이 유효하지 않습니다.");
+                    // searchText가 빈 문자열인 경우, 사용자에게 알림을 표시할 수 있습니다.
+                    console.log("검색어가 유효하지 않습니다.");
                     // 예를 들어, 사용자에게 경고창을 표시하는 등의 작업을 수행할 수 있습니다.
                 }
             });
@@ -517,7 +444,7 @@
         <div>
             <button type="button" class="btn btn-outline-danger ml-2 btndel">선택삭제</button>
             <button type="button" class="btn btn-outline-info ml-2"
-                    onclick="location.href='?curr=notice/noticeAddForm.jsp'">생성</button>
+                    onclick="location.href='?curr=theater/theaterAddForm.jsp'">생성</button>
         </div>
         <span><small id="countSpan">총 <%=count %></small></span>
     </div>

@@ -21,7 +21,7 @@ public class TheaterDao {
         PreparedStatement pstmt = null;
         ResultSet rs = null;
 
-        String sql = "insert into THEATER_INFO values (null,?,?,?,?,?,?,?,?,?)";
+        String sql = "insert into THEATER_INFO values (null,?,?,?,?,?,?,?,?,null)";
 
         try {
             pstmt=conn.prepareStatement(sql);
@@ -33,7 +33,7 @@ public class TheaterDao {
             pstmt.setString(6,theater.getTheaterPhoneNumber());
             pstmt.setInt(7,theater.getIs4D());
             pstmt.setInt(8,theater.getIsIMAX());
-            pstmt.setString(9,theater.getImg());
+            //pstmt.setString(9,theater.getImg());
             
             int result = pstmt.executeUpdate();
             if (result>0) System.out.println("insertTheater success");
