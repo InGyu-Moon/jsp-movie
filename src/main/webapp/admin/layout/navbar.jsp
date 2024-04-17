@@ -59,7 +59,7 @@
                   </a>
                </li>
                <li class="nav-item">
-                  <a class="nav-link" href="#">
+                  <a class="nav-link" href="../admin/adminMainPage.jsp?curr=theater/theaterMain.jsp">
                      <span data-feather="message-square"></span>
                      극장 관리
                   </a>
