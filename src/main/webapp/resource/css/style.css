@@ -977,7 +977,7 @@ footer#footer .main .select .btn  a {
 	margin-right: 20px;
 }
 
-.ticket .region .line .main .category  ul li.active a {
+.ticket .region .line .main .category  ul li a {
 	color: #fff;
 }
 
@@ -986,7 +986,7 @@ footer#footer .main .select .btn  a {
 }
 
 .ticket .region .line .main .category  ul li a {
-	color: #9b9898;
+	color: #fff;
 	font-size: 14px;
 	font-weight: 600;
 }
@@ -1013,6 +1013,15 @@ footer#footer .main .select .btn  a {
 	font-size: 12px;
 	font-weight: 700;
 	position: relative;
+	cursor: pointer;
+}
+
+.ticket .region .line .body .list ul li a.active {
+	color: #fff;
+}
+
+.ticket .region .line .body .list  ul  li a:hover {
+	color: #fff;
 }
 
 .ticket .region .line .body .list  ul  li a:before {
@@ -1025,6 +1034,10 @@ footer#footer .main .select .btn  a {
 	right: -11px;
 	top: 50%;
 	margin-top: -6px;
+}
+
+.ticket .region .line .body .list  ul  li:last-child a:before {
+	display: none;
 }
 
 .ticket .theater_text .hr {
@@ -1062,9 +1075,11 @@ footer#footer .main .select .btn  a {
 
 .ticket .theater .theater_img {
 	height: 420px;
-	border: 1px solid red;
 	margin-top: 20px;
 	position: relative;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
 }
 
 .ticket .theater .theater_img .text {
@@ -1075,7 +1090,44 @@ footer#footer .main .select .btn  a {
 	width: 100%;
 	bottom: 0;
 	padding: 20px;
-	opacity: 0.6;
+	opacity: 0.8;
+	display: flex;
+}
+
+.ticket .theater .theater_img .imax_4d {
+	display: flex;
+	margin-left: 40px;
+	height: 18px;
+	position: absolute;
+	bottom: 130px;
+	left: 330px;
+	z-index: 1;
+}
+
+.ticket .theater .theater_img .imax_4d div {
+	width: 82px;
+	height: 100%;
+}
+
+.ticket .theater .theater_img .imax_4d div img {
+	width: 100%;
+	height: 100%;
+}
+
+.ticket .theater .theater_img  .imax_4d div:first-child {
+	margin-right: 6px;
+}
+
+.ticket .theater .theater_img .text .location {
+	font-size: 14px;
+}
+
+.ticket .theater .theater_img .text .phone {
+	font-size: 12px;
+}
+
+.ticket .theater .theater_img .text .seat {
+	font-size: 12px;
 }
 
 .ticket .theater .theater_img .text .phone {
