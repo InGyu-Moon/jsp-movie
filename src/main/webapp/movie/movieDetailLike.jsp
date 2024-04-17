@@ -360,7 +360,7 @@ a{
     cursor: pointer;
 }
 
-.wrap-persongrade{
+.wrap-persongrade-likes{
 	padding-top: 30px;
 }
 
@@ -599,7 +599,7 @@ span.btn_ic_good{
 <%
 ReviewInfoDao rdao = new ReviewInfoDao();
 String movie_id = request.getParameter("movie_id");
-List<ReviewInfoDto> rlist = rdao.getReviewList(movie_id);
+
 //전체갯수
 int totalCount = rdao.getTotalCount(movie_id);
 int perPage = 5; //한페이지당 보여질 글의 갯수
@@ -641,7 +641,7 @@ startNum = (currentPage - 1) * perPage;
 no = totalCount - (currentPage - 1) * perPage;
 
 //페이지에서 보여질 글만 가져오기
-List<ReviewInfoDto> list = rdao.getPagingList(startNum, perPage);
+List<ReviewInfoDto> list = rdao.getPagingListLike(startNum, perPage);
 
 /*마지막 페이지의 단 한개 남은 글을 삭제시 빈페이지가 남는다 그러므로 해결책은 그이전페이지로 가면 된다  */
 if (list.size() == 0 && currentPage != 1) {
@@ -653,9 +653,8 @@ if (list.size() == 0 && currentPage != 1) {
 }
 %>
 <%
-	
 	String username = (String) session.getAttribute("username");
-
+	
 	MovieInfoDao dao = new MovieInfoDao();
 	MovieImgDao idao = new MovieImgDao();
 	MemberDao mdao = new MemberDao();
@@ -668,13 +667,13 @@ if (list.size() == 0 && currentPage != 1) {
 	List<MovieImgDto> ilist = idao.getImagesForMovie(movie_id);
 	List<MovieTrailerDto> tlist = tdao.getTrailersForMovie(movie_id);
 	List<MemberDto> mlist = mdao.getAllMembers();
-	
+	List<ReviewInfoDto> rlist = rdao.getReviewList(movie_id);
 	List<ReviewInfoDto> rlist2 = rdao.getReviewListLikes(movie_id);
 	
 	double br = rdao.updateMovieBookingRate(movie_id);
 	br = Double.parseDouble(String.format("%.1f", br));
 	dao.updateMovieBookingRate(movie_id, br);
-	
+
 	SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy.MM.dd hh:mm");
 %>
 <script type="text/javascript">
@@ -721,6 +720,16 @@ $(document).ready(function() {
         event.stopPropagation(); // 레이어 클릭 시 닫히지 않도록 이벤트 전파 막기
     });
     
+    //최신순
+    $("li.p").click(function(){
+   		location.reload();
+    });
+    
+    //좋아요순
+    $("li.p").click(function(){
+    	location.reload();
+    });
+    
    
   
 });
@@ -743,7 +752,7 @@ $(document).ready(function() {
          		</div>
          		<div class="box-contents">
          			<div class="title">
-         				<strong><%=dto.getMovieTitle()%></strong>
+         				<strong><%=dto.getMovieTitle() %></strong>
          				<em class="now blue">
          					<span class="nowshow"></span>
          				</em>
@@ -900,14 +909,15 @@ $(document).ready(function() {
 									<label for="order_type" class="hidden">정렬</label>
 					                <ul id="order_type" class="order-type">
 					                	<li class="p">
-					                        <a style="color: black;" href="movieDetail.jsp?movie_id=<%=dto.getMovieId() %>#set-review">
+					                        <a  style="color: gray; padding-right: 20px; border-right: 1px solid lightgray;"
+					                         href="movieDetail.jsp?movie_id=<%=dto.getMovieId()%> #set-review">
 					                        	<img src="../img/movie_img/sort.png" style="width: 15px; color: black;" >
 					                        	최신순
 					                        </a>
 					                    </li>
 					                    <li class="y">
-					                    	<a style="color: gray; padding-left: 20px; border-left: 1px solid lightgray;"
-					                    	href="movieDetailLike.jsp?movie_id=<%=dto.getMovieId() %> #set-review">
+					                    	<a style="color: black;" 
+					                    	href="movieDetailLike.jsp?movie_id=<%=dto.getMovieId()%> #set-review">
 					                    		<img src="../img/movie_img/like.png" style="width: 15px; color: gray;" >
 					                    		좋아요순
 					                    	</a>
@@ -930,7 +940,7 @@ $(document).ready(function() {
 									<button class="myreview">내 리뷰</button>
 								</div>
 							</div>
-							<div class="wrap-persongrade" id="wrap-persongrade">
+							<div class="wrap-persongrade-likes">
 								<ul class="review-list">
 								<%
 								if(totalCount==0){
@@ -940,24 +950,22 @@ $(document).ready(function() {
 									</li>	
 								<%
 								}else{
-									
-									
 									ReviewLikeDao ldao = new ReviewLikeDao();
 									
 									for(int i=0;i<list.size();i++){
 										ReviewInfoDto rdto = list.get(i);
-
-								    	boolean ok = ldao.getLikeData(rdto.getReviewId(), String.valueOf(memberId));
-									
-									if(ok){%>
-										<li>
+										boolean ok = ldao.getLikeData(rdto.getReviewId(), String.valueOf(memberId));
+									if(ok){
+										
+								%>
+								
+								<li>
 									<input type="hidden" name="review_id" id="review_id" value="<%= rdto.getReviewId() %>">
-									<input type="hidden" name="member_id" id="member_id" value="<%= memberId %>">
 								<span class="img_info">
 									<img src="<%=rdto.getUserPhoto() %>" style="width: 40px;">
 								</span>
 									<div class="top_info">
-										<span class="bookingrate"><%=rdto.getRating() %></span>
+										<span class="bookingrate"><%=rdto.getRating()  %></span>
 										<span class="booking_rate"></span>
 										<span class="name"><%=rdto.getUsername() %></span>
 										<span class="txt_ic_score">
@@ -970,8 +978,10 @@ $(document).ready(function() {
 									</div>
 									<div class="review_info"><%=rdto.getReviewContent() %></div>
 								</li>
-									<%}else{%>
-										<li>
+								<%
+								}else{
+								%>
+								<li>
 										<input type="hidden" name="review_id" id="review_id" value="<%= rdto.getReviewId() %>">
 										<input type="hidden" name="member_id" id="member_id" value="<%= memberId %>">
 									<span class="img_info">
@@ -991,12 +1001,12 @@ $(document).ready(function() {
 										</div>
 										<div class="review_info"><%=rdto.getReviewContent() %></div>
 									</li>
-										
-									<% }
+									<%
 									}
-								
 								}
-								%>
+								}
+								
+									%>
 								</ul>
 							</div>
 						</div>
@@ -1052,7 +1062,7 @@ $(document).ready(function() {
 	</div>
 </div>
 <script type="text/javascript">
-	$("div.wrap-persongrade span.btn_ic_good").click(function() {
+	$("div.wrap-persongrade-likes span.btn_ic_good").click(function() {
 		var username = '<%= username %>';
 		var isLoggedIn = <%= username != null ? "true" : "false" %>;
         var isLiked = $(this).find("i").hasClass("bi-hand-thumbs-up-fill");
@@ -1125,7 +1135,7 @@ $("span.reviewinsert").click(function() {
 	$.ajax({
 		type:"post",
 		dataType: "html",
-		url:"movie/ReviewInsertAction.jsp",
+		url:"ReviewInsertAction.jsp",
 		data:{
 			"movieId":movie_id,
 			"reviewContent":reviewContent,
@@ -1265,16 +1275,17 @@ document.querySelector('.myreview').addEventListener('click', function() {
        }
    });
 });
- 
+
+
 </script>
-  <!-- 페이지 번호 출력 -->
+<!-- 페이지 번호 출력 -->
   <ul class="pagination justify-content-center">
   <%
   //이전
   if(startPage>1)
   {%>
 	  <li class="page-item ">
-	   <a class="page-link" href="movieDetail.jsp?movie_id=<%=movie_id %>&currentPage=<%=startPage-1%>" style="color: black;">이전</a>
+	   <a class="page-link" href="index.jsp?main=movie/movieDetailLike.jsp?movie_id=<%=movie_id %>&currentPage=<%=startPage-1%> #set-review" style="color: black;">이전</a>
 	  </li>
   <%}
     for(int pp=startPage;pp<=endPage;pp++)
@@ -1282,12 +1293,12 @@ document.querySelector('.myreview').addEventListener('click', function() {
     	if(pp==currentPage)
     	{%>
     		<li class="page-item active">
-    		<a class="page-link" href="movieDetail.jsp?movie_id=<%=movie_id %>&currentPage=<%=pp%>"><%=pp %></a>
+    		<a class="page-link" href="index.jsp?main=movie/movieDetailLike.jsp?movie_id=<%=movie_id %>&currentPage=<%=pp%>"><%=pp %></a>
     		</li>
     	<%}else
     	{%>
     		<li class="page-item">
-    		<a class="page-link" href="movieDetail.jsp?movie_id=<%=movie_id %>&currentPage=<%=pp%>"><%=pp %></a>
+    		<a class="page-link" href="index.jsp?main=movie/movieDetailLike.jsp?movie_id=<%=movie_id %>&currentPage=<%=pp%> "><%=pp %></a>
     		</li>
     	<%}
     }
@@ -1296,7 +1307,7 @@ document.querySelector('.myreview').addEventListener('click', function() {
     if(endPage<totalPage)
     {%>
     	<li class="page-item">
-    		<a  class="page-link" href="movieDetail.jsp?movie_id=<%=movie_id %>&currentPage=<%=endPage+1%>"
+    		<a  class="page-link" href="index.jsp?main=movie/movieDetailLike.jsp?movie_id=<%=movie_id %>&currentPage=<%=endPage+1%>"
     		style="color: black;">다음</a>
     	</li>
     <%}
