@@ -1,6 +1,6 @@
-package data.ticket;
+package data.theater.info;
 
-public class TicketDto {
+public class TheaterDto {
 	private String theater_id;
 	private String region;
 	private String branch;
