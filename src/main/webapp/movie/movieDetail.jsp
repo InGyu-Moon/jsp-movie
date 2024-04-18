@@ -60,13 +60,13 @@ startNum = (currentPage - 1) * perPage;
 no = totalCount - (currentPage - 1) * perPage;
 
 //페이지에서 보여질 글만 가져오기
-List<ReviewInfoDto> list = rdao.getPagingList(startNum, perPage);
+List<ReviewInfoDto> list = rdao.getPagingList(movie_id, startNum, perPage);
 
 /*마지막 페이지의 단 한개 남은 글을 삭제시 빈페이지가 남는다 그러므로 해결책은 그이전페이지로 가면 된다  */
 if (list.size() == 0 && currentPage != 1) {
 %>
 <script type="text/javascript">
-	location.href="index.jsp?main=movie/movieDetail.jsp?movie_id=<%=movie_id%>&currentPage=<%=currentPage - 1%>";
+   location.href="index.jsp?main=movie/movieDetail.jsp?movie_id=<%=movie_id%>&currentPage=<%=currentPage - 1%>";
 </script>
 <%
 }
@@ -302,18 +302,34 @@ SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy.MM.dd hh:mm");
 											<li><input type="hidden" name="review_id" id="review_id"
 												value="<%=rdto.getReviewId()%>"> <input
 												type="hidden" name="member_id" id="member_id"
-												value="<%=memberId%>"> <span class="img_info">
-													<img src="<%=rdto.getUserPhoto()%>" style="width: 40px;">
-											</span>
-												<div class="top_info">
-													<span class="bookingrate"><%=rdto.getRating()%></span> <span
-														class="booking_rate"></span> <span class="name"><%=rdto.getUsername()%></span>
-													<span class="txt_ic_score"> <span class="date"><%=sdf2.format(rdto.getReviewDate())%></span>
-													</span> <span class="btn_ic_good" id="btnlike"> <!-- <i
+												value="<%=memberId%>">
+												<div class="icon_like">
+													<span class="txt_ic_score"> </span> <span
+														class="btn_ic_good" id="btnlike"> <!-- <i
 														class="bi bi-hand-thumbs-up-fill"></i> --> <span
 														class="like_on like"></span> <span class="likes-count"><%=rdto.getLikes()%></span>
 													</span>
 												</div>
+												<div class="top_info">
+													<div class="left">
+														<span class="img_info"> <img
+															src="<%=rdto.getUserPhoto()%>">
+														</span>
+													</div>
+													<div class="right">
+														<div class="header">
+															<span class="name"><%=rdto.getUsername()%></span> <span
+																class="date"><%=sdf2.format(rdto.getReviewDate())%></span>
+														</div>
+														<div class="icon">
+															<div class="star">
+																<span class="bookingrate"><%=rdto.getRating()%></span> <span
+																	class="booking_rate"></span>
+															</div>
+														</div>
+													</div>
+												</div>
+
 												<div class="review_info"><%=rdto.getReviewContent()%></div>
 											</li>
 											<%
@@ -322,18 +338,33 @@ SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy.MM.dd hh:mm");
 											<li><input type="hidden" name="review_id" id="review_id"
 												value="<%=rdto.getReviewId()%>"> <input
 												type="hidden" name="member_id" id="member_id"
-												value="<%=memberId%>"> <span class="img_info">
-													<img src="<%=rdto.getUserPhoto()%>" style="width: 40px;">
-											</span>
-												<div class="top_info">
-													<span class="bookingrate"><%=rdto.getRating()%></span> <span
-														class="booking_rate"></span> <span class="name"><%=rdto.getUsername()%></span>
-													<span class="txt_ic_score"> <span class="date"><%=sdf2.format(rdto.getReviewDate())%></span>
-													</span> <span class="btn_ic_good" id="btnlike"> <!-- <i
+												value="<%=memberId%>">
+												<div class="icon_like">
+													<span class="btn_ic_good" id="btnlike"> <!-- <i
 														class="bi bi-hand-thumbs-up"></i> --> <span
 														class="like_off like"></span><span class="likes-count"><%=rdto.getLikes()%></span>
 													</span>
 												</div>
+												<div class="top_info">
+													<div class="left">
+														<span class="img_info"> <img
+															src="<%=rdto.getUserPhoto()%>">
+														</span>
+													</div>
+													<div class="right">
+														<div class="header">
+															<span class="name"><%=rdto.getUsername()%></span> <span
+																class="date"><%=sdf2.format(rdto.getReviewDate())%></span>
+														</div>
+														<div class="icon">
+															<div class="star">
+																<span class="bookingrate"><%=rdto.getRating()%></span> <span
+																	class="booking_rate"></span>
+															</div>
+														</div>
+													</div>
+												</div>
+
 												<div class="review_info"><%=rdto.getReviewContent()%></div>
 											</li>
 
@@ -370,22 +401,9 @@ SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy.MM.dd hh:mm");
 										<div class="writerinfo one">
 											<%=username%>님의 영화 평점은
 										</div>
-
-										<i class="bi bi-star"> <img alt=""
-											src="../img/movie_img/moviedetail_03.png">
-										</i>
-										<i class="bi bi-star"> <img alt=""
-											src="../img/movie_img/moviedetail_03.png">
-										</i>
-										<i class="bi bi-star"> <img alt=""
-											src="../img/movie_img/moviedetail_03.png">
-										</i>
-										<i class="bi bi-star"> <img alt=""
-											src="../img/movie_img/moviedetail_03.png">
-										</i>
-										<i class="bi bi-star"> <img alt=""
-											src="../img/movie_img/moviedetail_03.png">
-										</i>
+										<i class="bi bi-star"> </i> <i class="bi bi-star"> </i> <i
+											class="bi bi-star"> </i> <i class="bi bi-star"> </i> <i
+											class="bi bi-star"> </i>
 										<div class="writerinfo two">
 											<span class="star-rating">0</span> 점
 										</div>
@@ -411,47 +429,49 @@ SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy.MM.dd hh:mm");
 						</div>
 					</div>
 				</div>
+				<!-- 페이지 번호 출력 -->
+				<ul class="pagination justify-content-center">
+					<%
+					//이전
+					if (startPage > 1) {
+					%>
+					<li class="page-item prev btn"><a class="page-link"
+						href="movieDetail.jsp?movie_id=<%=movie_id%>&currentPage=<%=startPage - 1%>"
+						style="color: black;"></a></li>
+					<%
+					}
+					for (int pp = startPage; pp <= endPage; pp++) {
+					if (pp == currentPage) {
+					%>
+					<li class="page-item active"><a class="page-link"
+						href="movieDetail.jsp?movie_id=<%=movie_id%>&currentPage=<%=pp%>"><%=pp%></a>
+					</li>
+					<%
+					} else {
+					%>
+					<li class="page-item"><a class="page-link"
+						href="movieDetail.jsp?movie_id=<%=movie_id%>&currentPage=<%=pp%>"><%=pp%></a>
+					</li>
+					<%
+					}
+					}
+
+					//다음
+					if (endPage < totalPage) {
+					%>
+					<li class="page-item next btn"><a class="page-link"
+						href="movieDetail.jsp?movie_id=<%=movie_id%>&currentPage=<%=endPage + 1%>"
+						style="color: black;">
+						</a></li>
+					<%
+					}
+					%>
+
+				</ul>
 			</div>
 		</div>
 	</div>
-	<!-- 페이지 번호 출력 -->
-	<ul class="pagination justify-content-center">
-		<%
-		//이전
-		if (startPage > 1) {
-		%>
-		<li class="page-item "><a class="page-link"
-			href="movieDetail.jsp?movie_id=<%=movie_id%>&currentPage=<%=startPage - 1%>"
-			style="color: black;">이전</a></li>
-		<%
-		}
-		for (int pp = startPage; pp <= endPage; pp++) {
-		if (pp == currentPage) {
-		%>
-		<li class="page-item active"><a class="page-link"
-			href="movieDetail.jsp?movie_id=<%=movie_id%>&currentPage=<%=pp%>"><%=pp%></a>
-		</li>
-		<%
-		} else {
-		%>
-		<li class="page-item"><a class="page-link"
-			href="movieDetail.jsp?movie_id=<%=movie_id%>&currentPage=<%=pp%>"><%=pp%></a>
-		</li>
-		<%
-		}
-		}
 
-		//다음
-		if (endPage < totalPage) {
-		%>
-		<li class="page-item"><a class="page-link"
-			href="movieDetail.jsp?movie_id=<%=movie_id%>&currentPage=<%=endPage + 1%>"
-			style="color: black;">다음</a></li>
-		<%
-		}
-		%>
-
-	</ul>
 	<jsp:include page="../include/footer.html"></jsp:include>
 	<script type="text/javascript">
 
@@ -459,7 +479,6 @@ SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy.MM.dd hh:mm");
 	$(".now.blue").hide();
 	$(".now.red").hide();
 	$(".now.brown").hide();
-	$("div.layer-wrap").hide();
 
     // release_date 가져오기
     var releaseDate = new Date('<%=sdf.format(dto.getReleaseDate())%>');
@@ -490,7 +509,7 @@ SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy.MM.dd hh:mm");
    
 
     $(".rclose").click(function() {
-        $("div.layer-wrap").hide();
+    	$("div.layer-wrap").css("display","none");
     });
 
     $("div.layer-wrap .layer-content").click(function(event) {
@@ -591,7 +610,7 @@ $("span.reviewinsert").click(function() {
 	$.ajax({
 		type:"post",
 		dataType: "html",
-		url:"movie/ReviewInsertAction.jsp",
+		url:"ReviewInsertAction.jsp",
 		data:{
 			"movieId":movie_id,
 			"reviewContent":reviewContent,
