@@ -11,7 +11,6 @@ import java.util.List;
 import data.movie.chart.MovieImgDto;
 import db.mysql.DbConnect;
 
-
 public class ReviewInfoDao {
 
 	DbConnect db = new DbConnect();
@@ -220,7 +219,7 @@ public class ReviewInfoDao {
 	}
 
 	// 2.부분조회(startnum부터 page갯수만큼 반환) - 최신순
-	public List<ReviewInfoDto> getPagingList(int startNum, int perPage) {
+	public List<ReviewInfoDto> getPagingList(String movie_id, int startNum, int perPage) {
 		List<ReviewInfoDto> list = new ArrayList<ReviewInfoDto>();
 
 		Connection conn = db.getConnection();
@@ -228,14 +227,15 @@ public class ReviewInfoDao {
 		ResultSet rs = null;
 
 		String sql = "SELECT REVIEW_INFO.REVIEW_ID, REVIEW_INFO.MEMBER_ID, REVIEW_INFO.MOVIE_ID, MEMBER_INFO.USER_PHOTO, MEMBER_INFO.USERNAME, REVIEW_INFO.REVIEW_CONTENT, REVIEW_INFO.REVIEW_DATE, REVIEW_INFO.LIKES, REVIEW_INFO.RATING\r\n"
-				+ "FROM REVIEW_INFO JOIN MEMBER_INFO ON REVIEW_INFO.MEMBER_ID = MEMBER_INFO.MEMBER_ID\r\n"
-				+ "ORDER BY REVIEW_ID DESC LIMIT ?, ?";
+				+ "FROM REVIEW_INFO JOIN MEMBER_INFO ON REVIEW_INFO.MEMBER_ID = MEMBER_INFO.MEMBER_ID \r\n"
+				+ "WHERE REVIEW_INFO.MOVIE_ID = ? ORDER BY REVIEW_ID DESC LIMIT ?, ?";
 
 		try {
 			pstmt = conn.prepareStatement(sql);
 
-			pstmt.setInt(1, startNum);
-			pstmt.setInt(2, perPage);
+			pstmt.setString(1, movie_id);
+			pstmt.setInt(2, startNum);
+			pstmt.setInt(3, perPage);
 
 			rs = pstmt.executeQuery();
 
@@ -265,7 +265,7 @@ public class ReviewInfoDao {
 	}
 
 	// 2.부분조회(startnum부터 page갯수만큼 반환) - 좋아요순
-	public List<ReviewInfoDto> getPagingListLike(int startNum, int perPage) {
+	public List<ReviewInfoDto> getPagingListLike(String movie_id, int startNum, int perPage) {
 		List<ReviewInfoDto> list = new ArrayList<ReviewInfoDto>();
 
 		Connection conn = db.getConnection();
@@ -274,13 +274,14 @@ public class ReviewInfoDao {
 
 		String sql = "SELECT REVIEW_INFO.REVIEW_ID, REVIEW_INFO.MEMBER_ID, REVIEW_INFO.MOVIE_ID, MEMBER_INFO.USER_PHOTO, MEMBER_INFO.USERNAME, REVIEW_INFO.REVIEW_CONTENT, REVIEW_INFO.REVIEW_DATE, REVIEW_INFO.LIKES, REVIEW_INFO.RATING\r\n"
 				+ "FROM REVIEW_INFO JOIN MEMBER_INFO ON REVIEW_INFO.MEMBER_ID = MEMBER_INFO.MEMBER_ID\r\n"
-				+ "ORDER BY LIKES DESC LIMIT ?, ?";
+				+ "WHERE REVIEW_INFO.MOVIE_ID = ? ORDER BY LIKES DESC LIMIT ?, ?";
 
 		try {
 			pstmt = conn.prepareStatement(sql);
 
-			pstmt.setInt(1, startNum);
-			pstmt.setInt(2, perPage);
+			pstmt.setString(1, movie_id);
+			pstmt.setInt(2, startNum);
+			pstmt.setInt(3, perPage);
 
 			rs = pstmt.executeQuery();
 
