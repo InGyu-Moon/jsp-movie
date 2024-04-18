@@ -437,6 +437,7 @@ List<TheaterDto> regionList = tichekDao.regionList();
 				'ul li a',
 				function() {
 					// 클릭된 링크에 활성 클래스를 추가하고 다른 링크에서는 제거
+					console.log("성공");
 					$(this).addClass('active').parent("li").siblings()
 							.children("a").removeClass('active');
 				});
