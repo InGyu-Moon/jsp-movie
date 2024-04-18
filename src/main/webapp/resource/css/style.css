@@ -864,7 +864,7 @@ footer#footer .main .select .btn  a {
 }
 /* //index.jsp */
 
-/* //ticket.jsp */
+/* ticket.jsp */
 .ticket .region {
 	width: 980px;
 	height: 460px;
@@ -2040,3 +2040,602 @@ log.nonReservationForm #inner_p {
 	margin-top: 10px;
 }
 /* //movieshowrate */
+
+/* movieDetail */
+#moviedetail {
+	clear: both;
+	padding-bottom: 50px;
+	padding-top: 40px;
+}
+
+#moviedetail .top {
+	display: inline-flex;
+}
+
+#moviedetail .set-movie {
+	margin-top: 30px;
+}
+
+#moviedetail .box-container {
+	display: flex;
+	align-items: flex-start;
+}
+
+#moviedetail .box-contents {
+	flex: 1;
+	margin-left: 30px;
+	width: 765px;
+}
+
+#moviedetail .box-contents>* {
+	margin-bottom: 10px;
+}
+
+#moviedetail div.box-img img.icon {
+	position: absolute;
+	width: 20px;
+	left: 5px;
+	top: 5px;
+	border-radius: 3px;
+}
+
+#moviedetail .img-main img.post {
+	width: 185px;
+	height: 260px;
+}
+
+#moviedetail .title {
+	color: #333333;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+
+#moviedetail .title strong {
+	color: black;
+	font-size: 25px;
+	vertical-align: middle;
+	font-weight: 600;
+}
+
+#moviedetail .title em {
+	margin-left: 12px;
+}
+
+#moviedetail em {
+	font-style: normal;
+}
+
+#moviedetail em.now.blue {
+	border: 2px solid #3e82a4;
+	color: #3e82a4;
+}
+
+#moviedetail em.now.brown {
+	border: 2px solid #a16423;
+	color: #a16423;
+}
+
+#moviedetail em.now.red {
+	border: 2px solid #fb4357;
+	color: #fb4357;
+}
+
+#moviedetail em.now {
+	line-height: 23px;
+	font-weight: 600;
+	font-size: 12px;
+	text-align: center;
+	vertical-align: middle;
+	display: inline-block;
+	position: relative;
+	padding: 0 5px 0;
+}
+
+#moviedetail div.score {
+	margin-top: 25px;
+	padding-bottom: 10px;
+	border-bottom: 1px solid #333333;
+	font-size: 14px;
+}
+
+#moviedetail strong.brate {
+	padding-right: 10px;
+}
+
+#moviedetail div.rating {
+	display: inline-block;
+	padding-left: 10px;
+	border-left: 1px solid #d9d6c8;
+}
+
+#moviedetail div.info {
+	line-height: 1.6;
+	color: #333333;
+	font-size: 13px;
+	font-weight: 600;
+	border-bottom: 1px solid #d9d6c8;
+}
+
+#moviedetail div.info dl {
+	line-height: 24px;
+	padding-bottom: 10px;
+}
+
+#moviedetail .info dt {
+	float: left;
+}
+
+#moviedetail .set-story-movie {
+	margin-top: 35px;
+	color: #333333;
+	line-height: 1.8;
+}
+
+#moviedetail .set-stillcut, #moviedetail .set-trailer {
+	padding-top: 40px;
+}
+
+#moviedetail .heading {
+	height: 39px;
+	background: #f6f6f6;
+	margin-bottom: 20px;
+	border-radius: 5px;
+}
+
+#moviedetail .heading h4 {
+	float: left;
+	margin-left: 16px;
+	line-height: 36px;
+	color: #333333;
+	font-size: 15px;
+	font-weight: 600;
+	margin-right: 5px;
+}
+
+#moviedetail .heading .count {
+	line-height: 37px;
+	font-weight: 300;
+}
+
+#moviedetail div.slider-wrap {
+	position: relative;
+	display: flex;
+	justify-content: center;
+}
+
+#moviedetail .silder .item-wrap .item {
+	position: absolute;
+	text-align: center;
+}
+
+#moviedetail .item-wrap .item button {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	width: 40px;
+	height: 40px;
+	background-color: rgba(255, 255, 255, 0.5);
+	border: none;
+	border-radius: 50%;
+	cursor: pointer;
+	background-color: transparent; /* 버튼의 배경색을 투명하게 설정 */
+	background-repeat: no-repeat; /* 배경 이미지 반복 없음 */
+	background-size: cover; /* 배경 이미지 크기 조정 */
+}
+
+#moviedetail .swiper {
+	width: 100%;
+	height: 100%;
+}
+
+#moviedetail .swiper-slide {
+	font-size: 18px;
+	background: #fff;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 800px;
+	height: 450px;
+}
+
+#moviedetail .swiper-slide img {
+	display: block;
+	height: 100%;
+	text-align: center;
+}
+
+#moviedetail .set-trailer .title {
+	margin-top: 10px;
+	font-size: 12px;
+	line-height: 16px;
+}
+
+#moviedetail .ico-trailer {
+	color: #2a6fb6;
+	display: inline-block;
+	height: 16px;
+	margin-right: 5px;
+	padding: 0 3px;
+	border: 1px solid #2a6fb6;
+	font-size: 10px;
+	text-align: center;
+	font-weight: bold;
+	line-height: 13px;
+}
+
+#moviedetail .swiper-slide.tr {
+	font-size: 18px;
+	background: #fff;
+	display: flex;
+	justify-content: start;
+	margin-left: 50px;
+	align-items: center;
+	width: 800px;
+	height: 200px;
+}
+
+#moviedetail .trailer-thumbnail.tr {
+	margin-left: 20px;
+}
+
+#moviedetail .play-button {
+	cursor: pointer;
+}
+
+#moviedetail .set-review {
+	padding-top: 70px;
+}
+
+#moviedetail .movie-rating {
+	position: relative;
+	border-top: 2px solid #666666;
+}
+
+#moviedetail .point .title {
+	font-size: 24px;
+	line-height: 30px;
+	position: absolute;
+	left: 0;
+}
+
+#moviedetail .point {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+#moviedetail .point .title {
+	flex: 1; /* 나머지 공간 차지 */
+	white-space: nowrap; /* 넘치는 내용을 줄여줍니다. */
+	overflow: hidden; /* 넘치는 내용을 가리고 */
+	text-overflow: ellipsis; /* 넘치는 내용을 ...으로 표시합니다. */
+	max-width: calc(100% - 120px); /* 최대 너비 지정 */
+	margin-right: 20px; /* title과 rating 사이의 간격 조정 */
+}
+
+#moviedetail .point .rating-grade {
+	position: absolute;
+	top: 40px;
+	right: 30px;
+}
+
+#moviedetail .point {
+	position: relative;
+	margin-top: 20px;
+	display: flex; /* 요소들을 가로로 배치 */
+	justify-content: space-between; /* 요소들을 양쪽으로 정렬 */
+}
+
+#moviedetail .hidden {
+	font: 0/0 a;
+	height: 0;
+	overflow: hidden;
+	/* position: absolute; */
+	visibility: hidden;
+	width: 0;
+	zoom: 1;
+}
+
+#moviedetail .set-movie .order-type {
+	/* position: absolute; */
+	right: 0;
+}
+
+#moviedetail .point #order_type {
+	margin-left: auto; /* 나머지 공간을 차지 */
+	display: flex;
+	align-items: center;
+	padding-top: 20px;
+}
+
+#moviedetail .order-type li {
+	margin-left: 20px; /* 각 항목 간의 간격 조정 */
+}
+
+#moviedetail .order-type li a {
+	cursor: pointer;
+}
+
+#moviedetail .wrap-persongrade {
+	padding-top: 30px;
+}
+
+#moviedetail .review-list li:first-child {
+	border-color: #ccc;
+}
+
+#moviedetail .review-list li {
+	border-top: 1px solid #eee;
+	position: relative;
+	padding: 20px 0 15px 68px;
+}
+
+#moviedetail div.layer-wrap {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 650px;
+	height: 416px;
+	border: 10px solid #333;
+	z-index: 9999; /* 다른 요소보다 위로 */
+	background-color: #333;
+}
+
+#moviedetail .layer-wrap div.popwrap {
+	width: 630px;
+}
+
+#moviedetail .top_info {
+	display: flex;
+	align-items: center;
+}
+
+#moviedetail .top_info .name {
+	margin-right: 10px;
+}
+
+#moviedetail span.like {
+	width: 16px;
+	height: 16px;
+	display: block;
+	background-position: center;
+	background-size: 16px;
+	margin-right: 8px;
+	position: relative;
+	bottom: 2px;
+}
+
+#moviedetail span.like_on {
+	background-image: url(../../img/movie_img/moviedetail_02.png);
+}
+
+#moviedetail span.like_off {
+	background-image: url(../../img/movie_img/moviedetail_01.png);
+}
+
+#moviedetail span.like.active {
+	background-image: url("../../img/movie_img/moviedetail_01.png");
+}
+
+#moviedetail .layer-wrap .layer-wrap .popwrap>h1, #moviedetail .popup-general .popwrap>h1
+	{
+	height: 50px;
+	line-height: 45px;
+	padding-left: 19px;
+	border: 2px solid #707070;
+	color: #f2f0e5;
+	font-weight: 300;
+	font-size: 22px;
+}
+
+#moviedetail .layer-wrap .layer-wrap .pop-contents.write-mygrade {
+	padding: 15px 30px;
+}
+
+#moviedetail .layer-wrap .layer-wrap .pop-contents, #moviedetail .popup-general .pop-contents
+	{
+	margin-top: 5px;
+	padding: 40px;
+	background-color: #f6f6f4;
+	color: #333;
+}
+
+#moviedetail .layer-wrap .layer-wrap .pop-contents {
+	background-color: #f6f6f4;
+	height: 336px;
+}
+
+#moviedetail .layer-wrap .mygrade-cont .movie-tit {
+	padding-bottom: 15px;
+	font-size: 26px;
+	font-weight: 500;
+	text-align: center;
+	border-bottom: 1px dashed #ccc9c7;
+}
+
+#moviedetail .layer-wrap .mygrade-cont .textbox {
+	padding: 10px;
+	background: #ffffff;
+	border: 1px solid #999999;
+}
+
+#moviedetail .layer-wrap .mygrade-cont .textbox textarea {
+	width: 100%;
+	height: 80px;
+	padding: 0;
+	border: 0;
+	background: none;
+	font-size: 15px;
+	color: #000000;
+	line-height: 1.7;
+	resize: none;
+	overflow: auto;
+	overflow-x: hidden;
+	vertical-align: top;
+}
+
+#moviedetail .layer-wrap .rclose {
+	display: block;
+	position: absolute;
+	color: white;
+	zoom: 1;
+	top: 15px;
+	left: auto;
+	right: 20px;
+	width: 20px;
+	height: 20px;
+	cursor: pointer;
+}
+
+#moviedetail .layer-wrap .rclose img {
+	width: 100%;
+	height: 100%;
+}
+
+#moviedetail .layer-wrap .grade-star {
+	position: relative;
+	height: 100px;
+}
+
+#moviedetail .layer-wrap .mygrade-cont .footbox {
+	margin-top: 8px;
+}
+
+#moviedetail .layer-wrap .mygrade-cont .footbox .rbox button {
+	margin-left: 8px;
+	padding: 1px 10px 1px 10px;
+}
+
+#moviedetail .layer-wrap .mygrade-cont .footbox .rbox {
+	float: right;
+}
+
+#moviedetail .layer-wrap .round.on.red {
+	border: 2px solid #fb4357;
+	background-color: #fb4357;
+	color: #ffffff;
+}
+
+#moviedetail .layer-wrap .round {
+	line-height: 23px;
+	font-weight: 500;
+	font-size: 12px;
+	text-align: center;
+}
+
+#moviedetail .layer-wrap .grade-star {
+	display: flex;
+	align-items: center;
+}
+
+#moviedetail .layer-wrap .grade-star .bi-star {
+	cursor: pointer;
+	width: 40px;
+	height: 40px;
+	margin-right: 5px;
+	margin-bottom: 7px;
+}
+
+#moviedetail .layer-wrap .grade-star .bi-star-fill {
+	cursor: pointer;
+	font-size: 40px; margin-right : 5px;
+	margin-bottom: 7px;
+	margin-right: 5px;
+}
+
+#moviedetail .layer-wrap .grade-star .bi-star img {
+	width: 100%;
+	height: 100%;
+}
+
+#moviedetail .layer-wrap .writerinfo.one {
+	margin-right: 20px;
+	margin-left: 40px;
+	font-size: 15pt;
+}
+
+#moviedetail .layer-wrap .writerinfo.two {
+	margin-left: 15px;
+	font-size: 16pt;
+}
+
+#moviedetail .real-rating {
+	position: relative;
+	width: 100%;
+	padding: 30px;
+	background: #f6f6f6;
+	border-radius: 5px;
+	box-sizing: border-box;
+	margin-top: 20px;
+}
+
+#moviedetail .real-rating .title {
+	font-size: 17px;
+	color: #212224;
+	font-weight: 500;
+	line-height: 1.8em;
+	margin-bottom: 0px;
+	margin-top: 10px;
+	font-weight: bold;
+}
+
+#moviedetail .real-rating .rbtn, #moviedetail .real-rating .myreview {
+	background-color: transparent;
+	color: inherit;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	padding: 0;
+	font: inherit;
+}
+
+#moviedetail .real-rating .desc span em {
+	font-size: 14px;
+	color: #222222;
+	font-weight: 500;
+	font-style: normal;
+}
+
+#moviedetail .real-rating .wrap-btn {
+	position: absolute;
+	top: 40px;
+	right: 30px;
+}
+
+#moviedetail .real-rating .wrap-btn button.myreview {
+	background-color: #666666;
+	width: 76px;
+	height: 50px;
+	color: #ffffff;
+	text-align: center;
+	display: inline-block;
+	border-radius: 3px;
+	margin-left: 6px;
+	font-size: 10pt;
+	font-weight: bold;
+	border: 2px solid #666666;
+}
+
+#moviedetail .real-rating .wrap-btn button.rbtn {
+	background-color: #fb4357;
+	width: 76px;
+	height: 50px;
+	color: #ffffff;
+	text-align: center;
+	display: inline-block;
+	border-radius: 3px;
+	margin-left: 6px;
+	font-size: 10pt;
+	font-weight: bold;
+	border: 2px solid #fb4357;
+}
+
+#moviedetail span.btn_ic_good {
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	margin-left: 10px;
+}
+/* //movieDetail */
