@@ -211,6 +211,32 @@ public class MemberDao {
 		}
 		return dto;
 	}
+	
+	// get memberId by username
+		public int getMemberIdByUsername(String username) {
+			int memberId = -1;
+
+			Connection conn = db.getConnection();
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+
+			String sql = "select MEMBER_ID from MEMBER_INFO where USERNAME=?";
+
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, username);
+				rs = pstmt.executeQuery();
+
+				if (rs.next()) {
+					memberId = rs.getInt("MEMBER_ID");
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				db.dbClose(rs, pstmt, conn);
+			}
+			return memberId;
+		}
 
 	
 	// delete
