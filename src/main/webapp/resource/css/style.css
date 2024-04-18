@@ -2044,12 +2044,69 @@ log.nonReservationForm #inner_p {
 /* movieDetail */
 #moviedetail {
 	clear: both;
-	padding-bottom: 50px;
+	padding-bottom: 120px;
 	padding-top: 40px;
+}
+
+#moviedetail ul.pagination {
+	margin-top: 40px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#moviedetail ul.pagination li {
+	margin-right: 10px;
+	width: 20px;
+	height: 20px;
+	display: flex;
+	align-items: center;
+	border-radius: 30px;
+}
+
+#moviedetail ul.pagination li.btn {
+	background-color: #fb4357;
+	width: 34px;
+	height: 34px;
+	background-image: url("../../img/movie_img/arrow_white.png");
+	background-size: 16px;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+#moviedetail ul.pagination li.btn.next {
+	margin-left: 10px;
+		transform: rotate(90deg);
+}
+
+#moviedetail ul.pagination li.btn.prev {
+	margin-right: 10px;
+	transform: rotate(270deg);
+}
+
+#moviedetail ul.pagination li a {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	height: 100%;
+}
+
+#moviedetail ul.pagination li:last-child {
+	margin-right: 0
+}
+
+#moviedetail ul.pagination li a img {
+	width: 100%;
+	height: 100%;
 }
 
 #moviedetail .top {
 	display: inline-flex;
+}
+
+#moviedetail .top .box-img {
+	position: relative;
 }
 
 #moviedetail .set-movie {
@@ -2365,10 +2422,55 @@ log.nonReservationForm #inner_p {
 	border-color: #ccc;
 }
 
+#moviedetail .review-list li:last-child {
+	border-bottom: 1px solid #ccc;
+}
+
 #moviedetail .review-list li {
 	border-top: 1px solid #eee;
 	position: relative;
-	padding: 20px 0 15px 68px;
+	padding: 20px;
+}
+
+#moviedetail .review-list li .icon_like {
+	position: absolute;
+	right: 20px;
+	top: 20px;
+}
+
+#moviedetail .review-list li .top_info {
+	display: flex;
+}
+
+#moviedetail .review-list li .top_info .left {
+	margin-right: 20px;
+}
+
+#moviedetail .review-list li .top_info .right .header span.name {
+	margin-right: 20px
+}
+
+#moviedetail .review-list li .top_info .right .header span.date {
+	font-size: 14px;
+	color: #ccc;
+}
+
+#moviedetail .review-list li .review_info {
+	margin-top: 20px;
+	padding-left: 58px;
+	line-height: 24px;
+}
+
+#moviedetail .review-list li .left .img_info {
+	width: 40px;
+	height: 40px;
+	border: 1px solid red;
+	display: block;
+}
+
+#moviedetail .review-list li .left .img_info img {
+	width: 100%;
+	height: 100%;
 }
 
 #moviedetail div.layer-wrap {
@@ -2385,15 +2487,6 @@ log.nonReservationForm #inner_p {
 
 #moviedetail .layer-wrap div.popwrap {
 	width: 630px;
-}
-
-#moviedetail .top_info {
-	display: flex;
-	align-items: center;
-}
-
-#moviedetail .top_info .name {
-	margin-right: 10px;
 }
 
 #moviedetail span.like {
@@ -2427,11 +2520,15 @@ log.nonReservationForm #inner_p {
 	border: 2px solid #707070;
 	color: #f2f0e5;
 	font-weight: 300;
-	font-size: 22px;
+	font-size: 20px;
 }
 
 #moviedetail .layer-wrap .layer-wrap .pop-contents.write-mygrade {
 	padding: 15px 30px;
+}
+
+#moviedetail div.layer-wrap {
+	display: none;
 }
 
 #moviedetail .layer-wrap .layer-wrap .pop-contents, #moviedetail .popup-general .pop-contents
@@ -2506,10 +2603,13 @@ log.nonReservationForm #inner_p {
 #moviedetail .layer-wrap .mygrade-cont .footbox .rbox button {
 	margin-left: 8px;
 	padding: 1px 10px 1px 10px;
+	cursor: pointer;
 }
 
 #moviedetail .layer-wrap .mygrade-cont .footbox .rbox {
 	float: right;
+	display: flex;
+	align-items: center;
 }
 
 #moviedetail .layer-wrap .round.on.red {
@@ -2532,15 +2632,47 @@ log.nonReservationForm #inner_p {
 
 #moviedetail .layer-wrap .grade-star .bi-star {
 	cursor: pointer;
-	width: 40px;
-	height: 40px;
+	width: 36px;
+	height: 36px;
 	margin-right: 5px;
 	margin-bottom: 7px;
+	background-image: url(../../img/movie_img/moviedetail_03.png);
+	background-size: 36px;
+	background-position: center;
+}
+
+#moviedetail .bi-star-fill {
+	background-image: url(../../img/movie_img/moviedetail_04.png);
+	cursor: pointer;
+	width: 36px;
+	height: 36px;
+	margin-right: 5px;
+	margin-bottom: 7px;
+	background-size: 36px;
+	background-position: center;
+	height: 36px;
+}
+
+#moviedetail .booking_rate {
+	display: flex;
+	align-items: center;
+	margin-top: 10px;
+}
+
+#moviedetail .booking_rate .bi-star-fill {
+	width: 20px;
+	height: 20px;
+	display: block;
+	background-size: 20px;
+	margin-right: 10px;
+	margin: 0;
+	margin-right: 6px;
 }
 
 #moviedetail .layer-wrap .grade-star .bi-star-fill {
 	cursor: pointer;
-	font-size: 40px; margin-right : 5px;
+	font-size: 40px;
+	margin-right: 5px;
 	margin-bottom: 7px;
 	margin-right: 5px;
 }
@@ -2577,8 +2709,11 @@ log.nonReservationForm #inner_p {
 	font-weight: 500;
 	line-height: 1.8em;
 	margin-bottom: 0px;
-	margin-top: 10px;
 	font-weight: bold;
+}
+
+#moviedetail .real-rating p.desc {
+	margin-top: 10px;
 }
 
 #moviedetail .real-rating .rbtn, #moviedetail .real-rating .myreview {
@@ -2607,7 +2742,7 @@ log.nonReservationForm #inner_p {
 #moviedetail .real-rating .wrap-btn button.myreview {
 	background-color: #666666;
 	width: 76px;
-	height: 50px;
+	height: 40px;
 	color: #ffffff;
 	text-align: center;
 	display: inline-block;
@@ -2621,7 +2756,7 @@ log.nonReservationForm #inner_p {
 #moviedetail .real-rating .wrap-btn button.rbtn {
 	background-color: #fb4357;
 	width: 76px;
-	height: 50px;
+	height: 40px;
 	color: #ffffff;
 	text-align: center;
 	display: inline-block;
