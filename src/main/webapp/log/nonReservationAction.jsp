@@ -1,7 +1,7 @@
+<%@page import="data.user.nonmember.NonMemberDto"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.sql.Date"%>
-<%@page import="user.nonmember.NonMemberDao"%>
-<%@page import="user.nonmember.NonMemberDto"%>
+<%@page import="data.user.nonmember.NonMemberDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
