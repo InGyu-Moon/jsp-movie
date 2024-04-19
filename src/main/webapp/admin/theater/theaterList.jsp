@@ -10,7 +10,7 @@
 	request.setCharacterEncoding("utf-8");
 	
 	TheaterDao dao = new TheaterDao();
-	List<TheaterDto> theaterList = dao.selectAllTheater();
+	List<TheaterDto> theaterList = dao.getPagingList(0,9);
 	
 	JSONArray jsons = new JSONArray();
 	for (TheaterDto theater : theaterList) {
