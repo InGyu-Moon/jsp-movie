@@ -1,4 +1,4 @@
-<%@page import="data.user.member.Gender"%>
+r<%@page import="data.user.member.Gender"%>
 <%@ page import="data.user.member.MemberDao" %>
 <%@ page import="data.user.member.MemberDto" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -14,7 +14,7 @@
     <title>Insert title here</title>
 </head>
 <%
-    String memberId = request.getParameter("memberId");
+    int memberId = Integer.parseInt(request.getParameter("memberId"));
     MemberDao dao = new MemberDao();
     MemberDto dto = dao.getMemberById(memberId);
     
@@ -63,7 +63,7 @@
 		<table class="table" style="width: 80%;">
 			<tr style="background-color: #99aaff">
 				<th style="width: 30%; text-align: center; background-color: #99aaff;">구분</th>
-        		<th style="width: 70%; text-align: center; background-color: #99aaff;">정보</td>
+        		<th style="width: 70%; text-align: center; background-color: #99aaff;">정보</th>
 			</tr>
 			<tr>
 				<th style="width: 30%; text-align: center;">사용자명</th>

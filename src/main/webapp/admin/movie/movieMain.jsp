@@ -1,20 +1,22 @@
-<%@page import="data.user.member.MemberDto"%>
-<%@page import="data.user.member.MemberDao"%>
-<%@page import="data.inform.inquiry.InquiryDto"%>
-<%@page import="java.util.List"%>
-<%@page import="data.inform.inquiry.InquiryDao"%>
+<%@ page import="data.user.member.MemberDto" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="data.user.member.MemberDao" %>
+<%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="data.movie.chart.MovieInfoDao" %>
+<%@ page import="data.movie.chart.MovieInfoDto" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
 <head>
-   <meta charset="UTF-8">
-   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-   <link href="https://fonts.googleapis.com/css2?family=Dongle&family=Gaegu&family=Nanum+Pen+Script&family=Noto+Sans+KR:wght@100..900&family=Noto+Serif+KR&display=swap"
-         rel="stylesheet">
-   <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
-   
-  <style type="text/css">
+<meta charset="UTF-8">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Dongle&family=Gaegu&family=Nanum+Pen+Script&family=Noto+Sans+KR:wght@100..900&family=Noto+Serif+KR&display=swap"
+      rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<title>Insert title here</title>
+<style type="text/css">
    	.container-rightside{
 		width:70%;
 		margin-left: 20px;
@@ -28,10 +30,7 @@
 	    justify-content: space-between;
 	    align-items: center;
 	}
-    a{
-    	text-decoration-line: none;
-    	color: inherit;
-    }
+    
     
 </style>
 <script type="text/javascript">
@@ -55,41 +54,40 @@ $(document).ready(function(){
 	    if(len==0){
 		    alert("최소 1개이상의 글을 선택해 주세요");
 	    }else{
-		  
-		    //체크된 곳의 value값(num)얻기
-		    var n="";
-		    $(".check:checked").each(function(idx){
-		    	n+=$(this).val()+",";
-		    });
-		    
-		    console.log(n);
-		  
-		    //마지막 컴마 제거
-		    n=n.substring(0,n.length-1);
-		    console.log(n);
-		  
-		    //삭제파일로 전송
-		    location.href="inquiry/inquiryDelete.jsp?selectinquiryId="+n;
+
+			if(confirm("선택한 항목을 삭제하시겠습니까?")){
+				//체크된 곳의 value값(num)얻기
+				var n="";
+				$(".check:checked").each(function(idx){
+					n+=$(this).val()+",";
+				});
+
+				//마지막 컴마 제거
+				n=n.substring(0,n.length-1);
+
+				//삭제파일로 전송
+				location.href="movie/movieDelete.jsp?movieId="+n;
+			}
+
 	  }
   })
     
 });
 </script>
 </head>
-<%
-    InquiryDao inquirydao = new InquiryDao();
-	MemberDao memberDao = new MemberDao();
 
+<%
+	MovieInfoDao movieInfoDao = new MovieInfoDao();
     // 전체회원목록
-    List<InquiryDto> totalInquiryList = inquirydao.selectAllInquity();
+    List<MovieInfoDto> totalMovieList = movieInfoDao.getAllMovies();
+    SimpleDateFormat sdf = new SimpleDateFormat("yyyy년 M월 d일");
     
-    int count = inquirydao.getCountInquiry();
+    int count = movieInfoDao.getMovieCount();
     
 %>
-
 <%
     //전체갯수
-    int totalCount=totalInquiryList.size()+1;
+    int totalCount=totalMovieList.size()+1;
     int perPage=5; //한페이지당 보여질 글의 갯수
     int perBlock=5; //한블럭당 보여질 페이지 갯수
     int startNum; //db에서 가져올 글의 시작번호(mysql은 첫글이0번,오라클은 1번);
@@ -129,20 +127,20 @@ $(document).ready(function(){
     no=totalCount-(currentPage-1)*perPage;
 
     //페이지에서 보여질 글만 가져오기
-    List<MemberDto> list = memberDao.getList(startNum, perPage);
+    List<MovieInfoDto> list = movieInfoDao.getList(startNum, perPage);
 %>
+
 
 <body>
 <div class="center">
 	<div class="container-rightside" style="width: 80%;">
-		<h2 style="margin-bottom: 50px">1:1 문의</h2>
+		<h2 style="margin-bottom: 50px">영화 관리</h2>
 		<hr style="margin-bottom: 30px">
 		<form class="d-flex" method="post" action="#" style="margin-bottom: 30px">
 		    <select class="form-select " style="width: 110px;">
 		        <option value="전체" selected>전체</option>
-		        <option value="제목">제목</option>
-		        <option value="회원아이디">회원아이디</option>
-		        <option value="구분">구분</option>
+		        <option value="제목">영화 제목</option>
+		        <option value="test">test</option>
 		    </select>
 		    <input type="text" class="form-control" placeholder="검색어" style="margin-left: 30px;margin-right: 30px; width: 280px;">
 		    <button type="submit" class="btn btn-outline-primary">조회</button>
@@ -153,65 +151,47 @@ $(document).ready(function(){
 		<%-- 전체 회원 명단 출력 --%>
 		<table class="table table-bordered" style="width: 800px">
 			<!-- <caption align="top"><b>전체 회원 명단</b></caption> -->
+			<a href="adminMainPage.jsp?curr=movie/movieAddForm.jsp" class="btn btn-outline-primary btn-sm" style="margin-bottom: 5px; margin-right: 10px">추가</a>
 		    <button type="button" class="btn btn-outline-danger btndel btn-sm" style="margin-bottom: 5px;">선택삭제</button><br>
 		    <div class="header-container">
 		        <div class="title">
-		            <b>문의 리스트</b>
+		            <b>전체 영화 목록</b>
 		        </div>
 		        <div class="count">
 		            <span style="margin-right: 25px;"><small>총 <%=count %></small></span>
 		        </div>
 		    </div>
 		    
-		    <tr class="table-light" align="center">
+		    <tr class="table-success" align="center">
 		        <th width="20"><input type="checkbox" class="th-check"></th>
-		        <th width="100">회원아이디</th>
-		        <th width="100">구분</th>
-		        <th width="280">제목</th>
-		        <th width="80">파일여부</th>
-		        <th width="80">답변여부</th>
+		        <th width="80">번호</th>
+		        <th width="250">제목</th>
+		        <th width="200">개봉일자</th>
+		        <th width="200">종료일자</th>
 		        <th width="100">기타</th>
 		    </tr>
 		    <%
-		        for(InquiryDto inquiry : totalInquiryList){
-		        	MemberDto member = memberDao.getMemberById(inquiry.getMemberId());
-		        	int id = inquiry.getInquiryId();
-		        	//System.out.println("1:1 문의 각 id값 : "+id);
+		        for(MovieInfoDto dto :list){
 		    %>
 		    <tr align="center">
 		        <td>
-		            <input type="checkbox" value="<%=inquiry.getInquiryId() %>" class="check">
+		            <input type="checkbox" value="<%=dto.getMovieId()%>" class="check">
 		        </td>
 		        <td>
-		        	<%=member.getUserName() %>
+		        	<%=dto.getMovieId()%>
 		        </td>
 		        <td>
-		        	<%
-		        		String option = inquiry.getOption().name();
-		        		if(option.equals("예매_결제")) option = "예매/결제";
-		        	%>
-		            <%=option %>
-		<%--            <a href="<%=dto.getId()%>" class="list-group-item list-group-item-action list-group-item-light"><%=dto.getUserName()%></a>--%>
+		            <%=dto.getMovieTitle()%>
 		        </td>
 		        <td>
-		            <a href="?curr=inquiry/inquiryDetail.jsp?inquiryId=<%=inquiry.getInquiryId()%>"><%=inquiry.getTitle() %></a>
+		            <%=sdf.format(dto.getReleaseDate())%>
 		        </td>
 		        <td>
-					<%
-						String whether = "X";
-						if(inquiry.getAttachment() != null) whether="O";
-					%>
-					<%=whether %>
+		
+		            <%=sdf.format(dto.getEndDate())%>
 		        </td>
 		        <td>
-					<%
-						String answer = "X";
-						if(inquiry.getAnswer() != null && !inquiry.getAnswer().equals("") && !inquiry.getAnswer().equals("null")) answer="O";
-					%>
-					<%=answer %>
-		        </td>
-		        <td>
-		            <a href="?curr=inquiry/inquiryDetail.jsp?inquiryId=<%=id%>" type="button" 
+		            <a href="?curr=movie/movieDetail.jsp?movieId=<%=dto.getMovieId()%>" type="button"
 		            	id="btnDetail" class="btn btn-sm btn-outline-success">상세</a>
 		        </td>
 		    <tr>
@@ -229,7 +209,7 @@ $(document).ready(function(){
 		            if(startPage>1)
 		            {%>
 		        <li class="page-item ">
-		            <a class="page-link" href="../admin/adminMainPage.jsp?curr=member/memberMain.jsp?currentPage=<%=startPage-1%>" style="color: black;">이전</a>
+		            <a class="page-link" href="../admin/adminMainPage.jsp?curr=movie/movieMain.jsp?currentPage=<%=startPage-1%>" style="color: black;">이전</a>
 		        </li>
 		        <%}
 		            for(int pp=startPage;pp<=endPage;pp++)
@@ -237,12 +217,12 @@ $(document).ready(function(){
 		                if(pp==currentPage)
 		                {%>
 		        <li class="page-item active">
-		            <a class="page-link" href="../admin/adminMainPage.jsp?curr=member/memberMain.jsp?currentPage=<%=pp%>"><%=pp %></a>
+		            <a class="page-link" href="../admin/adminMainPage.jsp?curr=movie/movieMain.jsp?currentPage=<%=pp%>"><%=pp %></a>
 		        </li>
 		        <%}else
 		        {%>
 		        <li class="page-item">
-		            <a class="page-link" href="../admin/adminMainPage.jsp?curr=member/memberMain.jsp?currentPage=<%=pp%>"><%=pp %></a>
+		            <a class="page-link" href="../admin/adminMainPage.jsp?curr=movie/movieMain.jsp?currentPage=<%=pp%>"><%=pp %></a>
 		        </li>
 		        <%}
 		        }
@@ -261,11 +241,7 @@ $(document).ready(function(){
 		
 		
 		</div>
-		
-		
 	</div>
 </div>
-
-
 </body>
 </html>
