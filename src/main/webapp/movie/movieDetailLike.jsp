@@ -641,7 +641,7 @@ startNum = (currentPage - 1) * perPage;
 no = totalCount - (currentPage - 1) * perPage;
 
 //페이지에서 보여질 글만 가져오기
-List<ReviewInfoDto> list = rdao.getPagingListLike(startNum, perPage);
+List<ReviewInfoDto> list = rdao.getPagingListLike(movie_id, startNum, perPage);
 
 /*마지막 페이지의 단 한개 남은 글을 삭제시 빈페이지가 남는다 그러므로 해결책은 그이전페이지로 가면 된다  */
 if (list.size() == 0 && currentPage != 1) {

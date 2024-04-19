@@ -11,11 +11,10 @@ public class DbConnect {
 
 	private DbProperties dbProperties = new DbProperties();
 
-	static final String MYSQLDRIVER="com.mysql.cj.jdbc.Driver";
+	static final String MYSQLDRIVER = "com.mysql.cj.jdbc.Driver";
 	String url = dbProperties.getUrl();
 	String username = dbProperties.getUsername();
 	String password = dbProperties.getPassword();
-
 
 	public DbConnect() {
 		try {
@@ -23,81 +22,83 @@ public class DbConnect {
 			System.out.println("mysql 드라이버성공");
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
-			//e.printStackTrace();
-			System.out.println("mysql 드라이버 실패"+e.getMessage());
+			// e.printStackTrace();
+			System.out.println("mysql 드라이버 실패" + e.getMessage());
 		}
 	}
 
-
-	public Connection getConnection()
-	{
-		Connection conn=null;
+	public Connection getConnection() {
+		Connection conn = null;
 
 		try {
-			conn=DriverManager.getConnection(url,username,password);
+			conn = DriverManager.getConnection(url, username, password);
 			System.out.println("MYSQL계정연결성공");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			System.out.println("MYSQL연결실패: "+e.getMessage());
+			System.out.println("MYSQL연결실패: " + e.getMessage());
 		}
-
 
 		return conn;
 	}
 
-	//close 총 4개 오버로딩
-	public void dbClose(ResultSet rs,Statement stmt,Connection conn)
-	{
+	// close 총 4개 오버로딩
+	public void dbClose(ResultSet rs, Statement stmt, Connection conn) {
 
 		try {
-			if(rs!=null) rs.close();
-			if(stmt!=null) stmt.close();
-			if(conn!=null) conn.close();
+			if (rs != null)
+				rs.close();
+			if (stmt != null)
+				stmt.close();
+			if (conn != null)
+				conn.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 
-	public void dbClose(Statement stmt,Connection conn)
-	{
+	public void dbClose(Statement stmt, Connection conn) {
 
 		try {
 
-			if(stmt!=null) stmt.close();
-			if(conn!=null) conn.close();
+			if (stmt != null)
+				stmt.close();
+			if (conn != null)
+				conn.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 
-	public void dbClose(ResultSet rs,PreparedStatement pstmt,Connection conn)
-	{
+	public void dbClose(ResultSet rs, PreparedStatement pstmt, Connection conn) {
 
 		try {
-			if(rs!=null) rs.close();
-			if(pstmt!=null) pstmt.close();
-			if(conn!=null) conn.close();
+			if (rs != null)
+				rs.close();
+			if (pstmt != null)
+				pstmt.close();
+			if (conn != null)
+				conn.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 
-	public void dbClose(PreparedStatement pstmt,Connection conn)
-	{
+	public void dbClose(PreparedStatement pstmt, Connection conn) {
 
 		try {
 
-			if(pstmt!=null) pstmt.close();
-			if(conn!=null) conn.close();
+			if (pstmt != null)
+				pstmt.close();
+			if (conn != null)
+				conn.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
-
 
 }
