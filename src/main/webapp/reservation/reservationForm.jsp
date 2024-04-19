@@ -1,3 +1,8 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
+<%@page import="data.movie.chart.MovieInfoDao"%>
+<%@page import="data.movie.chart.MovieInfoDto"%>
+<%@page import="data.movie.chart.MovieImgDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -9,95 +14,56 @@
 <meta charset="UTF-8">
 <title>영화 예매 사이트</title>
 <style type="text/css">
-	.all-body{
-		margin: 70px;
-		width: 1000px;
-		height: 1000px;
-		background-color: #f0dcc0;
+	tr {
+		text-align: center;
 	}
-	#var{
-		margin-left:0px;
-		width:2px;
-		border-left : thin solid black;
-  		height : 990px;
-		display: inline-block;
+	a {  
+		text-align: center;  
+		text-decoration: none; /* 링크의 밑줄 제거 */  
+		color: inherit; /* 링크의 색상 제거 */
 	}
-	.div_inner {
-	    float: left;
-	    text-align: left;
+	a:focus, 
+	a:hover {
+	    font-weight: bold;
 	}
-	
-	.body1 {
-	    width: calc(25% - 10px); /* 25% - (2 * 5px 마진) */
-	    margin-right: 10px; /* 마진 추가 */
+	a:focus{
+		text-decoration: underline;	
 	}
-	
-	.body2 {
-	    width: calc(25% - 10px);
-	    margin-right: 10px;
-	}
-	
-	.body3 {
-	    width: calc(12.5% - 5px); /* 12.5% - (1 * 5px 마진) */
-	    margin-right: 10px; /* 마진 추가 */
-	}
-	
-	.body4 {
-	    width: calc(33.33% - 5px); /* 33.33% - (2 * 5px 마진) */
-	    margin-right: 0px; /* 마진 추가 */
-	}
-	.nav{
-		cursor: pointer;
-		width: 80px;
-		display: inline;
-	}
-		
-		
 	
 </style>
 </head>
+<%
+	MovieInfoDao movieDao = new MovieInfoDao();
+	List<MovieInfoDto> movieList = new ArrayList();
+	movieList = movieDao.getThreeMovieData();
+	movieList = movieDao.getElseMovieData();
+%>
 <body>
-	<div class="all-body">
-		<!-- 영화 -->
-		<div class="body1 div_inner">
-			<!-- 타이틀 -->
-			<div style="width:350px;height: 80px; background-color: black;">
-				<span style="color: white;" >영화</span>
-			</div>
-			<!-- 내용 -->
-			<div>
-				<span onclick="location.href='#'" class="nav" style="color: black;margin: 30px 0px 0px 30px;border: 1px solid black;">전체</span>
-				<span onclick="location.href='#'" class="nav" style="color: black;">특별관</span>
-				<hr width="200px" style="margin-left: 0; margin-top: 2px;">
-				<span style="margin-left: 20px; border-bottom: solid 3px black;">예매율순</span>
-				<span style="margin-left: 20px;">가나다순</span><br><br>
-				
-				<button type="button" onclick="location.href='dataCheck.jsp'" >제목 밑 링크 얻어오기</button>
-			</div>
-		</div>
-		<div class="div_inner" id="var" style="background-color: white;"></div>
-		
-		<!-- 극장 -->
-		<div class="body2 div_inner">
-			<div style="width:350px;height: 80px; background-color: black;">
-				<span style="color: white;" >극장</span>
-			</div>
-		</div>
-		<div class="div_inner" id="var" style="background-color: white;"></div>
-		
-		<!-- 날짜 -->
-		<div class="body3 div_inner">
-			<div style="width:130px;height: 80px; background-color: black;">
-				<span style="color: white;" >날짜</span>
-			</div>
-		</div>
-		<div class="div_inner" id="var" style="background-color: white;"></div>
-		
-		<!-- 시간 -->
-		<div class="body4 div_inner">
-			<div style="width:350px;height: 80px; background-color: black;">
-				<span style="color: white;" >시간</span>
-			</div>
+	<div>
+		<div>
+			<table class="table table-borderless" style="width:50%; margin:80px;">
+				<tr>
+					<th colspan="2" class="table-dark" style="text-align: center;" >영화</th>
+				</tr>
+				<tr>
+					<td><a href="#">전체</a></td>
+					<td><a href="#">특별관</a></td>
+				</tr>
+				<tr>
+					<td><a href="#">예매율순</a></td>
+					<td><a href="#">가나다순</a></td>
+				</tr>
+				<%
+				for(MovieInfoDto movie : movieList) {
+				%>
+				<tr>
+					<td><%=movie.getViewingRating() %></td>
+					<td><%=movie.getMovieTitle() %></td>
+				</tr>		
+				<%
+				}
+				%>
+			</table>
 		</div>
 	</div>
 </body>
