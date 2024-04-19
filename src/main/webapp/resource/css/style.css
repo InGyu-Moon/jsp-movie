@@ -2076,7 +2076,7 @@ log.nonReservationForm #inner_p {
 
 #moviedetail ul.pagination li.btn.next {
 	margin-left: 10px;
-		transform: rotate(90deg);
+	transform: rotate(90deg);
 }
 
 #moviedetail ul.pagination li.btn.prev {
@@ -2774,3 +2774,58 @@ log.nonReservationForm #inner_p {
 	margin-left: 10px;
 }
 /* //movieDetail */
+
+/* customer */
+.customer {
+	padding-bottom: 120px;
+}
+
+.customer .main {
+	margin-top: 40px;
+	display: flex;
+	justify-content: center;
+}
+
+.customer .main .category ul {
+	display: flex;
+}
+
+.customer .main .category ul li {
+	margin-right: 20px;
+	font-size: 16px;
+	background-color: #F9F9F9;
+	font-weight: 700;
+	border-radius: 100px;
+}
+
+.customer .main .category ul li.active {
+	background-color: #fb4357;
+}
+.customer .main .category ul li.active a{
+	color: #fff;
+}
+
+
+.customer .main .category ul li a {
+	display: flex;
+	width: 100%;
+	height: 100%;
+	justify-content: center;
+	align-items: center;
+	padding: 14px 24px;
+}
+
+.customer .main .category ul li:last-child {
+	margin-right: 0;
+}
+
+.customer .head {
+	height: 100px;
+	padding-top: 30px;
+	border-bottom: 4px solid #241d1e;
+	font-size: 36px;
+	color: #222;
+	font-weight: 700;
+}
+
+/* //customer */
