@@ -350,5 +350,230 @@ public class MemberDao {
 
 	}
 
+	public List<MemberDto> getMembersByUserName(String userName) {
+		List<MemberDto> list = new ArrayList<>();
+
+		Connection conn=db.getConnection();
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		String sql="SELECT * FROM MEMBER_INFO WHERE username LIKE ? ORDER BY member_id";
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, "%"+userName+"%");
+			rs=pstmt.executeQuery();
+			while(rs.next())
+			{
+				MemberDto dto = new MemberDto();
+				dto.setId(rs.getInt("member_id"));
+				dto.setUserName(rs.getString("username"));
+				dto.setPassword(rs.getString("password"));
+				dto.setName(rs.getString("name"));
+				dto.setGender(Gender.valueOf(rs.getString("gender"))); // 문자열을 Gender 열거형으로 변환
+				dto.setEmail(rs.getString("email"));
+				dto.setBirthdate(rs.getDate("birthdate"));
+				dto.setAddress(rs.getString("address"));
+				dto.setPhoneNumber(rs.getString("phone_number"));
+				dto.setUserPhoto(rs.getString("user_photo"));
+				list.add(dto);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			db.dbClose(rs, pstmt, conn);
+		}
+		return list;
+	}
+	public List<MemberDto> getListByUserName(String userName,int start,int perPage) {
+		List<MemberDto> list = new ArrayList<>();
+		Connection conn = db.getConnection();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		String sql = "select * from MEMBER_INFO where username LIKE ? order by member_id desc limit ?,?";
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setString(1, "%"+userName+"%");
+			pstmt.setInt(2, start);
+			pstmt.setInt(3, perPage);
+
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				MemberDto dto = new MemberDto();
+				dto.setId(rs.getInt("member_id"));
+				dto.setUserName(rs.getString("username"));
+				dto.setPassword(rs.getString("password"));
+				dto.setName(rs.getString("name"));
+				dto.setGender(Gender.valueOf(rs.getString("gender")));
+				dto.setEmail(rs.getString("email"));
+				dto.setBirthdate(rs.getDate("birthdate"));
+				dto.setAddress(rs.getString("address"));
+				dto.setPhoneNumber(rs.getString("phone_number"));
+				dto.setUserPhoto(rs.getString("user_photo"));
+				list.add(dto);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			db.dbClose(rs, pstmt, conn);
+		}
+		return list;
+	}
+
+	public List<MemberDto> getMembersByName(String name) {
+		List<MemberDto> list = new ArrayList<>();
+
+		Connection conn=db.getConnection();
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		String sql="SELECT * FROM MEMBER_INFO WHERE name LIKE ? ORDER BY member_id";
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, "%"+name+"%");
+			rs=pstmt.executeQuery();
+			while(rs.next())
+			{
+				MemberDto dto = new MemberDto();
+				dto.setId(rs.getInt("member_id"));
+				dto.setUserName(rs.getString("username"));
+				dto.setPassword(rs.getString("password"));
+				dto.setName(rs.getString("name"));
+				dto.setGender(Gender.valueOf(rs.getString("gender"))); // 문자열을 Gender 열거형으로 변환
+				dto.setEmail(rs.getString("email"));
+				dto.setBirthdate(rs.getDate("birthdate"));
+				dto.setAddress(rs.getString("address"));
+				dto.setPhoneNumber(rs.getString("phone_number"));
+				dto.setUserPhoto(rs.getString("user_photo"));
+				list.add(dto);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			db.dbClose(rs, pstmt, conn);
+		}
+		return list;
+	}
+	public List<MemberDto> getListByName(String name,int start,int perPage) {
+		List<MemberDto> list = new ArrayList<>();
+		Connection conn = db.getConnection();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		String sql = "select * from MEMBER_INFO where name LIKE ? order by member_id desc limit ?,?";
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setString(1, "%"+name+"%");
+			pstmt.setInt(2, start);
+			pstmt.setInt(3, perPage);
+
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				MemberDto dto = new MemberDto();
+				dto.setId(rs.getInt("member_id"));
+				dto.setUserName(rs.getString("username"));
+				dto.setPassword(rs.getString("password"));
+				dto.setName(rs.getString("name"));
+				dto.setGender(Gender.valueOf(rs.getString("gender")));
+				dto.setEmail(rs.getString("email"));
+				dto.setBirthdate(rs.getDate("birthdate"));
+				dto.setAddress(rs.getString("address"));
+				dto.setPhoneNumber(rs.getString("phone_number"));
+				dto.setUserPhoto(rs.getString("user_photo"));
+				list.add(dto);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			db.dbClose(rs, pstmt, conn);
+		}
+		return list;
+	}
+
+	public List<MemberDto> getMembersByUserNameAndName(String data) {
+		List<MemberDto> list = new ArrayList<>();
+
+		Connection conn=db.getConnection();
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		String sql="SELECT * FROM MEMBER_INFO WHERE username LIKE ? or name LIKE ? ORDER BY member_id";
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, "%"+data+"%");
+			pstmt.setString(2, "%"+data+"%");
+			rs=pstmt.executeQuery();
+			while(rs.next())
+			{
+				MemberDto dto = new MemberDto();
+				dto.setId(rs.getInt("member_id"));
+				dto.setUserName(rs.getString("username"));
+				dto.setPassword(rs.getString("password"));
+				dto.setName(rs.getString("name"));
+				dto.setGender(Gender.valueOf(rs.getString("gender"))); // 문자열을 Gender 열거형으로 변환
+				dto.setEmail(rs.getString("email"));
+				dto.setBirthdate(rs.getDate("birthdate"));
+				dto.setAddress(rs.getString("address"));
+				dto.setPhoneNumber(rs.getString("phone_number"));
+				dto.setUserPhoto(rs.getString("user_photo"));
+				list.add(dto);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			db.dbClose(rs, pstmt, conn);
+		}
+		return list;
+	}
+
+	public List<MemberDto> getListByUserNameAndName(String data,int start,int perPage) {
+		List<MemberDto> list = new ArrayList<>();
+		Connection conn = db.getConnection();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		String sql = "select * from MEMBER_INFO WHERE username LIKE ? or name LIKE ? order by member_id desc limit ?,?";
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setString(1, "%"+data+"%");
+			pstmt.setString(2, "%"+data+"%");
+			pstmt.setInt(3, start);
+			pstmt.setInt(4, perPage);
+
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				MemberDto dto = new MemberDto();
+				dto.setId(rs.getInt("member_id"));
+				dto.setUserName(rs.getString("username"));
+				dto.setPassword(rs.getString("password"));
+				dto.setName(rs.getString("name"));
+				dto.setGender(Gender.valueOf(rs.getString("gender")));
+				dto.setEmail(rs.getString("email"));
+				dto.setBirthdate(rs.getDate("birthdate"));
+				dto.setAddress(rs.getString("address"));
+				dto.setPhoneNumber(rs.getString("phone_number"));
+				dto.setUserPhoto(rs.getString("user_photo"));
+				list.add(dto);
+
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			db.dbClose(rs, pstmt, conn);
+		}
+		return list;
+	}
+
+
+
 	
 }
