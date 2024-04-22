@@ -9,9 +9,11 @@
 <%
 	request.setCharacterEncoding("utf-8");
 	String region = request.getParameter("region");
+	int startNum = Integer.parseInt(request.getParameter("startNum"));
+	int perPage = Integer.parseInt(request.getParameter("perPage"));
 	
 	TheaterDao dao = new TheaterDao();
-	List<TheaterDto> theaterRegionList = dao.selectRegion(region);
+	List<TheaterDto> theaterRegionList = dao.selectRegion(region, startNum, perPage);
 			
 	
 	JSONArray jsons = new JSONArray();

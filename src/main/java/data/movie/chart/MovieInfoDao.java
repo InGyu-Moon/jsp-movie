@@ -402,26 +402,24 @@ public class MovieInfoDao {
 		}
 		return listschedule;
 	}
-	
-	
+
 	// 메인페이지 상영예정작 예매순 4위 ~ 19위
 	public List<MovieInfoDto> mainMovieSchedule() {
 		List<MovieInfoDto> mainlistschedule = new ArrayList<MovieInfoDto>();
-		
+
 		Connection conn = db.getConnection();
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		
+
 		String sql = "SELECT * FROM MOVIE_INFO ORDER BY BOOKING_RATE DESC LIMIT 16 OFFSET 3";
 
-		
 		try {
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
-			
+
 			while (rs.next()) {
 				MovieInfoDto dto = new MovieInfoDto();
-				
+
 				dto.setMovieId(rs.getString("movie_id"));
 				dto.setMovieTitle(rs.getString("movie_title"));
 				dto.setRunningTime(rs.getInt("running_time"));
@@ -436,7 +434,7 @@ public class MovieInfoDao {
 				dto.setEndDate(rs.getDate("end_date"));
 				dto.setCountry(rs.getString("country"));
 				dto.setMovieImg(rs.getString("movie_img"));
-				
+
 				mainlistschedule.add(dto);
 			}
 		} catch (SQLException e) {
@@ -491,7 +489,7 @@ public class MovieInfoDao {
 		return elistschedule;
 	}
 
-	//movie_id에 대한 dto 반환
+	// movie_id에 대한 dto 반환
 	public MovieInfoDto getData(String movie_id) {
 		MovieInfoDto dto = new MovieInfoDto();
 		Connection conn = db.getConnection();
@@ -571,10 +569,10 @@ public class MovieInfoDao {
 	}
 
 	public int getMovieCount() {
-		Connection conn = db.getConnection();
+    Connection conn = db.getConnection();
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-
+    
 		String sql = "select count(*) from MOVIE_INFO";
 		int count = 0;
 
@@ -730,7 +728,24 @@ public class MovieInfoDao {
 	}
 
 
+  public void updateMovieBookingRate(String movie_id, double br) {
+    Connection conn = db.getConnection();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String updateSql = "UPDATE MOVIE_INFO SET RATING = ? WHERE MOVIE_ID = ?";
 
+		try {
+			pstmt = conn.prepareStatement(updateSql);
+			pstmt.setDouble(1, br);
+			pstmt.setString(2, movie_id);
+			pstmt.executeUpdate();
 
-
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			db.dbClose(rs, pstmt, conn);
+		}
+	}
+    
+  
 }

@@ -16,233 +16,235 @@ public class TheaterDao {
 
 	
 	// insert
-    public void insertTheater(TheaterDto theater){
-        Connection conn = db.getConnection();
-        PreparedStatement pstmt = null;
-        ResultSet rs = null;
+	public void insertTheater(TheaterDto theater){
+		Connection conn = db.getConnection();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 
-        String sql = "insert into THEATER_INFO values (null,?,?,?,?,?,?,?,?,?)";
+		String sql = "insert into THEATER_INFO values (null,?,?,?,?,?,?,?,?,null)";
 
-        try {
-            pstmt=conn.prepareStatement(sql);
-            pstmt.setString(1,theater.getRegion().name());
-            pstmt.setString(2,theater.getBranch());
-            pstmt.setString(3,theater.getNumberOfScreens());
-            pstmt.setString(4,theater.getTotalTheaterScreens());
-            pstmt.setString(5,theater.getAddress());
-            pstmt.setString(6,theater.getTheaterPhoneNumber());
-            pstmt.setInt(7,theater.getIs4D());
-            pstmt.setInt(8,theater.getIsIMAX());
-            pstmt.setString(9,theater.getImg());
-            
-            int result = pstmt.executeUpdate();
-            if (result>0) System.out.println("insertTheater success");
-            else System.out.println("insertTheater error");
-            
-            
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }finally {
-            db.dbClose(rs,pstmt,conn);
-        }
-        
-    }
-    
-    
-    // get Theater
-    public TheaterDto getTheater(String id){
-    	Connection conn = db.getConnection();
-    	PreparedStatement pstmt = null;
-    	ResultSet rs = null;
-    	
-    	String sql = "select * from THEATER_INFO where theater_id=?";
-    	TheaterDto theater = new TheaterDto();
-    	
-    	try {
-    		pstmt=conn.prepareStatement(sql);
-    		pstmt.setString(1, id);
-    		rs = pstmt.executeQuery();
-    		
-    		if(rs.next()) {
-    			theater.setTheaterId(String.valueOf(rs.getInt("theater_id")));
-    			theater.setRegion(Region.valueOf(rs.getString("region")));
-    			theater.setBranch(rs.getString("branch"));
-    			theater.setNumberOfScreens(String.valueOf(rs.getInt("number_of_screens")));
-    			theater.setTotalTheaterScreens(String.valueOf(rs.getInt("total_theater_seats")));
-    			theater.setAddress(rs.getString("address"));
-    			theater.setTheaterPhoneNumber(rs.getString("theater_phone_number"));
-    			theater.setIs4D(rs.getInt("is_4d"));
-    			theater.setIsIMAX(rs.getInt("is_imax"));
-    			theater.setImg(rs.getString("img"));
-    			
-    		} else {
-    			System.out.println("get Theater ERROR");
-    		}
-    		
-    	} catch (SQLException e) {
-    		throw new RuntimeException(e);
-    	}finally {
-    		db.dbClose(rs,pstmt,conn);
-    	}
-    	return theater;
-    }
-    
-    
-    // select ALL
-    public List<TheaterDto> selectAllTheater(){
-    	Connection conn = db.getConnection();
-    	PreparedStatement pstmt = null;
-    	ResultSet rs = null;
-    	
-    	String sql = "select * from THEATER_INFO order by theater_id desc";
-    	List<TheaterDto> list = new ArrayList<TheaterDto>();
-    	
-    	try {
-    		pstmt=conn.prepareStatement(sql);
-    		rs = pstmt.executeQuery();
-    		
-    		while(rs.next()) {
-    			TheaterDto theater = new TheaterDto();
-    			theater.setTheaterId(String.valueOf(rs.getInt("theater_id")));
-    			theater.setRegion(Region.valueOf(rs.getString("region")));
-    			theater.setBranch(rs.getString("branch"));
-    			theater.setNumberOfScreens(String.valueOf(rs.getInt("number_of_screens")));
-    			theater.setTotalTheaterScreens(String.valueOf(rs.getInt("total_theater_seats")));
-    			theater.setAddress(rs.getString("address"));
-    			theater.setTheaterPhoneNumber(rs.getString("theater_phone_number"));
-    			theater.setIs4D(rs.getInt("is_4d"));
-    			theater.setIsIMAX(rs.getInt("is_imax"));
-    			theater.setImg(rs.getString("img"));
-    			
-    			list.add(theater);
-    		}
-    		
-    	} catch (SQLException e) {
-    		throw new RuntimeException(e);
-    	}finally {
-    		db.dbClose(rs,pstmt,conn);
-    	}
-    	return list;
-    }
-    
-    
-    // select Region
-    public List<TheaterDto> selectRegion(String region){
-    	Connection conn = db.getConnection();
-    	PreparedStatement pstmt = null;
-    	ResultSet rs = null;
-    	
-    	String sql = "select * from THEATER_INFO where region=? order by region";
-    	List<TheaterDto> list = new ArrayList<TheaterDto>();
-    	
-    	try {
-    		pstmt=conn.prepareStatement(sql);
-    		pstmt.setString(1, region);
-    		rs = pstmt.executeQuery();
-    		
-    		while(rs.next()) {
-    			TheaterDto theater = new TheaterDto();
-    			theater.setTheaterId(String.valueOf(rs.getInt("theater_id")));
-    			theater.setRegion(Region.valueOf(rs.getString("region")));
-    			theater.setBranch(rs.getString("branch"));
-    			theater.setNumberOfScreens(String.valueOf(rs.getInt("number_of_screens")));
-    			theater.setTotalTheaterScreens(String.valueOf(rs.getInt("total_theater_seats")));
-    			theater.setAddress(rs.getString("address"));
-    			theater.setTheaterPhoneNumber(rs.getString("theater_phone_number"));
-    			theater.setIs4D(rs.getInt("is_4d"));
-    			theater.setIsIMAX(rs.getInt("is_imax"));
-    			theater.setImg(rs.getString("img"));
-    			
-    			list.add(theater);
-    		}
-    		
-    	} catch (SQLException e) {
-    		throw new RuntimeException(e);
-    	}finally {
-    		db.dbClose(rs,pstmt,conn);
-    	}
-    	return list;
-    }
-    
-    
-    // select Region && Branch
-    public List<TheaterDto> selectRegionAndBranch(String region, String branch){
-    	Connection conn = db.getConnection();
-    	PreparedStatement pstmt = null;
-    	ResultSet rs = null;
-    	
-    	String sql = "select * from THEATER_INFO where region=? and branch like ?";
-    	List<TheaterDto> list = new ArrayList<TheaterDto>();
-    	
-    	try {
-    		pstmt=conn.prepareStatement(sql);
-    		pstmt.setString(1, region);
-    		pstmt.setString(2, "%"+branch+"%");
-    		rs = pstmt.executeQuery();
-    		
-    		while(rs.next()) {
-    			TheaterDto theater = new TheaterDto();
-    			theater.setTheaterId(String.valueOf(rs.getInt("theater_id")));
-    			theater.setRegion(Region.valueOf(rs.getString("region")));
-    			theater.setBranch(rs.getString("branch"));
-    			theater.setNumberOfScreens(String.valueOf(rs.getInt("number_of_screens")));
-    			theater.setTotalTheaterScreens(String.valueOf(rs.getInt("total_theater_seats")));
-    			theater.setAddress(rs.getString("address"));
-    			theater.setTheaterPhoneNumber(rs.getString("theater_phone_number"));
-    			theater.setIs4D(rs.getInt("is_4d"));
-    			theater.setIsIMAX(rs.getInt("is_imax"));
-    			theater.setImg(rs.getString("img"));
-    			
-    			list.add(theater);
-    		}
-    		
-    	} catch (SQLException e) {
-    		throw new RuntimeException(e);
-    	}finally {
-    		db.dbClose(rs,pstmt,conn);
-    	}
-    	return list;
-    }
-    
-    
-    // search Branch
-    public List<TheaterDto> searchBranch(String branch){
-    	Connection conn = db.getConnection();
-    	PreparedStatement pstmt = null;
-    	ResultSet rs = null;
-    	
-    	String sql = "select * from THEATER_INFO where branch like ?";
-    	List<TheaterDto> list = new ArrayList<TheaterDto>();
-    	
-    	try {
-    		pstmt=conn.prepareStatement(sql);
-    		pstmt.setString(1, "%"+branch+"%");
-    		rs = pstmt.executeQuery();
-    		
-    		while(rs.next()) {
-    			TheaterDto theater = new TheaterDto();
-    			theater.setTheaterId(String.valueOf(rs.getInt("theater_id")));
-    			theater.setRegion(Region.valueOf(rs.getString("region")));
-    			theater.setBranch(rs.getString("branch"));
-    			theater.setNumberOfScreens(String.valueOf(rs.getInt("number_of_screens")));
-    			theater.setTotalTheaterScreens(String.valueOf(rs.getInt("total_theater_seats")));
-    			theater.setAddress(rs.getString("address"));
-    			theater.setTheaterPhoneNumber(rs.getString("theater_phone_number"));
-    			theater.setIs4D(rs.getInt("is_4d"));
-    			theater.setIsIMAX(rs.getInt("is_imax"));
-    			theater.setImg(rs.getString("img"));
-    			
-    			list.add(theater);
-    		}
-    		
-    	} catch (SQLException e) {
-    		throw new RuntimeException(e);
-    	}finally {
-    		db.dbClose(rs,pstmt,conn);
-    	}
-    	return list;
-    }
-    
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1,theater.getRegion().name());
+			pstmt.setString(2,theater.getBranch());
+			pstmt.setString(3,theater.getNumberOfScreens());
+			pstmt.setString(4,theater.getTotalTheaterScreens());
+			pstmt.setString(5,theater.getAddress());
+			pstmt.setString(6,theater.getTheaterPhoneNumber());
+			pstmt.setInt(7,theater.getIs4D());
+			pstmt.setInt(8,theater.getIsIMAX());
+			//pstmt.setString(9,theater.getImg());
+			
+			int result = pstmt.executeUpdate();
+			if (result>0) System.out.println("insertTheater success");
+			else System.out.println("insertTheater error");
+			
+			
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}finally {
+			db.dbClose(rs,pstmt,conn);
+		}
+		
+	}
+	
+	// get Theater
+	public TheaterDto getTheater(String id){
+		Connection conn = db.getConnection();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		String sql = "select * from THEATER_INFO where theater_id=?";
+		TheaterDto theater = new TheaterDto();
+		
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				theater.setTheaterId(String.valueOf(rs.getInt("theater_id")));
+				theater.setRegion(Region.valueOf(rs.getString("region")));
+				theater.setBranch(rs.getString("branch"));
+				theater.setNumberOfScreens(String.valueOf(rs.getInt("number_of_screens")));
+				theater.setTotalTheaterScreens(String.valueOf(rs.getInt("total_theater_seats")));
+				theater.setAddress(rs.getString("address"));
+				theater.setTheaterPhoneNumber(rs.getString("theater_phone_number"));
+				theater.setIs4D(rs.getInt("is_4d"));
+				theater.setIsIMAX(rs.getInt("is_imax"));
+				theater.setImg(rs.getString("img"));
+				
+			} else {
+				System.out.println("get Theater ERROR");
+			}
+			
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}finally {
+			db.dbClose(rs,pstmt,conn);
+		}
+		return theater;
+	}
+	
+	
+	// select ALL
+	public List<TheaterDto> selectAllTheater(){
+		Connection conn = db.getConnection();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		String sql = "select * from THEATER_INFO order by theater_id desc";
+		List<TheaterDto> list = new ArrayList<TheaterDto>();
+		
+		try {
+			pstmt=conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				TheaterDto theater = new TheaterDto();
+				theater.setTheaterId(String.valueOf(rs.getInt("theater_id")));
+				theater.setRegion(Region.valueOf(rs.getString("region")));
+				theater.setBranch(rs.getString("branch"));
+				theater.setNumberOfScreens(String.valueOf(rs.getInt("number_of_screens")));
+				theater.setTotalTheaterScreens(String.valueOf(rs.getInt("total_theater_seats")));
+				theater.setAddress(rs.getString("address"));
+				theater.setTheaterPhoneNumber(rs.getString("theater_phone_number"));
+				theater.setIs4D(rs.getInt("is_4d"));
+				theater.setIsIMAX(rs.getInt("is_imax"));
+				theater.setImg(rs.getString("img"));
+				System.out.println("get select All Theater");
+				
+				list.add(theater);
+			}
+			
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}finally {
+			db.dbClose(rs,pstmt,conn);
+		}
+		return list;
+	}
+	
+	
+	// select Region(지역)
+	public List<TheaterDto> selectRegion(String region,int startNum,int perPage){
+		Connection conn = db.getConnection();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		String sql = "select * from THEATER_INFO where region=? order by theater_id desc limit ?,?";
+		List<TheaterDto> list = new ArrayList<TheaterDto>();
+		
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, region);
+			pstmt.setInt(2, startNum);
+			pstmt.setInt(3, perPage);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				TheaterDto theater = new TheaterDto();
+				theater.setTheaterId(String.valueOf(rs.getInt("theater_id")));
+				theater.setRegion(Region.valueOf(rs.getString("region")));
+				theater.setBranch(rs.getString("branch"));
+				theater.setNumberOfScreens(String.valueOf(rs.getInt("number_of_screens")));
+				theater.setTotalTheaterScreens(String.valueOf(rs.getInt("total_theater_seats")));
+				theater.setAddress(rs.getString("address"));
+				theater.setTheaterPhoneNumber(rs.getString("theater_phone_number"));
+				theater.setIs4D(rs.getInt("is_4d"));
+				theater.setIsIMAX(rs.getInt("is_imax"));
+				theater.setImg(rs.getString("img"));
+				
+				list.add(theater);
+			}
+			
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}finally {
+			db.dbClose(rs,pstmt,conn);
+		}
+		return list;
+	}
+	
+	
+	// search Branch
+	public List<TheaterDto> searchBranch(String branch){
+		Connection conn = db.getConnection();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		String sql = "select * from THEATER_INFO where branch like ?";
+		List<TheaterDto> list = new ArrayList<TheaterDto>();
+		
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, "%"+branch+"%");
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				TheaterDto theater = new TheaterDto();
+				theater.setTheaterId(String.valueOf(rs.getInt("theater_id")));
+				theater.setRegion(Region.valueOf(rs.getString("region")));
+				theater.setBranch(rs.getString("branch"));
+				theater.setNumberOfScreens(String.valueOf(rs.getInt("number_of_screens")));
+				theater.setTotalTheaterScreens(String.valueOf(rs.getInt("total_theater_seats")));
+				theater.setAddress(rs.getString("address"));
+				theater.setTheaterPhoneNumber(rs.getString("theater_phone_number"));
+				theater.setIs4D(rs.getInt("is_4d"));
+				theater.setIsIMAX(rs.getInt("is_imax"));
+				theater.setImg(rs.getString("img"));
+				
+				list.add(theater);
+			}
+			
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}finally {
+			db.dbClose(rs,pstmt,conn);
+		}
+		return list;
+	}
+	
+	
+	// select Region && Branch
+	public List<TheaterDto> selectRegionAndBranch(String region, String branch){
+		Connection conn = db.getConnection();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		String sql = "select * from THEATER_INFO where region=? and branch like ?";
+		List<TheaterDto> list = new ArrayList<TheaterDto>();
+		
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, region);
+			pstmt.setString(2, "%"+branch+"%");
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				TheaterDto theater = new TheaterDto();
+				theater.setTheaterId(String.valueOf(rs.getInt("theater_id")));
+				theater.setRegion(Region.valueOf(rs.getString("region")));
+				theater.setBranch(rs.getString("branch"));
+				theater.setNumberOfScreens(String.valueOf(rs.getInt("number_of_screens")));
+				theater.setTotalTheaterScreens(String.valueOf(rs.getInt("total_theater_seats")));
+				theater.setAddress(rs.getString("address"));
+				theater.setTheaterPhoneNumber(rs.getString("theater_phone_number"));
+				theater.setIs4D(rs.getInt("is_4d"));
+				theater.setIsIMAX(rs.getInt("is_imax"));
+				theater.setImg(rs.getString("img"));
+				
+				list.add(theater);
+			}
+			
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}finally {
+			db.dbClose(rs,pstmt,conn);
+		}
+		return list;
+	}
+	
 
 	// count 
 	public int getCountTheater() {
@@ -273,6 +275,7 @@ public class TheaterDao {
 	//페이징
 	public List<TheaterDto> getPagingList(int start,int perPage)
 	{
+		System.out.println("넘어온 페이징 변수 ("+start+", "+perPage+")");
 		List<TheaterDto> list=new ArrayList<>();
 		Connection conn=db.getConnection();
 		PreparedStatement pstmt=null;
@@ -291,18 +294,19 @@ public class TheaterDao {
 			while(rs.next())
 			{
 				TheaterDto theater = new TheaterDto();
-    			theater.setTheaterId(String.valueOf(rs.getInt("theater_id")));
-    			theater.setRegion(Region.valueOf(rs.getString("region")));
-    			theater.setBranch(rs.getString("branch"));
-    			theater.setNumberOfScreens(String.valueOf(rs.getInt("number_of_screens")));
-    			theater.setTotalTheaterScreens(String.valueOf(rs.getInt("total_theater_seats")));
-    			theater.setAddress(rs.getString("address"));
-    			theater.setTheaterPhoneNumber(rs.getString("theater_phone_number"));
-    			theater.setIs4D(rs.getInt("is_4d"));
-    			theater.setIsIMAX(rs.getInt("is_imax"));
-    			theater.setImg(rs.getString("img"));
-    			
-    			list.add(theater);
+				theater.setTheaterId(String.valueOf(rs.getInt("theater_id")));
+				theater.setRegion(Region.valueOf(rs.getString("region")));
+				theater.setBranch(rs.getString("branch"));
+				theater.setNumberOfScreens(String.valueOf(rs.getInt("number_of_screens")));
+				theater.setTotalTheaterScreens(String.valueOf(rs.getInt("total_theater_seats")));
+				theater.setAddress(rs.getString("address"));
+				theater.setTheaterPhoneNumber(rs.getString("theater_phone_number"));
+				theater.setIs4D(rs.getInt("is_4d"));
+				theater.setIsIMAX(rs.getInt("is_imax"));
+				theater.setImg(rs.getString("img"));
+				//System.out.println("페이징 반복중");
+				
+				list.add(theater);
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -372,5 +376,5 @@ public class TheaterDao {
 	}
 	
 	
-    
+	
 }

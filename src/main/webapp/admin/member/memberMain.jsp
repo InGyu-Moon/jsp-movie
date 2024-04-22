@@ -3,8 +3,7 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="data.user.member.MemberDao" %>
 <%@ page import="java.text.SimpleDateFormat" %>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -69,19 +68,34 @@ $(document).ready(function(){
 		    location.href="member/memberDelete.jsp?selectMemberId="+n;
 	  }
   })
-    
+
 });
 </script>
 </head>
-
 <%
-    MemberDao memberDao = new MemberDao();
-    // 전체회원목록
-    List<MemberDto> totalMemberList = memberDao.getAllMembers();
-    SimpleDateFormat sdf = new SimpleDateFormat("yyyy년 M월 d일");
-    
-    int count = memberDao.getCountMember();
-    
+	request.setCharacterEncoding("UTF-8");
+
+	MemberDao memberDao = new MemberDao();
+	List<MemberDto> totalMemberList = null;
+	String searchType = request.getParameter("searchType");
+	String data = request.getParameter("data");
+
+	System.out.println("searchType = " + searchType);
+	System.out.println("data = " + data);
+
+	if(searchType==null || data == null){
+		totalMemberList = memberDao.getAllMembers();
+	} else if(searchType.equals("all")){
+		totalMemberList = memberDao.getMembersByUserNameAndName(data);
+	} else if (searchType.equals("username")) {
+		totalMemberList = memberDao.getMembersByUserName(data);
+	} else if (searchType.equals("name")) {
+		totalMemberList = memberDao.getMembersByName(data);
+	}else{
+		totalMemberList = memberDao.getAllMembers();
+	}
+	SimpleDateFormat sdf = new SimpleDateFormat("yyyy년 M월 d일");
+	int count = memberDao.getCountMember();
 %>
 <%
     //전체갯수
@@ -125,7 +139,19 @@ $(document).ready(function(){
     no=totalCount-(currentPage-1)*perPage;
 
     //페이지에서 보여질 글만 가져오기
-    List<MemberDto> list = memberDao.getList(startNum, perPage);
+    List<MemberDto> list = null;
+
+	if(searchType==null || data == null){
+		list = memberDao.getList(startNum, perPage);
+	} else if(searchType.equals("all")){
+		list = memberDao.getListByUserNameAndName(data,startNum, perPage);
+	} else if (searchType.equals("username")) {
+		list =memberDao.getListByUserName(data,startNum, perPage);
+	} else if (searchType.equals("name")) {
+		list = memberDao.getListByName(data,startNum, perPage);
+	}else{
+		list = memberDao.getList(startNum, perPage);
+	}
 %>
 
 
@@ -134,14 +160,13 @@ $(document).ready(function(){
 	<div class="container-rightside" style="width: 80%;">
 		<h2 style="margin-bottom: 50px">회원 관리</h2>
 		<hr style="margin-bottom: 30px">
-		<form class="d-flex" method="post" action="#" style="margin-bottom: 30px">
-		    <select class="form-select " style="width: 110px;">
-		        <option value="전체" selected>전체</option>
-		        <option value="아이디">아이디</option>
-		        <option value="이름">이름</option>
-		        <option value="휴대폰">휴대폰</option>
+		<form class="d-flex" method="post" action="adminMainPage.jsp?curr=member/memberMain.jsp" style="margin-bottom: 30px">
+		    <select class="form-select" name="searchType" style="width: 110px;">
+		        <option value="all" selected>전체</option>
+		        <option value="username">아이디</option>
+		        <option value="name">이름</option>
 		    </select>
-		    <input type="text" class="form-control" placeholder="검색어" style="margin-left: 30px;margin-right: 30px; width: 280px;">
+		    <input type="text" class="form-control" name="data" placeholder="검색어" style="margin-left: 30px;margin-right: 30px; width: 280px;">
 		    <button type="submit" class="btn btn-outline-primary">조회</button>
 		</form>
 		
@@ -208,7 +233,7 @@ $(document).ready(function(){
 		            if(startPage>1)
 		            {%>
 		        <li class="page-item ">
-		            <a class="page-link" href="../admin/adminMainPage.jsp?curr=member/memberMain.jsp?currentPage=<%=startPage-1%>" style="color: black;">이전</a>
+		            <a class="page-link" href="../admin/adminMainPage.jsp?curr=member/memberMain.jsp?searchType=<%=searchType%>&data=<%=data%>&currentPage=<%=startPage-1%>" style="color: black;">이전</a>
 		        </li>
 		        <%}
 		            for(int pp=startPage;pp<=endPage;pp++)
@@ -216,12 +241,12 @@ $(document).ready(function(){
 		                if(pp==currentPage)
 		                {%>
 		        <li class="page-item active">
-		            <a class="page-link" href="../admin/adminMainPage.jsp?curr=member/memberMain.jsp?currentPage=<%=pp%>"><%=pp %></a>
+		            <a class="page-link" href="../admin/adminMainPage.jsp?curr=member/memberMain.jsp?searchType=<%=searchType%>&data=<%=data%>&currentPage=<%=pp%>"><%=pp %></a>
 		        </li>
 		        <%}else
 		        {%>
 		        <li class="page-item">
-		            <a class="page-link" href="../admin/adminMainPage.jsp?curr=member/memberMain.jsp?currentPage=<%=pp%>"><%=pp %></a>
+		            <a class="page-link" href="../admin/adminMainPage.jsp?curr=member/memberMain.jsp?searchType=<%=searchType%>&data=<%=data%>&currentPage=<%=pp%>"><%=pp %></a>
 		        </li>
 		        <%}
 		        }
@@ -230,7 +255,7 @@ $(document).ready(function(){
 		            if(endPage<totalPage)
 		            {%>
 		        <li class="page-item">
-		            <a  class="page-link" href="../admin/adminMainPage.jsp?curr=member/memberMain.jsp?currentPage=<%=endPage+1%>"
+		            <a  class="page-link" href="../admin/adminMainPage.jsp?curr=member/memberMain.jsp?searchType=<%=searchType%>&data=<%=data%>&currentPage=<%=endPage+1%>"
 		                style="color: black;">다음</a>
 		        </li>
 		        <%}
