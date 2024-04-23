@@ -18,26 +18,12 @@
 
 	String optionStr = request.getParameter("category");
 
-//	InquiryOption option = null;
-
-//	if (optionStr != null) {
-//		try {
-//			option = InquiryOption.valueOf(optionStr);
-//		} catch (IllegalArgumentException e) {
-//			// 유효하지 않은 옵션 값이면 기본값으로 설정
-//			option = InquiryOption.기타;
-//		}
-//	} else {
-//		// optionStr이 null이면 기본값으로 설정
-//		option = InquiryOption.기타;
-//	}
-
 	String title = request.getParameter("title");
 	String content = request.getParameter("content");
 	String attachment = request.getParameter("file");
 	String memberId = (String) session.getAttribute("memberId");
 
-	System.out.println(option);
+	System.out.println(optionStr);
 	System.out.println(title);
 	System.out.println(content);
 	System.out.println(attachment);
