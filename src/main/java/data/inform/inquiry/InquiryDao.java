@@ -16,13 +16,14 @@ public class InquiryDao {
 		Connection conn = db.getConnection();
 		PreparedStatement pstmt = null;
 
-		String sql = "insert into inquiry values (null,null,?,?,?,?,null)";
+		String sql = "insert into inquiry values (null,?,?,?,?,?,null)";
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, dto.getOption().name());
-			pstmt.setString(2, dto.getTitle());
-			pstmt.setString(3, dto.getContent());
-			pstmt.setString(4, dto.getAttachment());
+			pstmt.setInt(1, dto.getMemberId());
+			pstmt.setString(2, dto.getOption().name());
+			pstmt.setString(3, dto.getTitle());
+			pstmt.setString(4, dto.getContent());
+			pstmt.setString(5, dto.getAttachment());
 			pstmt.execute();
 
 		} catch (SQLException e) {

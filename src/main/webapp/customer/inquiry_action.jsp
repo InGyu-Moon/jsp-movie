@@ -1,6 +1,7 @@
 <%@page import="data.inform.inquiry.InquiryDto"%>
 <%@page import="data.inform.inquiry.InquiryDao"%>
 <%@page import="data.inform.inquiry.InquiryOption"%>
+<%@page import="data.user.member.MemberDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -32,12 +33,15 @@
 	String title = request.getParameter("title");
 	String content = request.getParameter("content");
 	String attachment = request.getParameter("file");
+	String memberId = (String) session.getAttribute("memberId");
 
 	System.out.println(option);
 	System.out.println(title);
 	System.out.println(content);
 	System.out.println(attachment);
+	System.out.println(memberId);
 
+	dto.setMemberId(Integer.parseInt(memberId)); // String을 int로 변환하여 설정
 	dto.setOption(option);
 	dto.setTitle(title);
 	dto.setContent(content);
