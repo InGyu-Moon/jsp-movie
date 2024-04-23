@@ -45,6 +45,12 @@
    </style>
 </head>
 <%
+   final int TEENAGER_PRICE = 10_000;
+   final int ADULT_PRICE = 13_000;
+   final int SPECIAL_PRICE = 7_000;
+
+%>
+<%
    String screeningInfoId = request.getParameter("screeningInfoId");
 
    ReservationDao dao = new ReservationDao();
@@ -68,11 +74,13 @@
 
       <input type="hidden" name="screeningInfoId" value="<%=1%>">
       <input type="hidden" name="selectedSeats" id="selectedSeatsInput">
+      <input type="hidden" name="totalPrice" id="totalPriceInput">
 
       <div class="container">
          <div style="display: flex;align-items: center;justify-content: center;">
             <div style="display: flex;align-items: center;">청소년:
                <select name="teenager" id="teenager" class="form-select">
+                  <option value="0">없음</option>
                   <option value="1">1명</option>
                   <option value="2">2명</option>
                   <option value="3">3명</option>
@@ -82,6 +90,7 @@
             </div>
             <div style="display: flex;align-items: center;" class="">성인:
                <select name="adult" id="adult" class="form-select">
+                  <option value="0">없음</option>
                   <option value="1">1명</option>
                   <option value="2">2명</option>
                   <option value="3">3명</option>
@@ -91,6 +100,7 @@
             </div>
             <div style="display: flex;align-items: center;" class="">우대:
                <select name="special" id="special" class="form-select">
+                  <option value="0">없음</option>
                   <option value="1">1명</option>
                   <option value="2">2명</option>
                   <option value="3">3명</option>
@@ -120,10 +130,15 @@
                <p>일시: <%="2024-04-15"%></p>
                <p>상영관: <%="1관"%></p>
             </div>
-            <div id="selectedSeats">선택된 좌석: </div>
+            <div>
+               <div id="selectedSeats">선택된 좌석: </div>
+            </div>
+            <div>
+               <div id="totalPrice">총금액: 0원</div>
+            </div>
 
          </div>
-         <button type="submit" class="btn btn-outline-info">결제</button>
+         <button id="bookingFormBtn" type="submit" class="btn btn-outline-info">결제</button>
       </div>
 
    </form>
@@ -131,13 +146,25 @@
 
 <script>
    $(document).ready(function() {
+      let totalPrice=0;
       const rows = 11; // 행 수
       const cols = 18; // 열 수
-      let maxSeats = 1; // 최대 선택 가능 좌석 수
+      let maxSeats = 0; // 최대 선택 가능 좌석 수
       let selectedSeats = []; // 선택된 좌석 정보를 저장할 배열
 
       const seatMap = $('#seatMap');
       const alphabet = 'ABCDEFGHIJK';
+
+      function validateSelectedSeats() {
+         if (maxSeats !== 0) {
+            alert('선택된 좌석 수가 최대 선택 가능 좌석 수와 일치하지 않습니다.');
+            return false;
+         }
+         return true;
+      }
+      $('#bookingFormBtn').click(function() {
+         return validateSelectedSeats();
+      });
 
       for (let i = 1; i <= rows; i++) {
          const rowChar = alphabet[i - 1];
@@ -203,30 +230,24 @@
          const teenagerCount = parseInt($('#teenager').val());
          const adultCount = parseInt($('#adult').val());
          const specialCount = parseInt($('#special').val());
-         const sum = teenagerCount + adultCount + specialCount;
-         maxSeats = sum; // 최대 선택 가능 좌석 수 업데이트
+         maxSeats = teenagerCount + adultCount + specialCount; // 최대 선택 가능 좌석 수 업데이트
          $('#maxSeats').text(maxSeats); // #maxSeats에 표시
+         totalPrice = teenagerCount*10_000 + adultCount*13_000 + specialCount*7_000;
+         $("#totalPriceInput").val(totalPrice);
+         $("#totalPrice").text("총금액: " + totalPrice);
       }
       updateMaxSeats();
 
-
       function updateSelectedSeats() {
-         // $('#selectedSeats').text('선택된 좌석: ' + selectedSeats.join(', '));
-
          const selectedSeatsText = selectedSeats.join(', ');
          $('#selectedSeats').text('선택된 좌석: ' + selectedSeatsText);
          $('#selectedSeatsInput').val(selectedSeatsText);
-
-
       }
-
+      // 인원 변경하면 총원 업데이트, 선택된 좌석 초기화
       $('#teenager, #adult, #special').change(function() {
          updateMaxSeats();
-
-         // 좌석 내용이 변경될 때 선택된 좌석 초기화
-         $('.seat.selected').removeClass('selected');
-         selectedSeats = [];
-         updateSelectedSeats();
+         $('.seat.selected').removeClass('selected'); // 좌석 내용이 변경될 때 선택된 좌석 초기화
+         selectedSeats = []; updateSelectedSeats(); //선택된 좌석 출력도 초기화
       });
    });
 </script>

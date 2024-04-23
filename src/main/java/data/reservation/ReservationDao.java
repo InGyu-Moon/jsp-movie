@@ -44,6 +44,7 @@ public class ReservationDao {
 		return list;
 	}
 
+	// 해당 영화의 예매된 좌석
 	public ArrayList<String> getReservedSeat(String screeningInfoId){
 		Connection conn = db.getConnection();;
 		PreparedStatement pstmt = null;
@@ -67,6 +68,29 @@ public class ReservationDao {
 			db.dbClose(rs,pstmt,conn);
 		}
 		return reservedSeats;
+    }
+
+	//영화 예매 (회원)
+	public void insertReservation(ReservationDto reservationDto){
+		Connection conn = db.getConnection();;
+		PreparedStatement pstmt = null;
+
+		String sql = "insert into reservation_info value (null,?,?,null,?,?,?,now(),'Completed' )";
+
+        try {
+            pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1,reservationDto.getScreeningInfoId());
+			pstmt.setString(2,reservationDto.getMemberId());
+			pstmt.setString(3,reservationDto.getReservedSeats());
+			pstmt.setString(4,reservationDto.getAmount());
+			pstmt.setString(5,reservationDto.getPaymentMethod());
+			pstmt.executeUpdate();
+        } catch (SQLException e) {
+			System.out.println("e = " + e);
+        }finally {
+			db.dbClose(pstmt,conn);
+		}
+
     }
 
 
