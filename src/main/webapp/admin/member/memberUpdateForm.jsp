@@ -34,7 +34,7 @@
     </script>
 </head>
 <%
-    String memberId = request.getParameter("memberId");
+    int memberId = Integer.parseInt(request.getParameter("memberId"));
 	System.out.println("mamberUpdateAction id : "+memberId);
     MemberDao dao = new MemberDao();
     MemberDto dto = dao.getMemberById(memberId);

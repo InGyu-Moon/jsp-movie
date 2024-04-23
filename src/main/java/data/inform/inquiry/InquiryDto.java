@@ -1,34 +1,37 @@
 package data.inform.inquiry;
 
 public class InquiryDto {
-	private String inquiry_id;
-	private String member_id;
-	private String inquiry_option;
+
+	private int inquiryId;
+	private int memberId;
+	private InquiryOption option;
 	private String title;
 	private String content;
+	private String attachment; // 첨부파일
+	private String answer; // 문의에 대한 답변
 
-	public String getInquiry_id() {
-		return inquiry_id;
+	public int getInquiryId() {
+		return inquiryId;
 	}
 
-	public void setInquiry_id(String inquiry_id) {
-		this.inquiry_id = inquiry_id;
+	public void setInquiryId(int inquiryId) {
+		this.inquiryId = inquiryId;
 	}
 
-	public String getMember_id() {
-		return member_id;
+	public int getMemberId() {
+		return memberId;
 	}
 
-	public void setMember_id(String member_id) {
-		this.member_id = member_id;
+	public void setMemberId(int memberId) {
+		this.memberId = memberId;
 	}
 
-	public String getInquiry_option() {
-		return inquiry_option;
+	public InquiryOption getOption() {
+		return option;
 	}
 
-	public void setInquiry_option(String inquiry_option) {
-		this.inquiry_option = inquiry_option;
+	public void setOption(InquiryOption option) {
+		this.option = option;
 	}
 
 	public String getTitle() {
@@ -55,5 +58,18 @@ public class InquiryDto {
 		this.attachment = attachment;
 	}
 
-	private String attachment;
+	public String getAnswer() {
+		return answer;
+	}
+
+	public void setAnswer(String answer) {
+		this.answer = answer;
+	}
+
+	@Override
+	public String toString() {
+		return "InquiryDto [inquiryId=" + inquiryId + ", memberId=" + memberId + ", option=" + option + ", title="
+				+ title + ", content=" + content + ", attachment=" + attachment + ", answer=" + answer + "]";
+	}
+
 }

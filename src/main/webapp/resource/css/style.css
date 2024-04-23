@@ -3047,7 +3047,7 @@ log.nonReservationForm #inner_p {
 }
 
 #inquiry .form .agreement .body pre {
-	padding: 40px;
+	padding: 20px;
 	border: 1px solid #ddd;
 	height: 180px;
 	overflow-y: scroll;
