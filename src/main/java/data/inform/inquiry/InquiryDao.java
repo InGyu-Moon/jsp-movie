@@ -16,7 +16,7 @@ public class InquiryDao {
 		Connection conn = db.getConnection();
 		PreparedStatement pstmt = null;
 
-		String sql = "insert into inquiry values (null,?,?,?,?,?,null)";
+		String sql = "insert into INQUIRY values (null,?,?,?,?,?,null)";
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, dto.getMemberId());
