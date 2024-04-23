@@ -92,4 +92,12 @@ public class TheaterDto {
 		this.is_4d = is_4d;
 	}
 
+	@Override
+	public String toString() {
+		return "TheaterDto [theater_id=" + theater_id + ", region=" + region + ", branch=" + branch
+				+ ", number_of_screens=" + number_of_screens + ", total_theater_seats=" + total_theater_seats
+				+ ", address=" + address + ", theater_phone_number=" + theater_phone_number + ", theater_img="
+				+ theater_img + ", is_imax=" + is_imax + ", is_4d=" + is_4d + "]";
+	}
+
 }
