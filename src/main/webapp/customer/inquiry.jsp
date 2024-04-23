@@ -57,10 +57,10 @@ int memberId = mdao.getMemberIdByUsername(username);
 									<label>분류</label>
 									<div class="input">
 										<select id="category" name="category">
-											<option>분류선택</option>
+											<option value="기타">분류선택</option>
 											<option value="영화관">영화관</option>
 											<option value="영화">영화</option>
-											<option value="예매_결제">예매_결제</option>
+											<option value="예매/결제">예매/결제</option>
 											<option value="이벤트">이벤트</option>
 											<option value="개인정보">개인정보</option>
 										</select>

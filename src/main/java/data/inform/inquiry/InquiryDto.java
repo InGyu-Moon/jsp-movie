@@ -4,7 +4,7 @@ public class InquiryDto {
 
 	private int inquiryId;
 	private int memberId;
-	private InquiryOption option;
+	private String option;
 	private String title;
 	private String content;
 	private String attachment; // 첨부파일
@@ -26,11 +26,11 @@ public class InquiryDto {
 		this.memberId = memberId;
 	}
 
-	public InquiryOption getOption() {
+	public String getOption() {
 		return option;
 	}
 
-	public void setOption(InquiryOption option) {
+	public void setOption(String option) {
 		this.option = option;
 	}
 

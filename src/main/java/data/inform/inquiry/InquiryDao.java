@@ -20,7 +20,7 @@ public class InquiryDao {
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, dto.getMemberId());
-			pstmt.setString(2, dto.getOption().name());
+			pstmt.setString(2, dto.getOption());
 			pstmt.setString(3, dto.getTitle());
 			pstmt.setString(4, dto.getContent());
 			pstmt.setString(5, dto.getAttachment());
@@ -52,7 +52,7 @@ public class InquiryDao {
 				InquiryDto inquiry = new InquiryDto();
 				inquiry.setInquiryId(rs.getInt("inquiry_id"));
 				inquiry.setMemberId(rs.getInt("member_id"));
-				inquiry.setOption(InquiryOption.valueOf(rs.getString("inquiry_option")));
+				inquiry.setOption(rs.getString("inquiry_option"));
 				inquiry.setTitle(rs.getString("title"));
 				inquiry.setContent(rs.getString("content"));
 				inquiry.setAttachment(rs.getString("attachment"));
@@ -88,7 +88,7 @@ public class InquiryDao {
 				System.out.println("get Inquity success");
 				inquiry.setInquiryId(rs.getInt("inquiry_id"));
 				inquiry.setMemberId(rs.getInt("member_id"));
-				inquiry.setOption(InquiryOption.valueOf(rs.getString("inquiry_option")));
+				inquiry.setOption(rs.getString("inquiry_option"));
 				inquiry.setTitle(rs.getString("title"));
 				inquiry.setContent(rs.getString("content"));
 				inquiry.setAttachment(rs.getString("attachment"));
