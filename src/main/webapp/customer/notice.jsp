@@ -6,15 +6,6 @@
 		 pageEncoding="UTF-8"%>
 <jsp:include page="../include/header.html"></jsp:include>
 <title>고객센터 | 영화 그 이상의 감동</title>
-<style>
-	.customer .main {
-		align-items: center;
-		margin-top: 40px;
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-	}
-</style>
 <%
 	NoticeDao dao = new NoticeDao();
 	List<NoticeDto> noticeDtoList = dao.getAllNotices();
@@ -55,11 +46,11 @@
 								for(NoticeDto noticeDto : noticeDtoList) {
 							%>
 							<tr>
-								<td><%=noticeDto.getCategory() %></td>
+								<td class="td_center"><%=noticeDto.getCategory() %></td>
 								<td>
 									<a href="noticeDetail.jsp?noticeId=<%=noticeDto.getNoticeId()%>"><%=noticeDto.getTitle() %></a>
 								</td>
-								<td>
+								<td class="td_center day">
 									<%=sdf.format(noticeDto.getRegisteredDate())%>
 								</td>
 							</tr>
