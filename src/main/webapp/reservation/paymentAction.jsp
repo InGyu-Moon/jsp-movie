@@ -35,9 +35,8 @@
 
    dto.setScreeningInfoId(screeningInfoId);
    dto.setPaymentMethod(payment);
-   //TODO 회원 세션 아이디값 넣어주기
    dto.setMemberId((String) session.getAttribute("memberId"));
-//   dto.setMemberId("1");
+
    for(Map.Entry<String, Integer> entry : selectedSeatMap.entrySet()){
       dto.setReservedSeats(entry.getKey());
       dto.setAmount(entry.getValue().toString());
