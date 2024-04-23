@@ -95,7 +95,7 @@ int memberId = mdao.getMemberIdByUsername(username);
 											</div>
 											<div class="number">
 												<p>
-													<span>0</span>/한글 50자
+													<span id="titleCount2">0</span>/한글 2000자
 												</p>
 											</div>
 										</div>
@@ -238,6 +238,33 @@ int memberId = mdao.getMemberIdByUsername(username);
 	    $("#title").on("input", function() {
 	        countCharacters(); // 텍스트 입력시마다 글자수 업데이트
 	    });
+	    
+	    
+	    
+	    
+	    // 텍스트 입력 필드의 글자수를 세는 함수
+	    function countCharacters2() {
+	        var text2 = $("#content").val(); // #content 인풋 필드의 값 가져오기
+	        var length2 = text2.length; // 글자수 계산
+	        
+	        // 입력된 글자수가 500자를 넘으면
+	        if (length2 > 2000) {
+	            // 500자로 자름
+	            $("#content").val(text2.substring(0, 2000));
+	        }
+	        
+	        // 글자수를 화면에 업데이트
+	        $("#titleCount2").text(length2);
+	    }
+
+	    // 페이지 로드시 한번 호출하여 초기값 설정
+	    countCharacters2();
+
+	    // input 이벤트 리스너를 사용하여 텍스트 입력시마다 호출
+	    $("#content").on("input", function() {
+	        countCharacters2(); // 텍스트 입력시마다 글자수 업데이트
+	    });
+
 
 	</script>
 </body>
