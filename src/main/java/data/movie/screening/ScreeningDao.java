@@ -13,7 +13,7 @@ import db.mysql.DbConnect;
 public class ScreeningDao {
 	DbConnect db = new DbConnect();
 
-	// 모든 지역의 극장 리스트
+	// 날짜만 출력
 	public List<ScreeningDto> getDate() {
 		List<ScreeningDto> list = new ArrayList<>();
 		Connection conn = db.getConnection();

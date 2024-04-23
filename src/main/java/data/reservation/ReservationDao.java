@@ -45,42 +45,6 @@ public class ReservationDao {
 	}
 	
 	
-	// 날짜만 출력
-	public List<ScreeningDto> screenTimeList(String movieTitle, String branch, String screeningDate) {
-		List<ScreeningDto> list = new ArrayList<>();
-		Connection conn = db.getConnection();
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		
-		try {
-			conn = db.getConnection();
-			String sql = "select TS.screen_info, TS.screen_name";
-			rs = pstmt.executeQuery();
-			
-			while (rs.next()) {
-				TheaterDto dto = new TheaterDto();
-				dto.setAddress(rs.getString("address"));
-				dto.setBranch(rs.getString("branch"));
-				dto.setIs_4d(rs.getInt("is_4d"));
-				dto.setIs_imax(rs.getInt("is_imax"));
-				dto.setNumber_of_screens(rs.getInt("number_of_screens"));
-				dto.setRegion(rs.getString("region"));
-				dto.setTheater_id(rs.getString("theater_id"));
-				dto.setTheater_img(rs.getString("theater_img"));
-				dto.setTheater_phone_number(rs.getString("theater_phone_number"));
-				dto.setTotal_theater_seats(rs.getInt("total_theater_seats"));
-				
-				list.add(dto);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			db.dbClose(rs, pstmt, conn);
-		}
-		
-		return list;
-	}
-	
 	
 	
 
