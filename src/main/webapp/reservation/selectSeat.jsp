@@ -1,4 +1,5 @@
 <%@ page import="java.util.ArrayList" %>
+<%@ page import="data.reservation.ReservationDao" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 
@@ -44,34 +45,21 @@
    </style>
 </head>
 <%
+   String screeningInfoId = request.getParameter("screeningInfoId");
 
-   /**
-    * ArrayList<String> reservedSeats = new ArrayList<>();
-    * String sql = select RESERVED_SEATS from RESERVATION_INFO where SCREENING_INFO_ID = ?;
-    * pstmt.setString(1, screeningInfoId);
-    * while(rs.next()){
-    *     reservedSeats.add(rs.getString(RESERVED_SEATS));
-    * }
-    * retrun reservedSeats;
-    *
-    */
-
-   String id = request.getParameter("screeningInfoId");
-   //TODO: 예약 좌석 목록 기져오는 함수 만들기
-   // 예약된 좌석 정보
-   ArrayList<String> reservedSeats = new ArrayList<>();
-   reservedSeats.add("A1");
-   reservedSeats.add("B3");
-   reservedSeats.add("C7");
+   ReservationDao dao = new ReservationDao();
+   ArrayList<String> reservedSeats = dao.getReservedSeat(screeningInfoId);
 
    StringBuilder jsArray = new StringBuilder("[");
-   for (String seat : reservedSeats) {
-      jsArray.append("\"").append(seat).append("\",");
+   if(reservedSeats.isEmpty()){
+      jsArray.append("]");
+   }else{
+      for (String seat : reservedSeats) {
+         jsArray.append("\"").append(seat).append("\",");
+      }
+      jsArray.deleteCharAt(jsArray.length() - 1); // 마지막 쉼표 삭제
+      jsArray.append("]");
    }
-   jsArray.deleteCharAt(jsArray.length() - 1); // 마지막 쉼표 삭제
-   jsArray.append("]");
-
-   System.out.println("jsArray = " + jsArray);
 %>
 <body>
 <div style="text-align: center;">

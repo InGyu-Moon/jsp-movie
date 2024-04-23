@@ -43,8 +43,33 @@ public class ReservationDao {
 
 		return list;
 	}
-	
-	
+
+	public ArrayList<String> getReservedSeat(String screeningInfoId){
+		Connection conn = db.getConnection();;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+
+		String sql = "select RESERVED_SEATS from RESERVATION_INFO where SCREENING_INFO_ID = ?";
+
+		ArrayList<String> reservedSeats = new ArrayList<>();
+
+        try {
+            pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, screeningInfoId);
+			rs = pstmt.executeQuery();
+			while(rs.next()){
+				reservedSeats.add(rs.getString("RESERVED_SEATS"));
+			}
+        } catch (SQLException e) {
+			System.out.println("e = " + e);
+        }finally {
+			db.dbClose(rs,pstmt,conn);
+		}
+		return reservedSeats;
+    }
+
+
 	
 	
 
