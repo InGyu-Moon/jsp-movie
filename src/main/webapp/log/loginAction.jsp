@@ -24,7 +24,9 @@
 		// 로그인 성공 시
 		HttpSession loginSession = request.getSession(); // 세션 생성
 		loginSession.setAttribute("username", userName); // id 세션
-		loginSession.setAttribute("password", password); // pwd 세션
+		int memberIdByUsername = dao.getMemberIdByUsername(userName);
+		String memberId = String.valueOf(memberIdByUsername);
+		loginSession.setAttribute("memberId", memberId); // memberId 세션
 		
 		loginSession.setMaxInactiveInterval(30*60); // 30분
 		
