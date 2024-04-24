@@ -3583,7 +3583,7 @@ log.nonReservationForm #inner_p {
 	background-color: transparent;
 }
 
-#reservation tr, td {
+#reservation tr, #reservation td {
 	background-color: transparent;
 	color: white;
 }
