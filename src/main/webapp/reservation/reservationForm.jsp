@@ -133,6 +133,11 @@ $(document).ready(function() {
     	$("#theaterDate").text(screeningDate+"("+screeningDateFormat+")"+" "+$(this).text().trim());
     	$("#theaterScreen").text(screenInfo);
     });
+	$("#go").click(function (){
+		$("#branch").val(branch);
+		$("#screeningDateVal").val(screeningDate);
+	})
+
 
     // getMovieId 구현
     function getMovie(id) {
@@ -295,7 +300,7 @@ $(document).ready(function() {
 	        시간
 	    </div>
     </div>
-	<form action="#" method="post">
+	<form action="selectSeat.jsp" method="post">
     <div class="row">
         <div class="col-sm-3">
             <div class="list-group overflow-auto" id="movieList" style="height: 500px;">
@@ -369,7 +374,8 @@ $(document).ready(function() {
 			<div class="row row-cols-4">
 				<input type="hidden" value="" name="movieId" id="movieId">
 				<input type="hidden" value="" name="theaterId" id="theaterId">
-				<input type="hidden" value="" name="screeningInfoId" id="screeningInfoId">
+				<input type="hidden" value="" name="screeningDate" id="screeningDateVal">
+				<input type="hidden" value="" name="branch" id="branch">
 				<div class="col-sm d-flex justify-content-center">
 					<table class="table-borderless" id="writeMovie">
 						<tr>

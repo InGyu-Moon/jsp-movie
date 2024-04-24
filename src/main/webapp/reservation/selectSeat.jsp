@@ -11,7 +11,11 @@
 
 %>
 <%
+   request.setCharacterEncoding("utf-8");
    String screeningInfoId = request.getParameter("screeningInfoId");
+   String branch = request.getParameter("branch");
+   String screeningDate = request.getParameter("screeningDate");
+   System.out.println("screeningDate = " + screeningDate);
 
    ReservationDao dao = new ReservationDao();
    ArrayList<String> reservedSeats = dao.getReservedSeat(screeningInfoId);
@@ -95,8 +99,8 @@
                <p>전체 관람가</p>
             </div>
             <div class="block">
-               <p>극장: <%="강남"%></p>
-               <p>일시: <%="2024-04-15"%></p>
+               <p>극장: <%=branch%></p>
+               <p>일시: <%=screeningDate%></p>
                <p>상영관: <%="1관"%></p>
             </div>
             <div class="block">
