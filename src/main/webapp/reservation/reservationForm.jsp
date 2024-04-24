@@ -385,9 +385,13 @@ $(document).ready(function() {
 			<div class="row row-cols-4">
 				<input type="hidden" value="" name="movieId" id="movieId">
 				<input type="hidden" value="" name="theaterId" id="theaterId">
-				<input type="hidden" value="" name="screeningDate" id="screeningDateVal">
-				<input type="hidden" value="" name="branch" id="branch">
 				<input type="hidden" value="" name="screeningInfoId" id="screeningInfoId">
+				<input type="hidden" value="" name="branch" id="branch">
+<<<<<<< HEAD
+				<input type="hidden" value="" name="screeningInfoId" id="screeningInfoId">
+=======
+				<input type="hidden" value="" name="screeningDate" id="screeningDateVal">
+>>>>>>> c42704e61238c95b14073c00e487062a2c1ab066
 				<div class="col-sm d-flex justify-content-center">
 					<table class="table-borderless" id="writeMovie">
 						<tr>
