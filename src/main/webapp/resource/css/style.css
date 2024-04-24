@@ -2076,7 +2076,7 @@ log.nonReservationForm #inner_p {
 
 #moviedetail ul.pagination li.btn.next {
 	margin-left: 10px;
-		transform: rotate(90deg);
+	transform: rotate(90deg);
 }
 
 #moviedetail ul.pagination li.btn.prev {
@@ -2774,3 +2774,539 @@ log.nonReservationForm #inner_p {
 	margin-left: 10px;
 }
 /* //movieDetail */
+
+/* customer */
+.customer {
+	padding-bottom: 120px;
+}
+
+.customer .main {
+	align-items: center;
+	margin-top: 40px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.customer .main>.category ul {
+	display: flex;
+}
+
+.customer .main>.category ul li {
+	margin-right: 20px;
+	font-size: 16px;
+	background-color: #F9F9F9;
+	font-weight: 700;
+	border-radius: 100px;
+}
+
+.customer .main>.category ul li.active {
+	background-color: #fb4357;
+}
+
+.customer .main>.category ul li.active a {
+	color: #fff;
+}
+
+.customer .main>.category ul li a {
+	display: flex;
+	width: 100%;
+	height: 100%;
+	justify-content: center;
+	align-items: center;
+	padding: 14px 24px;
+}
+
+.customer .main>.category ul li:last-child {
+	margin-right: 0;
+}
+
+.customer .head {
+	height: 100px;
+	padding-top: 30px;
+	border-bottom: 4px solid #241d1e;
+	font-size: 36px;
+	color: #222;
+	font-weight: 700;
+}
+
+/* inquiry */
+#inquiry .bg_gray {
+	padding: 35px 0;
+	background-color: #F8F8F8;
+	margin-top: 40px;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#inquiry .bg_gray ul {
+	margin-top: 20px;
+	padding-left: 16px;
+}
+
+#inquiry .bg_gray ul li {
+	font-size: 14px;
+	color: #333;
+	line-height: 24px;
+	list-style-type: disc;
+}
+
+#inquiry .head_text {
+	margin-top: 20px;
+	font-weight: 500;
+	width: 100%;
+}
+
+#inquiry .head_text .title span {
+	color: #fb4357;
+}
+
+#inquiry .head_text  .gray {
+	margin-top: 6px;
+	font-size: 12px;
+	color: #707070;
+}
+
+#inquiry .form {
+	width: 100%;
+	margin-top: 40px;
+}
+
+#inquiry .form  .head {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	height: auto;
+	border-bottom: none;
+}
+
+#inquiry .form  .head .title {
+	font-size: 20px;
+	font-weight: 700;
+}
+
+#inquiry .form  .head .essential {
+	font-size: 14px;
+	color: #fb4357;
+}
+
+#inquiry .form form {
+	border-top: 1px solid #BBBBBB;
+	margin-top: 20px;
+}
+
+#inquiry .form  .block {
+	padding-left: 10px;
+}
+
+#inquiry .form  .block .box {
+	display: flex;
+	align-items: center;
+	padding: 20px 0;
+	border-bottom: 1px solid #ddd;
+}
+
+#inquiry .form  .block .box label {
+	width: 100px;
+	display: block;
+	font-size: 18px;
+}
+
+#inquiry .form  .block .box label:after {
+	content: '*';
+	margin-left: 10px;
+	color: #FF243E;
+}
+
+#inquiry .form  .block .box.file label:after {
+	display: none;
+}
+
+#inquiry .form  .block .box.category .input select {
+	height: 40px;
+	border: 1px solid #ddd;
+	width: 200px;
+	padding-left: 10px;
+}
+
+#inquiry .form .block .box .input {
+	width: 100%;
+}
+
+#inquiry .form .block .box.title .input input {
+	height: 40px;
+	width: 100%;
+	background-color: #F8F8F8;
+	border: 1px solid #ddd;
+	padding-left: 10px;
+	border-radius: 4px;
+}
+
+#inquiry .form .block .box.title .input>div {
+	width: 100%;
+}
+
+#inquiry .form .block .box.title .input .number {
+	display: flex;
+	justify-content: flex-end;
+	font-size: 14px;
+	color: #666;
+	font-weight: 500;
+	margin-top: 10px;
+}
+
+#inquiry .form .block .box.content .input textarea {
+	height: 240px;
+	width: 100%;
+	background-color: #F8F8F8;
+	padding: 20px;
+	border-radius: 4px;
+	resize: none;
+}
+
+#inquiry .form .block .box.content .input .text {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	font-size: 14px;
+	margin-top: 10px;
+}
+
+#inquiry .form .block .box.content .input .text .red {
+	line-height: 22px;
+	color: #fb4357;
+	font-weight: 500;
+}
+
+#inquiry .form .block .box.content .input .text .number {
+	color: #666;
+	font-weight: 500;
+}
+
+#inquiry .form .block .box.file .input .file_box {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+#inquiry .form .block .box.file .input .file_box  div {
+	display: flex;
+	align-items: center;
+}
+
+#inquiry .form .block .box.file .input .file_box  div span.file_val {
+	margin-left: 20px;
+}
+
+#inquiry .form .block .box.file .input .file_box input {
+	display: none;
+}
+
+#inquiry .form .block .box.file .input .file_box .btn_file {
+	height: 40px;
+	width: 150px;
+	border: 1px solid #000;
+	border-radius: 4px;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+#inquiry .form .block .box.file .input .text {
+	font-size: 14px;
+	color: #666;
+	font-weight: 500;
+}
+
+#inquiry .form .agreement {
+	margin-top: 40px;
+}
+
+#inquiry .form .agreement .top {
+	display: flex;
+	justify-content: space-between;
+}
+
+#inquiry .form .agreement .top .title {
+	font-size: 20px;
+	color: #222;
+	font-weight: 700;
+}
+
+#inquiry .form .agreement .top .text {
+	font-size: 14px;
+	color: #666;
+	font-weight: 500;
+}
+
+#inquiry .form .agreement .body {
+	margin-top: 40px;
+}
+
+#inquiry .form .agreement .body pre {
+	padding: 20px;
+	border: 1px solid #ddd;
+	height: 180px;
+	overflow-y: scroll;
+	line-height: 24px;
+}
+
+#inquiry .form .agreement .bx_inp {
+	margin-top: 20px;
+	display: flex;
+	justify-content: flex-end;
+}
+
+#inquiry .form .agreement input[type="radio"], #inquiry .form .agreement input[type="checkbox"]
+	{
+	position: relative;
+	top: 0;
+	left: 0;
+	width: 0px;
+	height: 0px;
+	padding: 0;
+	margin: 0;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	vertical-align: middle;
+	border: none 0;
+}
+
+#inquiry .form .agreement input[type="radio"]+label, #inquiry .form .agreement input[type="checkbox"]+label
+	{
+	position: relative;
+	display: inline-block;
+	margin-right: 20px;
+	vertical-align: middle;
+}
+
+#inquiry .form .agreement input[type="radio"], #inquiry .form .agreement  input[type="checkbox"]
+	{
+	position: relative;
+	top: 0;
+	left: 0;
+	width: 0px;
+	height: 0px;
+	padding: 0;
+	margin: 0;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	vertical-align: middle;
+	border: none 0;
+}
+
+#inquiry .form .agreement input[type="radio"]+label:last-of-type,
+	#inquiry .form .agreement input[type="checkbox"]+label:last-of-type {
+	margin-right: 0px;
+}
+
+#inquiry .form .agreement input[type="radio"]+label:before {
+	content: "";
+	display: inline-block;
+	width: 18px;
+	height: 18px;
+	margin-right: 5px;
+	background: #fff;
+	border-radius: 50%;
+	vertical-align: -5px;
+	border: 2px solid #ddd;
+}
+
+#inquiry .form .agreement input[type="radio"]:checked+label:before {
+	border-color: #000;
+	border: 2px solid #000;
+}
+
+#inquiry .form .btn {
+	display: flex;
+	justify-content: center;
+	margin-top: 40px;
+}
+
+#inquiry .form .btn input {
+	width: 160px;
+	height: 44px;
+	cursor: pointer;
+	border-radius: 6px;
+	font-weight: 600;
+}
+
+#inquiry .form .btn input#cancellation {
+	margin-right: 20px;
+	background-color: #fff;
+	border: 1px solid #000;
+}
+
+#inquiry .form .btn input#submit {
+	background-color: #fb4357;
+	border: 1px solid transparent;
+	color: #fff;
+}
+/* //inquiry */
+
+/* faq */
+#faq .container {
+	margin-top: 40px;
+	width: 100%;
+}
+
+#faq .container table {
+	width: 100%;
+}
+
+#faq .container table thead th {
+	border-top: 1px solid #bbb;
+	border-bottom: 1px solid #bbb;
+	height: 54px;
+	vertical-align: middle;
+}
+
+#faq .container table tbody>tr {
+	height: 66px;
+	cursor: pointer;
+	position: relative;
+}
+
+#faq .container table tbody>tr.answer {
+	display: none;
+	font-size: 14px;
+	line-height: 24px;
+	position: relative;
+}
+
+#faq .container table tbody>tr.answer.active {
+	display: table-row;
+}
+
+#faq .container table tbody>tr.answer td:first-child {
+	text-align: left;
+	padding: 20px;
+	background-color: #f8f8f8;
+	width: 100%;
+}
+
+#faq .container table tbody>tr.answer button.correction {
+	background-color: #fb4357;
+	color: #fff;
+	cursor: pointer;
+	position: absolute;
+	right: 20px;
+	bottom: 20px;
+	padding: 10px 20px;
+	border-radius: 30px;
+}
+
+#faq .container table tbody>tr td {
+	vertical-align: middle;
+}
+
+#faq .container table tbody tr td {
+	border-bottom: 1px solid #eee;
+	font-size: 14px;
+}
+
+#faq .container table tbody>tr th.tbody-th {
+	vertical-align: middle;
+	text-align: left;
+	border-bottom: 1px solid #eee;
+	position: relative;
+	font-size: 14px;
+}
+
+#faq .container table tbody>tr th.tbody-th .arrow {
+	width: 16px;
+	height: 16px;
+	position: absolute;
+	right: 40px;
+	transform: rotate(180deg);
+	transition: all 0.3s ease-in-out;
+}
+
+#faq .container table tbody>tr th.tbody-th .arrow.active {
+	transform: rotate(360deg);
+}
+
+#faq .container table tbody>tr th.tbody-th .arrow img {
+	width: 100%;
+	height: 100%;
+}
+
+#faq .container table tbody>tr th.tbody-th a strong.q {
+	color: #fb4357;
+	margin-right: 6px;
+}
+
+#faq .container table tbody>tr td:first-child {
+	text-align: center;
+}
+
+#faq .container table tbody>tr th.tbody-th a strong.q:before {
+	content: "Q";
+	font-size: 18px;
+}
+
+/* //faq */
+
+/* //notice */
+#notice .container {
+	margin-top: 40px;
+	width: 100%;
+}
+
+#notice .container  table {
+	width: 100%;
+}
+
+#notice .container table thead th {
+	border-top: 1px solid #bbb;
+	border-bottom: 1px solid #bbb;
+	height: 54px;
+	vertical-align: middle;
+}
+
+#notice .container table tbody>tr {
+	height: 66px;
+	cursor: pointer;
+	position: relative;
+}
+
+#notice .container table tbody>tr td {
+	vertical-align: middle;
+	border-bottom: 1px solid #eee;
+	font-size: 14px;
+}
+
+#notice .container table tbody>tr td.td_center {
+	text-align: center;
+}
+
+#notice .container table tbody>tr td.td_center.day {
+	color: #c3c3c3;
+}
+
+/* notice */
+
+/* noticeDetail */
+#notice_detail  button.correction {
+	background-color: #fb4357;
+	color: #fff;
+	cursor: pointer;
+	padding: 10px 20px;
+	border-radius: 30px;
+	margin-top: 40px;
+}
+
+#notice_detail .content {
+	line-height: 26px;
+	padding: 20px;
+	border-top: 1px solid #bbb;
+	border-bottom: 1px solid #bbb;
+	margin-top: 40px;
+}
+
+/* //noticeDetail */
+
+/* //customer */
