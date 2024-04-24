@@ -3310,3 +3310,308 @@ log.nonReservationForm #inner_p {
 /* //noticeDetail */
 
 /* //customer */
+
+/* selectedseat */
+#select_seat {
+	padding-bottom: 120px;
+}
+
+#select_seat .seat {
+	width: 30px;
+	height: 30px;
+	background-color: #ccc;
+	margin: 5px;
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 5px;
+	cursor: pointer;
+	font-size: 14px;
+}
+
+#select_seat .selected {
+	background-color: #fa5c23;
+}
+
+#select_seat .rowNumber {
+	display: inline-block;
+	width: 20px;
+	text-align: right;
+	margin-right: 10px;
+	font-size: 14px;
+}
+
+#select_seat #teenager, #adult, #special {
+	width: 100px;
+	border: 1px solid #ddd;
+	height: 30px;
+	padding-left: 10px;
+	border-radius: 100px;
+}
+
+#select_seat select {
+	margin-left: 15px;
+	margin-right: 50px;
+}
+
+#select_seat .container {
+	padding-top: 40px;
+	font-size: 18px;
+	font-weight: 500;
+	background: #f2f0e5;
+}
+
+#select_seat #seatMap {
+	padding: 40px 0 80px;
+	font-weight: 600;
+	background-color: #f2f0e5;
+	font-weight: 600;
+}
+
+#select_seat #seatMap .screen_text {
+	font-weight: 700;
+	font-size: 30px;
+	padding-bottom: 20px;
+}
+
+#select_seat p.select_text {
+	padding-top: 40px;
+	background: #f2f0e5;
+}
+
+#select_seat .information {
+	background: #1d1d1c;
+	height: 130px;
+	color: #ccc;
+	font-size: 14px;
+	display: flex;
+	position: relative;
+	justify-content: center;
+	font-weight: 500;
+	line-height: 22px;
+}
+
+#select_seat .information button {
+	width: 100px;
+	height: 100px;
+	background-color: #272727;
+	border-radius: 16px;
+	color: #e9e9e9;
+	font-weight: 700;
+	font-size: 20px;
+	cursor: pointer;
+	border: 2px solid #c6c1c1;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+#select_seat .information button.prev {
+	left: 100px;
+}
+
+#select_seat .information button.next {
+	right: 100px;
+}
+
+#select_seat .information .block>div {
+	display: flex;
+}
+
+#select_seat .information .block {
+	padding: 30px 40px;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+}
+
+#select_seat .head_title {
+	height: 100px;
+	padding-top: 30px;
+	border-bottom: 4px solid #241d1e;
+	font-size: 36px;
+	color: #222;
+	font-weight: 700;
+	display: flex;
+}
+
+/* selectedseat */
+
+/* paymentMethod */
+#payment_method {
+	padding-bottom: 120px;
+}
+
+#payment_method  .head_title {
+	height: 100px;
+	padding-top: 30px;
+	border-bottom: 4px solid #241d1e;
+	font-size: 36px;
+	color: #222;
+	font-weight: 700;
+}
+
+#payment_method  form {
+	margin-top: 40px;
+	background-color: #f2f0e5;
+	padding: 20px;
+	border: solid 2px #dfded6;
+	position: relative;
+}
+
+#payment_method  form .select {
+	display: flex;
+}
+
+#payment_method  form  input {
+	margin-right: 6px;
+}
+
+#payment_method  form  label {
+	margin-right: 10px;
+	font-weight: 500;
+}
+
+#payment_method  form #easy_payment_options {
+	margin-top: 10px;
+}
+
+#payment_method  form .information {
+	margin-top: 20px;
+	line-height: 26px;
+	font-size: 20px;
+	font-weight: 600;
+}
+
+#payment_method  form button.btn {
+	position: absolute;
+	right: 20px;
+	bottom: 20px;
+	background-color: #fb4357;
+	color: #fff;
+	font-weight: 500;
+	padding: 10px 20px;
+	border-radius: 26px;
+	cursor: pointer;
+}
+/* //paymentMethod */
+
+/* reservation */
+#reservation {
+	padding: 120px 0;
+}
+
+#reservation .center {
+	max-width: 1200px;
+}
+
+#reservation  .row {
+	display: flex;
+	justify-content: space-between;
+}
+
+#reservation  .row.category div {
+	width: 24%;
+}
+
+#reservation .block {
+	width: 24%;
+}
+
+#reservation .row .col-sm-6 {
+	width: 50%;
+}
+
+#reservation .block.time {
+	padding: 20px;
+}
+
+#reservation .information {
+	padding: 40px;
+	position: relative;
+}
+
+#reservation .row .col-sm-6 a {
+	height: 42px;
+	display: flex;
+	width: 100%;
+	align-items: center;
+	padding-left: 20px;
+	border: 1px solid #ddd;
+}
+
+#reservation .block.width_100 a {
+	height: 42px;
+	display: flex;
+	width: 100%;
+	align-items: center;
+	padding-left: 20px;
+	border: 1px solid #ddd;
+}
+
+#reservation .block.width_100>div {
+	overflow-y: scroll;
+}
+
+#reservation .custom-col {
+	background-color: black;
+	color: white;
+	border: 2px solid white;
+	display: flex;
+	align-items: center; /* 수직 가운데 정렬 */
+	justify-content: center; /* 수평 가운데 정렬 */
+	font-weight: bold;
+	height: 40px;
+}
+
+#reservation .a1:focus {
+	background-color: black;
+	color: white;
+}
+
+#reservation .a2:focus {
+	background-color: black;
+	color: white;
+}
+
+#reservation .a3:focus {
+	background-color: black;
+	color: white;
+}
+
+#reservation table {
+	background-color: transparent;
+}
+
+#reservation tr, #reservation td {
+	background-color: transparent;
+	color: white;
+}
+
+
+
+#reservation .block.time button {
+	background-color: #fb4357;
+	padding: 10px 20px;
+	border-radius: 30px;
+	color: #fff;
+	cursor: pointer;
+	margin-top: 10px;
+}
+
+#reservation .information button {
+    width: 100px;
+    right:40px;
+    height: 100px;
+    background-color: #272727;
+    border-radius: 16px;
+    color: #e9e9e9;
+    font-weight: 700;
+    font-size: 20px;
+    cursor: pointer;
+    border: 2px solid #c6c1c1;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+/* //reservation */
