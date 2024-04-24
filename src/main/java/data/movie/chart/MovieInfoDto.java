@@ -132,4 +132,23 @@ public class MovieInfoDto {
 		this.movieImg = movieImg;
 	}
 
+	@Override
+	public String toString() {
+		return "MovieInfoDto{" +
+				"movieId='" + movieId + '\'' +
+				", movieTitle='" + movieTitle + '\'' +
+				", runningTime=" + runningTime +
+				", viewingRating='" + viewingRating + '\'' +
+				", director='" + director + '\'' +
+				", cast='" + cast + '\'' +
+				", bookingRate=" + bookingRate +
+				", releaseDate=" + releaseDate +
+				", genre='" + genre + '\'' +
+				", movieDescription='" + movieDescription + '\'' +
+				", rating=" + rating +
+				", endDate=" + endDate +
+				", country='" + country + '\'' +
+				", movieImg='" + movieImg + '\'' +
+				'}';
+	}
 }
