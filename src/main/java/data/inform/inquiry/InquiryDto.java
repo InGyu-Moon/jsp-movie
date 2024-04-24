@@ -10,6 +10,10 @@ public class InquiryDto {
 	private String attachment; // 첨부파일
 	private String answer; // 문의에 대한 답변
 
+	// member_info
+	private String email;
+	private String phoneNumber;
+
 	public int getInquiryId() {
 		return inquiryId;
 	}
@@ -70,6 +74,22 @@ public class InquiryDto {
 	public String toString() {
 		return "InquiryDto [inquiryId=" + inquiryId + ", memberId=" + memberId + ", option=" + option + ", title="
 				+ title + ", content=" + content + ", attachment=" + attachment + ", answer=" + answer + "]";
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
 	}
 
 }
