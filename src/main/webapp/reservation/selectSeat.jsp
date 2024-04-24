@@ -2,48 +2,8 @@
 <%@ page import="data.reservation.ReservationDao" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
-
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>좌석 선택</title>
-   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-   <style>
-      .seat {
-         width: 40px;
-         height: 40px;
-         background-color: #ccc;
-         margin: 5px;
-         display: inline-flex;
-         justify-content: center;
-         align-items: center;
-         border-radius: 5px;
-         cursor: pointer;
-      }
-      .selected {
-         background-color: #ff4500; /* 선택된 좌석 색상 */
-      }
-      .rowNumber {
-         display: inline-block;
-         width: 20px;
-         text-align: right;
-         margin-right: 5px;
-      }
-      #selectedSeats {
-         margin-top: 20px;
-      }
-      #teenager,#adult,#special{
-         width: 100px;
-      }
-      select{
-         margin-left: 15px;
-         margin-right: 50px;
-      }
-   </style>
-</head>
+<jsp:include page="../include/header.html"></jsp:include>
+<title>예매 | 영화 그 이상의 감동</title>
 <%
    final int TEENAGER_PRICE = 10_000;
    final int ADULT_PRICE = 13_000;
@@ -68,8 +28,12 @@
    }
 %>
 <body>
-<div style="text-align: center;">
-   <h2>좌석 선택</h2>
+<div id="wrap">
+<div style="text-align: center;" id="select_seat">
+<div class="center">
+<div class="head_title">
+<span>좌석 선택</span>
+</div>
    <form  action="paymentMethod.jsp" method="post" id="bookingForm">
 
       <input type="hidden" name="screeningInfoId" value="<%=1%>">
@@ -111,39 +75,48 @@
          </div>
       </div>
 
-      <br><p>좌석을 선택하세요 (최대 <span id="maxSeats">1</span>석 가능):</p>
+      <p class="select_text">좌석을 선택하세요 (최대 <span id="maxSeats">1</span>석 가능):</p>
 
       <div id="seatMap">
+      <div class="screen_text">
+      <span>SCREEN</span>
+</div>
          <!-- 좌석 그리드 생성 -->
       </div>
 
-      <div style="justify-content: center;display: flex;align-items: center;">
-         <button type="button" class="btn btn-outline-info" onclick="history.back()">뒤로</button>
-         <div style="justify-content: center; display: flex;align-items: center;">
+      <div class="information">
+         <button type="button" class="prev" onclick="history.back()">영화선택</button>
+         <div style="justify-content: center; display: flex;">
+            <div class="block">
             <div>
                <p>쿵푸팬더</p>
                <p>2D</p>
+             </div>
                <p>전체 관람가</p>
             </div>
-            <div>
+            <div class="block">
                <p>극장: <%="강남"%></p>
                <p>일시: <%="2024-04-15"%></p>
                <p>상영관: <%="1관"%></p>
             </div>
-            <div>
-               <div id="selectedSeats">선택된 좌석: </div>
-            </div>
-            <div>
-               <div id="totalPrice">총금액: 0원</div>
+            <div class="block">
+               <div id="selectedSeats"></div>
+                <div id="totalPrice">총금액: 0원</div>
             </div>
 
+
          </div>
-         <button id="bookingFormBtn" type="submit" class="btn btn-outline-info">결제</button>
+         <button id="bookingFormBtn" type="submit" class="next">결제선택</button>
       </div>
 
    </form>
 </div>
 
+   
+</div>
+</div>
+
+<jsp:include page="../include/footer.html"></jsp:include>
 <script>
    $(document).ready(function() {
       let totalPrice=0;
@@ -219,7 +192,8 @@
             });
             reservedSeat.css({
                'background-color': '#000', // 검정색으로 변경
-               'pointer-events': 'none' // 클릭 이벤트 비활성화
+               'pointer-events': 'none', // 클릭 이벤트 비활성화
+               'color': '#fff' // 폰트 색상 흰색으로 변경
             });
          });
       }

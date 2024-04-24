@@ -6,17 +6,8 @@
 <%@ page import="java.util.Map" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Dongle&family=Gaegu&family=Nanum+Pen+Script&family=Noto+Sans+KR:wght@100..900&family=Noto+Serif+KR&display=swap"
-          rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
-    <title>Insert title here</title>
-
-</head>
+<jsp:include page="../include/header.html"></jsp:include>
+<title>결제 | 영화 그 이상의 감동</title>
 <%
     String screeningInfoId = request.getParameter("screeningInfoId");
     String selectedSeats = request.getParameter("selectedSeats");
@@ -27,7 +18,13 @@
 
 %>
 <body>
-<h2>최종 결제 수단</h2>
+
+<div id="wrap">
+<div id="payment_method">
+<div class="center">
+<div class="head_title">
+<span>최종 결제 수단</span>
+</div>
 <form action="paymentAction.jsp" method="post">
 
     <input hidden value="<%=selectedSeats%>" name="selectedSeats">
@@ -37,6 +34,7 @@
     <input hidden value="<%=adult%>" name="adult">
     <input hidden value="<%=special%>" name="special">
 
+<div class="select">
     <input type="radio" id="phone_payment" name="payment_method" value="Phone">
     <label for="phone_payment">휴대폰</label>
 
@@ -48,6 +46,8 @@
 
     <input type="radio" id="simple_payment" name="payment_method" value="simple" onchange="showEasyPaymentOptions()">
     <label for="simple_payment">간편결제</label>
+    </div>
+
 
     <div id="easy_payment_options" style="display: none;">
         <input type="radio" id="kakao_payment" name="easy_payment_option" checked value="KAKAO">
@@ -59,13 +59,20 @@
         <input type="radio" id="ssg_payment" name="easy_payment_option" value="SSG">
         <label for="ssg_payment">SSG페이</label>
     </div>
-    <br>
-    <div id="payment">결제방식: </div>
+ <div class="information">
+     <div id="payment">결제방식: </div>
     <div id="total_price">결제 금액: <%=totalPrice%></div>
-    <br>
-    <button type="submit">결제</button>
-</form>
+ </div>
 
+    <button type="submit" class="btn">결제</button>
+</form>
+</div>
+
+</div>
+
+</div>
+
+<jsp:include page="../include/footer.html"></jsp:include>
 <script>
     $(document).ready(function() {
         $('input[name="payment_method"]').change(function() {
