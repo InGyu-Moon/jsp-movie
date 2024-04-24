@@ -6,14 +6,7 @@
 
 <%
 	request.setCharacterEncoding("utf-8");
-	String regionStr = request.getParameter("region");
-	Region region=null;
-	try {
-		region = Region.valueOf(regionStr);
-	} catch (IllegalArgumentException e) {
-	    
-	}
-	
+	String region = request.getParameter("region");
 	String branch = request.getParameter("branch");
 	String numberOfScreens = request.getParameter("numberOfScreens");
 	String totalTheaterSeats = request.getParameter("totalTheaterSeats");
