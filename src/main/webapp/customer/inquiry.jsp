@@ -56,7 +56,7 @@ int memberId = mdao.getMemberIdByUsername(username);
 								<div class="box category">
 									<label>분류</label>
 									<div class="input">
-										<select id="category" name="category">
+										<select id="category" name="category" required="required">
 											<option value="기타">분류선택</option>
 											<option value="영화관">영화관</option>
 											<option value="영화">영화</option>
@@ -71,10 +71,10 @@ int memberId = mdao.getMemberIdByUsername(username);
 									<div class="input">
 										<div>
 											<input type="text" id="title" name="title"
-												placeholder="제목을 입력해주세요">
+												placeholder="제목을 입력해주세요" required="required">
 											<div class="number">
 												<p>
-													 <span id="titleCount">0</span>/한글 50자
+													<span id="titleCount">0</span>/한글 50자
 												</p>
 											</div>
 										</div>
@@ -85,7 +85,8 @@ int memberId = mdao.getMemberIdByUsername(username);
 									<label>내용</label>
 									<div class="input">
 										<textarea rows="" cols="" id="content" name="content"
-											placeholder="내용 및 첨부파일에 개인정보(카드번호, 계좌번호, 주민번호)가 포함되지 않도록 유의하여 입력해주세요."></textarea>
+											placeholder="내용 및 첨부파일에 개인정보(카드번호, 계좌번호, 주민번호)가 포함되지 않도록 유의하여 입력해주세요."
+											required="required"></textarea>
 										<div class="text">
 											<div class="red">
 												<p>
@@ -101,7 +102,7 @@ int memberId = mdao.getMemberIdByUsername(username);
 										</div>
 									</div>
 								</div>
-							 	<div class="box file">
+								<div class="box file">
 									<label>첨부파일</label>
 									<div class="input">
 										<div class="file_box">
@@ -116,7 +117,7 @@ int memberId = mdao.getMemberIdByUsername(username);
 											</div>
 										</div>
 									</div>
-								</div> 
+								</div>
 							</div>
 							<div class="agreement">
 								<div class="top">
@@ -179,93 +180,87 @@ int memberId = mdao.getMemberIdByUsername(username);
 		
 		//전송 버튼을 눌렀을 때
 		$("#submit").click(function(event) {
-		    var username = '<%=username%>';
-		    var agreeCheckbox = $("#radio10");
+		    var username = '<%=username%>
+		';
+			var agreeCheckbox = $("#radio10");
 
-		    // 사용자가 동의 체크박스를 체크하지 않은 경우
-		    if (!agreeCheckbox.is(":checked")) {
-		        // 경고 메시지 표시
-		        alert("개인정보 수집에 대한 동의를 확인해주세요.");
-		        // 폼 전송 방지
-		        event.preventDefault();
-		    } else {
-		        // 동의 체크박스가 체크되어 있고, 사용자가 로그인되어 있는 경우 폼 제출
-		        if (username === 'null' || username === '') {
-		            if (confirm("로그인이 필요한 서비스입니다.\n로그인 페이지로 이동하시겠습니까?")) {
-		                window.location.href = "../log/loginForm.jsp";
-		            }
-		            // 폼 제출 방지
-		            event.preventDefault();
-		        } else {
-		            // 폼 제출
-		            $("#form").submit();
-		        }
-		    }
+			// 사용자가 동의 체크박스를 체크하지 않은 경우
+			if (!agreeCheckbox.is(":checked")) {
+				// 경고 메시지 표시
+				alert("개인정보 수집에 대한 동의를 확인해주세요.");
+				// 폼 전송 방지
+				event.preventDefault();
+			} else {
+				// 동의 체크박스가 체크되어 있고, 사용자가 로그인되어 있는 경우 폼 제출
+				if (username === 'null' || username === '') {
+					if (confirm("로그인이 필요한 서비스입니다.\n로그인 페이지로 이동하시겠습니까?")) {
+						window.location.href = "../log/loginForm.jsp";
+					}
+					// 폼 제출 방지
+					event.preventDefault();
+				} else {
+					// 폼 제출
+					$("#form").submit();
+				}
+			}
 		});
 
 		//파일 버튼을 눌렀을 때
-	 	$(".btn_file").click(function() {
+		$(".btn_file").click(function() {
 			$("#file").click();
 			const fileInput = document.querySelector("#file");
 		});
-		
-		
+
 		$("#file").change(function() {
-		    const fileName = $(this).val().split('\\').pop();
-		    $("span.file_val").text(fileName);
-		}); 
-		
-		
-	    // 텍스트 입력 필드의 글자수를 세는 함수
-	    function countCharacters() {
-	        var text = $("#title").val(); // #title 인풋 필드의 값 가져오기
-	        var length = text.length; // 글자수 계산
-	        
-	        // 입력된 글자수가 50자를 넘으면
-	        if (length > 50) {
-	            // 50자로 자름
-	            $("#title").val(text.substring(0, 50));
-	        }
-	        
-	        // 글자수를 화면에 업데이트
-	        $("#titleCount").text($("#title").val().length);
-	    }
+			const fileName = $(this).val().split('\\').pop();
+			$("span.file_val").text(fileName);
+		});
 
-	    // 페이지 로드시 한번 호출하여 초기값 설정
-	    countCharacters();
+		// 텍스트 입력 필드의 글자수를 세는 함수
+		function countCharacters() {
+			var text = $("#title").val(); // #title 인풋 필드의 값 가져오기
+			var length = text.length; // 글자수 계산
 
-	    // input 이벤트 리스너를 사용하여 텍스트 입력시마다 호출
-	    $("#title").on("input", function() {
-	        countCharacters(); // 텍스트 입력시마다 글자수 업데이트
-	    });
-	    
-	    
-	    
-	    
-	    // 텍스트 입력 필드의 글자수를 세는 함수
-	    function countCharacters2() {
-	        var text2 = $("#content").val(); // #content 인풋 필드의 값 가져오기
-	        var length2 = text2.length; // 글자수 계산
-	        
-	        // 입력된 글자수가 500자를 넘으면
-	        if (length2 > 2000) {
-	            // 500자로 자름
-	            $("#content").val(text2.substring(0, 2000));
-	        }
-	        
-	        // 글자수를 화면에 업데이트
-	        $("#titleCount2").text(length2);
-	    }
+			// 입력된 글자수가 50자를 넘으면
+			if (length > 50) {
+				// 50자로 자름
+				$("#title").val(text.substring(0, 50));
+			}
 
-	    // 페이지 로드시 한번 호출하여 초기값 설정
-	    countCharacters2();
+			// 글자수를 화면에 업데이트
+			$("#titleCount").text($("#title").val().length);
+		}
 
-	    // input 이벤트 리스너를 사용하여 텍스트 입력시마다 호출
-	    $("#content").on("input", function() {
-	        countCharacters2(); // 텍스트 입력시마다 글자수 업데이트
-	    });
+		// 페이지 로드시 한번 호출하여 초기값 설정
+		countCharacters();
 
+		// input 이벤트 리스너를 사용하여 텍스트 입력시마다 호출
+		$("#title").on("input", function() {
+			countCharacters(); // 텍스트 입력시마다 글자수 업데이트
+		});
 
+		// 텍스트 입력 필드의 글자수를 세는 함수
+		function countCharacters2() {
+			var text2 = $("#content").val(); // #content 인풋 필드의 값 가져오기
+			var length2 = text2.length; // 글자수 계산
+
+			// 입력된 글자수가 500자를 넘으면
+			if (length2 > 2000) {
+				// 500자로 자름
+				$("#content").val(text2.substring(0, 2000));
+			}
+
+			// 글자수를 화면에 업데이트
+			$("#titleCount2").text(length2);
+		}
+
+		// 페이지 로드시 한번 호출하여 초기값 설정
+		countCharacters2();
+
+		// input 이벤트 리스너를 사용하여 텍스트 입력시마다 호출
+		$("#content").on("input", function() {
+			countCharacters2(); // 텍스트 입력시마다 글자수 업데이트
+		});
 	</script>
 </body>
 </html>
