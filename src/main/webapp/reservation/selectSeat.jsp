@@ -15,6 +15,8 @@
    String screeningInfoId = request.getParameter("screeningInfoId");
    String branch = request.getParameter("branch");
    String screeningDate = request.getParameter("screeningDate");
+   String screeningData = request.getParameter("screeningData");
+
 
    System.out.println("screeningInfoId = " + screeningInfoId);
 
@@ -102,7 +104,7 @@
             <div class="block">
                <p>극장: <%=branch%></p>
                <p>일시: <%=screeningDate%></p>
-               <p>상영관: <%="1관"%></p>
+               <p>상영관: <%=screeningData%></p>
             </div>
             <div class="block">
                <div id="selectedSeats"></div>

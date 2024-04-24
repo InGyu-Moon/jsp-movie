@@ -135,6 +135,10 @@ $(document).ready(function() {
     	$("#theaterScreen").text(screenInfo);
     	$("#screeningInfoId").val(screeningInfoId);
     	console.log("시간 버튼 클릭 시 상영관 : "+screenInfo+screenName);
+
+		let temp = $(this).attr("screenData");
+		$("#screeningData").val(temp);
+
     });
 	
 	$("#go").click(function (){
@@ -272,7 +276,7 @@ $(document).ready(function() {
 	            	    // 각 요소를 한 줄에 세 개씩 배치
 	            	    s += "<div class='col'>";
 	            	    s += "<span><strong>" + screenName + " " + screenInfo + "</strong></span><br>";
-	            	    s += "<button type='button' class='btn btn-light time' id='time' value='"+screeningInfoId+"'>" + screeningTime + "</button>";
+	            	    s += "<button type='button' screenData='"+ screenName +" " + screenInfo +"' class='btn btn-light time' id='time' value='"+screeningInfoId+"'>" + screeningTime + "</button>";
 	            	    s += "</div>";
 	            	    // 인덱스가 3의 배수인 경우 새로운 줄을 시작
 	            	    if ((index + 1) % 3 === 0) {
@@ -387,11 +391,9 @@ $(document).ready(function() {
 				<input type="hidden" value="" name="theaterId" id="theaterId">
 				<input type="hidden" value="" name="screeningInfoId" id="screeningInfoId">
 				<input type="hidden" value="" name="branch" id="branch">
-<<<<<<< HEAD
-				<input type="hidden" value="" name="screeningInfoId" id="screeningInfoId">
-=======
 				<input type="hidden" value="" name="screeningDate" id="screeningDateVal">
->>>>>>> c42704e61238c95b14073c00e487062a2c1ab066
+				<input type="hidden" value="" name="screeningData" id="screeningData">
+
 				<div class="col-sm d-flex justify-content-center">
 					<table class="table-borderless" id="writeMovie">
 						<tr>
