@@ -75,7 +75,7 @@ public class ReservationDao {
 		Connection conn = db.getConnection();;
 		PreparedStatement pstmt = null;
 
-		String sql = "insert into reservation_info value (null,?,?,null,?,?,?,now(),'Completed' )";
+		String sql = "insert into RESERVATION_INFO value (null,?,?,null,?,?,?,now(),'Completed' )";
 
         try {
             pstmt = conn.prepareStatement(sql);
