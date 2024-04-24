@@ -35,28 +35,28 @@
     <input hidden value="<%=special%>" name="special">
 
 <div class="select">
-    <input type="radio" id="phone_payment" name="payment_method" value="Phone">
+    <input type="radio" id="phone_payment" name="payment_method" value="Phone" textValue="휴대폰">
     <label for="phone_payment">휴대폰</label>
 
-    <input type="radio" id="credit_card_payment" name="payment_method" value="Credit_Card">
+    <input type="radio" id="credit_card_payment" name="payment_method" value="Credit_Card" textValue="신용카드">
     <label for="credit_card_payment">신용카드</label>
 
-    <input type="radio" id="toss_payment" name="payment_method" value="TOSS">
+    <input type="radio" id="toss_payment" name="payment_method" value="TOSS" textValue="토스">
     <label for="toss_payment">토스</label>
 
-    <input type="radio" id="simple_payment" name="payment_method" value="simple" onchange="showEasyPaymentOptions()">
+    <input type="radio" id="simple_payment" name="payment_method" value="simple" textValue="간편결제" onchange="showEasyPaymentOptions()">
     <label for="simple_payment">간편결제</label>
     </div>
 
 
     <div id="easy_payment_options" style="display: none;">
-        <input type="radio" id="kakao_payment" name="easy_payment_option" checked value="KAKAO">
+        <input type="radio" id="kakao_payment" name="easy_payment_option" checked value="KAKAO" textValue="카카오페이">
         <label for="kakao_payment">카카오페이</label>
 
-        <input type="radio" id="naver_payment" name="easy_payment_option" value="NAVER">
+        <input type="radio" id="naver_payment" name="easy_payment_option" value="NAVER" textValue="네이버페이">
         <label for="naver_payment">네이버페이</label>
 
-        <input type="radio" id="ssg_payment" name="easy_payment_option" value="SSG">
+        <input type="radio" id="ssg_payment" name="easy_payment_option" value="SSG" textValue="SSG페이">
         <label for="ssg_payment">SSG페이</label>
     </div>
  <div class="information">
@@ -84,7 +84,7 @@
         });
 
         $('input').click(function() {
-            var selectedPaymentMethod = $('input[name="payment_method"]:checked').val();
+            var selectedPaymentMethod = $('input[name="payment_method"]:checked').attr("textValue");
             var selectedEasyPaymentOption = $('input[name="easy_payment_option"]:checked').val();
             if(selectedPaymentMethod==='simple'){
                 $('#payment').text("결제방식: "+selectedEasyPaymentOption)
