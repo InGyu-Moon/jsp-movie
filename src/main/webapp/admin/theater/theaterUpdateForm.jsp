@@ -45,11 +45,11 @@
                     	<option value="경기" <%=dto.getRegion().equals("경기")?"selected":"" %> >경기</option>
                     	<option value="인천" <%=dto.getRegion().equals("인천")?"selected":"" %> >인천</option>
                     	<option value="강원" <%=dto.getRegion().equals("강원")?"selected":"" %> >강원</option>
-                    	<option value="대전_충청" <%=dto.getRegion().equals("대전_충청")?"selected":"" %> >대전/충청</option>
+                    	<option value="대전/충청" <%=dto.getRegion().equals("대전/충청")?"selected":"" %> >대전/충청</option>
                     	<option value="대구" <%=dto.getRegion().equals("대구")?"selected":"" %> >대구</option>
-                    	<option value="부산_울산" <%=dto.getRegion().equals("부산_울산")?"selected":"" %> >부산/울산</option>
+                    	<option value="부산/울산" <%=dto.getRegion().equals("부산/울산")?"selected":"" %> >부산/울산</option>
                     	<option value="경상" <%=dto.getRegion().equals("경상")?"selected":"" %> >경상</option>
-                    	<option value="광주_전라_제주" <%=dto.getRegion().equals("광주_전라_제주")?"selected":"" %> >광주/전라/제주</option>
+                    	<option value="광주/전라/제주" <%=dto.getRegion().equals("광주/전라/제주")?"selected":"" %> >광주/전라/제주</option>
                     </select>
         		</td>
 			</tr>

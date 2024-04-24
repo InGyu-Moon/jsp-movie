@@ -17,7 +17,7 @@ public class AdminDao {
 
         boolean adminLoginResult = false;
 
-        String sql = "select * from admin_info where username = ? and password = ?";
+        String sql = "select * from ADMIN_INFO where username = ? and password = ?";
 
         try {
             pstmt=conn.prepareStatement(sql);

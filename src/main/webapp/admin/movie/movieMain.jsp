@@ -77,11 +77,30 @@ $(document).ready(function(){
 </head>
 
 <%
+	request.setCharacterEncoding("UTF-8");
 	MovieInfoDao movieInfoDao = new MovieInfoDao();
     // 전체회원목록
-    List<MovieInfoDto> totalMovieList = movieInfoDao.getAllMovies();
+    List<MovieInfoDto> totalMovieList = null;
+
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy년 M월 d일");
-    
+
+	String searchType = request.getParameter("searchType");
+	String data = request.getParameter("data");
+
+	if(searchType==null || data == null){
+		totalMovieList = movieInfoDao.getAllMovies();
+	} else if(searchType.equals("all")){
+		totalMovieList = movieInfoDao.getMoviesByAllData(data);
+	} else if (searchType.equals("title")) {
+		totalMovieList = movieInfoDao.getMoviesByTitle(data);
+	} else if (searchType.equals("director")) {
+		totalMovieList = movieInfoDao.getMoviesByDirector(data);
+	}else if (searchType.equals("actor")) {
+		totalMovieList = movieInfoDao.getMoviesByActor(data);
+	} else{
+		totalMovieList = movieInfoDao.getAllMovies();
+	}
+
     int count = movieInfoDao.getMovieCount();
     
 %>
@@ -127,7 +146,21 @@ $(document).ready(function(){
     no=totalCount-(currentPage-1)*perPage;
 
     //페이지에서 보여질 글만 가져오기
-    List<MovieInfoDto> list = movieInfoDao.getList(startNum, perPage);
+    List<MovieInfoDto> list = null;
+
+	if(searchType==null || data == null){
+		list = movieInfoDao.getList(startNum, perPage);
+	} else if(searchType.equals("all")){
+		list = movieInfoDao.getListMoviesByAllData(data,startNum, perPage);
+	} else if (searchType.equals("title")) {
+		list = movieInfoDao.getListMoviesByTitle(data,startNum, perPage);
+	} else if (searchType.equals("director")) {
+		list = movieInfoDao.getListMoviesByDirector(data,startNum, perPage);
+	}else if (searchType.equals("actor")) {
+		list = movieInfoDao.getListMoviesByActor(data,startNum, perPage);
+	} else{
+		list = movieInfoDao.getList(startNum, perPage);
+	}
 %>
 
 
@@ -136,13 +169,14 @@ $(document).ready(function(){
 	<div class="container-rightside" style="width: 80%;">
 		<h2 style="margin-bottom: 50px">영화 관리</h2>
 		<hr style="margin-bottom: 30px">
-		<form class="d-flex" method="post" action="#" style="margin-bottom: 30px">
-		    <select class="form-select " style="width: 110px;">
-		        <option value="전체" selected>전체</option>
-		        <option value="제목">영화 제목</option>
-		        <option value="test">test</option>
+		<form class="d-flex" method="post" action="adminMainPage.jsp?curr=movie/movieMain.jsp" style="margin-bottom: 30px">
+		    <select class="form-select" name="searchType" style="width: 110px;">
+		        <option value="all" selected>전체</option>
+		        <option value="title">제목</option>
+		        <option value="director">감독</option>
+		        <option value="actor">배우</option>
 		    </select>
-		    <input type="text" class="form-control" placeholder="검색어" style="margin-left: 30px;margin-right: 30px; width: 280px;">
+		    <input type="text" class="form-control" name="data" placeholder="검색어" style="margin-left: 30px;margin-right: 30px; width: 280px;">
 		    <button type="submit" class="btn btn-outline-primary">조회</button>
 		</form>
 		
@@ -209,7 +243,7 @@ $(document).ready(function(){
 		            if(startPage>1)
 		            {%>
 		        <li class="page-item ">
-		            <a class="page-link" href="../admin/adminMainPage.jsp?curr=movie/movieMain.jsp?currentPage=<%=startPage-1%>" style="color: black;">이전</a>
+		            <a class="page-link" href="../admin/adminMainPage.jsp?curr=movie/movieMain.jsp?searchType=<%=searchType%>&data=<%=data%>&currentPage=<%=startPage-1%>" style="color: black;">이전</a>
 		        </li>
 		        <%}
 		            for(int pp=startPage;pp<=endPage;pp++)
@@ -217,12 +251,12 @@ $(document).ready(function(){
 		                if(pp==currentPage)
 		                {%>
 		        <li class="page-item active">
-		            <a class="page-link" href="../admin/adminMainPage.jsp?curr=movie/movieMain.jsp?currentPage=<%=pp%>"><%=pp %></a>
+		            <a class="page-link" href="../admin/adminMainPage.jsp?curr=movie/movieMain.jsp?searchType=<%=searchType%>&data=<%=data%>&currentPage=<%=pp%>"><%=pp %></a>
 		        </li>
 		        <%}else
 		        {%>
 		        <li class="page-item">
-		            <a class="page-link" href="../admin/adminMainPage.jsp?curr=movie/movieMain.jsp?currentPage=<%=pp%>"><%=pp %></a>
+		            <a class="page-link" href="../admin/adminMainPage.jsp?curr=movie/movieMain.jsp?searchType=<%=searchType%>&data=<%=data%>&currentPage=<%=pp%>"><%=pp %></a>
 		        </li>
 		        <%}
 		        }
@@ -231,7 +265,7 @@ $(document).ready(function(){
 		            if(endPage<totalPage)
 		            {%>
 		        <li class="page-item">
-		            <a  class="page-link" href="../admin/adminMainPage.jsp?curr=member/memberMain.jsp?currentPage=<%=endPage+1%>"
+		            <a  class="page-link" href="../admin/adminMainPage.jsp?curr=member/memberMain.jsp?searchType=<%=searchType%>&data=<%=data%>&currentPage=<%=endPage+1%>"
 		                style="color: black;">다음</a>
 		        </li>
 		        <%}
