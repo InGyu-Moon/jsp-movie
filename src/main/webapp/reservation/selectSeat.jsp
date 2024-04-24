@@ -4,6 +4,11 @@
          pageEncoding="UTF-8"%>
 <jsp:include page="../include/header.html"></jsp:include>
 <title>예매 | 영화 그 이상의 감동</title>
+<style>
+.top_btn .link {
+display: none;
+}
+</style>
 <%
    final int TEENAGER_PRICE = 10_000;
    final int ADULT_PRICE = 13_000;

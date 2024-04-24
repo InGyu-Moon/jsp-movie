@@ -8,6 +8,11 @@
          pageEncoding="UTF-8" %>
 <jsp:include page="../include/header.html"></jsp:include>
 <title>결제 | 영화 그 이상의 감동</title>
+<style>
+.top_btn .link {
+display: none;
+}
+</style>
 <%
     String screeningInfoId = request.getParameter("screeningInfoId");
     String selectedSeats = request.getParameter("selectedSeats");
