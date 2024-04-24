@@ -1,6 +1,7 @@
 package data.movie.screening;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -37,7 +38,7 @@ public class ScreeningDao {
 					+ "    (SELECT 0 AS n UNION ALL SELECT 1 UNION ALL SELECT 2 UNION ALL SELECT 3 UNION ALL\r\n"
 					+ "     SELECT 4 UNION ALL SELECT 5 UNION ALL SELECT 6 UNION ALL SELECT 7 UNION ALL\r\n"
 					+ "     SELECT 8 UNION ALL SELECT 9 UNION ALL SELECT 10 UNION ALL SELECT 11 UNION ALL\r\n"
-					+ "     SELECT 12 UNION ALL SELECT 13 UNION ALL SELECT 14) AS Numbers;";
+					+ "     SELECT 12 UNION ALL SELECT 13 UNION ALL SELECT 14) AS Numbers";
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 
@@ -53,6 +54,82 @@ public class ScreeningDao {
 			db.dbClose(rs, pstmt, conn);
 		}
 
+		return list;
+	}
+	// 상영시간, 상영날짜, 상영관정보, 상영관이름 얻음
+	public List<ScreeningDto> getScreeningAndTheaterScreen(String branch, String movieId) {
+		List<ScreeningDto> list = new ArrayList<>();
+		Connection conn = db.getConnection();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = db.getConnection();
+			String sql = "select S.screening_info_id, S.screening_date 상영날짜, S.screening_time 상영시간, TS.screen_info 상영관정보, TS.screen_name 상영관이름\r\n"
+					+ "from screening_info S, (select * from theater_info where branch=?) T, \r\n"
+					+ "theater_screen TS, (select * from movie_info where movie_id=?) M\r\n"
+					+ "where S.theater_id=T.theater_id AND S.theater_screen_id=TS.theater_screen_id AND M.movie_id=S.movie_id\r\n"
+					+ "order by 상영시간";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, branch);
+			pstmt.setString(2, movieId);
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				ScreeningDto dto = new ScreeningDto();
+				dto.setScreeningInfoId(rs.getString("screening_info_id"));
+				dto.setScreeningDate(rs.getDate("상영날짜"));
+				dto.setScreeningTime(rs.getTimestamp("상영시간"));
+				dto.setScreenInfo(rs.getString("상영관정보"));
+				dto.setScreenName(rs.getString("상영관이름"));
+				
+				list.add(dto);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			db.dbClose(rs, pstmt, conn);
+		}
+		
+		return list;
+	}
+	// 상영시간 얻음
+	public List<ScreeningDto> getScreeningTime(String movieId, String branch, Date screeningDate) {
+		List<ScreeningDto> list = new ArrayList<>();
+		Connection conn = db.getConnection();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = db.getConnection();
+			String sql = "select S.screening_info_id, S.screening_time 상영시간 , TS.screen_info 상영관정보, TS.screen_name 상영관이름\r\n"
+					+ "from \r\n"
+					+ "(select * from screening_info where screening_date='2024-04-18') S, \r\n"
+					+ "(select * from theater_info where branch=?) T, \r\n"
+					+ "(select * from movie_info where movie_id=?) M,\r\n"
+					+ "theater_screen TS\r\n"
+					+ "where S.theater_id=T.theater_id AND S.movie_id=M.movie_id AND S.theater_screen_id=TS.theater_screen_id order by 상영시간";
+			pstmt = conn.prepareStatement(sql);
+			//pstmt.setDate(1, screeningDate);
+			pstmt.setString(1, branch);
+			pstmt.setString(2, movieId);
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				ScreeningDto dto = new ScreeningDto();
+				dto.setScreeningInfoId(rs.getString("screening_info_id"));
+				dto.setScreeningTime(rs.getTimestamp("상영시간"));
+				dto.setScreenInfo(rs.getString("상영관정보"));
+				dto.setScreenName(rs.getString("상영관이름"));
+				
+				list.add(dto);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			db.dbClose(rs, pstmt, conn);
+		}
+		
 		return list;
 	}
 }

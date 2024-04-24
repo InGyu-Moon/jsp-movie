@@ -533,7 +533,7 @@ public class MovieInfoDao {
 	}
 
 	// movie_id에 대한 dto 반환
-	public MovieInfoDto getData(String movie_id) {
+	public MovieInfoDto getData(String movieId) {
 		MovieInfoDto dto = new MovieInfoDto();
 		Connection conn = db.getConnection();
 		PreparedStatement pstmt = null;
@@ -543,7 +543,7 @@ public class MovieInfoDao {
 
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, movie_id);
+			pstmt.setString(1, movieId);
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) {

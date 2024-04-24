@@ -105,6 +105,38 @@ public class TheaterDao {
 		
 		return list;
 	}
+	
+	// 영화 지점에 대한 지역 출력
+	public List<TheaterDto> getBranchListByRegion(String movieId) {
+		List<TheaterDto> list = new ArrayList<>();
+		Connection conn = db.getConnection();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = db.getConnection();
+			String sql = "SELECT branch, theater_id FROM THEATER_INFO\r\n"
+					+ "where theater_id = (select S.theater_id from screening_info S, (select * from movie_info where movie_id=?) M\r\n"
+					+ "									where S.movie_id=M.movie_id);";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, movieId);
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				TheaterDto dto = new TheaterDto();
+				dto.setTheater_id(rs.getString("theater_id"));
+				dto.setBranch(rs.getString("branch"));
+				
+				list.add(dto);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			db.dbClose(rs, pstmt, conn);
+		}
+		
+		return list;
+	}
 
 	// 해당 지역의 모든 지점명을 가져오는 메서드
 	public List<String> addressList(String region) {
