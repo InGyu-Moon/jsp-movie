@@ -374,11 +374,11 @@ $(document).ready(function(){
 						<option value="경기">경기</option>
 						<option value="인천">인천</option>
 						<option value="강원">강원</option>
-						<option value="대전_충청">대전/충청</option>
+						<option value="대전/충청">대전/충청</option>
 						<option value="대구">대구</option>
-						<option value="부산_울산">부산/울산</option>
+						<option value="부산/울산">부산/울산</option>
 						<option value="경상">경상</option>
-						<option value="광주_전라_제주">광주/전라/제주</option>
+						<option value="광주/전라/제주">광주/전라/제주</option>
 					</select>
 					<input type="text" name="searchContent" class="form-control" style="float: left; width:400px; margin-left: 50px;" placeholder="지점을 검색해주세요." >
 					<button type="button" id="search" class="btn btn-outline-dark" style="float: left; width:80px; margin-left: 5px;">검색</button>
