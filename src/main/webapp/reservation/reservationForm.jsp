@@ -130,9 +130,13 @@ $(document).ready(function() {
     });
 	// 상영 시간 클릭 시
     $("#screeningTime").on("click", "#time", function(event) {
+    	var screeningInfoId = $(this).val();
     	$("#theaterDate").text(screeningDate+"("+screeningDateFormat+")"+" "+$(this).text().trim());
     	$("#theaterScreen").text(screenInfo);
+    	$("#screeningInfoId").val(screeningInfoId);
+    	console.log("시간 버튼 클릭 시 상영관 : "+screenInfo+screenName);
     });
+	
 	$("#go").click(function (){
 		$("#branch").val(branch);
 		$("#screeningDateVal").val(screeningDate);
@@ -219,7 +223,7 @@ $(document).ready(function() {
 					var screenName = item.screenName; //몇 관 
 					// 생성한 HTML을 테이블에 추가
 					// id
-		            $("#screeningInfoId").val(screeningInfoId);
+		            //$("#screeningInfoId").val(screeningInfoId);
 		            // 극장 설정
 		            $("#theater").text(branch);
 		            //$("#theaterDate").text(screeningDate+screeningTime);
@@ -255,24 +259,31 @@ $(document).ready(function() {
 	                // 데이터가 없을 때 처리
 	                screeningTimeContainer.append("<span id='a4hidden'>영화, 지역, 지점을 먼저 선택해 주세요.</span>");
 	            } else {
-	            	var s="";
-					$.each(data,function(index,item){
-						var screeningInfoId = item.screeningInfoId; // 상영정보id
-						var screeningTime = item.screeningTime; //상영시간
-						screenInfo = item.screenInfo; //상영정보
-						screenName = item.screenName; //몇 관 
-						// 생성한 HTML을 테이블에 추가
-						// id
-			            $("#screeningInfoId").val(screeningInfoId);
-						s+="<div class='col'>"
-			            s+="<span><strong>"+screenName+" "+screenInfo+"</strong></span><br>";
-			            s+="<button type='button' class='btn btn-light' id='time'>"+screeningTime+"</button>"
-			            s+="</div>"
-			            
-			            //$("#theaterDate").text(screeningDate+screeningTime);
-			            //$("#theaterScreen").text(screenName+" "+screenInfo);
-			            screeningTimeContainer.append(s);
-					});
+	            	var s="<div class='row row-cols-3'>";
+	            	$.each(data,function(index,item){
+	            	    var screeningInfoId = item.screeningInfoId; // 상영정보id
+	            	    var screeningTime = item.screeningTime; //상영시간
+	            	    console.log("screenName: ", screenName);
+	            	    screenInfo = item.screenInfo; //상영정보
+	            	    screenName = item.screenName; //몇 관 
+	            	    // 생성한 HTML을 테이블에 추가
+	            	    // id
+	            	    $("#screeningInfoId").val(screeningInfoId);
+	            	    // 각 요소를 한 줄에 세 개씩 배치
+	            	    s += "<div class='col'>";
+	            	    s += "<span><strong>" + screenName + " " + screenInfo + "</strong></span><br>";
+	            	    s += "<button type='button' class='btn btn-light time' id='time' value='"+screeningInfoId+"'>" + screeningTime + "</button>";
+	            	    s += "</div>";
+	            	    // 인덱스가 3의 배수인 경우 새로운 줄을 시작
+	            	    if ((index + 1) % 3 === 0) {
+	            	        s += "</div><div class='row row-cols-3'>";
+	            	    }
+	            	});
+	            	// 마지막 줄을 닫아줌
+	            	s += "</div>";
+
+	            	// HTML을 추가
+	            	screeningTimeContainer.append(s);
 				}
 			}
 		});
@@ -360,7 +371,7 @@ $(document).ready(function() {
            	<div class="list-group overflow-auto" id="screeningTime" style="height: 500px; text-align: center;">
             	<!-- 여기 시간 출력 할거임 -->
             	<span id="a4hidden">영화, 지역, 지점을 먼저 선택해 주세요.</span> 
-            	<div class="row row-cols-3" id="screeningTime">
+            	<div id="screeningTime">
 				    <!-- <div class="col">Column</div> -->
 				</div>
             </div>
@@ -376,6 +387,7 @@ $(document).ready(function() {
 				<input type="hidden" value="" name="theaterId" id="theaterId">
 				<input type="hidden" value="" name="screeningDate" id="screeningDateVal">
 				<input type="hidden" value="" name="branch" id="branch">
+				<input type="hidden" value="" name="screeningInfoId" id="screeningInfoId">
 				<div class="col-sm d-flex justify-content-center">
 					<table class="table-borderless" id="writeMovie">
 						<tr>
