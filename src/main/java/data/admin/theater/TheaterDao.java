@@ -21,11 +21,11 @@ public class TheaterDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 
-		String sql = "insert into THEATER_INFO values (null,?,?,?,?,?,?,?,?,null)";
+		String sql = "INSERT INTO THEATER_INFO VALUES (NULL,?,?,?,?,?,?,?,?,'../img/ticket/ticket_bg.png')";
 
 		try {
 			pstmt=conn.prepareStatement(sql);
-			pstmt.setString(1,theater.getRegion().name());
+			pstmt.setString(1,theater.getRegion());
 			pstmt.setString(2,theater.getBranch());
 			pstmt.setString(3,theater.getNumberOfScreens());
 			pstmt.setString(4,theater.getTotalTheaterScreens());
@@ -54,7 +54,7 @@ public class TheaterDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
-		String sql = "select * from THEATER_INFO where theater_id=?";
+		String sql = "SELECT * FROM THEATER_INFO WHERE THEATER_ID=?";
 		TheaterDto theater = new TheaterDto();
 		
 		try {
@@ -64,7 +64,7 @@ public class TheaterDao {
 			
 			if(rs.next()) {
 				theater.setTheaterId(String.valueOf(rs.getInt("theater_id")));
-				theater.setRegion(Region.valueOf(rs.getString("region")));
+				theater.setRegion(rs.getString("region"));
 				theater.setBranch(rs.getString("branch"));
 				theater.setNumberOfScreens(String.valueOf(rs.getInt("number_of_screens")));
 				theater.setTotalTheaterScreens(String.valueOf(rs.getInt("total_theater_seats")));
@@ -72,7 +72,7 @@ public class TheaterDao {
 				theater.setTheaterPhoneNumber(rs.getString("theater_phone_number"));
 				theater.setIs4D(rs.getInt("is_4d"));
 				theater.setIsIMAX(rs.getInt("is_imax"));
-				theater.setImg(rs.getString("img"));
+				theater.setTheaterImg(rs.getString("theater_img"));
 				
 			} else {
 				System.out.println("get Theater ERROR");
@@ -93,7 +93,7 @@ public class TheaterDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
-		String sql = "select * from THEATER_INFO order by theater_id desc";
+		String sql = "SELECT * FROM THEATER_INFO ORDER BY THEATER_ID DESC";
 		List<TheaterDto> list = new ArrayList<TheaterDto>();
 		
 		try {
@@ -103,7 +103,7 @@ public class TheaterDao {
 			while(rs.next()) {
 				TheaterDto theater = new TheaterDto();
 				theater.setTheaterId(String.valueOf(rs.getInt("theater_id")));
-				theater.setRegion(Region.valueOf(rs.getString("region")));
+				theater.setRegion(rs.getString("region"));
 				theater.setBranch(rs.getString("branch"));
 				theater.setNumberOfScreens(String.valueOf(rs.getInt("number_of_screens")));
 				theater.setTotalTheaterScreens(String.valueOf(rs.getInt("total_theater_seats")));
@@ -111,7 +111,7 @@ public class TheaterDao {
 				theater.setTheaterPhoneNumber(rs.getString("theater_phone_number"));
 				theater.setIs4D(rs.getInt("is_4d"));
 				theater.setIsIMAX(rs.getInt("is_imax"));
-				theater.setImg(rs.getString("img"));
+				theater.setTheaterImg(rs.getString("theater_img"));
 				System.out.println("get select All Theater");
 				
 				list.add(theater);
@@ -132,7 +132,7 @@ public class TheaterDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
-		String sql = "select * from THEATER_INFO where region=? order by theater_id desc limit ?,?";
+		String sql = "SELECT * FROM THEATER_INFO WHERE REGION=? ORDER BY THEATER_ID DESC LIMIT ?,?";
 		List<TheaterDto> list = new ArrayList<TheaterDto>();
 		
 		try {
@@ -145,7 +145,7 @@ public class TheaterDao {
 			while(rs.next()) {
 				TheaterDto theater = new TheaterDto();
 				theater.setTheaterId(String.valueOf(rs.getInt("theater_id")));
-				theater.setRegion(Region.valueOf(rs.getString("region")));
+				theater.setRegion(rs.getString("region"));
 				theater.setBranch(rs.getString("branch"));
 				theater.setNumberOfScreens(String.valueOf(rs.getInt("number_of_screens")));
 				theater.setTotalTheaterScreens(String.valueOf(rs.getInt("total_theater_seats")));
@@ -153,7 +153,7 @@ public class TheaterDao {
 				theater.setTheaterPhoneNumber(rs.getString("theater_phone_number"));
 				theater.setIs4D(rs.getInt("is_4d"));
 				theater.setIsIMAX(rs.getInt("is_imax"));
-				theater.setImg(rs.getString("img"));
+				theater.setTheaterImg(rs.getString("theater_img"));
 				
 				list.add(theater);
 			}
@@ -173,7 +173,7 @@ public class TheaterDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
-		String sql = "select * from THEATER_INFO where branch like ?";
+		String sql = "SELECT * FROM THEATER_INFO WHERE BRANCH LIKE ?";
 		List<TheaterDto> list = new ArrayList<TheaterDto>();
 		
 		try {
@@ -184,7 +184,7 @@ public class TheaterDao {
 			while(rs.next()) {
 				TheaterDto theater = new TheaterDto();
 				theater.setTheaterId(String.valueOf(rs.getInt("theater_id")));
-				theater.setRegion(Region.valueOf(rs.getString("region")));
+				theater.setRegion(rs.getString("region"));
 				theater.setBranch(rs.getString("branch"));
 				theater.setNumberOfScreens(String.valueOf(rs.getInt("number_of_screens")));
 				theater.setTotalTheaterScreens(String.valueOf(rs.getInt("total_theater_seats")));
@@ -192,7 +192,7 @@ public class TheaterDao {
 				theater.setTheaterPhoneNumber(rs.getString("theater_phone_number"));
 				theater.setIs4D(rs.getInt("is_4d"));
 				theater.setIsIMAX(rs.getInt("is_imax"));
-				theater.setImg(rs.getString("img"));
+				theater.setTheaterImg(rs.getString("theater_img"));
 				
 				list.add(theater);
 			}
@@ -212,7 +212,7 @@ public class TheaterDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
-		String sql = "select * from THEATER_INFO where region=? and branch like ?";
+		String sql = "SELECT * FROM THEATER_INFO WHERE REGION=? AND BRANCH LIKE ?";
 		List<TheaterDto> list = new ArrayList<TheaterDto>();
 		
 		try {
@@ -224,7 +224,7 @@ public class TheaterDao {
 			while(rs.next()) {
 				TheaterDto theater = new TheaterDto();
 				theater.setTheaterId(String.valueOf(rs.getInt("theater_id")));
-				theater.setRegion(Region.valueOf(rs.getString("region")));
+				theater.setRegion(rs.getString("region"));
 				theater.setBranch(rs.getString("branch"));
 				theater.setNumberOfScreens(String.valueOf(rs.getInt("number_of_screens")));
 				theater.setTotalTheaterScreens(String.valueOf(rs.getInt("total_theater_seats")));
@@ -232,7 +232,7 @@ public class TheaterDao {
 				theater.setTheaterPhoneNumber(rs.getString("theater_phone_number"));
 				theater.setIs4D(rs.getInt("is_4d"));
 				theater.setIsIMAX(rs.getInt("is_imax"));
-				theater.setImg(rs.getString("img"));
+				theater.setTheaterImg(rs.getString("theater_img"));
 				
 				list.add(theater);
 			}
@@ -252,7 +252,7 @@ public class TheaterDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
-		String sql = "select count(*) from THEATER_INFO";
+		String sql = "SELECT COUNT(*) FROM THEATER_INFO";
 		int count = 0;
 		
 		try {
@@ -281,7 +281,7 @@ public class TheaterDao {
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
 
-		String sql="select * from THEATER_INFO order by theater_id desc limit ?,?";
+		String sql="SELECT * FROM THEATER_INFO ORDER BY THEATER_ID DESC LIMIT ?,?";
 
 		try {
 			pstmt=conn.prepareStatement(sql);
@@ -295,7 +295,7 @@ public class TheaterDao {
 			{
 				TheaterDto theater = new TheaterDto();
 				theater.setTheaterId(String.valueOf(rs.getInt("theater_id")));
-				theater.setRegion(Region.valueOf(rs.getString("region")));
+				theater.setRegion(rs.getString("region"));
 				theater.setBranch(rs.getString("branch"));
 				theater.setNumberOfScreens(String.valueOf(rs.getInt("number_of_screens")));
 				theater.setTotalTheaterScreens(String.valueOf(rs.getInt("total_theater_seats")));
@@ -303,7 +303,7 @@ public class TheaterDao {
 				theater.setTheaterPhoneNumber(rs.getString("theater_phone_number"));
 				theater.setIs4D(rs.getInt("is_4d"));
 				theater.setIsIMAX(rs.getInt("is_imax"));
-				theater.setImg(rs.getString("img"));
+				theater.setTheaterImg(rs.getString("theater_img"));
 				//System.out.println("페이징 반복중");
 				
 				list.add(theater);
@@ -323,7 +323,7 @@ public class TheaterDao {
 		Connection conn=db.getConnection();
 		PreparedStatement pstmt=null;
 
-		String sql="delete from THEATER_INFO where theater_id=?";
+		String sql="DELETE FROM THEATER_INFO WHERE THEATER_ID=?";
 
 		try {
 			pstmt=conn.prepareStatement(sql);
@@ -347,13 +347,13 @@ public class TheaterDao {
 		Connection conn=db.getConnection();
 		PreparedStatement pstmt=null;
 		
-		String sql="update THEATER_INFO set region=?,branch=?,number_of_screens=?,total_theater_seats=?,address=?,"
-				+ "theater_phone_number=?,is_imax=?,is_4d=?"
-				+ " where theater_id=?";
+		String sql = "UPDATE THEATER_INFO SET REGION=?, BRANCH=?, NUMBER_OF_SCREENS=?, TOTAL_THEATER_SEATS=?, ADDRESS=?, "
+		           + "THEATER_PHONE_NUMBER=?, IS_IMAX=?, IS_4D=? "
+		           + "WHERE THEATER_ID=?";
 		
 		try {
 			pstmt=conn.prepareStatement(sql);
-			pstmt.setString(1, theater.getRegion().name());
+			pstmt.setString(1, theater.getRegion());
 			pstmt.setString(2, theater.getBranch());
 			pstmt.setString(3, theater.getNumberOfScreens());
 			pstmt.setString(4, theater.getTotalTheaterScreens());

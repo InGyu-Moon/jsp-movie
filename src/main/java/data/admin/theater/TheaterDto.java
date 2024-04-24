@@ -2,7 +2,7 @@ package data.admin.theater;
 
 public class TheaterDto {
 	private String theaterId;
-	private Region region; // 지역
+	private String region; // 지역
 	private String branch; // 지점
 	private String numberOfScreens; // 상영관수
 	private String totalTheaterScreens; // 총 좌석수
@@ -10,7 +10,7 @@ public class TheaterDto {
 	private String theaterPhoneNumber; // 전화번호
 	private Integer isIMAX; // 전화번호
 	private Integer is4D; // 전화번호
-	private String img; // 배너 이미지
+	private String theaterImg; // 배너 이미지
 	
 	
 	public String getTheaterId() {
@@ -19,10 +19,10 @@ public class TheaterDto {
 	public void setTheaterId(String theaterId) {
 		this.theaterId = theaterId;
 	}
-	public Region getRegion() {
+	public String getRegion() {
 		return region;
 	}
-	public void setRegion(Region region) {
+	public void setRegion(String region) {
 		this.region = region;
 	}
 	public String getBranch() {
@@ -67,20 +67,18 @@ public class TheaterDto {
 	public void setIs4D(Integer is4d) {
 		is4D = is4d;
 	}
-	
-	
-	public String getImg() {
-		return img;
+	public String getTheaterImg() {
+		return theaterImg;
 	}
-	public void setImg(String img) {
-		this.img = img;
+	public void setTheaterImg(String theaterImg) {
+		this.theaterImg = theaterImg;
 	}
 	@Override
 	public String toString() {
 		return "TheaterDto [theaterId=" + theaterId + ", region=" + region + ", branch=" + branch + ", numberOfScreens="
 				+ numberOfScreens + ", totalTheaterScreens=" + totalTheaterScreens + ", address=" + address
-				+ ", theaterPhoneNumber=" + theaterPhoneNumber + ", isIMAX=" + isIMAX + ", is4D=" + is4D + ", img="
-				+ img + "]";
+				+ ", theaterPhoneNumber=" + theaterPhoneNumber + ", isIMAX=" + isIMAX + ", is4D=" + is4D
+				+ ", theater_img=" + theaterImg + "]";
 	}
 	
 	

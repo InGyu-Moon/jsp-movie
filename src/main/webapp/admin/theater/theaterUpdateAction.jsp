@@ -10,14 +10,6 @@
 	
 	String theaterId = request.getParameter("theaterId");
 	String region = request.getParameter("region");
-	Region regionEnum=null;
-
-	try {
-		regionEnum = Region.valueOf(region);
-	} catch (IllegalArgumentException e) {
-	    
-	}
-	
 	String branch = request.getParameter("branch");
 	String numbarOfScreens = request.getParameter("numbarOfScreens");
 	String total = request.getParameter("total");
@@ -26,15 +18,17 @@
 	String is = request.getParameter("is");
 	String[] tokens = is.split(", ");
 	int is4d=0, isImax=0;
-	if(tokens[0].equals("4D")) is4d=1;
-	if(tokens[1].equals("IMAX")) isImax=1;
+	if (tokens.length >= 2) {
+	    if (tokens[0].equals("4D")) is4d=1;
+	    if (tokens[1].equals("IMAX")) isImax=1;
+	}
 	
 	System.out.println("theaterUpdateAction.jsp id = " + theaterId);
 	
 	TheaterDao dao = new TheaterDao();
 	TheaterDto dto = new TheaterDto();
 	dto.setTheaterId(theaterId);
-	dto.setRegion(regionEnum);
+	dto.setRegion(region);
 	dto.setBranch(branch);
 	dto.setNumberOfScreens(numbarOfScreens);
 	dto.setTotalTheaterScreens(total);
