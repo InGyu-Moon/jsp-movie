@@ -19,7 +19,7 @@
 	for (TheaterDto theater : theaterRegionList) {
 		JSONObject ob = new JSONObject();
 		ob.put("theaterId", theater.getTheaterId());
-		ob.put("region", theater.getRegion().name());
+		ob.put("region", theater.getRegion());
 		ob.put("branch", theater.getBranch());
 		ob.put("numberOfScreens", theater.getNumberOfScreens());
 		ob.put("totalTheaterSeats", theater.getTotalTheaterScreens());
@@ -27,7 +27,7 @@
 		ob.put("theaterPhoneNumber", theater.getTheaterPhoneNumber());
 		ob.put("isIMAX", theater.getIsIMAX());
 		ob.put("is4D", theater.getIs4D());
-		ob.put("img", theater.getImg());
+		ob.put("img", theater.getTheaterImg());
 	
 		jsons.add(ob);
 	}

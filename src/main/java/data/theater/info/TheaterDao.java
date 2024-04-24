@@ -34,7 +34,7 @@ public class TheaterDao {
 				dto.setNumber_of_screens(rs.getInt("number_of_screens"));
 				dto.setRegion(rs.getString("region"));
 				dto.setTheater_id(rs.getString("theater_id"));
-				dto.setTheater_img(rs.getString("theater_img"));
+				//dto.setTheater_img(rs.getString("theater_img"));
 				dto.setTheater_phone_number(rs.getString("theater_phone_number"));
 				dto.setTotal_theater_seats(rs.getInt("total_theater_seats"));
 				list.add(dto);
@@ -45,6 +45,96 @@ public class TheaterDao {
 			db.dbClose(rs, pstmt, conn);
 		}
 
+		return list;
+	}
+	
+	// 지역 출력
+	public List<TheaterDto> getRegionList() {
+		List<TheaterDto> list = new ArrayList<>();
+		Connection conn = db.getConnection();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = db.getConnection();
+			String sql = "SELECT region, MAX(theater_id) AS theater_id FROM THEATER_INFO GROUP BY region;";
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				TheaterDto dto = new TheaterDto();
+				dto.setRegion(rs.getString("region"));
+				dto.setTheater_id(rs.getString("theater_id"));
+				
+				list.add(dto);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			db.dbClose(rs, pstmt, conn);
+		}
+		
+		return list;
+	}
+	
+	// 지점 출력
+	public List<TheaterDto> getBranchList() {
+		List<TheaterDto> list = new ArrayList<>();
+		Connection conn = db.getConnection();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = db.getConnection();
+			String sql = "SELECT DISTINCT branch, theater_id FROM THEATER_INFO where region='서울'";
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				TheaterDto dto = new TheaterDto();
+				dto.setTheater_id(rs.getString("theater_id"));
+				dto.setBranch(rs.getString("branch"));
+				
+				list.add(dto);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			db.dbClose(rs, pstmt, conn);
+		}
+		
+		return list;
+	}
+	
+	// 영화 지점에 대한 지역 출력
+	public List<TheaterDto> getBranchListByRegion(String movieId) {
+		List<TheaterDto> list = new ArrayList<>();
+		Connection conn = db.getConnection();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = db.getConnection();
+			String sql = "SELECT branch, theater_id FROM THEATER_INFO\r\n"
+					+ "where theater_id = (select S.theater_id from screening_info S, (select * from movie_info where movie_id=?) M\r\n"
+					+ "									where S.movie_id=M.movie_id);";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, movieId);
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				TheaterDto dto = new TheaterDto();
+				dto.setTheater_id(rs.getString("theater_id"));
+				dto.setBranch(rs.getString("branch"));
+				
+				list.add(dto);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			db.dbClose(rs, pstmt, conn);
+		}
+		
 		return list;
 	}
 
@@ -94,7 +184,7 @@ public class TheaterDao {
 				dto.setNumber_of_screens(rs.getInt("number_of_screens"));
 				dto.setRegion(rs.getString("region"));
 				dto.setTheater_id(rs.getString("theater_id"));
-				dto.setTheater_img(rs.getString("theater_img"));
+				//dto.setTheater_img(rs.getString("theater_img"));
 				dto.setTheater_phone_number(rs.getString("theater_phone_number"));
 				dto.setTotal_theater_seats(rs.getInt("total_theater_seats"));
 			}

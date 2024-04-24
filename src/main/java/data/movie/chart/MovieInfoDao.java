@@ -16,6 +16,49 @@ public class MovieInfoDao {
 
 	DbConnect db = new DbConnect();
 
+	// 예매순 전체출력
+	public List<MovieInfoDto> getAllMovieData() {
+		List<MovieInfoDto> list = new ArrayList<MovieInfoDto>();
+		
+		Connection conn = db.getConnection();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		String sql = "SELECT * FROM MOVIE_INFO ORDER BY BOOKING_RATE DESC";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				MovieInfoDto dto = new MovieInfoDto();
+				
+				dto.setMovieId(rs.getString("movie_id"));
+				dto.setMovieTitle(rs.getString("movie_title"));
+				dto.setRunningTime(rs.getInt("running_time"));
+				dto.setViewingRating(rs.getString("viewing_rating"));
+				dto.setDirector(rs.getString("director"));
+				dto.setCast(rs.getString("cast"));
+				dto.setBookingRate(rs.getDouble("booking_rate"));
+				dto.setReleaseDate(rs.getDate("release_date"));
+				dto.setGenre(rs.getString("genre"));
+				dto.setMovieDescription(rs.getString("movie_description"));
+				dto.setRating(rs.getDouble("rating"));
+				dto.setEndDate(rs.getDate("end_date"));
+				dto.setCountry(rs.getString("country"));
+				dto.setMovieImg(rs.getString("movie_img"));
+				
+				list.add(dto);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			db.dbClose(rs, pstmt, conn);
+		}
+		return list;
+	}
+	
 	// 예매순 1위 ~ 3위
 	public List<MovieInfoDto> getThreeMovieData() {
 		List<MovieInfoDto> list = new ArrayList<MovieInfoDto>();
@@ -490,7 +533,7 @@ public class MovieInfoDao {
 	}
 
 	// movie_id에 대한 dto 반환
-	public MovieInfoDto getData(String movie_id) {
+	public MovieInfoDto getData(String movieId) {
 		MovieInfoDto dto = new MovieInfoDto();
 		Connection conn = db.getConnection();
 		PreparedStatement pstmt = null;
@@ -500,7 +543,7 @@ public class MovieInfoDao {
 
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, movie_id);
+			pstmt.setString(1, movieId);
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) {
@@ -746,6 +789,333 @@ public class MovieInfoDao {
 			db.dbClose(rs, pstmt, conn);
 		}
 	}
+
+
+	public List<MovieInfoDto> getMoviesByTitle(String title) {
+		List<MovieInfoDto> list=new ArrayList<>();
+		Connection conn=db.getConnection();
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+
+		String sql="select * from MOVIE_INFO WHERE movie_title LIKE ? order by movie_id";
+
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, "%"+title+"%");
+			rs=pstmt.executeQuery();
+			while(rs.next())
+			{
+				MovieInfoDto dto = new MovieInfoDto();
+				dto.setMovieId(rs.getString("movie_id"));
+				dto.setMovieTitle(rs.getString("movie_title"));
+				dto.setRunningTime(rs.getInt("running_time"));
+				dto.setViewingRating(rs.getString("viewing_rating"));
+				dto.setDirector(rs.getString("director"));
+				dto.setCast(rs.getString("cast"));
+				dto.setBookingRate(rs.getDouble("booking_rate"));
+				dto.setReleaseDate(rs.getDate("release_date"));
+				dto.setGenre(rs.getString("genre"));
+				dto.setMovieDescription(rs.getString("movie_description"));
+				dto.setRating(rs.getDouble("rating"));
+				dto.setEndDate(rs.getDate("end_date"));
+				dto.setCountry(rs.getString("country"));
+				dto.setMovieImg(rs.getString("movie_img"));
+				list.add(dto);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			db.dbClose(rs, pstmt, conn);
+		}
+		return list;
+	}
+	public List<MovieInfoDto> getListMoviesByTitle(String title,int start,int perPage) {
+		List<MovieInfoDto> list=new ArrayList<>();
+		Connection conn=db.getConnection();
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+
+		String sql="select * from MOVIE_INFO WHERE movie_title LIKE ? order by movie_id desc limit ?,?";
+
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, "%"+title+"%");
+			pstmt.setInt(2, start);
+			pstmt.setInt(3, perPage);
+			rs=pstmt.executeQuery();
+			while(rs.next())
+			{
+				MovieInfoDto dto = new MovieInfoDto();
+				dto.setMovieId(rs.getString("movie_id"));
+				dto.setMovieTitle(rs.getString("movie_title"));
+				dto.setRunningTime(rs.getInt("running_time"));
+				dto.setViewingRating(rs.getString("viewing_rating"));
+				dto.setDirector(rs.getString("director"));
+				dto.setCast(rs.getString("cast"));
+				dto.setBookingRate(rs.getDouble("booking_rate"));
+				dto.setReleaseDate(rs.getDate("release_date"));
+				dto.setGenre(rs.getString("genre"));
+				dto.setMovieDescription(rs.getString("movie_description"));
+				dto.setRating(rs.getDouble("rating"));
+				dto.setEndDate(rs.getDate("end_date"));
+				dto.setCountry(rs.getString("country"));
+				dto.setMovieImg(rs.getString("movie_img"));
+				list.add(dto);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			db.dbClose(rs, pstmt, conn);
+		}
+		return list;
+	}
+
+	public List<MovieInfoDto> getMoviesByDirector(String director) {
+		List<MovieInfoDto> list=new ArrayList<>();
+		Connection conn=db.getConnection();
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+
+		String sql="select * from MOVIE_INFO WHERE director LIKE ? order by movie_id";
+
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, "%"+director+"%");
+			rs=pstmt.executeQuery();
+			while(rs.next())
+			{
+				MovieInfoDto dto = new MovieInfoDto();
+				dto.setMovieId(rs.getString("movie_id"));
+				dto.setMovieTitle(rs.getString("movie_title"));
+				dto.setRunningTime(rs.getInt("running_time"));
+				dto.setViewingRating(rs.getString("viewing_rating"));
+				dto.setDirector(rs.getString("director"));
+				dto.setCast(rs.getString("cast"));
+				dto.setBookingRate(rs.getDouble("booking_rate"));
+				dto.setReleaseDate(rs.getDate("release_date"));
+				dto.setGenre(rs.getString("genre"));
+				dto.setMovieDescription(rs.getString("movie_description"));
+				dto.setRating(rs.getDouble("rating"));
+				dto.setEndDate(rs.getDate("end_date"));
+				dto.setCountry(rs.getString("country"));
+				dto.setMovieImg(rs.getString("movie_img"));
+				list.add(dto);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			db.dbClose(rs, pstmt, conn);
+		}
+		return list;
+	}
+	public List<MovieInfoDto> getListMoviesByDirector(String director,int start,int perPage) {
+		List<MovieInfoDto> list=new ArrayList<>();
+		Connection conn=db.getConnection();
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+
+		String sql="select * from MOVIE_INFO WHERE director LIKE ? order by movie_id desc limit ?,?";
+
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, "%"+director+"%");
+			pstmt.setInt(2, start);
+			pstmt.setInt(3, perPage);
+			rs=pstmt.executeQuery();
+			while(rs.next())
+			{
+				MovieInfoDto dto = new MovieInfoDto();
+				dto.setMovieId(rs.getString("movie_id"));
+				dto.setMovieTitle(rs.getString("movie_title"));
+				dto.setRunningTime(rs.getInt("running_time"));
+				dto.setViewingRating(rs.getString("viewing_rating"));
+				dto.setDirector(rs.getString("director"));
+				dto.setCast(rs.getString("cast"));
+				dto.setBookingRate(rs.getDouble("booking_rate"));
+				dto.setReleaseDate(rs.getDate("release_date"));
+				dto.setGenre(rs.getString("genre"));
+				dto.setMovieDescription(rs.getString("movie_description"));
+				dto.setRating(rs.getDouble("rating"));
+				dto.setEndDate(rs.getDate("end_date"));
+				dto.setCountry(rs.getString("country"));
+				dto.setMovieImg(rs.getString("movie_img"));
+				list.add(dto);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			db.dbClose(rs, pstmt, conn);
+		}
+		return list;
+	}
+
+	public List<MovieInfoDto> getMoviesByActor(String actor) {
+		List<MovieInfoDto> list=new ArrayList<>();
+		Connection conn=db.getConnection();
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+
+		String sql="select * from MOVIE_INFO WHERE cast LIKE ? order by movie_id";
+
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, "%"+actor+"%");
+			rs=pstmt.executeQuery();
+			while(rs.next())
+			{
+				MovieInfoDto dto = new MovieInfoDto();
+				dto.setMovieId(rs.getString("movie_id"));
+				dto.setMovieTitle(rs.getString("movie_title"));
+				dto.setRunningTime(rs.getInt("running_time"));
+				dto.setViewingRating(rs.getString("viewing_rating"));
+				dto.setDirector(rs.getString("director"));
+				dto.setCast(rs.getString("cast"));
+				dto.setBookingRate(rs.getDouble("booking_rate"));
+				dto.setReleaseDate(rs.getDate("release_date"));
+				dto.setGenre(rs.getString("genre"));
+				dto.setMovieDescription(rs.getString("movie_description"));
+				dto.setRating(rs.getDouble("rating"));
+				dto.setEndDate(rs.getDate("end_date"));
+				dto.setCountry(rs.getString("country"));
+				dto.setMovieImg(rs.getString("movie_img"));
+				list.add(dto);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			db.dbClose(rs, pstmt, conn);
+		}
+		return list;
+	}
+
+	public List<MovieInfoDto> getListMoviesByActor(String actor,int start,int perPage) {
+		List<MovieInfoDto> list=new ArrayList<>();
+		Connection conn=db.getConnection();
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+
+		String sql="select * from MOVIE_INFO WHERE cast LIKE ? order by movie_id desc limit ?,?";
+
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, "%"+actor+"%");
+			pstmt.setInt(2, start);
+			pstmt.setInt(3, perPage);
+			rs=pstmt.executeQuery();
+			while(rs.next())
+			{
+				MovieInfoDto dto = new MovieInfoDto();
+				dto.setMovieId(rs.getString("movie_id"));
+				dto.setMovieTitle(rs.getString("movie_title"));
+				dto.setRunningTime(rs.getInt("running_time"));
+				dto.setViewingRating(rs.getString("viewing_rating"));
+				dto.setDirector(rs.getString("director"));
+				dto.setCast(rs.getString("cast"));
+				dto.setBookingRate(rs.getDouble("booking_rate"));
+				dto.setReleaseDate(rs.getDate("release_date"));
+				dto.setGenre(rs.getString("genre"));
+				dto.setMovieDescription(rs.getString("movie_description"));
+				dto.setRating(rs.getDouble("rating"));
+				dto.setEndDate(rs.getDate("end_date"));
+				dto.setCountry(rs.getString("country"));
+				dto.setMovieImg(rs.getString("movie_img"));
+				list.add(dto);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			db.dbClose(rs, pstmt, conn);
+		}
+		return list;
+	}
+
+	public List<MovieInfoDto> getMoviesByAllData(String data) {
+		List<MovieInfoDto> list=new ArrayList<>();
+		Connection conn=db.getConnection();
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+
+		String sql="select * from MOVIE_INFO WHERE movie_title LIKE ? or  cast LIKE ? or " +
+				"director LIKE ? order by movie_id";
+
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, "%"+data+"%");
+			pstmt.setString(2, "%"+data+"%");
+			pstmt.setString(3, "%"+data+"%");
+			rs=pstmt.executeQuery();
+			while(rs.next())
+			{
+				MovieInfoDto dto = new MovieInfoDto();
+				dto.setMovieId(rs.getString("movie_id"));
+				dto.setMovieTitle(rs.getString("movie_title"));
+				dto.setRunningTime(rs.getInt("running_time"));
+				dto.setViewingRating(rs.getString("viewing_rating"));
+				dto.setDirector(rs.getString("director"));
+				dto.setCast(rs.getString("cast"));
+				dto.setBookingRate(rs.getDouble("booking_rate"));
+				dto.setReleaseDate(rs.getDate("release_date"));
+				dto.setGenre(rs.getString("genre"));
+				dto.setMovieDescription(rs.getString("movie_description"));
+				dto.setRating(rs.getDouble("rating"));
+				dto.setEndDate(rs.getDate("end_date"));
+				dto.setCountry(rs.getString("country"));
+				dto.setMovieImg(rs.getString("movie_img"));
+				list.add(dto);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			db.dbClose(rs, pstmt, conn);
+		}
+		return list;
+	}
+
+	public List<MovieInfoDto> getListMoviesByAllData(String data,int start,int perPage) {
+		List<MovieInfoDto> list=new ArrayList<>();
+		Connection conn=db.getConnection();
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+
+		String sql="select * from MOVIE_INFO WHERE movie_title LIKE ? or  cast LIKE ? or " +
+				"director LIKE ? order by movie_id desc limit ?,?";
+
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, "%"+data+"%");
+			pstmt.setString(2, "%"+data+"%");
+			pstmt.setString(3, "%"+data+"%");
+			pstmt.setInt(4, start);
+			pstmt.setInt(5, perPage);
+			rs=pstmt.executeQuery();
+			while(rs.next())
+			{
+				MovieInfoDto dto = new MovieInfoDto();
+				dto.setMovieId(rs.getString("movie_id"));
+				dto.setMovieTitle(rs.getString("movie_title"));
+				dto.setRunningTime(rs.getInt("running_time"));
+				dto.setViewingRating(rs.getString("viewing_rating"));
+				dto.setDirector(rs.getString("director"));
+				dto.setCast(rs.getString("cast"));
+				dto.setBookingRate(rs.getDouble("booking_rate"));
+				dto.setReleaseDate(rs.getDate("release_date"));
+				dto.setGenre(rs.getString("genre"));
+				dto.setMovieDescription(rs.getString("movie_description"));
+				dto.setRating(rs.getDouble("rating"));
+				dto.setEndDate(rs.getDate("end_date"));
+				dto.setCountry(rs.getString("country"));
+				dto.setMovieImg(rs.getString("movie_img"));
+				list.add(dto);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			db.dbClose(rs, pstmt, conn);
+		}
+		return list;
+	}
+
+
     
   
 }

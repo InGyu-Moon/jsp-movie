@@ -187,7 +187,7 @@ $(document).ready(function(){
 		        </td>
 		        <td>
 		        	<%
-		        		String option = inquiry.getOption().name();
+		        		String option = inquiry.getOption();
 		        		if(option.equals("예매_결제")) option = "예매/결제";
 		        	%>
 		            <%=option %>

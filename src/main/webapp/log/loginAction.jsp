@@ -27,7 +27,6 @@
 		int memberIdByUsername = dao.getMemberIdByUsername(userName);
 		String memberId = String.valueOf(memberIdByUsername);
 		loginSession.setAttribute("memberId", memberId); // memberId 세션
-
 		loginSession.setMaxInactiveInterval(30*60); // 30분
 
 		// 메인으로 이동
