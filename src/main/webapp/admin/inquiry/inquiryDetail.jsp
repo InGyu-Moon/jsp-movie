@@ -49,7 +49,7 @@
     
     System.out.println("memberDetail.jsp INQUIRY TO STRING "+ inquiry.toString());
     
-    String option = inquiry.getOption() != null ? inquiry.getOption().name() : "No Option"; // Option이 null이면 "No Option"으로 처리
+    String option = inquiry.getOption() != null ? inquiry.getOption() : "No Option"; // Option이 null이면 "No Option"으로 처리
     
 %>
 
