@@ -181,7 +181,7 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
 									%>
 									<div class="swiper-slide">
 										<div class="img">
-											<img alt="" src="<%=dto.getImageLink()%>" class="movieImage">
+											<img alt="" src="<%=dto.getMovieImg()%>" class="movieImage">
 
 											<div class="age_day">
 												<div class="age">
@@ -236,7 +236,7 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
 									%>
 									<div class="swiper-slide">
 										<div class="img">
-											<img alt="" src="<%=dto.getImageLink()%>" class="movieImage">
+											<img alt="" src="<%=dto.getMovieImg()%>" class="movieImage">
 											<div class="age_day">
 												<div class="age">
 													<img class="icon"
@@ -306,7 +306,7 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
 									%>
 									<div class="swiper-slide">
 										<div class="img">
-											<img alt="" src="<%=dto.getImageLink()%>" class="movieImage">
+											<img alt="" src="<%=dto.getMovieImg()%>" class="movieImage">
 
 											<div class="age_day">
 												<div class="age">
@@ -362,7 +362,7 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
 									%>
 									<div class="swiper-slide">
 										<div class="img">
-											<img alt="" src="<%=dto.getImageLink()%>" class="movieImage">
+											<img alt="" src="<%=dto.getMovieImg()%>" class="movieImage">
 
 											<div class="age_day">
 												<div class="age">
