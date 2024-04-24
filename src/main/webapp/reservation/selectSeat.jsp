@@ -15,7 +15,8 @@
    String screeningInfoId = request.getParameter("screeningInfoId");
    String branch = request.getParameter("branch");
    String screeningDate = request.getParameter("screeningDate");
-   System.out.println("screeningDate = " + screeningDate);
+
+   System.out.println("screeningInfoId = " + screeningInfoId);
 
    ReservationDao dao = new ReservationDao();
    ArrayList<String> reservedSeats = dao.getReservedSeat(screeningInfoId);
