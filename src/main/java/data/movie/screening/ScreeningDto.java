@@ -10,6 +10,10 @@ public class ScreeningDto {
 	private String movieId;
 	private Date screeningDate;
 	private Timestamp screeningTime;
+	//====================================== 상영관 데이터 추가
+	private String totalSeats;
+	private String screenInfo;
+	private String screenName;
 	
 	
 	public String getScreeningInfoId() {
@@ -47,6 +51,25 @@ public class ScreeningDto {
 	}
 	public void setScreeningTime(Timestamp screeningTime) {
 		this.screeningTime = screeningTime;
+	}
+	
+	public String getTotalSeats() {
+		return totalSeats;
+	}
+	public void setTotalSeats(String totalSeats) {
+		this.totalSeats = totalSeats;
+	}
+	public String getScreenInfo() {
+		return screenInfo;
+	}
+	public void setScreenInfo(String screenInfo) {
+		this.screenInfo = screenInfo;
+	}
+	public String getScreenName() {
+		return screenName;
+	}
+	public void setScreenName(String screenName) {
+		this.screenName = screenName;
 	}
 	@Override
 	public String toString() {
