@@ -11,6 +11,97 @@ MemberDao mdao = new MemberDao();
 int memberId = mdao.getMemberIdByUsername(username);
 MemberDto dto = mdao.getMemberById(memberId);
 %>
+<style>
+#myhome .cols-content .col-detail {
+    position: relative;
+    width: 100%;
+}
+
+.myprofile .cols-content .tit-my > h3{
+    height: 34px;
+    margin: 0;
+    background-image: none;
+    color: #222;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 34px;
+    text-align: left;
+}
+
+.myprofile .cols-content .tit-my > h4{
+	height: 34px;
+    margin: 0;
+    background-image: none;
+    color: #222;
+    font-weight: 500;
+    font-size: 17px;
+    line-height: 34px;
+    text-align: left;
+}
+
+.tbl-form table {
+	margin-top:30px;
+    border-bottom: 1px solid #999;
+}
+
+table {
+    font-size: 15px;
+    line-height: 1.2;
+    color: #666;
+    font-weight: 300;
+}
+
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+tbody {
+    display: table-row-group;
+    vertical-align: middle;
+    unicode-bidi: isolate;
+    border-color: inherit;
+}
+
+.tbl-form tbody td, .tbl-form tbody th {
+    padding: 15px 0 15px 10px;
+    border-top: 1px solid #dfded7;
+    color: #222;
+}
+
+input[type='text']{
+    display: inline-block;
+    height: 25px;
+    line-height: 22px;
+    padding-left: 10px;
+    border: 1px solid #b5b5b5;
+}
+
+.tbl-form tbody td input[type=text]+button[type=button] {
+    margin-left: 10px;
+}
+
+.round.gray {
+    border: 2px solid #7b7b7b;
+    color: #7b7b7b;
+    background: white;
+}
+
+.round {
+    line-height: 23px;
+    font-weight: 500;
+    font-size: 12px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.tbl-form tbody td p.profile-info {
+    margin-bottom: 15px;
+    padding-bottom: 12px;
+    border-bottom: 1px dashed #d1cdc4;
+}
+</style>
 <body>
 	<div id="wrap">
 		<div class="center">
@@ -71,10 +162,10 @@ MemberDto dto = mdao.getMemberById(memberId);
 						</div>
 					</div>
 					<div class="col-detail" id="mycgv_contents">
-						<div class="tit-mycgv">
+						<div class="tit-my">
 							<h3>나의 정보</h3>
 						</div>
-						<div class="tit-mycgv">
+						<div class="tit-my">
 							<h4>나의 프로필/정보</h4>
 						</div>
 						<form name="aspnetForm" method="post" action="updateProfile.jsp"
@@ -94,7 +185,7 @@ MemberDto dto = mdao.getMemberById(memberId);
 										<tr>
 											<th scope="row"><label for="nick_name">닉네임</label></th>
 											<td>
-												<p>한글, 영문, 숫자 혼용 가능 (한글 기준 10자 이내)</p> <input type="hidden"
+												<p style="padding-bottom: 10px;">한글, 영문, 숫자 혼용 가능 (한글 기준 10자 이내)</p> <input type="hidden"
 												id="memberId" name="memberId" value="<%=memberId%>">
 												<input type="hidden" id="old_nick_name" name="old_nick_name"
 												value="<%=username%>"> <input type="text"
@@ -102,7 +193,7 @@ MemberDto dto = mdao.getMemberById(memberId);
 												required="required" maxlength="10" class="s-medium">
 												<button id="check_duplication" type="button"
 													class="round gray">
-													<span>중복확인</span>
+													<span style="padding-left: 10px; padding-right: 10px; font-weight: bold;">중복확인</span>
 												</button>
 											</td>
 										</tr>
