@@ -117,7 +117,7 @@ List<TheaterDto> tmlist = tichekDao.theaterMovieList(branch, screeningDate);
 
 								<%
 								for (int i = 1; i <= 8; i++) {
-									String theaterId2 = regionList.get(i - 1).getTheaterId(); // 지역 리스트의 인덱스는 0부터 시작하므로 (i - 1)을 사용
+									String theaterId2 = regionList.get(i - 1).getTheater_id(); // 지역 리스트의 인덱스는 0부터 시작하므로 (i - 1)을 사용
 								%>
 								<div class="list main">
 									<ul>
