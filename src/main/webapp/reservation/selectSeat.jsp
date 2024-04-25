@@ -10,12 +10,6 @@ display: none;
 }
 </style>
 <%
-   final int TEENAGER_PRICE = 10_000;
-   final int ADULT_PRICE = 13_000;
-   final int SPECIAL_PRICE = 7_000;
-
-%>
-<%
    request.setCharacterEncoding("utf-8");
    String screeningInfoId = request.getParameter("screeningInfoId");
    String branch = request.getParameter("branch");
@@ -124,7 +118,7 @@ display: none;
    </form>
 </div>
 
-   
+
 </div>
 </div>
 

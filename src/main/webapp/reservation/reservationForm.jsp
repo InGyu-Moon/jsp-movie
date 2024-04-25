@@ -28,6 +28,13 @@ display: none;
 	//System.out.println(theaterBranchList.toString());
 	ScreeningDao screeningDao = new ScreeningDao();
 	List<ScreeningDto> screenDateList = screeningDao.getDate();
+
+	boolean login = false;
+	String memberId = (String)session.getAttribute("memberId");
+	if(memberId!=null){
+		login = true;
+	}
+
 	
 %>
 
@@ -181,6 +188,10 @@ display: none;
 	<jsp:include page="../include/footer.html"></jsp:include>
 	<script>
 	$(document).ready(function() {
+		var login = <%= login %>;
+		var flagForNextStep = false;
+
+
 		var movieId; // 영화id
 		var movieTitle; // 영화제목
 		var theaterId; // 지역id
@@ -238,11 +249,24 @@ display: none;
 			let temp = $(this).attr("screenData");
 			$("#screeningData").val(temp);
 
+			flagForNextStep = true;
+
 	    });
 		
 		$("#go").click(function (){
+
+			if(!login){
+				alert("로그인이 필요한 서비스입니다.");
+				window.location.href = "http://localhost:8080/log/loginForm.jsp";
+				return false;
+			}
+			if(!flagForNextStep) {
+				alert("상영시간을 선택해주세요.");
+				return false;
+			}
 			$("#branch").val(branch);
 			$("#screeningDateVal").val(screeningDate);
+
 		})
 
 
