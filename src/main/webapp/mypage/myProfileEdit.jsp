@@ -100,6 +100,42 @@ input[type='text']{
     margin-bottom: 15px;
     padding-bottom: 12px;
     border-bottom: 1px dashed #d1cdc4;
+    line-height: 1.5em;
+}
+
+.set-profile-img .box-image {
+    position: relative;
+    width: 88px;
+    height: 88px;
+    margin-right: 30px;
+}
+.set-profile-img .box-image, .set-profile-img .box-contents {
+    float: left;
+}
+
+.set-profile-img .box-image > .thumb-image > .btn-del {
+    position: absolute;
+    top: 0;
+    right: -12px;
+    width: 9px;
+    height: 9px;
+    background: white;
+    font-weight: bold;
+}
+
+.set-profile-img .box-contents p {
+	margin-left: 20px;
+    margin: 10px;
+}
+
+.tbl-form tbody td input, .tbl-form tbody td label {
+	margin-left: 20px;
+    vertical-align: middle;
+    letter-spacing: -1px;
+}
+
+table {
+    margin-top: 20px;
 }
 </style>
 <body>
@@ -208,15 +244,14 @@ input[type='text']{
 												value="<%=dto.getUserPhoto()%>"> <input
 												type="hidden" id="user_small_image" name="user_small_image"
 												value="<%=dto.getUserPhoto()%>">
-												<div class="sect-profile-img">
-													<div class="box-image" style="display: flex;">
+												<div class="set-profile-img">
+													<div class="box-image">
 														<!-- display나중에 삭제 -->
 														<span class="thumb-image"> <img
 															id="img_userprofileimage" src="<%=dto.getUserPhoto()%>"
 															onerror="errorImage(this, {type:'profile'})"> <span
 															class="profile-mask"></span>
-															<button type="button" id="delete_image" class="btn-del">프로필이미지
-																삭제</button>
+															<button type="button" id="delete_image" class="btn-del">✕</button>
 														</span>
 													</div>
 													<div class="box-contents">
@@ -227,7 +262,6 @@ input[type='text']{
 												</div>
 												<div class="tbl-breakdown-re marginT20">
 													<table style="width: 100%;" summary="개인정보 수집 및 활용 동의 표">
-														<caption>개인정보 수집 및 활용 동의</caption>
 														<colgroup>
 															<col style="width: 16%;">
 															<col style="width: 34%;">
