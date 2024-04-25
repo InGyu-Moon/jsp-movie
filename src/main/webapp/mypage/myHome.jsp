@@ -145,26 +145,54 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
 							</div>
 						</div>
 						<div class="tit-my">
-							<h3>MY 예매내역 </h3><span>1건</span>
-							<div>
-			
+							<div class="head">
+								<h3>MY 예매내역</h3>
+								<span>1건</span>
 							</div>
-						</div>
 
-						<form name="aspnetForm" method="post" action="./?g=1"
-							id="aspnetForm" novalidate="novalidate">
-							<div></div>
+							<div class="main">
+								<div class="number">
+									<div class="title">예매번호</div>
+									<div class="no">
+										<strong>0260-<i>0425-3748-559</i></strong>
+									</div>
+									<div class="day">
+										<span>(2024.04.25)</span>
+									</div>
+								</div>
+								<div class="information">
+									<div class="img">
+										<img alt="" src="../img/movie_img/yumi/yumi.jpg">
+									</div>
+									<div class="text">
+										<div class="title">
+											<span>범죄도시4</span>
+										</div>
+										<ul>
+											<li><label>관람극장</label>
+												<p>
+													CGV 강남 <span>[극장정보]</span>
+												</p></li>
+											<li><label>관람일시</label>
+												<p>2024.04.25(목) 22:30</p></li>
+											<li><label>관람좌석</label>
+												<p>E 14,E 13</p></li>
+										</ul>
 
-							<div></div>
-							<!-- MY 예매내역 -->
-							<div class="set-base-booking">
-								<div class="box-polaroid">
-									<div class="box-inner">
-										<div class="lst-item">고객님의 최근 예매내역이 존재하지 않습니다.</div>
+									</div>
+								</div>
+								<div class="price">
+									<div class="text">
+										<p>
+											총 결제금액 <span>28,000원</span>
+										</p>
+									</div>
+									<div class="btn">
+										<span>예매취소</span>
 									</div>
 								</div>
 							</div>
-						</form>
+						</div>
 						<!-- //MY 예매내역 -->
 						<!-- MY 문의이력 -->
 						<div class="set-my-part">
@@ -172,22 +200,20 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
 								<div class="box-inner">
 									<div class="tit-my">
 										<h3>MY Q&amp;A</h3>
-										<div>
+										<div class="main">
+											<ul>
+												<li><span class="title">문의</span><span class="text">환불
+														요청드립니다!!</span></li>
+											</ul>
 
-											<p>
-												<em><span class="ii"><%=totalCount%></span>건</em> <a
-													href="myInquiry.jsp">MY Q&amp;A 더보기</a>
-											</p>
 										</div>
 
 									</div>
-									<div class="col-myqna">
+	<%-- 								<div class="col-myqna">
 										<%
 										if (totalCount == 0) {
 										%>
-										<ul>
-											<li>고객님의 1:1 문의내역이 존재하지 않습니다.</li>
-										</ul>
+		
 										<%
 										} else {
 										for (int i = 0; i < list.size(); i++) {
@@ -207,7 +233,7 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
 										}
 										}
 										%>
-									</div>
+									</div> --%>
 								</div>
 							</div>
 						</div>

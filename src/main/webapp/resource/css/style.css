@@ -3993,9 +3993,135 @@ log.nonReservationForm #inner_p {
 	font-size: 18px;
 }
 
-.myhome .tit-my > div {
+.myhome .tit-my .head {
+	display: flex;
+	align-items: center;
+}
+
+.myhome .tit-my .head  h3 {
+	margin-right: 10px;
+}
+
+.myhome .tit-my .head span {
+	color: #666;
+	font-size: 14px;
+}
+
+.myhome .tit-my .main {
+	padding: 20px;
 	border: 1px solid #000;
 	margin-top: 20px;
+}
+
+.myhome .tit-my .main .number {
+	display: flex;
+	align-items: center;
+	font-size: 14px;
+}
+
+.myhome .tit-my .main .number .title {
+	color: #666;
+	margin-right: 20px;
+}
+
+.myhome .tit-my .main .number .no {
+	margin-right: 10px;
+}
+
+.myhome .tit-my .main .number .no i {
+	font-style: normal;
+	color: #fb4357;
+}
+
+.myhome .tit-my .main .number .day {
+	color: #666;
+}
+
+.myhome .tit-my .main .information {
+	display: flex;
+	margin-top: 20px;
+	font-size: 14px;
+	border-bottom: 1px solid #d6d4ca;
+	padding-bottom: 20px;
+}
+
+.myhome .tit-my .main .information .img {
+	width: 56px;
+	height: 70px;
+	margin-right: 40px;
+}
+
+.myhome .tit-my .main .information .img img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.myhome .tit-my .main .information .title {
+	font-weight: 600;
+}
+
+.myhome .tit-my .main .information  ul {
+	margin-top: 10px;
+}
+
+.myhome .tit-my .main .information  ul li {
+	display: flex;
+	line-height: 20px;
+}
+
+.myhome .tit-my .main .information  ul li label {
+	width: 50px;
+	margin-right: 10px;
+}
+
+.myhome .tit-my .main .information  ul li p {
+	font-weight: 600;
+}
+
+.myhome .tit-my .main .information  ul li p span {
+	font-weight: 400;
+	color: #666;
+}
+
+.myhome .tit-my .main  .price {
+	padding-top: 20px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.myhome .tit-my .main  .price .text p {
+	font-weight: 600;
+}
+
+.myhome .tit-my .main  .price .text p span {
+	color: #2275a4;
+}
+
+.myhome .tit-my .main  .price .btn {
+	font-size: 14px;
+	background-color: #fb4357;
+	padding: 10px 20px;
+	color: #fff;
+	border-radius: 100px;
+	cursor: pointer;
+}
+
+.myhome .tit-my .main ul li {
+	padding: 12px 0;
+	border-top: 1px solid #ddd;
+	border-bottom: 1px solid #ddd;
+	font-size: 14px;
+}
+
+.myhome .tit-my .main ul li span.title {
+	margin-right: 20px;
+	color: #333;
+}
+
+.myhome .tit-my .main ul li span.text {
+	color: #222;
 }
 /* //myHome */
 
