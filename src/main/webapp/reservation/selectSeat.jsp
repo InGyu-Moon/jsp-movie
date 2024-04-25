@@ -16,8 +16,9 @@ display: none;
    String screeningDate = request.getParameter("screeningDate");
    String screeningData = request.getParameter("screeningData");
 
-
+   System.out.println("================================");
    System.out.println("screeningInfoId = " + screeningInfoId);
+   System.out.println("================================");
 
    ReservationDao dao = new ReservationDao();
    ArrayList<String> reservedSeats = dao.getReservedSeat(screeningInfoId);
@@ -42,7 +43,7 @@ display: none;
 </div>
    <form  action="paymentMethod.jsp" method="post" id="bookingForm">
 
-      <input type="hidden" name="screeningInfoId" value="<%=1%>">
+      <input type="hidden" name="screeningInfoId" value="<%=screeningInfoId%>">
       <input type="hidden" name="selectedSeats" id="selectedSeatsInput">
       <input type="hidden" name="totalPrice" id="totalPriceInput">
 
