@@ -2,6 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <jsp:include page="../include/header.html"></jsp:include>
+<title>비회원예매확인 | 영화 그 이상의 감동</title>
 <body>
 	<div id="wrap">
 		<div class="log nonReservationForm">
@@ -12,7 +13,7 @@
 							style="background-color: #8c8c8c; color: white;">로그인</span> <span
 							onclick="location.href='nonReservationForm.jsp'" class="log_nav"
 							style="background-color: #8c8c8c; color: white;">비회원 예매</span> <span
-							onclick="location.href='nonReservationCheck.jsp'" class="log_nav"
+							onclick="location.href='nonReservationCheckForm.jsp'" class="log_nav"
 							style="background-color: #f04848; color: white;">비회원 예매확인</span>
 					</div>
 					<hr>
@@ -136,8 +137,6 @@
 											});
 						});
 
-		
-		$("title").text("비회원 예매");
 	</script>
 </body>
 </html>
