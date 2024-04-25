@@ -415,10 +415,7 @@ display: none;
 				}
 			});
 	    }
-	    
-	    
 	});
-
 </script>
 </body>
 </html>
