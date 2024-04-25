@@ -386,7 +386,7 @@ SimpleDateFormat sdf=new SimpleDateFormat("yyyy.MM.dd");
 									<button id="go_edit_page" type="button" onclick="location.href='myProfileEdit.jsp'">나의 정보 변경</button>
 								</div>
 								<div class="grade-info">
-									<p>고객님은 총 <a href="myReserve.jsp" style="color: #fb4357; font-weight: bold;">0</a>개의 영화를 예매했습니다.</p>
+									<p>고객님은 총 <a href="myReserve.jsp" style="color: #fb4357; font-weight: bold;">1</a>개의 영화를 예매했습니다.</p>
 								</div>
 							</div>
 						</div>
@@ -459,12 +459,8 @@ SimpleDateFormat sdf=new SimpleDateFormat("yyyy.MM.dd");
 				                        <div class="box-image">
 				                            <a href="/movies/detail-view/?midx=88104">
 				                                <span class="thumb-image">
-				                                    <img src="https://img.cgv.co.kr/Movie/Thumbnail/Poster/000088/88104/88104_126.jpg" alt="범죄도시4 포스터" onerror="errorImage(this)">
-										            <!-- 영상물 등급 노출 변경 2022.08.24 -->
-				                                    <i class="cgvIcon etc age15">15</i>
-				                                    <!-- <span class="ico-grade 15">
-											            15
-										            </span> -->
+				                                    <img src="../img/movie_img/detgle/detgle.jpg" onerror="errorImage(this)">
+				                                    <img alt="영상물 등급" src="../img/movie_img/vrating/15세 이용가.png">
 				                                </span>
 				                            </a>
 				                        </div>
@@ -472,16 +468,14 @@ SimpleDateFormat sdf=new SimpleDateFormat("yyyy.MM.dd");
 				                        <div class="detail-area">
 				                            <div class="reservation-info-wrap">
 				                                <h2 class="box-contents artHouse">
-				                                    <a href="/movies/detail-view/?midx=88104" class="res-title">범죄도시4</a>
+				                                    <a href="#" class="res-title">댓글부대</a>
 				                                    <span class="res-price">28,000원</span>
 				                                </h2>
 				                                <ul class="reservation-mv-info">
 				                                    <li>
 				                                        <dl>
 				                                            <dt>관람극장</dt>
-				                                            <dd>CGV 경기광주
-																
-																<a href="javascript:theaterMove('0260');">[극장정보]</a>
+				                                            <dd>CGV 강남
 				                                            </dd>
 				                                        </dl>
 				                                    </li>
@@ -494,19 +488,19 @@ SimpleDateFormat sdf=new SimpleDateFormat("yyyy.MM.dd");
 				                                    <li>
 				                                        <dl>
 				                                            <dt>관람일시</dt>
-				                                            <dd class="txt-red">2024.04.25(목) 22:30</dd>
+				                                            <dd class="txt-red">2024.04.25(목) 14:10</dd>
 				                                        </dl>
 				                                    </li>
 				                                    <li>
 				                                        <dl>
 				                                            <dt>관람좌석</dt>
-				                                            <dd>E 14,E 13</dd>
+				                                            <dd>H 12,H 13</dd>
 				                                        </dl>
 				                                    </li>
 				                                    <li>
 				                                        <dl>
 				                                            <dt>상영관</dt>
-				                                            <dd>5관 5층</dd>
+				                                            <dd>1관</dd>
 				                                        </dl>
 				                                    </li>
 				                                    <li>
@@ -547,12 +541,8 @@ SimpleDateFormat sdf=new SimpleDateFormat("yyyy.MM.dd");
 				                        </div>
 				                    </div>
 				                    <div class="set-btn">
-				                        <input type="hidden" class="reserve-no" name="reserve-no" value="BAgfaZ+CUL0Xaxfy93yUt3OoI1Ti20uhx36TLmmwer0=">
-				                        <div class="col-edit"></div><div class="col-print"> <button type="button" title="새창" data="BAgfaZ%2bCUL0Xaxfy93yUt3OoI1Ti20uhx36TLmmwer0%3d" class="round inblack hometicket"><span>예매정보 출력</span></button> <button type="button" data-status="94" onclick="noshowYN('N', '20240425', '00', '01', '742.37913071', '', '' )" class="round black cancel"><span>예매취소</span></button></div>
+				                        <div class="col-edit"></div><div class="col-print"> <button type="button" data-status="94" onclick="noshowYN('N', '20240425', '00', '01', '742.37913071', '', '' )" class="round black cancel"><span>예매취소</span></button></div>
 				                    </div>
-				                    <!-- 
-				                        e:나의예매내역 출력 수정
-				                    -->  
 				                </div>
 				            </div>      
 				</div>
