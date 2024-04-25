@@ -11,7 +11,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Dongle&family=Gaegu&family=Nanum+Pen+Script&family=Noto+Sans+KR:wght@100..900&family=Noto+Serif+KR&display=swap" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
 <meta charset="UTF-8">
-<title>비회원 예매 확인 중...</title>
+<title>비회원 예매 확인 후 데이터 출력 중...</title>
 </head>
 <body>
 <%
@@ -36,6 +36,7 @@
 	    System.out.println("utilDate : "+utilDate); */
 	 	// java.util.Date를 java.sql.Date로 변환
 	    birthdate = new java.sql.Date(utilDate.getTime()); // sql로 사용
+	    System.out.println("non check action birthdate : "+birthdate);
 	    
 	} catch (Exception e) {
 	    // 날짜 파싱 중 에러 처리
@@ -47,32 +48,30 @@
 	String phone_number3 = request.getParameter("phone_number3");
 	String phoneNumber = phone_number1+"-"+phone_number2+"-"+phone_number3;
 	
-	int verificationCode = Integer.parseInt(request.getParameter("verification_code"));
 	String password = request.getParameter("password");
 	
 	NonMemberDao dao = new NonMemberDao();
 	NonMemberDto nonMember = new NonMemberDto();
 	nonMember.setBirthdate(birthdate);
 	nonMember.setPhoneNumber(phoneNumber);
-	nonMember.setVerificationCode(verificationCode);
 	nonMember.setPassword(password);
 	
-	boolean nonMemberOk = dao.insertNonMember(nonMember);
+	boolean nonMemberOk = dao.checkNonMember(nonMember);
 	if(nonMemberOk){
-		// 비회원 예매 성공 시
+		// 비회원 예매 확인 성공 시
 		HttpSession loginSession = request.getSession(); // 세션 생성
 		loginSession.setAttribute("nonPhoneNumber", phoneNumber); // 비회원 전화번호 세션
 		loginSession.setAttribute("nonPassword", password); // 비회원 비밀번호 세션
 		
 		loginSession.setMaxInactiveInterval(30*60); // 30분
 		
-		// 메인으로 이동
-		response.sendRedirect("../index.jsp");
+		// url 데이터 어떡게 할지 고민 좀....
+		response.sendRedirect("nonReservationCheckResultForm.jsp?nonMemberId="+nonMember.getId());
 	} else{
 		// 로그인 실패 시 메시지 출력
 	%>
 		<script>
-			alert("로그인 실패. 아이디 또는 비밀번호를 확인하세요.");
+			alert("해당 비회원 정보가 없습니다. 다시 확인 해주세요.");
 			window.history.back(); // 이전 페이지로 이동
 		</script>
 	<%
