@@ -78,9 +78,24 @@ System.out.println(myid);
 					}
 					%>
 
-					<li><a href="javascript:;"> <img alt=""
+					<%
+					if (myid == null) {
+					%>
+					<li><a href="log/loginForm.jsp"> <img alt=""
 							src="img/common/mypage.png"> <span>MY PAGE</span>
 					</a></li>
+					<%
+					}
+					%>
+					<%
+					if (myid != null) {
+					%>
+					<li><a href="mypage/myHome.jsp"> <img alt=""
+							src="img/common/mypage.png"> <span>MY PAGE</span>
+					</a></li>
+					<%
+					}
+					%>
 					<li><a href="customer/faq.jsp"> <img alt=""
 							src="img/common/customer.png"> <span>고객센터</span>
 					</a></li>

@@ -2491,7 +2491,6 @@ log.nonReservationForm #inner_p {
 #moviedetail .review-list li .left .img_info {
 	width: 40px;
 	height: 40px;
-	border: 1px solid red;
 	display: block;
 }
 
@@ -3797,3 +3796,182 @@ log.nonReservationForm #inner_p {
 }
 
 /* //joinform */
+
+/* mypage */
+#myhome {
+	padding-bottom: 120px;
+	position: relative;
+}
+
+#myhome  .my-info-wrap {
+	width: 100%;
+	padding: 40px 0;
+	background: #f4f4f4;
+}
+
+#myhome  .my-info-wrap .set-person-info {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#myhome  .my-info-wrap .set-person-info>.box-contents>.person-info {
+	padding-bottom: 10px;
+	border-bottom: 1px solid #AAAAAA;
+	color: #342929;
+	display: flex;
+	align-items: center;
+}
+
+#myhome  .my-info-wrap .set-person-info>.box-contents>.person-info button#go_edit_page
+	{
+	font-size: 14px;
+	background-color: #fb4357;
+	font-weight: 700;
+	border-radius: 100px;
+	padding: 10px 20px;
+	color: #fff;
+	cursor: pointer;
+}
+
+#myhome  .my-info-wrap .set-person-info>.box-contents>.person-info>strong
+	{
+	font-size: 29px;
+	line-height: 32px;
+	font-weight: 500;
+}
+
+#myhome  .my-info-wrap .sect-person-info>.box-contents.newtype>.person-info,
+	#myhome 	.my-info-wrap .sect-person-info>.box-contents.newtype>.grade-info
+	{
+	width: 482px;
+}
+
+#myhome  .my-info-wrap .set-person-info>.box-contents.newtype>.grade-info p
+	{
+	color: #342929;
+	font-size: 16px;
+	line-height: 20px;
+	margin-top: 10px;
+}
+
+#myhome  .my-info-wrap .set-person-info .box-image {
+	width: 80px;
+	height: 80px;
+	margin-right: 20px;
+}
+
+#myhome  span.thumb-image {
+	width: 100%;
+	height: 100%;
+	display: block;
+}
+
+#myhome  span.thumb-image img {
+	width: 100%;
+	height: 100%;
+	border-radius: 100px;
+}
+
+#myhome  .cols-content {
+	padding-top: 40px;
+	display: flex;
+}
+
+#myhome  .cols-content .col-aside {
+	margin-right: 40px;
+}
+
+#myhome  em {
+	font-style: normal;
+	margin-right: 20px;
+	margin-left: 20px;
+}
+
+#myhome  .cols-content .col-aside {
+	width: 160px;
+}
+
+#myhome  .cols-content .col-aside .snb>ul>li.on>a {
+	background-color: #fb4357;
+	color: #fdfcf0;
+}
+
+#myhome  .cols-content .col-aside .snb>ul>li {
+	width: 100%;
+	margin-top: 10px;
+}
+
+#myhome .cols-content .col-aside .snb>ul>li:first-child {
+	margin-top: 0;
+}
+
+#myhome  .cols-content .col-aside .snb>ul>li>a {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	padding-left: 20px;
+	align-items: center;
+	font-weight: 500;
+	padding: 10px 0;
+	padding-left: 20px;
+}
+
+#myhome  .cols-content .col-aside .snb li li>a {
+	font-size: 14px;
+	color: #666;
+	display: flex;
+	padding: 10px 0;
+	padding-left: 40px;
+}
+
+#myhome  .cols-content .col-detail {
+	position: relative;
+	width: 700px;
+}
+
+#myhome  .cols-content .col-aside .snb>ul>li.my-movie {
+	background-color: #222;
+	border: none;
+}
+
+#myhome  .cols-content .col-aside .snb>ul>li.my-movie>a {
+	width: 160px;
+	padding-left: 14px;
+	color: #fff;
+}
+
+#myhome  .cols-content .col-aside .snb>ul>li>a:hover {
+	background-color: #fb4357;
+	color: #fdfcf0;
+}
+
+#myhome  .cols-content .col-aside .snb>ul>li.my-movie a:hover {
+	background-color: #222;
+}
+
+#myhome .set-my-reserve {
+	margin-bottom: 30px;
+}
+
+#myhome .set-my-reserve .box-polaroid {
+	overflow: hidden;
+	background-color: #f8f8f8;
+	border: 1px solid #333;
+}
+
+#myhome .set-my-reserve.movielog.col2 .box-inner {
+	width: 265px;
+	padding: 0;
+	text-align: center;
+	line-height: 16px;
+}
+
+#myhome .set-my-reserve .box-inner {
+	float: left;
+	width: 308px;
+	padding: 32px 0 32px 90px;
+	border-left: 1px dashed #cdc9c0;
+}
+
+/* //mypage */
