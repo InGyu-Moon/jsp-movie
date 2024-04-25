@@ -16,10 +16,6 @@ display: none;
    String screeningDate = request.getParameter("screeningDate");
    String screeningData = request.getParameter("screeningData");
 
-   System.out.println("================================");
-   System.out.println("screeningInfoId = " + screeningInfoId);
-   System.out.println("================================");
-
    ReservationDao dao = new ReservationDao();
    ArrayList<String> reservedSeats = dao.getReservedSeat(screeningInfoId);
 
