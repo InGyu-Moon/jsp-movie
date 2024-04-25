@@ -268,7 +268,7 @@ SimpleDateFormat sdf=new SimpleDateFormat("yyyy.MM.dd");
 								<div class="person-info">
 									<strong><!-- 로그인한 유저 NAME--><%=dto.getName() %><span>님</span></strong>
 									<em><!-- 로그인한 유저 USERNAME --><%=username %></em>
-									<button id="go_edit_page" type="button" title="새창열림">나의 정보 변경</button>
+									<button id="go_edit_page" type="button" onclick="location.href='myProfileEdit.jsp'">나의 정보 변경</button>
 								</div>
 								<div class="grade-info">
 									<p>고객님은 총 <a href="myReserve.jsp" style="color: #fb4357; font-weight: bold;">0</a>개의 영화를 예매했습니다.</p>

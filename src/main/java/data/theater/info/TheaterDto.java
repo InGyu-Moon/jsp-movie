@@ -13,16 +13,16 @@ public class TheaterDto {
 	private String viewingRating;
 
 	// THEATER_INFO
-	private String theaterId;
+	private String theater_id;
 	private String region; // 지역
 	private String branch; // 지점
-	private String numberOfScreens; // 상영관수
-	private String totalTheaterSeats; // 총 좌석수
+	private String number_of_screens; // 상영관수
+	private String total_theater_seats; // 총 좌석수
 	private String address; // 상세주소
-	private String theaterPhoneNumber; // 전화번호
-	private int isIMAX; // 전화번호
-	private int is4D; // 전화번호
-	private String img; // 배너 이미지
+	private String theater_phone_number; // 전화번호
+	private int is_imax; // 전화번호
+	private int is_4d; // 전화번호
+	private String theater_img; // 배너 이미지
 
 	// THEATER_SCREEN
 	private String theaterScreenId;
@@ -86,12 +86,12 @@ public class TheaterDto {
 		this.viewingRating = viewingRating;
 	}
 
-	public String getTheaterId() {
-		return theaterId;
+	public String getTheater_id() {
+		return theater_id;
 	}
 
-	public void setTheaterId(String theaterId) {
-		this.theaterId = theaterId;
+	public void setTheater_id(String theater_id) {
+		this.theater_id = theater_id;
 	}
 
 	public String getRegion() {
@@ -110,20 +110,20 @@ public class TheaterDto {
 		this.branch = branch;
 	}
 
-	public String getNumberOfScreens() {
-		return numberOfScreens;
+	public String getNumber_of_screens() {
+		return number_of_screens;
 	}
 
-	public void setNumberOfScreens(String numberOfScreens) {
-		this.numberOfScreens = numberOfScreens;
+	public void setNumber_of_screens(String number_of_screens) {
+		this.number_of_screens = number_of_screens;
 	}
 
-	public String getTotalTheaterSeats() {
-		return totalTheaterSeats;
+	public String getTotal_theater_seats() {
+		return total_theater_seats;
 	}
 
-	public void setTotalTheaterSeats(String totalTheaterSeats) {
-		this.totalTheaterSeats = totalTheaterSeats;
+	public void setTotal_theater_seats(String total_theater_seats) {
+		this.total_theater_seats = total_theater_seats;
 	}
 
 	public String getAddress() {
@@ -134,36 +134,36 @@ public class TheaterDto {
 		this.address = address;
 	}
 
-	public String getTheaterPhoneNumber() {
-		return theaterPhoneNumber;
+	public String getTheater_phone_number() {
+		return theater_phone_number;
 	}
 
-	public void setTheaterPhoneNumber(String theaterPhoneNumber) {
-		this.theaterPhoneNumber = theaterPhoneNumber;
+	public void setTheater_phone_number(String theater_phone_number) {
+		this.theater_phone_number = theater_phone_number;
 	}
 
-	public int getIsIMAX() {
-		return isIMAX;
+	public int getIs_imax() {
+		return is_imax;
 	}
 
-	public void setIsIMAX(int isIMAX) {
-		this.isIMAX = isIMAX;
+	public void setIs_imax(int is_imax) {
+		this.is_imax = is_imax;
 	}
 
-	public int getIs4D() {
-		return is4D;
+	public int getIs_4d() {
+		return is_4d;
 	}
 
-	public void setIs4D(int is4d) {
-		is4D = is4d;
+	public void setIs_4d(int is_4d) {
+		this.is_4d = is_4d;
 	}
 
-	public String getImg() {
-		return img;
+	public String getTheater_img() {
+		return theater_img;
 	}
 
-	public void setImg(String img) {
-		this.img = img;
+	public void setTheater_img(String theater_img) {
+		this.theater_img = theater_img;
 	}
 
 	public String getTheaterScreenId() {
@@ -220,6 +220,14 @@ public class TheaterDto {
 
 	public void setScreeningTime(Time screeningTime) {
 		this.screeningTime = screeningTime;
+	}
+
+	@Override
+	public String toString() {
+		return "TheaterDto [theater_id=" + theater_id + ", region=" + region + ", branch=" + branch
+				+ ", number_of_screens=" + number_of_screens + ", total_theater_seats=" + total_theater_seats
+				+ ", address=" + address + ", theater_phone_number=" + theater_phone_number + ", theater_img="
+				+ theater_img + ", is_imax=" + is_imax + ", is_4d=" + is_4d + "]";
 	}
 
 }
