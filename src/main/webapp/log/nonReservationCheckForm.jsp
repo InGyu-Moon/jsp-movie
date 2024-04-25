@@ -7,25 +7,25 @@
 	<div id="wrap">
 		<div class="log nonReservationForm">
 			<div class="center">
-				<form action="nonReservationCheckAction.jsp" method="post" id="loginForm">
+				<form action="nonReservationCheckAction.jsp" method="post"
+					id="loginForm">
 					<div class="log_nav_box">
 						<span onclick="location.href='loginForm.jsp'" class="log_nav"
 							style="background-color: #8c8c8c; color: white;">로그인</span> <span
 							onclick="location.href='nonReservationForm.jsp'" class="log_nav"
 							style="background-color: #8c8c8c; color: white;">비회원 예매</span> <span
-							onclick="location.href='nonReservationCheckForm.jsp'" class="log_nav"
-							style="background-color: #f04848; color: white;">비회원 예매확인</span>
+							onclick="location.href='nonReservationCheckForm.jsp'"
+							class="log_nav" style="background-color: #f04848; color: white;">비회원
+							예매확인</span>
 					</div>
 					<hr>
 					<div class="nonReservation_box">
 						<!-- <div class="block agreement"> -->
 						<div class="block input">
-							<h4 class="title_h4">
-								비회원 예매 확인
-							</h4>
-							<p class="explanation">
-								비회원으로 예매하신 고객님은 개인정보(법정생년월일, 휴대폰 번호, 비밀번호(4자리)를 입력해 주세요.
-							</p><br>
+							<h4 class="title_h4">비회원 예매 확인</h4>
+							<p class="explanation">비회원으로 예매하신 고객님은 개인정보(법정생년월일, 휴대폰 번호,
+								비밀번호(4자리)를 입력해 주세요.</p>
+							<br>
 							<h5 class="gray_bg">비회원 예매확인</h5>
 							<div class="list">
 								<p class="small">
@@ -50,8 +50,10 @@
 										id="password" oninput="pwCheck()"><span
 										id="password_length_check"></span>
 								</div>
-							<br>
-							<button type="submit" id="nonmember_check">비회원 예매확인</button>
+
+							</div>
+							<div class="btn">
+								<button type="submit" id="nonmember_check">비회원 예매확인</button>
 							</div>
 
 						</div>
@@ -85,58 +87,50 @@
 
 	<jsp:include page="../include/footer.html"></jsp:include>
 	<script type="text/javascript">
-		$(document)
-				.ready(
-						function() {
+		$(document).ready(
+				function() {
 
-							// 법적생년월일 입력란의 값이 변경될 때마다 호출되는 함수
-							$('input[name="birthdate"]').on(
-									'input',
-									function() {
-										// 입력된 법적생년월일의 길이를 확인
-										var birthdate = $(this).val();
-										if (birthdate.length !== 8) {
-											// 경고 메시지를 표시
-											$('#birthdate_check').text(
-													'법적생년월일을 8자리로 입력해주세요.')
-													.css('color', 'red');
-										} else {
-											// 입력값이 8자리인 경우 경고 메시지를 삭제
-											$('#birthdate_check').text('');
-										}
-									});
+					// 법적생년월일 입력란의 값이 변경될 때마다 호출되는 함수
+					$('input[name="birthdate"]').on(
+							'input',
+							function() {
+								// 입력된 법적생년월일의 길이를 확인
+								var birthdate = $(this).val();
+								if (birthdate.length !== 8) {
+									// 경고 메시지를 표시
+									$('#birthdate_check').text(
+											'법적생년월일을 8자리로 입력해주세요.').css(
+											'color', 'red');
+								} else {
+									// 입력값이 8자리인 경우 경고 메시지를 삭제
+									$('#birthdate_check').text('');
+								}
+							});
 
-							// 비회원 예매하기 버튼
-							$('#nonmember_check')
-									.click(
-											function() {
+					// 비회원 예매하기 버튼
+					$('#nonmember_check').click(
+							function() {
 
-												// 각 필수 입력란에 대한 값을 가져와 변수에 할당
-												var birthdate = $(
-														'input[name="birthdate"]')
-														.val();
-												var phone_number2 = $(
-														'input[name="phone_number2"]')
-														.val();
-												var phone_number3 = $(
-														'input[name="phone_number3"]')
-														.val();
-												var password = $(
-														'input[name="password"]')
-														.val();
+								// 각 필수 입력란에 대한 값을 가져와 변수에 할당
+								var birthdate = $('input[name="birthdate"]')
+										.val();
+								var phone_number2 = $(
+										'input[name="phone_number2"]').val();
+								var phone_number3 = $(
+										'input[name="phone_number3"]').val();
+								var password = $('input[name="password"]')
+										.val();
 
-												// 필수 입력란 중 하나라도 작성되지 않은 경우
-												if (birthdate === ''
-														|| phone_number2 === ''
-														|| phone_number3 === ''
-														|| password === '') {
-													alert('모든 항목을 입력해주세요.');
-													return false; // 기본 이벤트 중지
-												}
+								// 필수 입력란 중 하나라도 작성되지 않은 경우
+								if (birthdate === '' || phone_number2 === ''
+										|| phone_number3 === ''
+										|| password === '') {
+									alert('모든 항목을 입력해주세요.');
+									return false; // 기본 이벤트 중지
+								}
 
-											});
-						});
-
+							});
+				});
 	</script>
 </body>
 </html>
