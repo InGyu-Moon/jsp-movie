@@ -12,12 +12,12 @@ TheaterDao dao = new TheaterDao();
 TheaterDto dto = dao.theaterList(branch);
 
 String address = dto.getAddress();
-String phone = dto.getTheaterPhoneNumber();
-String img = dto.getImg();
-String screens = dto.getNumberOfScreens();
-String seat = dto.getTotalTheaterSeats();
-int theater_4d = dto.getIs4D();
-int theater_imax = dto.getIsIMAX();
+String phone = dto.getTheater_phone_number();
+String img = dto.getTheater_img();
+String screens = dto.getNumber_of_screens();
+String seat = dto.getTotal_theater_seats();
+int theater_4d = dto.getIs_4d();
+int theater_imax = dto.getIs_imax();
 JSONObject ob = new JSONObject();
 
 ob.put("branch", branch);
