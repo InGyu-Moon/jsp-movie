@@ -4,6 +4,11 @@
          pageEncoding="UTF-8"%>
 <jsp:include page="../include/header.html"></jsp:include>
 <title>예매 | 영화 그 이상의 감동</title>
+<style>
+.top_btn .link {
+display: none;
+}
+</style>
 <%
    final int TEENAGER_PRICE = 10_000;
    final int ADULT_PRICE = 13_000;
@@ -15,6 +20,8 @@
    String screeningInfoId = request.getParameter("screeningInfoId");
    String branch = request.getParameter("branch");
    String screeningDate = request.getParameter("screeningDate");
+   String screeningData = request.getParameter("screeningData");
+
 
    System.out.println("screeningInfoId = " + screeningInfoId);
 
@@ -102,7 +109,7 @@
             <div class="block">
                <p>극장: <%=branch%></p>
                <p>일시: <%=screeningDate%></p>
-               <p>상영관: <%="1관"%></p>
+               <p>상영관: <%=screeningData%></p>
             </div>
             <div class="block">
                <div id="selectedSeats"></div>

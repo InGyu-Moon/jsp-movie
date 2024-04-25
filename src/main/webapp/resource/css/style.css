@@ -3495,3 +3495,123 @@ log.nonReservationForm #inner_p {
 	cursor: pointer;
 }
 /* //paymentMethod */
+
+/* reservation */
+#reservation {
+	padding: 120px 0;
+}
+
+#reservation .center {
+	max-width: 1200px;
+}
+
+#reservation  .row {
+	display: flex;
+	justify-content: space-between;
+}
+
+#reservation  .row.category div {
+	width: 24%;
+}
+
+#reservation .block {
+	width: 24%;
+}
+
+#reservation .row .col-sm-6 {
+	width: 50%;
+}
+
+#reservation .block.time {
+	padding: 20px;
+}
+
+#reservation .information {
+	padding: 40px;
+	position: relative;
+}
+
+#reservation .row .col-sm-6 a {
+	height: 42px;
+	display: flex;
+	width: 100%;
+	align-items: center;
+	padding-left: 20px;
+	border: 1px solid #ddd;
+}
+
+#reservation .block.width_100 a {
+	height: 42px;
+	display: flex;
+	width: 100%;
+	align-items: center;
+	padding-left: 20px;
+	border: 1px solid #ddd;
+}
+
+#reservation .block.width_100>div {
+	overflow-y: scroll;
+}
+
+#reservation .custom-col {
+	background-color: black;
+	color: white;
+	border: 2px solid white;
+	display: flex;
+	align-items: center; /* 수직 가운데 정렬 */
+	justify-content: center; /* 수평 가운데 정렬 */
+	font-weight: bold;
+	height: 40px;
+}
+
+#reservation .a1:focus {
+	background-color: black;
+	color: white;
+}
+
+#reservation .a2:focus {
+	background-color: black;
+	color: white;
+}
+
+#reservation .a3:focus {
+	background-color: black;
+	color: white;
+}
+
+#reservation table {
+	background-color: transparent;
+}
+
+#reservation tr, #reservation td {
+	background-color: transparent;
+	color: white;
+}
+
+
+
+#reservation .block.time button {
+	background-color: #fb4357;
+	padding: 10px 20px;
+	border-radius: 30px;
+	color: #fff;
+	cursor: pointer;
+	margin-top: 10px;
+}
+
+#reservation .information button {
+    width: 100px;
+    right:40px;
+    height: 100px;
+    background-color: #272727;
+    border-radius: 16px;
+    color: #e9e9e9;
+    font-weight: 700;
+    font-size: 20px;
+    cursor: pointer;
+    border: 2px solid #c6c1c1;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+/* //reservation */
