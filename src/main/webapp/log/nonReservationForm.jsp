@@ -13,8 +13,9 @@
 							style="background-color: #8c8c8c; color: white;">로그인</span> <span
 							onclick="location.href='nonReservationForm.jsp'" class="log_nav"
 							style="background-color: #f04848; color: white;">비회원 예매</span> <span
-							onclick="location.href='nonReservationCheckForm.jsp'" class="log_nav"
-							style="background-color: #8c8c8c; color: white;">비회원 예매확인</span>
+							onclick="location.href='nonReservationCheckForm.jsp'"
+							class="log_nav" style="background-color: #8c8c8c; color: white;">비회원
+							예매확인</span>
 					</div>
 					<hr>
 					<div class="nonReservation_box">
@@ -91,13 +92,17 @@
 								<div class="input">
 									<label>비밀번호 확인</label> <input type="text" name="password_check"
 										id="password_check" oninput="pwCheck()"><span
-										id="pwConfirm"></span><input type="submit" value="비회원 예매하기"
-										id="btn">
+										id="pwConfirm"></span>
 								</div>
 
 							</div>
 
 						</div>
+
+						<div class="non_members_btn">
+							<input type="submit" value="비회원 예매하기" id="btn">
+						</div>
+
 						<div class="block reference">
 							<div class="div">
 								<div class="div_inner">
@@ -260,7 +265,6 @@
 				$("#pwConfirm").show();
 			}
 		}
-
 	</script>
 </body>
 </html>
