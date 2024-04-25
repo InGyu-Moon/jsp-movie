@@ -6,8 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>영화 그 이상의 감동</title>
-<link rel="shortcut icon"
-	href="img/common/favicon.ico"
+<link rel="shortcut icon" href="img/common/favicon.ico"
 	type="image/x-icon">
 <link rel="stylesheet" as="style" crossorigin
 	href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
@@ -69,9 +68,16 @@ System.out.println(myid);
 					<%
 					}
 					%>
-					<li><a href="javascript:;"> <img alt=""
+					<%
+					if (myid == null) {
+					%>
+					<li><a href="join_membership/joinForm.jsp"> <img alt=""
 							src="img/common/sign_up.png"> <span>회원가입</span>
 					</a></li>
+					<%
+					}
+					%>
+
 					<li><a href="javascript:;"> <img alt=""
 							src="img/common/mypage.png"> <span>MY PAGE</span>
 					</a></li>
