@@ -85,10 +85,8 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
 							</div>
 							<div class="box-contents newtype">
 								<div class="person-info">
-									<strong>
-										<!-- 로그인한 유저 NAME--><%=dto.getName()%><span>님</span>
-									</strong> <em>
-										<!-- 로그인한 유저 USERNAME --><%=username%></em>
+									<strong> <!-- 로그인한 유저 NAME--><%=dto.getName()%><span>님</span>
+									</strong> <em> <!-- 로그인한 유저 USERNAME --><%=username%></em>
 									<button id="go_edit_page" type="button"
 										onclick="location.href='myProfileEdit.jsp'">나의 정보 변경</button>
 								</div>
@@ -122,8 +120,8 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
 									<ul>
 										<li><a href="myInquiry.jsp">1:1 문의</a></li>
 									</ul></li>
-								<li class="my-movie"><a href="javascript:;">내가
-										본 영화<span style="margin-left: 38px;">↗️</span>
+								<li class="my-movie"><a href="javascript:;">내가 본 영화<span
+										style="margin-left: 38px;">↗️</span>
 								</a></li>
 							</ul>
 						</div>
@@ -147,11 +145,10 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
 							</div>
 						</div>
 						<div class="tit-my">
-							<h3>MY 예매내역</h3>
-							<p>
-								<em>0건</em> <a href="myReserve.jsp">예매내역 더보기</a>
-							</p>
-							<span>예매번호로만 티켓을 찾을 수 있으니 반드시 확인 부탁드립니다.</span>
+							<h3>MY 예매내역 </h3><span>1건</span>
+							<div>
+			
+							</div>
 						</div>
 
 						<form name="aspnetForm" method="post" action="./?g=1"
@@ -175,10 +172,14 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
 								<div class="box-inner">
 									<div class="tit-my">
 										<h3>MY Q&amp;A</h3>
-										<p>
-											<em><span class="ii"><%=totalCount%></span>건</em> <a
-												href="myInquiry.jsp">MY Q&amp;A 더보기</a>
-										</p>
+										<div>
+
+											<p>
+												<em><span class="ii"><%=totalCount%></span>건</em> <a
+													href="myInquiry.jsp">MY Q&amp;A 더보기</a>
+											</p>
+										</div>
+
 									</div>
 									<div class="col-myqna">
 										<%
@@ -198,8 +199,7 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
 													<strong><%=idto.getTitle()%></strong>
 											</a> <%
  String answervalue = idto.getAnswer() != null ? idto.getAnswer() : "";
- %> <span
-												class="round <%=answervalue != "" ? "red" : "gray"%> on"
+ %> <span class="round <%=answervalue != "" ? "red" : "gray"%> on"
 												value="<%=answervalue%>"> <i><%=answervalue != "" ? "답변완료" : "답변 중"%></i>
 											</span></li>
 										</ul>

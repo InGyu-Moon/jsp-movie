@@ -3927,7 +3927,7 @@ log.nonReservationForm #inner_p {
 
 #myhome  .cols-content .col-detail {
 	position: relative;
-	width: 700px;
+	width: 100%;
 }
 
 #myhome  .cols-content .col-aside .snb>ul>li.my-movie {
@@ -3950,28 +3950,53 @@ log.nonReservationForm #inner_p {
 	background-color: #222;
 }
 
-#myhome .set-my-reserve {
+/* myHome */
+.myhome .set-my-reserve {
 	margin-bottom: 30px;
 }
 
-#myhome .set-my-reserve .box-polaroid {
+.myhome .set-my-reserve .box-polaroid {
 	overflow: hidden;
 	background-color: #f8f8f8;
 	border: 1px solid #333;
+	padding: 20px;
 }
 
-#myhome .set-my-reserve.movielog.col2 .box-inner {
-	width: 265px;
+.myhome .set-my-reserve.movielog.col2 .box-inner {
+	width: 50%;
 	padding: 0;
 	text-align: center;
 	line-height: 16px;
 }
 
-#myhome .set-my-reserve .box-inner {
+.myhome .set-my-reserve .box-inner {
 	float: left;
 	width: 308px;
 	padding: 32px 0 32px 90px;
 	border-left: 1px dashed #cdc9c0;
 }
+
+.myhome .set-my-reserve .box-inner:first-child {
+	border-left: none;
+}
+
+.myhome .set-my-reserve.movielog.col2 .box-inner span {
+	margin-top: 10px;
+	display: block;
+}
+
+.myhome .tit-my {
+	margin-top: 40px;
+}
+
+.myhome .tit-my h3 {
+	font-size: 18px;
+}
+
+.myhome .tit-my > div {
+	border: 1px solid #000;
+	margin-top: 20px;
+}
+/* //myHome */
 
 /* //mypage */
