@@ -8,6 +8,7 @@
 	pageEncoding="UTF-8"%>
 <jsp:include page="../include/header.html"></jsp:include>
 <title>마이페이지 | 영화 그 이상의 감동</title>
+
 <%
 String username = (String) session.getAttribute("username");
 MemberDao mdao = new MemberDao();
@@ -71,6 +72,242 @@ if (list.size() == 0 && currentPage != 1) {
 SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
 %>
 </head>
+<style>
+
+#myhome .cols-content .col-detail {
+    position: relative;
+    width: 100%;
+}
+
+.myinquiry .cols-content .tit-my > h3{
+    height: 34px;
+    margin: 0;
+    background-image: none;
+    color: #222;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 34px;
+    text-align: left;
+}
+
+.myinquiry .cols-content .tit-my > h4{
+	height: 34px;
+    margin: 0;
+    background-image: none;
+    color: #222;
+    font-weight: 500;
+    font-size: 17px;
+    line-height: 34px;
+    text-align: left;
+}
+
+.myinquiry .tit-my + .set-btn > p.del {
+    margin-bottom: 10px;
+    text-align: right;
+    margin-right: 5px;
+}
+
+.myinquiry .tbl-data table {
+    border-top: 1px solid #b8b6aa;
+    border-bottom: 1px solid #b8b6aa;
+}
+
+.myinquiry table {
+    font-size: 14px;
+    line-height: 1.2;
+    color: #666;
+    font-weight: 400;
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.myinquiry th, td{
+    font-weight: 400;
+    line-height: 1.2em;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.myinquiry .tbl-data thead th {
+    height: 30px;
+    padding-left: 12px;
+    background-color: #e2e2e0;
+    font-size: 13px;
+    line-height: 25px;
+    font-weight: 600;
+}
+
+.myinquiry em.no{
+	font-style: normal;
+	color: #333;
+    font-family: verdana, sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    vertical-align: middle;	
+}
+
+.myinquiry input{
+    vertical-align: middle;
+}
+
+.myinquiry lavel.no{
+	width: 10px;
+}
+
+.myinquiry .round.on.red {
+    border: 2px solid #fb4357;
+    background-color: #fb4357;
+    color: #ffffff;
+}
+
+.myinquiry .round.on.gray {
+    border: 2px solid #7b7b7b;
+    background-color: #7b7b7b;
+    color: #ffffff;
+}
+
+.myinquiry .tbl-data tbody td .round {
+    margin-left: 5px;
+    font-size: 12px;
+    line-height: 20px;
+}
+
+.myinquiry .round.gray {
+    border: 2px solid #7b7b7b;
+    color: #7b7b7b;
+}
+
+.myinquiry i {
+    font-style: normal;
+}
+
+.myinquiry .tbl-data tbody td .round>* {
+    padding: 0 5px;
+}
+
+.myinquiry .round > * {
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    padding: 0 5px 0;
+}
+
+.myinquiry .txt-red{
+	color: #fb4357;
+}
+
+.myinquiry .round.black {
+    border: 2px solid #333333;
+    color: #333333;
+    margin-left: 10px;
+    cursor: pointer;
+    background: white;
+}
+
+.myinquiry .round {
+    line-height: 26px;
+    font-weight: 500;
+    font-size: 15px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.myinquiry ul.pagination {
+	margin-top: 20px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.myinquiry ul.pagination li {
+	margin-right: 10px;
+	width: 20px;
+	height: 20px;
+	display: flex;
+	align-items: center;
+	border-radius: 30px;
+}
+
+.myinquiry ul.pagination li.btn {
+	background-color: #fb4357;
+	width: 34px;
+	height: 34px;
+	background-image: url("../../img/movie_img/arrow_white.png");
+	background-size: 16px;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.myinquiry ul.pagination li.btn.next {
+	margin-left: 10px;
+	transform: rotate(90deg);
+}
+
+.myinquiry ul.pagination li.btn.prev {
+	margin-right: 10px;
+	transform: rotate(270deg);
+}
+
+.myinquiry ul.pagination li a {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	height: 100%;
+}
+
+.myinquiry ul.pagination li:last-child {
+	margin-right: 0
+}
+
+.myinquiry ul.pagination li a img {
+	width: 100%;
+	height: 100%;
+}
+
+.myinquiry .set-my-reserve.qna {
+    margin-top: 50px;
+}
+
+.myinquiry .set-my-reserve .box-polaroid {
+    overflow: hidden;
+    background-color: #f8f8f8;
+    border: 1px solid #333;
+}
+
+.myinquiry .set-my-reserve .box-inner {
+    float: left;
+    width: 308px;
+    padding: 32px 0 32px 90px;
+    border-left: 1px dashed #cdc9c0;
+}
+
+.myinquiry .set-my-reserve .box-inner > p {
+    margin-bottom: 10px;
+}
+
+.set-my-reserve .box-inner > span {
+    color: #666;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+.myinquiry .set-my-reserve .box-inner.qna{
+    float: left;
+    width: 370px;
+    padding: 32px 0 32px 90px;
+    border-left: 1px dashed #cdc9c0;
+}
+
+.myinquiry .set-my-reserve .box-inner.words{
+    float: left;
+    width: 370px;
+    padding: 32px 0 32px 90px;
+    border-left: 1px dashed #cdc9c0;
+}
+</style>
 <body>
 	<div id="wrap">
 		<div class="center">
@@ -131,9 +368,7 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
 					<div class="col-detail" id="my_contents">
 						<form name="aspnetForm" method="post" id="aspnetForm"
 							novalidate="novalidate">
-							<div></div>
 
-							<div></div>
 							<div class="tit-my">
 								<h3>나의 문의내역</h3>
 							</div>
@@ -151,7 +386,7 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
 							<div class="tbl-data">
 								<table summary="문의내역 및 답변내역에 대한 정보 제공">
 									<colgroup>
-										<col width="9%">
+										<col width="12%">
 										<col width="15%">
 										<col width="*">
 										<col width="13%">
@@ -180,8 +415,8 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
 										%>
 										<tr>
 											<td><input type="checkbox" class="alldel"
-												value="<%=idto.getInquiryId()%>"> <label
-												for="chkItem1508908"><em><%=no - i%></em></label></td>
+												value="<%=idto.getInquiryId()%>"><label class="no"
+												for="chkItem1508908"><em class="no"><%=no - i%></em></label></td>
 											<td><%=idto.getOption()%></td>
 											<td><a
 												href="inquiryDetail.jsp?num=<%=idto.getInquiryId()%>&currentPage=<%=currentPage%>"
@@ -241,7 +476,7 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
 								</ul>
 							</div>
 
-							<div class="sect-mycgv-reserve qna">
+							<div class="set-my-reserve qna">
 								<div class="box-polaroid">
 									<div class="box-inner qna">
 										<p>
