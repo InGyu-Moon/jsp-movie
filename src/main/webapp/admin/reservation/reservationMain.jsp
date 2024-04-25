@@ -110,10 +110,9 @@
 
         <table class="table table-bordered" style="width: 800px">
             <!-- <caption align="top"><b>전체 회원 명단</b></caption> -->
-            <button type="button" class="btn btn-outline-danger btndel btn-sm" style="margin-bottom: 5px;">선택삭제</button><br>
             <div class="header-container">
                 <div class="title">
-                    <b>전체 회원 명단</b>
+                    <b>전체 결제 목록</b>
                 </div>
                 <div class="count">
                     <span style="margin-right: 25px;"><small>총 <%=totalCount%></small></span>
@@ -121,7 +120,6 @@
             </div>
 
             <tr class="table-success" align="center">
-                <th width="20"><input type="checkbox" class="th-check"></th>
                 <th width="80">결제번호</th>
                 <th width="180">아이디</th>
                 <th width="300">결제시간</th>
@@ -132,9 +130,6 @@
                 for(ReservationDto dto :list){
             %>
             <tr align="center">
-                <td>
-                    <input type="checkbox" value="<%=1%>" class="check">
-                </td>
                 <td>
                     <%=dto.getReservationId()%>
                 </td>

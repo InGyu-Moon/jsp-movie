@@ -1,3 +1,4 @@
+<%@ page import="data.reservation.ReservationDao" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <!DOCTYPE html>
@@ -11,6 +12,13 @@
     <title>Insert title here</title>
 </head>
 <body>
-asd
+<%
+    ReservationDao dao = new ReservationDao();
+
+    String id = request.getParameter("reservationId");
+    dao.updateReservationStatus(id);
+
+    response.sendRedirect("../adminMainPage.jsp?curr=reservation/reservationMain.jsp");
+%>
 </body>
 </html>

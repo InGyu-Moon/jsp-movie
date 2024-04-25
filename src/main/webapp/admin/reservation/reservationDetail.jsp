@@ -68,8 +68,6 @@
             <td style="width: 70%;">
                <%
                   List<Timestamp> screenTime = dao.getScreenTime(dto.getScreeningInfoId());
-                  System.out.println("screenTime.get(0) = " + screenTime.get(0));
-                  System.out.println("screenTime.get(1) = " + screenTime.get(1));
                %>
                <%=sdf1.format(screenTime.get(0))%>
             </td>
@@ -78,6 +76,12 @@
             <th style="width: 30%; text-align: center;">영화시간</th>
             <td style="width: 70%;">
                <%=sdf2.format(screenTime.get(1))%>
+            </td>
+         </tr>
+         <tr>
+            <th style="width: 30%; text-align: center;">좌석</th>
+            <td style="width: 70%;">
+               <%=dto.getReservedSeats()%>
             </td>
          </tr>
          <tr>
@@ -108,9 +112,15 @@
 
       </table><br>
       <div style="float: right; margin-right: 20%;">
+         <%
+            if(!str.equals("취소")){
+               %>
          <a style="margin-right: 10px" type="button" class="btn btn-outline-danger" href="#"
             onclick="return confirm('정말로 취소하시겠습니까?') ? window.location.href = 'reservation/reservationCancle.jsp?reservationId=<%=dto.getReservationId()%>' : false;">결제취소</a>
-         <button type="button" class="btn btn-outline-success" onclick="history.back()">목록</button>
+         <%
+            }
+         %>
+        <button type="button" class="btn btn-outline-success" onclick="history.back()">목록</button>
       </div>
    </form>
 </div>

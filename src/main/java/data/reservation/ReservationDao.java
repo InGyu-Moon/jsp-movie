@@ -54,14 +54,13 @@ public class ReservationDao {
 		ResultSet rs = null;
 
 
-		String sql = "select RESERVED_SEATS from RESERVATION_INFO where SCREENING_INFO_ID = ? and PAYMENT_STATUS = ?";
+		String sql = "select RESERVED_SEATS from RESERVATION_INFO where SCREENING_INFO_ID = ? and PAYMENT_STATUS = 'Completed'";
 
 		ArrayList<String> reservedSeats = new ArrayList<>();
 
         try {
             pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, screeningInfoId);
-			pstmt.setString(2, "PAYMENT_STATUS");
 
 			rs = pstmt.executeQuery();
 			while(rs.next()){
@@ -301,6 +300,22 @@ public class ReservationDao {
 		return list;
 	}
 
-	
+
+	public void updateReservationStatus(String id){
+		Connection conn = db.getConnection();;
+		PreparedStatement pstmt = null;
+
+		String sql = "update RESERVATION_INFO set PAYMENT_STATUS = 'Cancelled' where reservation_id = ?";
+
+        try {
+            pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1,id);
+			pstmt.executeUpdate();
+        } catch (SQLException e) {
+			System.out.println("e = " + e);
+        }finally {
+			db.dbClose(pstmt,conn);
+		}
+    }
 
 }
