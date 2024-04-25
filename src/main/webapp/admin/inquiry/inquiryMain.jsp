@@ -229,7 +229,7 @@ $(document).ready(function(){
 		            if(startPage>1)
 		            {%>
 		        <li class="page-item ">
-		            <a class="page-link" href="../admin/adminMainPage.jsp?curr=member/memberMain.jsp?currentPage=<%=startPage-1%>" style="color: black;">이전</a>
+		            <a class="page-link" href="../admin/adminMainPage.jsp?curr=inquiry/inquiryMain.jsp?currentPage=<%=startPage-1%>" style="color: black;">이전</a>
 		        </li>
 		        <%}
 		            for(int pp=startPage;pp<=endPage;pp++)
@@ -237,12 +237,12 @@ $(document).ready(function(){
 		                if(pp==currentPage)
 		                {%>
 		        <li class="page-item active">
-		            <a class="page-link" href="../admin/adminMainPage.jsp?curr=member/memberMain.jsp?currentPage=<%=pp%>"><%=pp %></a>
+		            <a class="page-link" href="../admin/adminMainPage.jsp?curr=inquiry/inquiryMain.jsp?currentPage=<%=pp%>"><%=pp %></a>
 		        </li>
 		        <%}else
 		        {%>
 		        <li class="page-item">
-		            <a class="page-link" href="../admin/adminMainPage.jsp?curr=member/memberMain.jsp?currentPage=<%=pp%>"><%=pp %></a>
+		            <a class="page-link" href="../admin/adminMainPage.jsp?curr=inquiry/inquiryMain.jsp?currentPage=<%=pp%>"><%=pp %></a>
 		        </li>
 		        <%}
 		        }
@@ -251,7 +251,7 @@ $(document).ready(function(){
 		            if(endPage<totalPage)
 		            {%>
 		        <li class="page-item">
-		            <a  class="page-link" href="../admin/adminMainPage.jsp?curr=member/memberMain.jsp?currentPage=<%=endPage+1%>"
+		            <a  class="page-link" href="../admin/adminMainPage.jsp?curr=inquiry/inquiryMain.jsp?currentPage=<%=endPage+1%>"
 		                style="color: black;">다음</a>
 		        </li>
 		        <%}
