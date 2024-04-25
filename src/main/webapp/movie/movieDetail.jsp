@@ -618,7 +618,7 @@ $("span.reviewinsert").click(function() {
 			"rating":starRating
 		},
 		success: function(res) {
-			alert("소원이 이루어 졌습니다!");
+			//alert("소원이 이루어 졌습니다!");
 			location.reload();
 		}
 		
