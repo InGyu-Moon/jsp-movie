@@ -16,6 +16,49 @@ public class MovieInfoDao {
 
 	DbConnect db = new DbConnect();
 
+	// 예매순 전체출력
+	public List<MovieInfoDto> getAllMovieData() {
+		List<MovieInfoDto> list = new ArrayList<MovieInfoDto>();
+		
+		Connection conn = db.getConnection();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		String sql = "SELECT * FROM MOVIE_INFO ORDER BY BOOKING_RATE DESC";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				MovieInfoDto dto = new MovieInfoDto();
+				
+				dto.setMovieId(rs.getString("movie_id"));
+				dto.setMovieTitle(rs.getString("movie_title"));
+				dto.setRunningTime(rs.getInt("running_time"));
+				dto.setViewingRating(rs.getString("viewing_rating"));
+				dto.setDirector(rs.getString("director"));
+				dto.setCast(rs.getString("cast"));
+				dto.setBookingRate(rs.getDouble("booking_rate"));
+				dto.setReleaseDate(rs.getDate("release_date"));
+				dto.setGenre(rs.getString("genre"));
+				dto.setMovieDescription(rs.getString("movie_description"));
+				dto.setRating(rs.getDouble("rating"));
+				dto.setEndDate(rs.getDate("end_date"));
+				dto.setCountry(rs.getString("country"));
+				dto.setMovieImg(rs.getString("movie_img"));
+				
+				list.add(dto);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			db.dbClose(rs, pstmt, conn);
+		}
+		return list;
+	}
+	
 	// 예매순 1위 ~ 3위
 	public List<MovieInfoDto> getThreeMovieData() {
 		List<MovieInfoDto> list = new ArrayList<MovieInfoDto>();
@@ -490,7 +533,7 @@ public class MovieInfoDao {
 	}
 
 	// movie_id에 대한 dto 반환
-	public MovieInfoDto getData(String movie_id) {
+	public MovieInfoDto getData(String movieId) {
 		MovieInfoDto dto = new MovieInfoDto();
 		Connection conn = db.getConnection();
 		PreparedStatement pstmt = null;
@@ -500,7 +543,7 @@ public class MovieInfoDao {
 
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, movie_id);
+			pstmt.setString(1, movieId);
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) {

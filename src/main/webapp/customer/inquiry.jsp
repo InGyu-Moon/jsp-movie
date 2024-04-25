@@ -56,7 +56,7 @@ int memberId = mdao.getMemberIdByUsername(username);
 								<div class="box category">
 									<label>분류</label>
 									<div class="input">
-										<select id="category" name="category">
+										<select id="category" name="category" required="required">
 											<option value="기타">분류선택</option>
 											<option value="영화관">영화관</option>
 											<option value="영화">영화</option>
@@ -71,7 +71,7 @@ int memberId = mdao.getMemberIdByUsername(username);
 									<div class="input">
 										<div>
 											<input type="text" id="title" name="title"
-												placeholder="제목을 입력해주세요">
+												placeholder="제목을 입력해주세요" required="required">
 											<div class="number">
 												<p>
 													 <span id="titleCount">0</span>/한글 50자
@@ -85,7 +85,7 @@ int memberId = mdao.getMemberIdByUsername(username);
 									<label>내용</label>
 									<div class="input">
 										<textarea rows="" cols="" id="content" name="content"
-											placeholder="내용 및 첨부파일에 개인정보(카드번호, 계좌번호, 주민번호)가 포함되지 않도록 유의하여 입력해주세요."></textarea>
+											placeholder="내용 및 첨부파일에 개인정보(카드번호, 계좌번호, 주민번호)가 포함되지 않도록 유의하여 입력해주세요." required="required"></textarea>
 										<div class="text">
 											<div class="red">
 												<p>

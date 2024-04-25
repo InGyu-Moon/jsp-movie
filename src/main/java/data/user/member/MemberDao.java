@@ -13,7 +13,7 @@ import db.mysql.DbConnect;
 public class MemberDao {
 	DbConnect db = new DbConnect();
 
-	// insert 
+	// insert
 	public void insertMember(MemberDto member) {
 		Connection conn = db.getConnection();
 		PreparedStatement pstmt = null;
@@ -33,24 +33,26 @@ public class MemberDao {
 			pstmt.setString(9, member.getUserPhoto());
 
 			int result = pstmt.executeUpdate();
-			if(result > 0) System.out.println("member insert success");
-			else System.out.println("member insert error");
+			if (result > 0)
+				System.out.println("member insert success");
+			else
+				System.out.println("member insert error");
 
-		}catch(Exception ex) {
+		} catch (Exception ex) {
 			ex.printStackTrace();
-		}finally {
+		} finally {
 			db.dbClose(pstmt, conn);
 		}
 
 	}
-	
-	// 회원이 1:1 문의 등록함 
+
+	// 회원이 1:1 문의 등록함
 	public void questionInquiryByMember(InquiryDto inquiry, int memberId) {
 		Connection conn = db.getConnection();
 		PreparedStatement pstmt = null;
-		
+
 		String sql = "insert into INQUIRY value (null,?,?,?,?,?,null)";
-		
+
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, memberId);
@@ -58,17 +60,19 @@ public class MemberDao {
 			pstmt.setString(3, inquiry.getTitle());
 			pstmt.setString(4, inquiry.getContent());
 			pstmt.setString(5, inquiry.getAttachment());
-			
+
 			int result = pstmt.executeUpdate();
-			if(result > 0) System.out.println("member 문의 insert success");
-			else System.out.println("member 문의 insert error");
-			
-		}catch(Exception ex) {
+			if (result > 0)
+				System.out.println("member 문의 insert success");
+			else
+				System.out.println("member 문의 insert error");
+
+		} catch (Exception ex) {
 			ex.printStackTrace();
-		}finally {
+		} finally {
 			db.dbClose(pstmt, conn);
 		}
-		
+
 	}
 
 	// id 중복 체크
@@ -85,14 +89,14 @@ public class MemberDao {
 			pstmt.setString(1, userName);
 
 			rs = pstmt.executeQuery();
-			if(rs.next()) {
-				if(rs.getInt(1)==1)
-					result=1;
+			if (rs.next()) {
+				if (rs.getInt(1) == 1)
+					result = 1;
 			}
 
-		}catch(Exception ex) {
+		} catch (Exception ex) {
 			ex.printStackTrace();
-		}finally {
+		} finally {
 			db.dbClose(rs, pstmt, conn);
 		}
 		return result;
@@ -113,11 +117,12 @@ public class MemberDao {
 			pstmt.setString(2, password);
 
 			rs = pstmt.executeQuery();
-			if(rs.next()) check=true;
+			if (rs.next())
+				check = true;
 
-		}catch(Exception ex) {
+		} catch (Exception ex) {
 			ex.printStackTrace();
-		}finally {
+		} finally {
 			db.dbClose(rs, pstmt, conn);
 		}
 		return check;
@@ -125,22 +130,20 @@ public class MemberDao {
 	}
 
 	// 전체 회원 목록 조회
-	public List<MemberDto> getAllMembers()
-	{
+	public List<MemberDto> getAllMembers() {
 		List<MemberDto> list = new ArrayList<>();
 
-		Connection conn=db.getConnection();
-		PreparedStatement pstmt=null;
-		ResultSet rs=null;
+		Connection conn = db.getConnection();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 
-		String sql="select * from MEMBER_INFO order by member_id";
+		String sql = "select * from MEMBER_INFO order by member_id";
 
 		try {
-			pstmt=conn.prepareStatement(sql);
-			rs=pstmt.executeQuery();
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
 
-			while(rs.next())
-			{
+			while (rs.next()) {
 				MemberDto dto = new MemberDto();
 				dto.setId(rs.getInt("member_id"));
 				dto.setUserName(rs.getString("username"));
@@ -156,32 +159,30 @@ public class MemberDao {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			db.dbClose(rs, pstmt, conn);
 		}
 		return list;
 	}
 
-	//페이지
-	public List<MemberDto> getList(int start,int perPage)
-	{
-		List<MemberDto> list=new ArrayList<>();
-		Connection conn=db.getConnection();
-		PreparedStatement pstmt=null;
-		ResultSet rs=null;
+	// 페이지
+	public List<MemberDto> getList(int start, int perPage) {
+		List<MemberDto> list = new ArrayList<>();
+		Connection conn = db.getConnection();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 
-		String sql="select * from MEMBER_INFO order by member_id desc limit ?,?";
+		String sql = "select * from MEMBER_INFO order by member_id desc limit ?,?";
 
 		try {
-			pstmt=conn.prepareStatement(sql);
+			pstmt = conn.prepareStatement(sql);
 
 			pstmt.setInt(1, start);
 			pstmt.setInt(2, perPage);
 
-			rs=pstmt.executeQuery();
+			rs = pstmt.executeQuery();
 
-			while(rs.next())
-			{
+			while (rs.next()) {
 				MemberDto dto = new MemberDto();
 				dto.setId(rs.getInt("member_id"));
 				dto.setUserName(rs.getString("username"));
@@ -198,7 +199,7 @@ public class MemberDao {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}finally {
+		} finally {
 			db.dbClose(rs, pstmt, conn);
 		}
 
@@ -239,85 +240,84 @@ public class MemberDao {
 		}
 		return dto;
 	}
-	
+
 	// get memberId by username
-		public int getMemberIdByUsername(String username) {
-			int memberId = -1;
+	public int getMemberIdByUsername(String username) {
+		int memberId = -1;
 
-			Connection conn = db.getConnection();
-			PreparedStatement pstmt = null;
-			ResultSet rs = null;
+		Connection conn = db.getConnection();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 
-			String sql = "select MEMBER_ID from MEMBER_INFO where USERNAME=?";
-
-			try {
-				pstmt = conn.prepareStatement(sql);
-				pstmt.setString(1, username);
-				rs = pstmt.executeQuery();
-
-				if (rs.next()) {
-					memberId = rs.getInt("MEMBER_ID");
-				}
-			} catch (SQLException e) {
-				e.printStackTrace();
-			} finally {
-				db.dbClose(rs, pstmt, conn);
-			}
-			return memberId;
-		}
-
-	
-	// delete
-	public void deleteMember(int memberId){
-		Connection conn=db.getConnection();
-		PreparedStatement pstmt=null;
-
-		String sql="delete from member_info where member_id=?";
+		String sql = "select MEMBER_ID from MEMBER_INFO where USERNAME=?";
 
 		try {
-			pstmt=conn.prepareStatement(sql);
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, username);
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				memberId = rs.getInt("MEMBER_ID");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			db.dbClose(rs, pstmt, conn);
+		}
+		return memberId;
+	}
+
+	// delete
+	public void deleteMember(int memberId) {
+		Connection conn = db.getConnection();
+		PreparedStatement pstmt = null;
+
+		String sql = "delete from MEMBER_INFO where member_id=?";
+
+		try {
+			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, memberId);
 
 			int result = pstmt.executeUpdate();
-			if(result>0) System.out.println("member delete success");
-			else System.out.println("member delete error");
-			
+			if (result > 0)
+				System.out.println("member delete success");
+			else
+				System.out.println("member delete error");
+
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			db.dbClose(pstmt, conn);
 		}
 
 	}
-	
 
-	// count 
+	// count
 	public int getCountMember() {
 		Connection conn = db.getConnection();
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		
+
 		String sql = "select count(*) from MEMBER_INFO";
 		int count = 0;
-		
+
 		try {
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
-			
-			if(rs.next()) {
+
+			if (rs.next()) {
 				count = rs.getInt(1);
 			}
-			
-		}catch(Exception ex) {
+
+		} catch (Exception ex) {
 			ex.printStackTrace();
-		}finally {
+		} finally {
 			db.dbClose(rs, pstmt, conn);
 		}
 		return count;
 	}
-	
 
-	// update 
+	// update
 	public void updateMember(MemberDto member) {
 		Connection conn = db.getConnection();
 		PreparedStatement pstmt = null;
@@ -339,12 +339,43 @@ public class MemberDao {
 			pstmt.setInt(9, member.getId());
 
 			int result = pstmt.executeUpdate();
-			if(result > 0) System.out.println("member update success");
-			else System.out.println("member update error");
+			if (result > 0)
+				System.out.println("member update success");
+			else
+				System.out.println("member update error");
 
-		}catch(Exception ex) {
+		} catch (Exception ex) {
 			ex.printStackTrace();
-		}finally {
+		} finally {
+			db.dbClose(pstmt, conn);
+		}
+
+	}
+
+	// 프로필update
+	public void updateProfile(MemberDto member) {
+		Connection conn = db.getConnection();
+		PreparedStatement pstmt = null;
+
+		String sql = "update MEMBER_INFO "
+				+ "set username = ?, user_photo = ? "
+				+ "where member_id=?";
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, member.getUserName());
+			pstmt.setString(2, member.getUserPhoto());
+			pstmt.setInt(3, member.getId());
+
+			int result = pstmt.executeUpdate();
+			if (result > 0)
+				System.out.println("profile update success");
+			else
+				System.out.println("profile update error");
+
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
 			db.dbClose(pstmt, conn);
 		}
 
@@ -572,8 +603,6 @@ public class MemberDao {
 		}
 		return list;
 	}
-
-
 
 	
 }

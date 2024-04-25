@@ -8,9 +8,5 @@
 </head>
 <body>
 
-<div>
-	<button>내가 본 영화</button>
-</div>
-
 </body>
 </html>

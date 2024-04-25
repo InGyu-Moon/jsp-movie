@@ -5,6 +5,7 @@
 	pageEncoding="UTF-8"%>
 <%
 String region = request.getParameter("region");
+System.out.println("test"+region);
 //System.out.println(branch);
 TheaterDao dao = new TheaterDao();
 TheaterDto dto = new TheaterDto();
