@@ -1,15 +1,25 @@
+<%@page import="data.user.member.MemberDao"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>영화 그 이상의 감동</title>
-<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
+<link rel="shortcut icon"
+	href="img/common/favicon.ico"
+	type="image/x-icon">
+<link rel="stylesheet" as="style" crossorigin
+	href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
 <link rel="stylesheet" href="resource/css/nice_select.css">
 <link rel="stylesheet" href="resource/css/swiper.css">
 <link rel="stylesheet" href="resource/css/reset.css">
 <link rel="stylesheet" href="resource/css/style.css">
 </head>
-
+<%
+String myid = (String) session.getAttribute("username");
+System.out.println(myid);
+%>
 <!-- pop-up -->
 <div class=top_banner>
 	<div>
@@ -35,14 +45,30 @@
 	<div class="content">
 		<div>
 			<div class="logo">
-				<a href="index.jsp"> <img alt="" src="">
+				<a href="index.jsp"> <img alt="" src="img/common/logo.png">
 				</a>
 			</div>
 			<div class="memberinfo">
 				<ul>
+
+					<%
+					if (myid == null) {
+					%>
 					<li><a href="log/loginForm.jsp"> <img alt=""
 							src="img/common/login.png"> <span>로그인</span>
 					</a></li>
+					<%
+					}
+					%>
+					<%
+					if (myid != null) {
+					%>
+					<li><a href="log/logoutAction.jsp"> <img alt=""
+							src="img/common/logout.png"> <span>로그아웃</span>
+					</a></li>
+					<%
+					}
+					%>
 					<li><a href="javascript:;"> <img alt=""
 							src="img/common/sign_up.png"> <span>회원가입</span>
 					</a></li>
@@ -61,7 +87,7 @@
 			<nav>
 				<ul>
 					<li class="hidden_logo"><a href="index.jsp"><img alt=""
-							src=""></a></li>
+							src="img/common/wh_logo.png"></a></li>
 					<li><a href="movie/movieShowRate.jsp">영화</a></li>
 					<li><a href="ticket/ticket.jsp">극장</a></li>
 					<li class="active"><a href="reservation/reservationForm.jsp">예매</a></li>
