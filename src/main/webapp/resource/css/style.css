@@ -161,8 +161,6 @@ header#header  .content>div {
 }
 
 header#header  .content>div .logo {
-	width: 120px;
-	height: 50px;
 	display: flex;
 	align-items: center;
 }
@@ -246,9 +244,6 @@ header#header .nav nav ul li.active.scroll a {
 }
 
 header#header .nav nav ul li.hidden_logo {
-	width: 70px;
-	border: 1px solid red;
-	height: 32px;
 	display: none;
 }
 
@@ -1570,6 +1565,38 @@ log.nonReservationForm #inner_p {
 	background: #fff;
 	border: 1px solid #e2e2e0;
 	border-top: none;
+}
+
+.nonReservation_box .block.input .btn {
+	display: flex;
+	justify-content: center;
+	margin-top: 40px;
+}
+
+.nonReservation_box .block.input .btn button {
+	background-color: #fb4357;
+	color: #fff;
+	width: 160px;
+	height: 44px;
+	cursor: pointer;
+	border-radius: 6px;
+	font-weight: 600;
+}
+
+.nonReservation_box .non_members_btn {
+	display: flex;
+	margin-top: 40px;
+	justify-content: center;
+}
+
+.nonReservation_box .non_members_btn input {
+	background-color: #fb4357;
+	color: #fff;
+	width: 160px;
+	height: 44px;
+	cursor: pointer;
+	border-radius: 6px;
+	font-weight: 600;
 }
 
 .nonReservation_box .block.input .list p.small {
@@ -3588,8 +3615,6 @@ log.nonReservationForm #inner_p {
 	color: white;
 }
 
-
-
 #reservation .block.time button {
 	background-color: #fb4357;
 	padding: 10px 20px;
@@ -3600,18 +3625,175 @@ log.nonReservationForm #inner_p {
 }
 
 #reservation .information button {
-    width: 100px;
-    right:40px;
-    height: 100px;
-    background-color: #272727;
-    border-radius: 16px;
-    color: #e9e9e9;
-    font-weight: 700;
-    font-size: 20px;
-    cursor: pointer;
-    border: 2px solid #c6c1c1;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
+	width: 100px;
+	right: 40px;
+	height: 100px;
+	background-color: #272727;
+	border-radius: 16px;
+	color: #e9e9e9;
+	font-weight: 700;
+	font-size: 20px;
+	cursor: pointer;
+	border: 2px solid #c6c1c1;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
 }
 /* //reservation */
+
+/* joinform */
+#join_form {
+	padding-bottom: 120px;
+}
+
+#join_form .head_title {
+	height: 100px;
+	padding-top: 30px;
+	border-bottom: 4px solid #241d1e;
+	font-size: 36px;
+	color: #222;
+	font-weight: 700;
+}
+
+#join_form form {
+	padding: 40px 20px 0 20px;
+}
+
+#join_form form .block:first-child {
+	border-top: 1px solid #dfded7;
+}
+
+#join_form form .block {
+	padding: 20px 0;
+	display: flex;
+	align-items: center;
+	border-bottom: 1px solid #dfded7;
+}
+
+#join_form form .block label {
+	font-size: 12px;
+	min-width: 120px;
+	display: block;
+}
+
+#join_form form .block input {
+	min-width: 160px;
+	width: 160px;
+	height: 30px;
+	border: 1px solid #b5b5b5;
+	padding-left: 10px;
+}
+
+#join_form form .block #btnIdCheck {
+	margin-left: 20px;
+	background-color: #fb4357;
+	color: #fff;
+	width: 80px;
+	height: 30px;
+	cursor: pointer;
+	border-radius: 6px;
+	font-weight: 600;
+}
+
+#join_form form .block  span.idsuccess {
+	margin-left: 10px;
+	font-size: 12px;
+	font-weight: 600;
+}
+
+#join_form form .block span#pwConfirm {
+	margin-left: 10px;
+	font-size: 12px;
+	font-weight: 600;
+}
+
+#join_form form .block.day .day_radio {
+	display: flex;
+	align-items: center;
+	margin-left: 40px;
+}
+
+#join_form form .block.day .day_radio input.radio {
+	width: 14px;
+	min-width: 14px;
+	height: 14px;
+	margin-right: 4px;
+}
+
+#join_form form .block.day .day_radio label {
+	min-width: 40px;
+}
+
+#join_form form .block.phone select {
+	height: 30px;
+	border: 1px solid #b5b5b5;
+	width: 60px;
+	margin-right: 10px;
+}
+
+#join_form form .block.phone input.phone1 {
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+#join_form form .block.phone input.phone2 {
+	margin-left: 10px;
+}
+
+#join_form form .block.email input.email1 {
+	margin-right: 10px;
+}
+
+#join_form form .block.email input.email2 {
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+#join_form form .block.email  select {
+	height: 30px;
+	border: 1px solid #b5b5b5;
+	width: 60px;
+}
+
+#join_form form .block.post input#sample6_postcode {
+	margin-right: 20px;
+}
+
+#join_form form .block.post input#sample6_address {
+	width: 250px;
+}
+
+#join_form form .block.post input.search {
+	background-color: #fb4357;
+	color: #fff;
+	min-width: 120px;
+	height: 30px;
+	cursor: pointer;
+	border-radius: 6px;
+	font-weight: 600;
+	border: none;
+	margin-right: 20px;
+	width: 120px;
+}
+
+#join_form form .block.address input#sample6_detailAddress {
+	margin-right: 20px;
+}
+
+#join_form form .sign_up_btn {
+	display: flex;
+	justify-content: center;
+	margin-top: 40px;
+}
+
+#join_form form .sign_up_btn input {
+	background-color: #fb4357;
+	color: #fff;
+	width: 160px;
+	height: 44px;
+	cursor: pointer;
+	border-radius: 6px;
+	font-weight: 600;
+}
+
+/* //joinform */

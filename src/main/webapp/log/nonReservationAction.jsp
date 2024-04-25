@@ -61,7 +61,7 @@
 	if(nonMemberOk){
 		// 비회원 예매 성공 시
 		HttpSession loginSession = request.getSession(); // 세션 생성
-		loginSession.setAttribute("verificationCode", verificationCode); // 인증코드 세션
+		loginSession.setAttribute("nonPhoneNumber", phoneNumber); // 비회원 전화번호 세션
 		loginSession.setAttribute("nonPassword", password); // 비회원 비밀번호 세션
 		
 		loginSession.setMaxInactiveInterval(30*60); // 30분
