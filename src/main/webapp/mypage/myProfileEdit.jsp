@@ -4,7 +4,11 @@
 	pageEncoding="UTF-8"%>
 <jsp:include page="../include/header.html"></jsp:include>
 <title>마이페이지 | 영화 그 이상의 감동</title>
-
+<style>
+.myinquiry th, td {
+	text-align: left;
+}
+</style>
 <%
 String username = (String) session.getAttribute("username");
 MemberDao mdao = new MemberDao();
@@ -27,10 +31,8 @@ MemberDto dto = mdao.getMemberById(memberId);
 							</div>
 							<div class="box-contents newtype">
 								<div class="person-info">
-									<strong>
-										<!-- 로그인한 유저 NAME--><%=dto.getName()%><span>님</span>
-									</strong> <em>
-										<!-- 로그인한 유저 USERNAME --><%=username%></em>
+									<strong> <!-- 로그인한 유저 NAME--><%=dto.getName()%><span>님</span>
+									</strong> <em> <!-- 로그인한 유저 USERNAME --><%=username%></em>
 									<button id="go_edit_page" type="button"
 										onclick="location.href='myProfileEdit.jsp'">나의 정보 변경</button>
 								</div>
@@ -65,8 +67,8 @@ MemberDto dto = mdao.getMemberById(memberId);
 									<ul>
 										<li><a href="myInquiry.jsp">1:1 문의</a></li>
 									</ul></li>
-								<li class="my-movie"><a href="javascript:;">내가
-										본 영화<span style="margin-left: 38px;">↗️</span>
+								<li class="my-movie"><a href="javascript:;">내가 본 영화<span
+										style="margin-left: 38px;">↗️</span>
 								</a></li>
 							</ul>
 						</div>
@@ -95,15 +97,17 @@ MemberDto dto = mdao.getMemberById(memberId);
 										<tr>
 											<th scope="row"><label for="nick_name">닉네임</label></th>
 											<td>
-												<p style="padding-bottom: 10px;">한글, 영문, 숫자 혼용 가능 (한글 기준 10자 이내)</p> <input type="hidden"
-												id="memberId" name="memberId" value="<%=memberId%>">
-												<input type="hidden" id="old_nick_name" name="old_nick_name"
+												<p style="padding-bottom: 10px;">한글, 영문, 숫자 혼용 가능 (한글 기준
+													10자 이내)</p> <input type="hidden" id="memberId" name="memberId"
+												value="<%=memberId%>"> <input type="hidden"
+												id="old_nick_name" name="old_nick_name"
 												value="<%=username%>"> <input type="text"
 												id="nick_name" name="nick_name" value="<%=username%>"
 												required="required" maxlength="10" class="s-medium">
 												<button id="check_duplication" type="button"
 													class="round gray">
-													<span style="padding-left: 10px; padding-right: 10px; font-weight: bold;">중복확인</span>
+													<span
+														style="padding-left: 10px; padding-right: 10px; font-weight: bold;">중복확인</span>
 												</button>
 											</td>
 										</tr>
@@ -135,7 +139,8 @@ MemberDto dto = mdao.getMemberById(memberId);
 													</div>
 												</div>
 												<div class="tbl-breakdown-re marginT20">
-													<table style="width: 100%;" summary="개인정보 수집 및 활용 동의 표" class="suzip">
+													<table style="width: 100%;" summary="개인정보 수집 및 활용 동의 표"
+														class="suzip">
 														<colgroup>
 															<col style="width: 16%;">
 															<col style="width: 34%;">
@@ -152,7 +157,8 @@ MemberDto dto = mdao.getMemberById(memberId);
 														</thead>
 														<tbody>
 															<tr>
-																<td scope="row" style="font-weight: 500;">프로필 사진, 닉네임</td>
+																<td scope="row" style="font-weight: 500;">프로필 사진,
+																	닉네임</td>
 																<td>
 																	<ul class="dep1_lst">
 																		<li class="dep1_lst_li">· 공개된 게시판 서비스의 이미지 등록</li>
