@@ -166,7 +166,7 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
 						<div class="tit-my">
 							<div class="head">
 								<h3>MY 예매내역</h3>
-								<span>1건</span>
+								<span><%=movieList.size()%>건</span>
 							</div>
 
 
