@@ -41,11 +41,11 @@ MemberDto dto = mdao.getMemberById(memberId);
     text-align: left;
 }
 
-.txt-red {
+.myinfoleave .txt-red {
     color: #fb4357 !important;
 }
 
-.set-register.cgv {
+.myinfoleave .set-register.cgv {
     margin: 0;
     padding: 40px 0;
     border-top: 1px solid #b8b6aa;
@@ -54,12 +54,12 @@ MemberDto dto = mdao.getMemberById(memberId);
     font-size: 16pt;
 }
 
-strong {
+.myinfoleave strong {
     font-weight: 500;
     line-height: 1.2em;
 }
 
-.round.inred.on{
+.myinfoleave .round.inred.on{
 	font-size: 14px;
     background-color: #fb4357;
     padding: 10px 20px;
@@ -68,7 +68,7 @@ strong {
     cursor: pointer;
 }
 
-.set-btn{
+.myinfoleave .set-btn{
 	padding-top: 30px;
 	float: right;
 }
