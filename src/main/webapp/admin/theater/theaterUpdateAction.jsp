@@ -1,4 +1,3 @@
-<%@page import="data.admin.theater.Region"%>
 <%@page import="data.admin.theater.TheaterDto"%>
 <%@page import="data.admin.theater.TheaterDao"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"

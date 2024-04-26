@@ -1,6 +1,5 @@
 <%@page import="org.json.simple.JSONArray"%>
 <%@page import="org.json.simple.JSONObject"%>
-<%@page import="data.admin.theater.Region"%>
 <%@page import="java.util.List"%>
 <%@page import="data.admin.theater.TheaterDto"%>
 <%@page import="data.admin.theater.TheaterDao"%>
