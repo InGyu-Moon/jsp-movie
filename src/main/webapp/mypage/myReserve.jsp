@@ -195,7 +195,7 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
 										<div class="box-image">
 											<a href="/movies/detail-view/?midx=88104"> <span
 												class="thumb-image"> <img
-													src="../img/movie_img/detgle/detgle.jpg"
+													src=<%=reservationInfoDto.getMovieImg()%>
 													onerror="errorImage(this)"> <img alt="영상물 등급"
 													src="../img/movie_img/vrating/15세 이용가.png" class="grade">
 											</span>
