@@ -4,6 +4,14 @@
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="data.user.member.MemberDto"%>
 <%@page import="data.user.member.MemberDao"%>
+<%@ page import="data.reservation.ReservationInfoDto" %>
+<%@ page import="java.util.HashMap" %>
+<%@ page import="java.sql.Timestamp" %>
+<%@ page import="java.util.Date" %>
+<%@ page import="java.util.Calendar" %>
+<%@ page import="data.reservation.ReservationDao" %>
+<%@ page import="java.text.DecimalFormat" %>
+<%@ page import="java.util.Map" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <jsp:include page="../include/header.html"></jsp:include>
@@ -69,6 +77,17 @@ if (list.size() == 0 && currentPage != 1) {
 }
 
 SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
+%>
+<%
+	String sessionMemberId = (String)session.getAttribute("memberId");
+	ReservationDao dao = new ReservationDao();
+	List<String> movieList = dao.getReservedMovieListByMemberId(sessionMemberId);
+	int totalPrice = 0;
+	SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy년 MM월 dd일");
+	SimpleDateFormat sdf2 = new SimpleDateFormat("HH시 mm분");
+	SimpleDateFormat year = new SimpleDateFormat("yyyy");
+	DecimalFormat decimalFormat = new DecimalFormat("###,###,###원");
+
 %>
 <body>
 	<div id="wrap">
@@ -148,10 +167,29 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
 									</strong> <span>티켓판매기에서 예매번호를 입력하면 티켓을 발급받을 수 있습니다.</span>
 								</p>
 							</div>
+
+
 							<div class="lst-item">
+								<%
+									for(String screeningInfoId : movieList){
+										ReservationInfoDto reservationInfoDto = dao.getReservationInfoByMemberIdAndScreenInfoId(sessionMemberId,screeningInfoId);
+										HashMap<String,Integer> map = dao.getSeatInfoByMemberIdAndScreenInfoId(sessionMemberId,screeningInfoId);
+										Timestamp timestamp = reservationInfoDto.getScreeningDate();
+										Date date = new Date(timestamp.getTime());
+										Calendar calendar = Calendar.getInstance();
+										calendar.setTime(date);
+										int dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
+										String[] days = {"일", "월", "화", "수", "목", "금", "토"};
+										String dayOfWeekString = days[dayOfWeek - 1];
+
+								%>
 								<div class="box-set-info">
 									<div class="box-number">
-										<em>예매번호</em> <strong>0260-<i>0425-3748-559</i></strong>
+										<em>예매번호</em>
+										<strong>0260-<i><%=year.format(reservationInfoDto.getScreeningDate())%>-
+											<%=String.format("%04d", Integer.parseInt(sessionMemberId))%>
+											-<%=String.format("%04d", Integer.parseInt(reservationInfoDto.getScreeningInfoId()))%></i>
+										</strong>
 									</div>
 									<div class="box-info">
 										<div class="box-image">
@@ -167,14 +205,14 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
 										<div class="detail-area">
 											<div class="reservation-info-wrap">
 												<h2 class="box-contents artHouse">
-													<a href="#" class="res-title">댓글부대</a> <span
-														class="res-price">28,000원</span>
+													<a href="#" class="res-title"><%=reservationInfoDto.getMovieTitle()%></a> <span
+														class="res-price"><%=decimalFormat.format(totalPrice)%></span>
 												</h2>
 												<ul class="reservation-mv-info">
 													<li>
 														<dl>
 															<dt>관람극장</dt>
-															<dd>CGV 강남</dd>
+															<dd>CGV <%=reservationInfoDto.getBranch()%></dd>
 														</dl>
 													</li>
 													<li>
@@ -186,25 +224,35 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
 													<li>
 														<dl>
 															<dt>관람일시</dt>
-															<dd class="txt-red">2024.04.25(목) 14:10</dd>
+															<dd class="txt-red">
+																<%=sdf1.format(reservationInfoDto.getScreeningDate())%>
+																(<%=dayOfWeekString%>)
+																<%=sdf2.format(reservationInfoDto.getScreeningTime())%>
+															</dd>
 														</dl>
 													</li>
 													<li>
 														<dl>
-															<dt>관람좌석</dt>
-															<dd>H 12,H 13</dd>
+															<dt>관람좌석&nbsp;</dt>
+															<%
+																for(Map.Entry<String, Integer> entry : map.entrySet()){
+																	totalPrice+=entry.getValue();
+															%>
+															<%=entry.getKey()%>&nbsp;
+															<%}
+															%>
 														</dl>
 													</li>
 													<li>
 														<dl>
 															<dt>상영관</dt>
-															<dd>1관</dd>
+															<dd><%=reservationInfoDto.getScreenName()%></dd>
 														</dl>
 													</li>
 													<li>
 														<dl>
 															<dt>매수</dt>
-															<dd>2매</dd>
+															<dd><%=map.size()%>매</dd>
 														</dl>
 													</li>
 												</ul>
@@ -234,10 +282,26 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
 										<div class="resevation-payment">
 											<p class="resevation-payment-total">
 												<span class="totel-title">총 결제금액</span> <span
-													class="res-price"> 28,000원</span>
+													class="res-price"> <%=decimalFormat.format(totalPrice)%></span>
 											</p>
 											<p class="resevation-payment-part">
-												<span>카카오페이</span><span class="part-price">28,000원</span>
+												<span>
+													<%
+														String str="페이";
+														if(reservationInfoDto.getPaymentMethod().equals("Credit_Card")){
+															str = "신용카드";
+														}else if(reservationInfoDto.getPaymentMethod().equals("Phone")){
+															str = "휴대폰";
+														}else if(reservationInfoDto.getPaymentMethod().equals("KAKAO")){
+															str = "카카오페이";
+														}else if(reservationInfoDto.getPaymentMethod().equals("NAVER")){
+															str = "네이버페이";
+														}else if(reservationInfoDto.getPaymentMethod().equals("SSG")){
+															str = "SSG페이";
+														}
+													%>
+													<%=str%>
+												</span><span class="part-price"><%=decimalFormat.format(totalPrice)%></span>
 											</p>
 										</div>
 									</div>
@@ -252,6 +316,9 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
 										</div>
 									</div>
 								</div>
+								<%
+									}
+								%>
 							</div>
 						</div>
 						<form name="targetform" id="targetform" method="post"
