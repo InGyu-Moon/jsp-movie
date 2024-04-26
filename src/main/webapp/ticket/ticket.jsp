@@ -284,8 +284,7 @@ List<TheaterDto> tmlist = tichekDao.theaterMovieList(branch, screeningDate);
 	<script type="text/javascript">
 	
 		list2();
-		theaterlist();
-		//var theaterId = 
+		//var theaterId =
 		var swiper = new Swiper(".swiper", {
 			navigation : {
 				nextEl : ".swiper-button-next",
@@ -410,42 +409,60 @@ List<TheaterDto> tmlist = tichekDao.theaterMovieList(branch, screeningDate);
 		function list2() {
 		
 			var branch = $("#branch").val();
-			//alert(branch);
 			var screeningDate = $("#screeningDate").val();
-			
-			//alert(branch+","+screeningDate);
-			
+			var movieTitleData = $("#movieTitle").val();
+
 			$.ajax({
 				type:"get",
 				url:"ticketmovie_list.jsp",
-				dataType:"json",	
-				data:{	
+				dataType:"json",
+				data:{
 					"branch":branch,
 					"screeningDate":screeningDate
 				},
 				success:function(res){
-					
-					var movieTitles = [];
-					var s='';
-					$.each(res,function(idx,item){
-							movieTitles.push(item.movieTitle);
-							s+='<div class="block">';
-							s+='<div class="head">';
-		                    s += '<div class="grade">';
-		                    s += '<img src="../img/movie_img/vrating/'+item.viewingRating+'.png">';
-		                    s += '</div>';
-		                    s += '<div class="movie_title" value="'+item.movieId+'">'+item.movieTitle+'</div>';
-		                    s += '<div class="situation">상영중</div>';
-		                    s += '<div class="information">';
-		                    s += '<span class="genre">'+item.genre+'</span>/ <span class="time">'+item.runnungTime+'분</span>/';
-		                    s += '<span class="day">'+item.releaseDate+'개봉</span>';
-		                    s += '</div></div><div class="main"></div></div>';
-		                    
-		                    
-		            });
-					$("#movieTitle").val(movieTitles.join(','));
-					//console.log($("#movieTitle").val());
-					$("div.schedule .list").html(s);
+					$.ajax({
+						type: "post",
+						url: "ticketmoviescreeninfo_list.jsp",
+						dataType: "json",
+						data: {
+							"branch": branch,
+							"screeningDate": screeningDate,
+							"movieTitle": movieTitleData
+						},
+						success:function (data){
+							console.log('myfunction data',data)
+							var movieTitles = [];
+							var s='';
+							$.each(res,function(idx,item){
+								movieTitles.push(item.movieTitle);
+								s+='<div class="block">';
+								s+='<div class="head">';
+								s += '<div class="grade">';
+								s += '<img src="../img/movie_img/vrating/'+item.viewingRating+'.png">';
+								s += '</div>';
+								s += '<div class="movie_title" value="'+item.movieId+'">'+item.movieTitle+'</div>';
+								s += '<div class="situation">상영중</div>';
+								s += '<div class="information">';
+								s += '<span class="genre">'+item.genre+'</span>/ <span class="time">'+item.runnungTime+'분</span>/';
+								s += '<span class="day">'+item.releaseDate+'개봉</span></div></div>';
+								$.each(data,function (movieId){
+									if(data[movieId].movieTitle===item.movieTitle){
+										//TODO
+										s += '<div class="category">';
+										s += '<span class="screen">' + data[movieId].screenInfo + '</span> | ';
+										s += '<span class="location">' + data[movieId].screenName + '</span> | ';
+										s += '<span class="total_seats">총 ' + data[movieId].totalSeats + '석</span><br>';
+										s += "<button type='button' value='" + data[movieId].sreeningInfoId + "'>" + data[movieId].screeningTime + "</button>";
+										s += '</div>';
+									}
+								})
+								s += '<div class="main"></div></div>';
+							});
+							$("#movieTitle").val(movieTitles.join(','));
+							$("div.schedule .list").html(s);
+						}
+					});
 				}
 			});
 		}
@@ -459,7 +476,6 @@ List<TheaterDto> tmlist = tichekDao.theaterMovieList(branch, screeningDate);
 			var branch = $(this).text();
 			$("#branch").val(branch);
 			list2();
-			theaterlist();
 		});
 		
 		$(".ticket .region .line .body .list.main").on('click', 'ul li a', function() {
@@ -468,83 +484,13 @@ List<TheaterDto> tmlist = tichekDao.theaterMovieList(branch, screeningDate);
 		    var branch = $(this).text();
 		    $("#branch").val(branch);
 		    list2();
-		    theaterlist();
 		});
 		
 		$(document).on("click", ".swiper-slide", function() {
 			var selectedDateText = $(this).find(".selected-date").val();
 			$("#screeningDate").val(selectedDateText);
 			list2();
-			theaterlist();
 		});
-		
-		function theaterlist() {
-			
-			var branch = $("#branch").val();
-			var screeningDate = $("#screeningDate").val();
-			var movieTitle = $("#movieTitle").val();
-			var movieTitlesArray = movieTitle.split(",");
-			
-			// 배열을 JSON 문자열로 변환
-			var movieTitleJsonData = JSON.stringify(movieTitle);
-			
-			console.log("movieTitleJsonData "+movieTitleJsonData);
-			console.log("제목만 : "+movieTitle);
-			console.log("theaterlist()"+branch+","+screeningDate+","+$("#movieTitle").val());
-			console.log("screeningDate만 : "+screeningDate);
-			console.log("movieTitlesArray 제목 자름 : "+movieTitlesArray);
-			
-			$.ajax({
-			    type: "post",
-			    url: "ticketmoviescreeninfo_list.jsp",
-			    dataType: "json",
-			    data: {
-			        "branch": branch,
-			        "screeningDate": screeningDate,
-			        "movieTitle": movieTitle
-			    },
-			    success: function(data) {
-			        console.log("################");
-			        console.log(data.toString());
-			        console.log("###### 왜 each가 안 먹는데애애ㅐㅑㅇㄹ모낼옴내; ##########");
-			        var s = '';
-			        var i = 0;
-			        var groupedData = {};
-
-			        // 데이터를 반복하며 movieId를 기준으로 그룹화
-			        $.each(data, function(idx, item) {
-			            var movieId = item.movieId;
-
-			            if (!groupedData[movieId]) {
-			                groupedData[movieId] = [];
-			            }
-
-			            groupedData[movieId].push(item);
-			        });
-
-			        // 그룹화된 데이터를 처리하여 화면에 출력
-			        $.each(groupedData, function(movieId, group) {
-			            // group에는 같은 movieId를 가진 데이터들이 배열 형태로 저장되어 있음
-			            // 이를 활용하여 필요한 처리 수행
-			            var movieTitle = group[0].movieTitle; // 예시로 첫 번째 요소의 movieTitle을 사용
-			            s += '<div class="movie-group">';
-			            s += '<h2>' + movieTitle + '</h2>'; // 각 그룹의 제목으로 movieTitle 사용
-			            $.each(group, function(index, item) {
-			                s += '<div class="category">';
-			                s += '<span class="screen">' + item.screenInfo + '</span> | ';
-			                s += '<span class="location">' + item.screenName + '</span> | ';
-			                s += '<span class="total_seats">총 ' + item.totalSeats + '석</span><br>';
-			                s += "<button type='button' value='" + item.sreeningInfoId + "'>" + item.screeningTime + "</button>";
-			                s += '</div>';
-			            });
-			            s += '</div>';
-			        });
-
-			        $(".block div.main").html(s);
-			    }
-			});
-
-		}
 
 	</script>
 </body>
