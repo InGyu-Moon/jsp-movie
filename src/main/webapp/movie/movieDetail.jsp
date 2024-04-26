@@ -747,7 +747,7 @@ document.querySelector('.myreview').addEventListener('click', function() {
            }
        } else if(username != 'null' ) {
            // 사용자가 로그인되어 있는 경우
-           window.location.href = "../mypage/myMain.jsp";
+           window.location.href = "javascript:;";
        }
    });
 });
