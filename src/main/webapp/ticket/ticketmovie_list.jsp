@@ -19,6 +19,7 @@ JSONArray arr=new JSONArray();
 for(TheaterDto dto:tmlist)
 {
    JSONObject ob=new JSONObject();
+   ob.put("movieId", dto.getMovieId());
    ob.put("branch", dto.getBranch());
    ob.put("screeningDate", dto.getScreeningDate().toString());
    ob.put("movieTitle", dto.getMovieTitle());
