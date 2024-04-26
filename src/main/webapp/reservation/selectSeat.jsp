@@ -2,7 +2,7 @@
 <%@ page import="data.reservation.ReservationDao" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
-<jsp:include page="../include/header.html"></jsp:include>
+<jsp:include page="../include/header.jsp"></jsp:include>
 <title>예매 | 영화 그 이상의 감동</title>
 <style>
 .top_btn .link {

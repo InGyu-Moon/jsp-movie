@@ -1286,7 +1286,6 @@ footer#footer .main .select .btn  a {
 .ticket .schedule  .list .block .head .grade {
 	width: 20px;
 	height: 20px;
-	border: 1px solid red;
 	margin-right: 10px;
 }
 
@@ -1369,6 +1368,24 @@ footer#footer .main .select .btn  a {
 	padding-top: 20px;
 	border-top: 2px solid #474746;
 	padding-bottom: 120px;
+}
+
+.ticket .schedule .list .block .category {
+	margin-top: 40px;
+}
+
+.ticket .schedule .list .block .category span {
+	font-size: 14px;
+	color: #333;
+}
+
+.ticket .schedule .list .block .category button {
+	margin-top: 20px;
+	width: 72px;
+	height: 42px;
+	border: 1px solid #cbcabe;
+	background: #fff;
+	cursor: pointer;
 }
 /* ticket.jsp */
 
@@ -3638,6 +3655,22 @@ log.nonReservationForm #inner_p {
 	top: 50%;
 	transform: translateY(-50%);
 }
+
+#reservation .block.time .row {
+	justify-content: unset;
+	flex-wrap: wrap;
+}
+
+#reservation .block.time .row .col {
+	margin-right: 20px;
+	width: calc(( 100% - 40px)/3);
+	margin-bottom: 20px;
+}
+
+#reservation .block.time .row .col:nth-child(3n) {
+	margin-right: 0;
+}
+
 /* //reservation */
 
 /* joinform */
@@ -4746,10 +4779,6 @@ log.nonReservationForm #inner_p {
 	margin-right: 5px;
 }
 
-.myprofile span.inp_inbox:first-child {
-	position: relative;
-	right: 5px;
-}
 /* //myprofile */
 
 /* myinfoedit */

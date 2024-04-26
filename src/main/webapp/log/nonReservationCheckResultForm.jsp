@@ -4,7 +4,7 @@
 <%@page import="java.util.Enumeration"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<jsp:include page="../include/header.html"></jsp:include>
+<jsp:include page="../include/header.jsp"></jsp:include>
 <%
 	request.setCharacterEncoding("utf-8");
 	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
