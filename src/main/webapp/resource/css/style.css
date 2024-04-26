@@ -4857,4 +4857,53 @@ log.nonReservationForm #inner_p {
 }
 /* //myinfoedit */
 
+/* myinfoleave */
+.myinfoleave .col-detail .tit-my>h3 {
+	font-weight: 700;
+	font-size: 18px;
+	text-align: left;
+}
+
+.myinfoleave .col-detail .tit-my>h4 {
+	margin-top: 10px;
+	font-size: 14px;
+	font-weight: 400;
+	padding-bottom: 20px;
+	border-bottom: 2px solid #000;
+}
+
+.myinfoleave .txt-red {
+	color: #fb4357 !important;
+	font-weight: 900;
+}
+
+.myinfoleave .set-register.cgv {
+	margin: 0;
+	padding: 40px 0;
+	border-top: 1px solid #b8b6aa;
+	border-bottom: 1px solid #b8b6aa;
+	text-align: center;
+	font-size: 16pt;
+}
+
+.myinfoleave strong {
+	font-weight: 500;
+	line-height: 28px;
+}
+
+.myinfoleave .round.inred.on {
+	font-size: 14px;
+	background-color: #fb4357;
+	padding: 10px 20px;
+	color: #fff;
+	border-radius: 100px;
+	cursor: pointer;
+}
+
+.myinfoleave .set-btn {
+	padding-top: 30px;
+	float: right;
+}
+/* //myinfoleave */
+
 /* //mypage */

@@ -13,66 +13,6 @@ int memberId = mdao.getMemberIdByUsername(username);
 MemberDto dto = mdao.getMemberById(memberId);
 //System.out.println(memberId);
 %>
-<style>
-#myhome .cols-content .col-detail {
-    position: relative;
-    width: 100%;
-}
-
-.myinfoleave .col-detail .tit-my > h3{
-    height: 34px;
-    margin: 0;
-    background-image: none;
-    color: #222;
-    font-weight: 500;
-    font-size: 20px;
-    line-height: 34px;
-    text-align: left;
-}
-
-.myinfoleave .col-detail .tit-my > h4{
-	height: 34px;
-    margin: 0;
-    background-image: none;
-    color: #222;
-    font-weight: 500;
-    font-size: 17px;
-    line-height: 34px;
-    text-align: left;
-}
-
-.myinfoleave .txt-red {
-    color: #fb4357 !important;
-}
-
-.myinfoleave .set-register.cgv {
-    margin: 0;
-    padding: 40px 0;
-    border-top: 1px solid #b8b6aa;
-    border-bottom: 1px solid #b8b6aa;
-    text-align: center;
-    font-size: 16pt;
-}
-
-.myinfoleave strong {
-    font-weight: 500;
-    line-height: 1.2em;
-}
-
-.myinfoleave .round.inred.on{
-	font-size: 14px;
-    background-color: #fb4357;
-    padding: 10px 20px;
-    color: #fff;
-    border-radius: 100px;
-    cursor: pointer;
-}
-
-.myinfoleave .set-btn{
-	padding-top: 30px;
-	float: right;
-}
-</style>
 <body>
 	<div id="wrap">
 		<div class="center">

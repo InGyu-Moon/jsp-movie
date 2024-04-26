@@ -142,7 +142,7 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
 							</div>
 							<div class="set-btn">
 								<p class="del">
-									총 <strong class="txt-red"><%=totalCount%></strong>건
+									총 &nbsp;<strong class="txt-red"><%=totalCount%></strong>건
 									<button type="submit" id="btnDelete" class="round black">
 										<span>선택삭제</span>
 									</button>
