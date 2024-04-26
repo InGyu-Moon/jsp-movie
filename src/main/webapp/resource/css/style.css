@@ -3983,6 +3983,7 @@ log.nonReservationForm #inner_p {
 .myhome .set-my-reserve.movielog.col2 .box-inner span {
 	margin-top: 10px;
 	display: block;
+	line-height: 22px;
 }
 
 .myhome .tit-my {
@@ -4124,5 +4125,229 @@ log.nonReservationForm #inner_p {
 	color: #222;
 }
 /* //myHome */
+
+/* myreserve */
+.myreserve .type2 {
+	display: flex;
+	align-items: flex-end;
+	justify-content: space-between;
+	padding-bottom: 20px;
+	border-bottom: 2px solid #000;
+}
+
+.myreserve .type2 h3 {
+	font-size: 18px;
+}
+
+.myreserve .type2 p {
+	font-size: 14px;
+	margin-top: 10px;
+}
+
+#myhome .type2 p span {
+	color: #fb4357;
+	margin-left: 10px;
+	margin-right: 0;
+	font-weight: 600;
+}
+
+#myhome .type2 a.round {
+	padding: 8px 18px;
+	background-color: #fb4357;
+	color: #fff;
+	font-weight: 700;
+	font-size: 14px;
+	border-radius: 100px;
+}
+
+#myhome .sect-register {
+	padding-top: 40px;
+	text-align: center;
+}
+
+#myhome .sect-register strong {
+	font-size: 24px;
+	font-weight: 600;
+}
+
+#myhome .sect-register p {
+	display: flex;
+	flex-direction: column;
+}
+
+#myhome .sect-register p strong span {
+	color: #fb4357;
+}
+
+#myhome .sect-register p>span {
+	margin-top: 10px;
+	color: #666;
+	font-size: 14px;
+}
+
+#myhome .lst-item {
+	margin-top: 60px;
+}
+
+#myhome .lst-item .box-set-info .box-number em {
+	color: #666;
+	font-size: 14px;
+	margin-left: 0;
+	margin-right: 10px;
+}
+
+#myhome .lst-item .box-set-info .box-number strong {
+	font-size: 14px;
+}
+
+#myhome .lst-item .box-set-info .box-number strong i {
+	font-style: normal;
+	color: #fb4357;
+}
+
+#myhome .lst-item .box-set-info .box-info {
+	display: flex;
+	margin-top: 20px;
+	justify-content: space-between;
+}
+
+#myhome .lst-item .box-set-info .box-image {
+	min-width: 90px;
+	height: 140px;
+	position: relative;
+}
+
+#myhome .lst-item .box-set-info .box-image img {
+	border-radius: 0;
+}
+
+#myhome .lst-item .box-set-info .box-image img.grade {
+	width: 20px;
+	height: 20px;
+	position: absolute;
+	left: 0;
+	top: 0;
+	border-radius: 0;
+}
+
+#myhome .lst-item .box-set-info  .detail-area {
+	width: 100%;
+	margin-left: 30px;
+}
+
+#myhome .lst-item .box-set-info  .detail-area h2.artHouse {
+	display: flex;
+	justify-content: space-between;
+	padding-bottom: 20px;
+	border-bottom: 1px solid #d6d4ca;
+}
+
+#myhome .lst-item .box-set-info  .detail-area h2.artHouse a.res-title {
+	font-size: 14px;
+	color: #222;
+}
+
+#myhome .lst-item .box-set-info  .detail-area h2.artHouse span.res-price
+	{
+	font-size: 14px;
+	color: #0077a8;
+	font-weight: bold;
+}
+
+#myhome .lst-item .box-set-info  .detail-area .reservation-mv-info {
+	margin-top: 20px;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+#myhome .lst-item .box-set-info  .detail-area .reservation-mv-info li {
+	width: 50%;
+	font-size: 14px;
+}
+
+#myhome .lst-item .box-set-info  .detail-area .reservation-mv-info li dl
+	{
+	display: flex;
+	line-height: 26px;
+}
+
+#myhome .lst-item .box-set-info  .detail-area .reservation-mv-info li dl dt
+	{
+	color: #222;
+	font-weight: 500;
+}
+
+#myhome .lst-item .box-set-info  .detail-area .reservation-mv-info li dl dd
+	{
+	color: #666;
+	margin-left: 10px;
+	font-weight: 600;
+}
+
+#myhome  .resevation-payment-info {
+	margin-top: 40px;
+}
+
+#myhome  .resevation-payment-info>h2 {
+	font-size: 14px;
+}
+
+#myhome  .resevation-payment-info .resevation-payment {
+	background-color: rgba(255, 255, 255, 0.75);
+	padding: 26px 30px;
+	box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.1);
+	margin-top: 20px;
+}
+
+#myhome  .resevation-payment-info  .resevation-payment-total {
+	display: flex;
+	justify-content: space-between;
+	font-size: 14px;
+	font-weight: bold;
+	padding-bottom: 20px;
+	border-bottom: 1px solid #d6d4ca;
+}
+
+#myhome  .resevation-payment-info  .resevation-payment-total span.totel-title
+	{
+	color: #222;
+}
+
+#myhome  .resevation-payment-info  .resevation-payment-total span.res-price
+	{
+	color: #0077a8;
+}
+
+#myhome  .resevation-payment-info .resevation-payment-part {
+	display: flex;
+	margin-top: 20px;
+	justify-content: space-between;
+	font-size: 12px;
+	color: #666;
+	font-weight: 600;
+}
+
+#myhome  .resevation-payment-info .resevation-payment-part span.part-price
+	{
+	font-weight: bold;
+}
+
+#myhome .set-btn .col-print {
+	display: flex;
+	justify-content: flex-end;
+	margin-top: 20px;
+}
+
+#myhome .set-btn .col-print button {
+	padding: 10px 20px;
+	background-color: #fb4357;
+	color: #fff;
+	font-weight: 700;
+	font-size: 14px;
+	border-radius: 100px;
+	cursor: pointer;
+}
+
+/* //myreserve */
 
 /* //mypage */

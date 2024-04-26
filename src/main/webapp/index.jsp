@@ -198,7 +198,7 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
 															href="movie/movieDetail.jsp?movie_id=<%=dto.getMovieId()%>">상세보기</a>
 													</div>
 													<div class="btn">
-														<a href="javascript:;">예매하기</a>
+														<a href="reservation/reservationForm.jsp">예매하기</a>
 													</div>
 												</div>
 											</div>
@@ -252,7 +252,7 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
 															href="movie/movieDetail.jsp?movie_id=<%=dto.getMovieId()%>">상세보기</a>
 													</div>
 													<div class="btn">
-														<a href="javascript:;">예매하기</a>
+														<a href="reservation/reservationForm.jsp">예매하기</a>
 													</div>
 												</div>
 											</div>
@@ -323,7 +323,7 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
 															href="movie/movieDetail.jsp?movie_id=<%=dto.getMovieId()%>">상세보기</a>
 													</div>
 													<div class="btn">
-														<a href="javascript:;">예매하기</a>
+														<a href="reservation/reservationForm.jsp">예매하기</a>
 													</div>
 												</div>
 											</div>
@@ -379,7 +379,7 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
 															href="movie/movieDetail.jsp?movie_id=<%=dto.getMovieId()%>">상세보기</a>
 													</div>
 													<div class="btn">
-														<a href="javascript:;">예매하기</a>
+														<a href="reservation/reservationForm.jsp">예매하기</a>
 													</div>
 												</div>
 											</div>
