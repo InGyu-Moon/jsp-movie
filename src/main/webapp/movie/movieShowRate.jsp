@@ -5,7 +5,7 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<jsp:include page="../include/header.html"></jsp:include>
+<jsp:include page="../include/header.jsp"></jsp:include>
 <title>무비차트 | 영화 그 이상의 감동</title>
 <%
 MovieInfoDao dao = new MovieInfoDao();

@@ -13,7 +13,7 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<jsp:include page="../include/header.html"></jsp:include>
+<jsp:include page="../include/header.jsp"></jsp:include>
 <title>영화상세 | 영화 그 이상의 감동</title>
 <%
 ReviewInfoDao rdao = new ReviewInfoDao();
@@ -313,7 +313,7 @@ SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy.MM.dd hh:mm");
 												<div class="top_info">
 													<div class="left">
 														<span class="img_info"> <img
-															src="<%=rdto.getUserPhoto()%>">
+															src="<%=rdto.getUserPhoto()%>" onerror="this.src='../img/회원.png'">
 														</span>
 													</div>
 													<div class="right">
@@ -348,7 +348,7 @@ SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy.MM.dd hh:mm");
 												<div class="top_info">
 													<div class="left">
 														<span class="img_info"> <img
-															src="<%=rdto.getUserPhoto()%>">
+															src="<%=rdto.getUserPhoto()%>" onerror="this.src='../img/회원.png'">
 														</span>
 													</div>
 													<div class="right">

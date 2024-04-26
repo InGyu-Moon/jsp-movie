@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>영화 그 이상의 감동</title>
-<link rel="shortcut icon" href="img/common/favicon.ico"
+<link rel="shortcut icon" href="../img/common/favicon.ico"
 	type="image/x-icon">
 <link rel="stylesheet" as="style" crossorigin
 	href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
@@ -44,7 +44,7 @@ System.out.println(myid);
 	<div class="content">
 		<div>
 			<div class="logo">
-				<a href="index.jsp"> <img alt="" src="../img/common/logo.png">
+				<a href="../index.jsp"> <img alt="" src="../img/common/logo.png">
 				</a>
 			</div>
 			<div class="memberinfo">

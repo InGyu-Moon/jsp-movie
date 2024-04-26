@@ -7,9 +7,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Dongle&family=Gaegu&family=Nanum+Pen+Script&family=Noto+Sans+KR:wght@100..900&family=Noto+Serif+KR&display=swap" rel="stylesheet">
-<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
 <meta charset="UTF-8">
 <title>비회원 예매 확인 중...</title>
 </head>
@@ -71,6 +68,7 @@
 	} else{
 		// 로그인 실패 시 메시지 출력
 	%>
+	<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
 		<script>
 			alert("로그인 실패. 아이디 또는 비밀번호를 확인하세요.");
 			window.history.back(); // 이전 페이지로 이동

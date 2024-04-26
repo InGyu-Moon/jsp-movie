@@ -1,7 +1,7 @@
 <%@page import="java.util.Enumeration"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<jsp:include page="../include/header.html"></jsp:include>
+<jsp:include page="../include/header.jsp"></jsp:include>
 <title>비회원예매확인 | 영화 그 이상의 감동</title>
 <body>
 	<div id="wrap">
