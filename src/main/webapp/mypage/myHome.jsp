@@ -166,7 +166,7 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
 									</div>
 									<div class="text">
 										<div class="title">
-											<span>범죄도시4</span>
+											<span>유미의 세포들</span>
 										</div>
 										<ul>
 											<li><label>관람극장</label>
