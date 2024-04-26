@@ -9,6 +9,9 @@
 <%@ page import="java.util.HashMap" %>
 <%@ page import="java.util.Map" %>
 <%@ page import="java.text.DecimalFormat" %>
+<%@ page import="java.util.Date" %>
+<%@ page import="java.util.Calendar" %>
+<%@ page import="java.sql.Timestamp" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <jsp:include page="../include/header.html"></jsp:include>
@@ -171,6 +174,13 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
 								for(String screeningInfoId : movieList){
 									ReservationInfoDto reservationInfoDto = dao.getReservationInfoByMemberIdAndScreenInfoId(sessionMemberId,screeningInfoId);
 									HashMap<String,Integer> map = dao.getSeatInfoByMemberIdAndScreenInfoId(sessionMemberId,screeningInfoId);
+									Timestamp timestamp = reservationInfoDto.getScreeningDate();
+									Date date = new Date(timestamp.getTime());
+									Calendar calendar = Calendar.getInstance();
+									calendar.setTime(date);
+									int dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
+									String[] days = {"일", "월", "화", "수", "목", "금", "토"};
+									String dayOfWeekString = days[dayOfWeek - 1];
 
 							%>
 							<div class="main">
@@ -200,7 +210,9 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
 													<%=reservationInfoDto.getBranch()%> <span>[극장정보]</span>
 												</p></li>
 											<li><label>관람일시</label>
-												<p><%=sdf1.format(reservationInfoDto.getScreeningDate())%>(목) <%=sdf2.format(reservationInfoDto.getScreeningTime())%></p></li>
+												<p><%=sdf1.format(reservationInfoDto.getScreeningDate())%>
+													(<%=dayOfWeekString%>)
+													<%=sdf2.format(reservationInfoDto.getScreeningTime())%></p></li>
 											<li><label>관람좌석</label>
 												<p>
 														<%
