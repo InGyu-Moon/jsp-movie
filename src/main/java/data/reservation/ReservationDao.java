@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import data.movie.screening.ScreeningDto;
@@ -317,5 +318,108 @@ public class ReservationDao {
 			db.dbClose(pstmt,conn);
 		}
     }
+
+	public List<String> getReservedMovieListByMemberId(String memberId){
+		Connection conn = db.getConnection();;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<String> list = new ArrayList<>();
+
+		String sql = "SELECT DISTINCT SCREENING_INFO_ID\n" +
+				"from RESERVATION_INFO\n" +
+				"where MEMBER_ID = ?\n" +
+				"  and PAYMENT_STATUS = 'Completed'";
+
+        try {
+            pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1,memberId);
+			rs = pstmt.executeQuery();
+			while(rs.next()){
+				list.add(rs.getString("SCREENING_INFO_ID"));
+			}
+        } catch (SQLException e) {
+			System.out.println("e = " + e);
+        } finally {
+			db.dbClose(rs,pstmt,conn);
+		}
+        return list;
+	}
+
+	public ReservationInfoDto getReservationInfoByMemberIdAndScreenInfoId(String memberId, String screenInfoId){
+		Connection conn = db.getConnection();;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		ReservationInfoDto dto = new ReservationInfoDto();
+
+		String sql = "SELECT DISTINCT M.MEMBER_ID, MI.MOVIE_TITLE, MI.MOVIE_IMG, MI.VIEWING_RATING, SI.SCREENING_DATE, SI.SCREENING_TIME, TI.BRANCH, TS.SCREEN_NAME,\n" +
+				"                RI.PAYMENT_STATUS, RI.PAYMENT_METHOD, RI.SCREENING_INFO_ID\n" +
+				"FROM RESERVATION_INFO RI\n" +
+				"JOIN SCREENING_INFO SI ON RI.SCREENING_INFO_ID = SI.SCREENING_INFO_ID\n" +
+				"JOIN THEATER_SCREEN TS ON SI.THEATER_SCREEN_ID = TS.THEATER_SCREEN_ID\n" +
+				"JOIN THEATER_INFO TI ON SI.THEATER_ID = TI.THEATER_ID\n" +
+				"JOIN MOVIE_INFO MI ON SI.MOVIE_ID = MI.MOVIE_ID\n" +
+				"JOIN MEMBER_INFO M ON RI.MEMBER_ID = M.MEMBER_ID\n" +
+				"WHERE RI.MEMBER_ID = ? and RI.SCREENING_INFO_ID=? and PAYMENT_STATUS = 'Completed'";
+
+        try {
+            pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1,memberId);
+			pstmt.setString(2,screenInfoId);
+			rs = pstmt.executeQuery();
+			while(rs.next()){
+				dto.setMemberId(rs.getString("MEMBER_ID"));
+				dto.setMovieTitle(rs.getString("MOVIE_TITLE"));
+				dto.setMovieImg(rs.getString("MOVIE_IMG"));
+				dto.setViewingRating(rs.getString("VIEWING_RATING"));
+				dto.setScreeningDate(rs.getTimestamp("SCREENING_DATE"));
+				dto.setScreeningTime(rs.getTimestamp("SCREENING_TIME"));
+				dto.setBranch(rs.getString("BRANCH"));
+				dto.setScreenName(rs.getString("SCREEN_NAME"));
+				dto.setPaymentStatus(rs.getString("PAYMENT_STATUS"));
+				dto.setPaymentMethod(rs.getString("PAYMENT_METHOD"));
+				dto.setScreeningInfoId(rs.getString("SCREENING_INFO_ID"));
+			}
+        } catch (SQLException e) {
+			System.out.println("e = " + e);
+        } finally {
+			db.dbClose(rs,pstmt,conn);
+		}
+		return dto;
+
+    }
+	public HashMap<String,Integer> getSeatInfoByMemberIdAndScreenInfoId(String memberId, String screenInfoId){
+		Connection conn = db.getConnection();;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		HashMap<String,Integer> map = new HashMap<>();
+
+		String sql = "select RESERVED_SEATS, AMOUNT\n" +
+				"from RESERVATION_INFO\n" +
+				"where SCREENING_INFO_ID = ?\n" +
+				"  and MEMBER_ID = ?\n" +
+				"  and PAYMENT_STATUS = 'Completed'";
+
+        try {
+            pstmt = conn.prepareStatement(sql);
+			pstmt.setString(2,memberId);
+			pstmt.setString(1,screenInfoId);
+			rs = pstmt.executeQuery();
+			while(rs.next()){
+				map.put(rs.getString("RESERVED_SEATS"),rs.getInt("AMOUNT"));
+			}
+
+        } catch (SQLException e) {
+			System.out.println("e = " + e);
+        }finally {
+			db.dbClose(rs,pstmt,conn);
+		}
+		return map;
+
+
+    }
+
+
+
 
 }
