@@ -13,6 +13,66 @@ int memberId = mdao.getMemberIdByUsername(username);
 MemberDto dto = mdao.getMemberById(memberId);
 //System.out.println(memberId);
 %>
+<style>
+#myhome .cols-content .col-detail {
+    position: relative;
+    width: 100%;
+}
+
+.myinfoleave .col-detail .tit-my > h3{
+    height: 34px;
+    margin: 0;
+    background-image: none;
+    color: #222;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 34px;
+    text-align: left;
+}
+
+.myinfoleave .col-detail .tit-my > h4{
+	height: 34px;
+    margin: 0;
+    background-image: none;
+    color: #222;
+    font-weight: 500;
+    font-size: 17px;
+    line-height: 34px;
+    text-align: left;
+}
+
+.myinfoleave .txt-red {
+    color: #fb4357 !important;
+}
+
+.myinfoleave .set-register.cgv {
+    margin: 0;
+    padding: 40px 0;
+    border-top: 1px solid #b8b6aa;
+    border-bottom: 1px solid #b8b6aa;
+    text-align: center;
+    font-size: 16pt;
+}
+
+.myinfoleave strong {
+    font-weight: 500;
+    line-height: 1.2em;
+}
+
+.myinfoleave .round.inred.on{
+	font-size: 14px;
+    background-color: #fb4357;
+    padding: 10px 20px;
+    color: #fff;
+    border-radius: 100px;
+    cursor: pointer;
+}
+
+.myinfoleave .set-btn{
+	padding-top: 30px;
+	float: right;
+}
+</style>
 <body>
 	<div id="wrap">
 		<div class="center">
@@ -70,26 +130,26 @@ MemberDto dto = mdao.getMemberById(memberId);
 							</ul>
 						</div>
 					</div>
-					<div class="col-detail" id="mycgv_contents">
+					<div class="col-detail" id="my_contents">
 
-						<div class="tit-mycgv">
+						<div class="tit-my">
 							<h3>나의 정보</h3>
 						</div>
-						<div class="tit-mycgv">
+						<div class="tit-my">
 							<h4>회원탈퇴</h4>
 						</div>
 
-						<div class="sect-register cjone">
+						<div class="set-register cgv">
 							<p>
-								<strong>회원 탈퇴 시<em class="txt-red">CGV 멤버십 서비스</em>를
+								<strong>회원 탈퇴 시&nbsp;&nbsp;<span class="txt-red">CGV 멤버십 서비스&nbsp;</span>를
 									이용할 수 없습니다.<br>회원 탈퇴 하시겠습니까?
 								</strong>
 							</p>
 						</div>
 						<div class="set-btn">
-							<a href="deleteMyInfo.jsp?memberId=<%=memberId%>"
+							<a href=""
 								class="round inred on"> <input type="hidden" id="memberId"
-								name="memberId" value="<%=memberId%>"> <span>CGV
+								name="memberId" value="<%=memberId%>"> <span>
 									회원탈퇴</span>
 							</a>
 						</div>
@@ -101,4 +161,18 @@ MemberDto dto = mdao.getMemberById(memberId);
 	</div>
 	<jsp:include page="../include/footer.html"></jsp:include>
 </body>
+
+<script type="text/javascript">
+
+	$(".set-btn").click(
+			function() {
+				var s = confirm("정말 탈퇴하시겠습니까?");
+
+				if (s) {
+					$("a").attr("href",
+							"deleteMyInfo.jsp?memberId=<%=memberId%>");
+				}
+
+			});
+</script>
 </html>
