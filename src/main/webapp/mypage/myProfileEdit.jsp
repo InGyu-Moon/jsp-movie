@@ -82,6 +82,10 @@ input[type='text']{
     margin-left: 10px;
 }
 
+.tbl-form tbody td input#profile_upload_file{
+	margin-left: 10px;
+}
+
 .round.gray {
     border: 2px solid #7b7b7b;
     color: #7b7b7b;
@@ -129,13 +133,55 @@ input[type='text']{
 }
 
 .tbl-form tbody td input, .tbl-form tbody td label {
-	margin-left: 20px;
     vertical-align: middle;
     letter-spacing: -1px;
 }
 
-table {
-    margin-top: 20px;
+table.suzip{
+    padding-top: 20px;
+}
+
+.tbl-breakdown-re table {
+    border-bottom: 1px solid #b8b6aa;
+}
+
+table.suzip {
+    font-size: 13px;
+    line-height: 1.2;
+    color: #666;
+    font-weight: 400;
+    vertical-align: middle;
+    text-align: center;
+}
+
+table.suzip th{
+	background: #e2e2e0;
+}
+
+table.suzip td{
+	border-top: 2px dotted #b8b6aa;
+}
+
+p.marginT10{
+	padding-top: 15px;
+}
+
+.round.inred.on{
+	font-size: 14px;
+    background-color: #fb4357;
+    padding: 10px 20px;
+    color: #fff;
+    border-radius: 100px;
+    cursor: pointer;
+}
+
+.aright{
+	margin-top: 10px;
+	float: right;
+}
+
+#rd_agree_profileInfo_Y, #rd_agree_profileInfo_N{
+	margin-right: 5px;
 }
 </style>
 <body>
@@ -261,12 +307,12 @@ table {
 													</div>
 												</div>
 												<div class="tbl-breakdown-re marginT20">
-													<table style="width: 100%;" summary="개인정보 수집 및 활용 동의 표">
+													<table style="width: 100%;" summary="개인정보 수집 및 활용 동의 표" class="suzip">
 														<colgroup>
 															<col style="width: 16%;">
 															<col style="width: 34%;">
-															<col style="width: 34%;">
-															<col style="width: 16%;">
+															<col style="width: 30%;">
+															<col style="width: 17%;">
 														</colgroup>
 														<thead>
 															<tr>
@@ -278,21 +324,21 @@ table {
 														</thead>
 														<tbody>
 															<tr>
-																<th scope="row">프로필 사진, 닉네임</th>
+																<td scope="row" style="font-weight: 500;">프로필 사진, 닉네임</td>
 																<td>
 																	<ul class="dep1_lst">
 																		<li class="dep1_lst_li">· 공개된 게시판 서비스의 이미지 등록</li>
 																		<li class="dep1_lst_li">· 공개된 게시판의 익명성 보장</li>
 																	</ul>
 																</td>
-																<td>약관 철회 후 1주일 까지</td>
+																<td style="vertical-align: middle;">약관 철회 후 1주일 까지</td>
 																<td>
 																	<!-- 동의함 또는 동의안함 체크시 inp_inbox에 on 클래스 toggle 처리 필요 -->
 																	<span class="inp_inbox on"> <input
 																		name="rd_agree_profileInfo"
 																		id="rd_agree_profileInfo_Y" type="radio" value="Y"
 																		checked="checked"><label for="agreeChk2-1">동의함</label>
-																</span> <span class="inp_inbox"> <input
+																</span><br> <span class="inp_inbox"> <input
 																		name="rd_agree_profileInfo"
 																		id="rd_agree_profileInfo_N" type="radio" value="N"><label
 																		for="agreeChk2-2">동의안함</label>

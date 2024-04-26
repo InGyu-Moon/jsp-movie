@@ -480,7 +480,7 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
 								<div class="box-polaroid">
 									<div class="box-inner qna">
 										<p>
-											<strong>자주하시는 질문</strong> <a href="../customer/faq.jsp"
+											<strong>자주하시는 질문</strong>    <a href="../customer/faq.jsp"
 												class="round gray on"><span>바로가기</span></a>
 										</p>
 										<span>고객님들께서 주로 하시는 질문에 대한 답변을<br>한곳에 모아두었습니다.
