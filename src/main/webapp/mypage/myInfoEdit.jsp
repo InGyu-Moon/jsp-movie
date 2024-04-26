@@ -27,10 +27,8 @@ MemberDto dto = mdao.getMemberById(memberId);
 							</div>
 							<div class="box-contents newtype">
 								<div class="person-info">
-									<strong>
-										<!-- 로그인한 유저 NAME--><%=dto.getName()%><span>님</span>
-									</strong> <em>
-										<!-- 로그인한 유저 USERNAME --><%=username%></em>
+									<strong> <!-- 로그인한 유저 NAME--><%=dto.getName()%><span>님</span>
+									</strong> <em> <!-- 로그인한 유저 USERNAME --><%=username%></em>
 									<button id="go_edit_page" type="button"
 										onclick="location.href='myProfileEdit.jsp'">나의 정보 변경</button>
 								</div>
@@ -65,8 +63,8 @@ MemberDto dto = mdao.getMemberById(memberId);
 									<ul>
 										<li><a href="myInquiry.jsp">1:1 문의</a></li>
 									</ul></li>
-								<li class="my-movie"><a href="javascript:;">내가
-										본 영화<span style="margin-left: 38px;">↗️</span>
+								<li class="my-movie"><a href="javascript:;">내가 본 영화<span
+										style="margin-left: 38px;">↗️</span>
 								</a></li>
 							</ul>
 						</div>
@@ -94,18 +92,17 @@ MemberDto dto = mdao.getMemberById(memberId);
 										</tr>
 										<tr>
 											<th scope="row"><label for="nick_name">아이디</label></th>
-											<td>
-												<p>한글, 영문, 숫자 혼용 가능 (한글 기준 10자 이내)</p> <input type="hidden"
-												id="memberId" name="memberId" value="<%=memberId%>">
-												<input type="hidden" id="old_nick_name" name="old_nick_name"
+											<td class="td_id"><input type="hidden" id="memberId"
+												name="memberId" value="<%=memberId%>"> <input
+												type="hidden" id="old_nick_name" name="old_nick_name"
 												value="<%=username%>"> <input type="text"
 												id="nick_name" name="nick_name" value="<%=username%>"
 												required="required" maxlength="10" class="s-medium">
+												<p class="id_text">한글, 영문, 숫자 혼용 가능 (한글 기준 10자 이내)</p>
 												<button id="check_duplication" type="button"
 													class="round gray">
 													<span>중복확인</span>
-												</button>
-											</td>
+												</button></td>
 										</tr>
 										<tr>
 											<th scope="row">비밀번호</th>
@@ -123,15 +120,17 @@ MemberDto dto = mdao.getMemberById(memberId);
 										</tr>
 										<tr>
 											<th scope="row">생년월일 / 성별</th>
-											<td><input type="date" name="birthdate"
+											<td class="td_day"><input type="date" name="birthdate"
 												value="<%=dto.getBirthdate()%>"> <input type="radio"
 												name="gender" value="Male"
-												<%=dto.getGender() == Gender.Male ? "checked" : ""%>>남성&nbsp;
-												<input type="radio" name="gender" value="Female"
-												<%=dto.getGender() == Gender.Female ? "checked" : ""%>>여성&nbsp;
-												<input type="radio" name="gender" value="Other"
-												<%=dto.getGender() == Gender.Other ? "checked" : ""%>>비공개
-											</td>
+												<%=dto.getGender() == Gender.Male ? "checked" : ""%>
+												class="radio">남성&nbsp; <input type="radio"
+												name="gender" value="Female"
+												<%=dto.getGender() == Gender.Female ? "checked" : ""%>
+												class="radio">여성&nbsp; <input type="radio"
+												name="gender" value="Other"
+												<%=dto.getGender() == Gender.Other ? "checked" : ""%>
+												class="radio">비공개</td>
 										</tr>
 										<tr>
 											<th scope="row">휴대전화번호</th>
