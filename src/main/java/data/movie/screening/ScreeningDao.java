@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import data.movie.theaterscreen.TheaterScreenDto;
 import data.theater.info.TheaterDto;
 import db.mysql.DbConnect;
 
@@ -130,6 +131,53 @@ public class ScreeningDao {
 			db.dbClose(rs, pstmt, conn);
 		}
 		
+		return list;
+	}
+	
+	
+	// TheaterScreen 가져오기 => 지점과 상영날짜와 제목으로 상영관정보 가져옴
+	public List<ScreeningDto> getTheaterScreenAndScreenId(String movieTitle, String branch, Date screeningDate) {
+		List<ScreeningDto> list = new ArrayList<>();
+		Connection conn = db.getConnection();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		try {
+			conn = db.getConnection();
+			String sql = "SELECT TS.TOTAL_SEATS, TS.SCREEN_INFO, TS.SCREEN_NAME , S.* "
+					+ "FROM (SELECT * FROM MOVIE_INFO WHERE MOVIE_TITLE=?) M, "
+					+ "	(SELECT * FROM THEATER_INFO WHERE BRANCH=?) T, "
+					+ "	(SELECT * FROM SCREENING_INFO WHERE SCREENING_DATE=?) S, "
+					+ "    THEATER_SCREEN TS "
+					+ "WHERE S.MOVIE_ID=M.MOVIE_ID AND S.THEATER_ID=T.THEATER_ID AND S.THEATER_SCREEN_ID=TS.THEATER_SCREEN_ID "
+					+ "GROUP BY TS.THEATER_SCREEN_ID";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, movieTitle);
+			pstmt.setString(2, branch);
+			pstmt.setDate(3, screeningDate);
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				ScreeningDto dto = new ScreeningDto();
+				dto.setTotalSeats(rs.getString("TOTAL_SEATS"));
+				dto.setScreenInfo(rs.getString("SCREEN_INFO"));
+				dto.setScreenName(rs.getString("SCREEN_NAME"));
+				dto.setScreeningInfoId(rs.getString("SCREENING_INFO_ID"));
+				dto.setTheaterId(rs.getString("THEATER_ID"));
+				dto.setTheaterScreenId(rs.getString("THEATER_SCREEN_ID"));
+				dto.setMovieId(rs.getString("MOVIE_ID"));
+				dto.setScreeningDate(rs.getDate("SCREENING_DATE"));
+				dto.setScreeningTime(rs.getTimestamp("SCREENING_TIME"));
+				
+				
+				list.add(dto);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			db.dbClose(rs, pstmt, conn);
+		}
+
 		return list;
 	}
 }

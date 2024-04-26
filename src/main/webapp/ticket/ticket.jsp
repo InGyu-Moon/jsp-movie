@@ -284,8 +284,7 @@ List<TheaterDto> tmlist = tichekDao.theaterMovieList(branch, screeningDate);
 	<script type="text/javascript">
 	
 		list2();
-		theaterlist();
-		//var theaterId = 
+		//var theaterId =
 		var swiper = new Swiper(".swiper", {
 			navigation : {
 				nextEl : ".swiper-button-next",
@@ -410,42 +409,60 @@ List<TheaterDto> tmlist = tichekDao.theaterMovieList(branch, screeningDate);
 		function list2() {
 		
 			var branch = $("#branch").val();
-			//alert(branch);
 			var screeningDate = $("#screeningDate").val();
-			
-			//alert(branch+","+screeningDate);
-			
+			var movieTitleData = $("#movieTitle").val();
+
 			$.ajax({
 				type:"get",
 				url:"ticketmovie_list.jsp",
-				dataType:"json",	
-				data:{	
+				dataType:"json",
+				data:{
 					"branch":branch,
 					"screeningDate":screeningDate
 				},
 				success:function(res){
-					
-					var movieTitles = [];
-					var s='';
-					$.each(res,function(idx,item){
-							movieTitles.push(item.movieTitle);
-							s+='<div class="block">';
-							s+='<div class="head">';
-		                    s += '<div class="grade">';
-		                    s += '<img src="../img/movie_img/vrating/'+item.viewingRating+'.png">';
-		                    s += '</div>';
-		                    s += '<div class="movie_title">'+item.movieTitle+'</div>';
-		                    s += '<div class="situation">상영중</div>';
-		                    s += '<div class="information">';
-		                    s += '<span class="genre">'+item.genre+'</span>/ <span class="time">'+item.runnungTime+'분</span>/';
-		                    s += '<span class="day">'+item.releaseDate+'개봉</span>';
-		                    s += '</div></div><div class="main"></div></div>';
-		                    
-		                    
-		            });
-					$("#movieTitle").val(movieTitles.join(','));
-					//console.log($("#movieTitle").val());
-					$("div.schedule .list").html(s);
+					$.ajax({
+						type: "post",
+						url: "ticketmoviescreeninfo_list.jsp",
+						dataType: "json",
+						data: {
+							"branch": branch,
+							"screeningDate": screeningDate,
+							"movieTitle": movieTitleData
+						},
+						success:function (data){
+							console.log('myfunction data',data)
+							var movieTitles = [];
+							var s='';
+							$.each(res,function(idx,item){
+								movieTitles.push(item.movieTitle);
+								s+='<div class="block">';
+								s+='<div class="head">';
+								s += '<div class="grade">';
+								s += '<img src="../img/movie_img/vrating/'+item.viewingRating+'.png">';
+								s += '</div>';
+								s += '<div class="movie_title" value="'+item.movieId+'">'+item.movieTitle+'</div>';
+								s += '<div class="situation">상영중</div>';
+								s += '<div class="information">';
+								s += '<span class="genre">'+item.genre+'</span>/ <span class="time">'+item.runnungTime+'분</span>/';
+								s += '<span class="day">'+item.releaseDate+'개봉</span></div></div>';
+								$.each(data,function (movieId){
+									if(data[movieId].movieTitle===item.movieTitle){
+										//TODO
+										s += '<div class="category">';
+										s += '<span class="screen">' + data[movieId].screenInfo + '</span> | ';
+										s += '<span class="location">' + data[movieId].screenName + '</span> | ';
+										s += '<span class="total_seats">총 ' + data[movieId].totalSeats + '석</span><br>';
+										s += "<button type='button' value='" + data[movieId].sreeningInfoId + "'>" + data[movieId].screeningTime + "</button>";
+										s += '</div>';
+									}
+								})
+								s += '<div class="main"></div></div>';
+							});
+							$("#movieTitle").val(movieTitles.join(','));
+							$("div.schedule .list").html(s);
+						}
+					});
 				}
 			});
 		}
@@ -459,7 +476,6 @@ List<TheaterDto> tmlist = tichekDao.theaterMovieList(branch, screeningDate);
 			var branch = $(this).text();
 			$("#branch").val(branch);
 			list2();
-			theaterlist();
 		});
 		
 		$(".ticket .region .line .body .list.main").on('click', 'ul li a', function() {
@@ -468,48 +484,13 @@ List<TheaterDto> tmlist = tichekDao.theaterMovieList(branch, screeningDate);
 		    var branch = $(this).text();
 		    $("#branch").val(branch);
 		    list2();
-		    theaterlist();
 		});
 		
-		$(".swiper-slide").click(function() {
+		$(document).on("click", ".swiper-slide", function() {
 			var selectedDateText = $(this).find(".selected-date").val();
 			$("#screeningDate").val(selectedDateText);
 			list2();
-			theaterlist();
 		});
-		
-		function theaterlist() {
-			
-			var branch = $("#branch").val();
-			var screeningDate = $("#screeningDate").val();
-			var movieTitle = $("#movieTitle").val();
-			
-			//console.log(branch+","+screeningDate+","+$("#movieTitle").val());
-			
-			$.ajax({
-				type:"get",
-				url:"ticketmovietheater_list.jsp",
-				dataType:"json",	
-				data:{	
-					"branch":branch,
-					"screeningDate":screeningDate,
-					"movieTitle":movieTitle
-				},
-				success:function(res){
-					//console.log(branch+","+screeningDate+","+movieTitle);
-					var s = '';
-					$.each(res,function(idx,item){
-					        s += '<div class="category">';
-					        s += '<span class="screen">' + item.screenInfo + '</span> | ';
-					        s += '<span class="location">' + item.screenName + '</span> | ';
-					        s += '<span class="total_seats">총 ' + item.totalSeats + '석</span>';
-					        s += '</div>';
-					});
-					    
-				    $(".block div.main").html(s);
-				}
-			})
-		}
 
 	</script>
 </body>
